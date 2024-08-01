@@ -1335,6 +1335,7 @@ b, strong {
   flex-direction: column;
   margin-bottom: 10px;
   gap: 10px;
+  user-select: none;
 }
 .sidebar-tab__item {
   gap: 10px;
@@ -1373,6 +1374,7 @@ b, strong {
   position: relative;
   width: 100%;
   height: 46px;
+  user-select: none;
 }
 .toggle-btn::before {
   position: absolute;
@@ -1389,6 +1391,7 @@ b, strong {
 .logo {
   --gradient-to: #eb4853;
   --gradient-from: #d91b6e;
+  user-select: none;
 }
 .logo__link {
   padding: 0 10px;

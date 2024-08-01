@@ -1,6 +1,7 @@
 .logo {
     --gradient-to: #eb4853;
     --gradient-from: #d91b6e;
+    user-select: none;
     &__link {
         padding: 0 10px;
         font-size: 2rem;
