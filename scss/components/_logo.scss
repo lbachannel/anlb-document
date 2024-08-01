@@ -1,0 +1,14 @@
+.logo {
+    --gradient-to: #eb4853;
+    --gradient-from: #d91b6e;
+    &__link {
+        padding: 0 10px;
+        font-size: 2rem;
+        line-height: 1.8;
+        font-weight: 700;
+        font-family: 'Marck Script', sans-serif;
+        color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(180deg, var(--gradient-to), var(--gradient-from));
+    }
+}
