@@ -1,6 +1,54 @@
-.wrapper {
+.compiler {
     display: flex;
-    width: 100%;
-    min-height: 100vh;
-    background: #f7f9fa;
+    flex-direction: column;
+    justify-content: center;
+
+    &__desc {
+        margin-bottom: 15px;
+        font-size: 1.6rem;
+        line-height: 1.6;
+    }
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        &-text {
+            background: #ffb700;
+            padding: 10px;
+            border-radius: 8px;
+            user-select: none;
+        }
+
+        &-img {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    &__blockquote {
+        margin-left: 0;
+        padding: 0 16px;
+        background: rgba(232, 230, 230, 0.9);
+        border-left: 2px solid #ffb700;
+    }
+
+    &__image {
+        border-radius: 8px;
+        cursor: -webkit-zoom-in;
+        cursor: zoom-in;
+        display: block;
+        max-width: 50% !important;
+        margin-bottom: 10px;
+    }
+
+    &__figure {
+        display: block;
+        font-size: 1.4rem;
+        margin: 0 auto;
+        text-align: center;
+        width: min(550px, 100%);
+    }
 }

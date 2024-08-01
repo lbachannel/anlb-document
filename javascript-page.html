@@ -8,23 +8,23 @@
     <link rel="stylesheet" href="./assets/fonts/stylesheet.css">
     <!-- CSS Style -->
     <link rel="stylesheet" href="./assets/css/main.css">
-    <!-- JavaScript -->
-    <script src="./assets/js/script.js"></script>
+    <!-- Bước 1: Nhúng link cdn Highlight code -->
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="wrapper">
+    <div class="wrapper js-tabs">
         <!-- Sidebar -->
         <div id="sidebar" class="sidebar">
             <h1 class="logo sidebar__logo">
                 <a class="logo__link sidebar__logo--small" href="./index.html">AnLB</a>
             </h1>
             <!-- Tabs -->
-            <ul class="sidebar-tab js-tabs">
-                <li class="sidebar-tab__item">
-                    Home
+            <ul class="sidebar-tab">
+                <li class="sidebar-tab__item sidebar-tab__item--active">
+                    2. Tìm hiểu về JS
                 </li>
                 <li class="sidebar-tab__item">
-                    Services
+                    3. Biến (Variables)
                 </li>
             </ul>
             <div class="separate"></div>
@@ -33,14 +33,31 @@
             </button>
         </div>
         <!-- main -->
-        <main>
-            <div class="container-fluid">
-                <!-- contents -->
-                <div class="contents">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum eaque tempore omnis quod quia corrupti cum voluptates ut voluptas magni, error earum placeat, nam ullam aperiam libero eos dolorum eius officia ex. Totam iste tenetur reprehenderit repudiandae maiores voluptas saepe officiis dicta, deserunt ad ut aliquid. Aliquam labore repudiandae magni.
-                </div>
+        <main class="container-fluid">
+            <!-- contents -->
+            <div class="row row-cols-1">
+                <!-- content 1 -->
+                <div id="chapter-2" class="content content--active"></div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        load("#chapter-2", "./template/chapter-2.html");
+                    });
+                </script>
+
+                <!-- content 2 -->
+                <div id="chapter-3" class="content"></div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        load("#chapter-3", "./template/chapter-3.html");
+                    });
+                </script>
             </div>
         </main>
     </div>
+
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+    <!-- Bước 2: Nhúng code JavaScript của PrismJS -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
 </body>
 </html>

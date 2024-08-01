@@ -1,3 +1,13 @@
+%lineClampHasOptions {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    @supports (-webkit-line-clamp: 1) or
+    (line-clamp: 1) {
+        -webkit-line-clamp: 1
+    }
+}
+
 .sidebar {
     width: 120px;
     min-height: 100vh;
@@ -16,15 +26,17 @@
         display: flex;
         flex-direction: column;
         margin-bottom: 10px;
-        gap: 10px;
         user-select: none;
 
         &__item {
-            gap: 10px;
-            padding: 15px;
+            padding: 20px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
 
             &:hover {
                 cursor: pointer;
+                background: #dedcdc;
             }
 
             .toggle-btn {

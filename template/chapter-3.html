@@ -1,0 +1,41 @@
+<div class="content-wrap">
+    <h2 class="content__heading">Biến là gì?</h2>
+    <p class="content__desc">
+        Biến trong JavaScript dùng để lưu trữ dữ liệu.
+        mỗi biến có một tên duy nhất và chứa một giá trị cụ thể.
+    </p>
+
+    <h3 class="content__heading-3">Biến dùng để làm gì</h3>
+    <p class="content__desc">Lưu trữ các giá trị tạm thời trong bộ nhớ máy tính.</p>
+    <p class="content__desc">bao gồm số, chuỗi, v.v. và có thể thay đổi trong quá trình chạy chương trình.</p>
+
+    <h2 class="content__heading mt-30">Có ba cách khai báo biến trong JS</h2>
+    <p class="content__desc">
+        <b>var</b>: được sử dụng trong JS cũ, có phạm vi rộng
+    </p>
+    <p class="content__desc mt-10">
+        <b>let</b>: có phạm vi hẹp hơn, chỉ tồn tại trong khối code gần nhất
+    </p>
+    <p class="content__desc mt-10">
+        <b>const</b>: giống như let nhưng giá trị không thể thay đổi sau khi được gán
+    </p>
+
+    <h3 class="content__heading-3">Sự khác nhau giữa let và const</h3>
+    <p class="content__desc">
+        <b>let</b> có thể được <b>gán</b> và <b>thay đổi</b> giá trị:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let riceQuantity = 100;
+riceQuantity = 150; // Cập nhật số lượng gạo</code></pre>
+    
+    <p class="content__desc">
+        <b>const</b> dùng để định nghĩa những giá trị <b>không thay đổi</b>:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const storeAddress = '123 đường ABC';
+storeAddress = '456 đường XYZ'; // TypeError: Assignment to constant variable.</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-20">
+        <p class="content__desc">
+            “TypeError: Assignment to constant variable” là “Lỗi kiểu: Gán giá trị cho biến hằng số”.
+        </p>
+    </blockquote>
+</div>

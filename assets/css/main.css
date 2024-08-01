@@ -103,6 +103,18 @@ b, strong {
   font-weight: 600;
 }
 
+.mt-30 {
+  margin-top: 30px;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
 .row > *, .container-fluid, .container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
@@ -1317,6 +1329,79 @@ b, strong {
   background: #f7f9fa;
 }
 
+.content {
+  display: none;
+}
+.content-wrap {
+  width: 100%;
+}
+.content__desc {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+.content__heading {
+  font-size: 2.5rem;
+  line-height: 1.8;
+  color: #ff0000;
+}
+.content__heading-3 {
+  margin-top: 10px;
+  font-size: 2rem;
+  line-height: 1.8;
+  color: #b62f2f;
+}
+.content--active {
+  display: flex;
+}
+
+.compiler {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.compiler__desc {
+  margin-bottom: 15px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+.compiler__wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.compiler__wrap-text {
+  background: #ffb700;
+  padding: 10px;
+  border-radius: 8px;
+  user-select: none;
+}
+.compiler__wrap-img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.compiler__blockquote {
+  margin-left: 0;
+  padding: 0 16px;
+  background: rgba(232, 230, 230, 0.9);
+  border-left: 2px solid #ffb700;
+}
+.compiler__image {
+  border-radius: 8px;
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  display: block;
+  max-width: 50% !important;
+  margin-bottom: 10px;
+}
+.compiler__figure {
+  display: block;
+  font-size: 1.4rem;
+  margin: 0 auto;
+  text-align: center;
+  width: min(550px, 100%);
+}
+
 .sidebar {
   width: 120px;
   min-height: 100vh;
@@ -1334,15 +1419,17 @@ b, strong {
   display: flex;
   flex-direction: column;
   margin-bottom: 10px;
-  gap: 10px;
   user-select: none;
 }
 .sidebar-tab__item {
-  gap: 10px;
-  padding: 15px;
+  padding: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sidebar-tab__item:hover {
   cursor: pointer;
+  background: #dedcdc;
 }
 .sidebar-tab__item .toggle-btn {
   display: block;
@@ -1410,6 +1497,18 @@ b, strong {
   width: var(--separate-width);
   height: 2px;
   background: #f7f9fa;
+}
+
+.blockquote {
+  margin-left: 0;
+  padding: 16px;
+  background: rgba(232, 230, 230, 0.9);
+}
+.blockquote--normal {
+  border-left: 2px solid #ffb700;
+}
+.blockquote--warning {
+  border-left: 2px solid #ff0000;
 }
 
 /*# sourceMappingURL=main.css.map */
