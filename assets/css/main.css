@@ -1372,7 +1372,6 @@ b, strong {
   justify-content: center;
 }
 .compiler__desc {
-  margin-bottom: 15px;
   font-size: 1.6rem;
   line-height: 1.6;
 }
