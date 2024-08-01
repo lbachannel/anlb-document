@@ -1,6 +1,11 @@
+@use "../abstracts";
 .wrapper {
     display: flex;
     width: 100%;
     min-height: 100vh;
     background: #f7f9fa;
+
+    @include abstracts.screen(md) {
+        flex-direction: column;
+    }
 }

@@ -1,3 +1,4 @@
+@use "../abstracts";
 .compiler {
     display: flex;
     flex-direction: column;
@@ -13,11 +14,25 @@
         align-items: center;
         gap: 10px;
 
+        @include abstracts.screen(md) {
+            flex-direction: column;
+        }
+
+        &-icon {
+            @include abstracts.screen(md) {
+                rotate: 90deg;
+            }
+        }
+
         &-text {
             background: #ffb700;
             padding: 10px;
             border-radius: 8px;
             user-select: none;
+            @include abstracts.screen(md) {
+                min-width: 136px;
+                text-align: center;
+            }
         }
 
         &-img {

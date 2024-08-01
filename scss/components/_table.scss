@@ -1,0 +1,39 @@
+@use "../abstracts";
+
+table {
+    width: 50%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    @include abstracts.screen(lg) {
+        width: 100%;
+    }
+
+    @include abstracts.screen(md) {
+        width: 100%;
+    }
+}
+thead th {
+    --gradient-to: #eb4853;
+    --gradient-from: #d91b6e;
+    background-image: linear-gradient(180deg, var(--gradient-to), var(--gradient-from));
+    color: white;
+    padding: 10px;
+}
+tbody td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+code {
+    background-color: #f4f4f4;
+    padding: 3px;
+    border-radius: 3px;
+}
