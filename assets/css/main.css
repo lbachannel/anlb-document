@@ -1361,10 +1361,12 @@ b, strong {
 }
 .content__heading-2 {
   font-size: 2.5rem;
+  font-weight: 700;
   color: #ff0000;
 }
 .content__heading-3 {
   font-size: 2rem;
+  font-weight: 600;
   color: #b62f2f;
 }
 .content--active {
@@ -1587,7 +1589,6 @@ b, strong {
 
 table {
   width: 50%;
-  margin: 20px 0;
   border-collapse: collapse;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
@@ -1628,6 +1629,11 @@ code {
   background-color: #f4f4f4;
   padding: 3px;
   border-radius: 3px;
+}
+
+.container-fluid--md {
+  padding-top: 15px;
+  padding-bottom: 50px;
 }
 
 /*# sourceMappingURL=main.css.map */
