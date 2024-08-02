@@ -137,4 +137,21 @@
     <blockquote class="blockquote blockquote--warning mt-10">
         <p class="content__desc">Lưu ý: Nếu gọi hàm trước khi định nghĩa sẽ xảy ra lỗi: Uncaught ReferenceError: Cannot access 'double' before initialization.</p>
     </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Khi nào sử dụng loại hàm nào?</h3>
+    <p class="content__desc mb-10">
+        <b>Declaration function (Hàm khai báo)</b>: Khi cần sử dụng được hàm trước khi khai báo, hoặc đơn giản muốn dùng cách truyền thống.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Function expression (Hàm biểu thức)</b>: Khi muốn chỉ gọi được hàm sau khi khai báo, hoặc khi hàm được sử dụng như một giá trị (ví dụ, truyền hàm như một tham số).
+    </p>
+    <p class="content__desc mb-10">
+        <b>Arrow function (Hàm mũi tên)</b>: Khi cần một cú pháp ngắn gọn hoặc khi làm việc với this trong một ngữ cảnh nhất định (vì hàm mũi tên không có this riêng của nó).
+    </p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Khi nào sử dụng?: Hàm khai báo cho hoisting và rõ ràng; Hàm biểu thức cho hạn chế hoisting và sử dụng hàm như giá trị; Hàm mũi tên cho cú pháp ngắn gọn và làm việc với this trong ngữ cảnh nhất định.
+        </p>
+    </blockquote>
 </div>
