@@ -156,9 +156,22 @@
     </blockquote>
 
     <h3 class="content__heading-3 mt-20 mb-10">Hiểu về khái niệm Hoisting</h3>
-    <p class="content__desc">
+    <p class="content__desc mb-10">
         Hoisting trong Javascript là một hành vi mặc định của Javascript,
         nơi mà các khai báo biến (<b>var, let, const</b>) và hàm (<b>function declaration</b>)
         được đưa lên đầu phạm vi của chúng trước khi code được thực thi.
     </p>
+    <p class="content__desc mb-10">Tình huống xảy ra <b>hoisting</b></p>
+    <pre class="language-javascript"><code class="language-javascript">console.log(greeting); // output: undefined
+var greeting = 'Hello';</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            <b>let</b> và <b>const</b> củng sẽ có hoisting. Tuy nhiên lý do gì gây ra sự hiểu nhầm là không.
+        </p>
+        <p class="content__desc">
+            Nguyên nhân là vì nó được đưa vào <b>temporal dead zone (TDZ)</b>.
+        </p>
+    </blockquote>
+    <p class="content__desc">Nắm hoisting để hiểu thêm về ngôn ngữ.</p>
 </div>

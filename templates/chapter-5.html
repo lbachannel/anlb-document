@@ -1,0 +1,117 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Nối chuỗi và nội suy</h2>
+    <h3 class="content__heading-3 mb-10">Tạo chuỗi với nháy đơn</h3>
+    <p class="content_desc mb-10">
+        <b>Đặc điểm</b>: cách truyền thống.
+    </p>
+    <p class="content_desc mb-10">
+        <b>Ứng dụng</b>: không cần xuống dòng. Rất hữu ích khi chuỗi chứa các dấu nháy kép bên trong.
+    </p>
+    <p class="content_desc">
+        <b>Ví dụ: : 'Hello, this is "JavaScript"!'.</b>
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tạo chuỗi với nháy kép</h3>
+    <p class="content_desc mb-10">
+        <b>Đặc điểm</b>: cách truyền thống, khi chuỗi chứa dấu nháy đơn.
+    </p>
+    <p class="content_desc mb-10">
+        <b>Ứng dụng</b>: Hữu ích khi muốn bao gồm dấu nháy đơn trong chuỗi mà không cần dùng ký tự thoát (Escape character).
+    </p>
+    <p class="content_desc">
+        <b>Ví dụ: : "Hello, this is 'JavaScript'!".</b>
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tạo chuỗi với backticks</h3>
+    <p class="content_desc mb-10">
+        <b>Đặc điểm</b>: Hỗ trợ nội suy chuỗi (cho phép chèn biến hoặc biểu thức vào chuỗi), và cho phép xuống dòng trực tiếp trong chuỗi.
+    </p>
+    <p class="content_desc mb-10">
+        <b>Ứng dụng</b>: Cực kỳ hữu ích khi cần kết hợp chuỗi với biến hoặc khi cần tạo chuỗi nhiều dòng.
+    </p>
+    <p class="content_desc">
+        <b>Ví dụ: :</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let name = "JavaScript";
+
+`Xin chào, đây là ${name}!
+Chúng ta có thể xuống dòng trực tiếp.`;</code></pre>
+    
+    <blockquote class="blockquote blockquote--normal mt-20">
+        <p class="content_desc">
+            Sử dụng <b>${name}</b> bên <b>trong backticks</b> được gọi là <b>“Nội suy”</b>
+        </p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Nối chuỗi</h2>
+    <h3 class="content__heading-3 mb-10">Toán tử nối chuỗi</h3>
+    <pre class="language-javascript"><code class="language-javascript">let greeting = "Hello, " + "my name is " + "An."; // Output: Hello, my name is An.
+'Hello' + ' ' + 'An'; // Output: Hello An</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10 mb-10">
+        <p class="content__desc">Lưu ý khi sử dụng</p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">5 + 4 + '6' // Output: "96" chứ không phải 546. Vì phép cộng sẽ thực hiện trước, sau đó nối với chuỗi "6"
+"1" + 2 + 3 // Output: "123". Vì "3" là chuỗi khiến các số tiếp theo được chuyển thành chuỗi và nối lại</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10 mb-10">
+        <p class="content__desc">Cách làm sai</p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">let a = 10;
+let b = 20;
+let message = 'Tổng của ' + a + ' và ' + b + ' là: ' + a + b;
+console.log(message); // Tổng của 10 và 20 là: 1020</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách đúng (cách 1)</p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">let a = 10;
+let b = 20;
+let message = 'Tổng của ' + a + ' và ' + b + ' là: ' + (a + b);
+        
+console.log(message); // Tổng của 10 và 20 là: 30</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách đúng (cách 2)</p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">let a = 10;
+let b = 20;
+let total = a + b; // Thực hiện phép cộng trước
+let message = 'Tổng của ' + a + ' và ' + b + ' là: ' + total;
+        
+console.log(message); // Tổng của 10 và 20 là: 30</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách đúng (cách 3 - <b>nên dùng cách này</b>)</p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">let a = 10;
+let b = 20;
+let total = a + b; // Thực hiện phép cộng trước
+let message = `Tổng của ${a} và ${b} là: ${total}`;
+        
+console.log(message); // Tổng của 10 và 20 là: 30</code></pre>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Template literals</h2>
+    <h3 class="content__heading-3 mb-10">Template literals là gì</h3>
+    <p class="content__desc mb-10">
+        Là tính năng mới được giới thiệu trong <b>ECMAScript 2015</b> (còn được gọi là <b>ES6</b>).
+    </p>
+    <p class="content__desc mb-10">
+        <b>Template Literals</b> sử dụng <b>backticks</b> (<b>`</b>) để định nghĩa chuỗi thay vì dấu nháy đơn hoặc nháy kép.
+    </p>
+    <p class="content__desc mb-10">
+        Điểm đặc biệt của Template Literals là khả năng thực hiện nội suy - tức là chèn biến hoặc biểu thức trực tiếp vào trong chuỗi.
+    </p>
+    <p class="content__desc mb-10">Cú pháp <b>${expression}</b>.</p>
+    <p class="content__desc">
+        Ngoài ra, Template Literals còn <b>hỗ trợ việc tạo chuỗi đa dòng</b> mà không cần sử dụng các ký tự xuống dòng như \n.
+    </p>
+    
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            “Template literals” còn được gọi là “Template strings”. 
+            Cả hai cách gọi đều nói tới việc sử dụng backticks để tạo chuỗi 
+            với đặc điểm là cho phép nội suy - tức là chèn biến hoặc biểu thức trực tiếp vào trong chuỗi.
+        </p>
+    </blockquote>
+</div>

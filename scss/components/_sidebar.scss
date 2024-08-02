@@ -20,6 +20,9 @@
     @include abstracts.screen(md) {
         width: 100%;
         min-height: initial;
+        max-height: 150px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
     }
 
     &__icon {
@@ -48,6 +51,11 @@
             text-overflow: ellipsis;
             transition: 0.2s;
 
+            @include abstracts.screen(md) {
+                padding: 15px;
+                min-width: 248px;
+            }
+
             &--active {
                 --gradient-to: #eb4853;
                 --gradient-from: #d91b6e;
@@ -74,7 +82,7 @@
         text-align: center;
     }
     &.collapsed {
-        width: 250px;
+        width: 290px;
 
         @include abstracts.screen(md) {
             width: 100%;
@@ -94,11 +102,6 @@
     &.collapsed &__logo--small {
         font-size: 2.5rem;
     }
-
-    &.collapsed .toggle-btn::before {
-        top: -4px;
-        left: 101px;
-    }
 }
 
 .toggle-btn {
@@ -109,21 +112,5 @@
 
     @include abstracts.screen(md) {
         display: none;
-    }
-
-    &::before {
-        position: absolute;
-        top: -3%;
-        left: 30%;
-        content: "";
-        width: 50px;
-        height: 50px;
-        background: #f7f9fa;
-        border-radius: 50%;
-        transition: 0.2s;
-
-        @include abstracts.screen(md) {
-            display: none;
-        }
     }
 }

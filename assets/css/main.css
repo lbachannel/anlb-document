@@ -1410,6 +1410,9 @@ b, strong {
   .sidebar {
     width: 100%;
     min-height: initial;
+    max-height: 150px;
+    overflow-y: auto;
+    scroll-behavior: smooth;
   }
 }
 .sidebar__icon {
@@ -1438,6 +1441,12 @@ b, strong {
   text-overflow: ellipsis;
   transition: 0.2s;
 }
+@media (max-width: 767.98px) {
+  .sidebar-tab__item {
+    padding: 15px;
+    min-width: 248px;
+  }
+}
 .sidebar-tab__item--active {
   --gradient-to: #eb4853;
   --gradient-from: #d91b6e;
@@ -1458,7 +1467,7 @@ b, strong {
   text-align: center;
 }
 .sidebar.collapsed {
-  width: 250px;
+  width: 290px;
 }
 @media (max-width: 767.98px) {
   .sidebar.collapsed {
@@ -1475,10 +1484,6 @@ b, strong {
 .sidebar.collapsed .sidebar__logo--small {
   font-size: 2.5rem;
 }
-.sidebar.collapsed .toggle-btn::before {
-  top: -4px;
-  left: 101px;
-}
 
 .toggle-btn {
   position: relative;
@@ -1488,22 +1493,6 @@ b, strong {
 }
 @media (max-width: 767.98px) {
   .toggle-btn {
-    display: none;
-  }
-}
-.toggle-btn::before {
-  position: absolute;
-  top: -3%;
-  left: 30%;
-  content: "";
-  width: 50px;
-  height: 50px;
-  background: #f7f9fa;
-  border-radius: 50%;
-  transition: 0.2s;
-}
-@media (max-width: 767.98px) {
-  .toggle-btn::before {
     display: none;
   }
 }
