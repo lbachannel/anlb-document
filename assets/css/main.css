@@ -103,6 +103,10 @@ b, strong {
   font-weight: 600;
 }
 
+ul {
+  list-style: decimal;
+}
+
 .mt-30 {
   margin-top: 30px;
 }
@@ -1357,14 +1361,15 @@ b, strong {
   line-height: 1.6;
 }
 .content__heading {
-  font-size: 2.5rem;
   line-height: 1.8;
+}
+.content__heading-2 {
+  font-size: 2.5rem;
   color: #ff0000;
 }
 .content__heading-3 {
   margin-top: 10px;
   font-size: 2rem;
-  line-height: 1.8;
   color: #b62f2f;
 }
 .content--active {
