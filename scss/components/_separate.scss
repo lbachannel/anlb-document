@@ -7,7 +7,7 @@
     height: 2px;
     background: #f7f9fa;
 
-    @include abstracts.screen(md) {
+    @include abstracts.screen(xxl) {
         display: none;
     }
 }
