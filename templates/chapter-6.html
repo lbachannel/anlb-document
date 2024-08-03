@@ -1,0 +1,92 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Câu lệnh điều kiện</h2>
+    <h3 class="content__heading-3 mb-10">So sánh bằng và không bằng (Không nghiêm ngặt)</h3>
+    <p class="content__desc mb-10">
+        ==: <b>So sánh</b> hai giá trị xem có <b>bằng nhau về giá trị</b>, <b>không so sánh kiểu dữ liệu</b>.
+    </p>
+    <p class="content__desc mb-10">
+        !=: <b>So sánh</b> hai giá trị xem có <b>khác nhau về giá trị</b>, <b>không so sánh kiểu dữ liệu</b>.
+    </p>
+    <p class="content__desc mb-10">Ví dụ</p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* So sánh hai giá trị xem có bằng nhau không (==).
+*/
+5 == 5; // true
+5 == "5"; // true
+"Hello" == "Hello"; // true
+"Hi" == "Hello"; // false
+"hello" == "Hello"; // false
+/**
+ * So sánh hai giá trị xem có khác nhau không (!=)
+ */
+3 != 3; // false
+3 != "3"; // false</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Với <b>toán tử so sánh “không nghiêm ngặt”</b>, hai <b>toán hạng</b> sẽ được chuyển đổi về <b>cùng</b> một <b>kiểu dữ liệu</b> rồi <b>thực hiện so sánh</b>.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">So sánh bằng và không bằng (Nghiêm ngặt)</h3>
+    <p class="content__desc mb-10">
+        ===: So sánh hai giá trị xem có <b>bằng nhau</b> về <b>giá trị</b> và <b>kiểu dữ liệu</b>.
+    </p>
+    <p class="content__desc mb-10">
+        !==: So sánh hai giá trị xem có <b>khác nhau</b> về <b>giá trị</b> và <b>kiểu dữ liệu</b>.
+    </p>
+    <p class="content__desc mb-10">Ví dụ</p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* So sánh hai giá trị xem có bằng nhau không (===).
+*/
+5 === 5; // true
+5 === "5"; // false
+
+/**
+ * So sánh hai giá trị xem có khác nhau không (!==)
+ */
+3 !== 3; // false
+3 !== "3"; // true</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">Với toán tử <b>so sánh “nghiêm ngặt”</b>, các toán hạng sẽ <b>không</b> bị <b>chuyển đổi kiểu dữ liệu</b>.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Nên sử dụng so sánh “không nghiêm ngặt” hay “nghiêm ngặt”?</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Để tránh các lỗi logic về kiểu dữ liệu bạn chỉ nên sử dụng toán tử “nghiêm ngặt” (===).
+        </p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-10">If-else</h2>
+    <p class="content__desc">Lệnh điều kiện trong JavaScript cho phép thực hiện các quyết định dựa trên các điều kiện nhất định.</p>
+    <h3 class="content__heading-3 mt-20 mb-10">if</h3>
+    <p class="content__desc mb-10">Cú pháp cơ bản: if (điều kiện) { // Khối lệnh }</p>
+    <p class="content__desc">Nếu điều kiện là true, khối lệnh bên trong được thực thi.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">else</h3>
+    <p class="content__desc mb-10">Thêm vào sau một câu lệnh if.</p>
+    <p class="content__desc mb-10">Thực thi khối lệnh nếu điều kiện trong if không đúng.</p>
+    <p class="content__desc">Cú pháp: if (điều kiện) { // Khối lệnh 1 } else { // Khối lệnh 2 }</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">else if</h3>
+    <p class="content__desc mb-10">Cho phép thêm nhiều điều kiện kiểm tra.</p>
+    <p class="content__desc">
+        Cú pháp: 
+        if (điều kiện1) {...} 
+        else if (điều kiện2) {...} ... 
+        else {...}
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Inline if-else</h3>
+    <p class="content__desc mb-10">Inline if-else cách viết rút gọn của if-else mà không cần sử dụng dấu {} được áp dụng khi mỗi nhánh của if hoặc else chỉ chứa một dòng lệnh.</p>
+    <pre class="language-javascript"><code class="language-javascript">if (điều kiện)
+    ...
+else
+    ...</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Toán tử 3 ngôi (Ternary operator)</h3>
+    <p class="content__desc mb-10">Một dạng rút gọn của lệnh if-else.</p>
+    <pre class="language-javascript"><code class="language-javascript">let temperature = 32;
+        let result = temperature > 30 ? "It's a hot day." : "It's not a hot day.";</code></pre>
+</div>
