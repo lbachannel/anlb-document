@@ -1443,7 +1443,7 @@ b, strong {
 }
 @media (max-width: 767.98px) {
   .sidebar-tab__item {
-    min-width: 271px;
+    min-width: 295px;
     padding: 16px;
   }
 }
@@ -1639,9 +1639,17 @@ code {
   }
 }
 
-.content-wrap code[class*=language-],
-.content-wrap pre[class*=language-] {
-  white-space: pre-wrap;
+@media (max-width: 1399.98px) {
+  .content-wrap code[class*=language-],
+  .content-wrap pre[class*=language-] {
+    white-space: pre-wrap;
+  }
+}
+@media (max-width: 767.98px) {
+  .content-wrap code[class*=language-],
+  .content-wrap pre[class*=language-] {
+    white-space: pre;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

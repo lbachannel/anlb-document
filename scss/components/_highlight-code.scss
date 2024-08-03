@@ -1,4 +1,11 @@
+@use "../abstracts";
 .content-wrap code[class*=language-],
 .content-wrap pre[class*=language-] {
-    white-space: pre-wrap;
+    @include abstracts.screen(xxl) {
+        white-space: pre-wrap;
+    }
+
+    @include abstracts.screen(md) {
+        white-space: pre;
+    }
 }
