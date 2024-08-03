@@ -17,7 +17,7 @@
     transition: 0.25s;
     flex-shrink: 0;
 
-    @include abstracts.screen(xxl) {
+    @include abstracts.screen(md) {
         width: 100%;
         min-height: initial;
         max-height: 150px;
@@ -37,7 +37,7 @@
         margin-bottom: 10px;
         user-select: none;
 
-        @include abstracts.screen(xxl) {
+        @include abstracts.screen(md) {
             flex-direction: row;
             width: 100%;
             margin-bottom: 0;
@@ -51,11 +51,8 @@
             text-overflow: ellipsis;
             transition: 0.2s;
 
-            @include abstracts.screen(xxl) {
-                min-width: 271px;
-            }
-
             @include abstracts.screen(md) {
+                min-width: 271px;
                 padding: 16px;
             }
 
@@ -87,7 +84,7 @@
     &.collapsed {
         width: 305px;
 
-        @include abstracts.screen(xxl) {
+        @include abstracts.screen(md) {
             width: 100%;
         }
     }
@@ -113,7 +110,7 @@
     height: 46px;
     user-select: none;
 
-    @include abstracts.screen(xxl) {
+    @include abstracts.screen(md) {
         display: none;
     }
 }
