@@ -89,4 +89,116 @@ else
     <p class="content__desc mb-10">Một dạng rút gọn của lệnh if-else.</p>
     <pre class="language-javascript"><code class="language-javascript">let temperature = 32;
         let result = temperature > 30 ? "It's a hot day." : "It's not a hot day.";</code></pre>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Switch case</h2>
+    <h3 class="content__heading-3 mb-10">Switch case cơ bản</h3>
+    <p class="content__desc mb-10">
+        Cấu trúc switch case trong JavaScript là một cách để thực hiện các hành động 
+        khác nhau dựa trên giá trị của một biến hoặc biểu thức. 
+        Nó là một lựa chọn thay thế cho việc sử dụng nhiều câu lệnh if-else 
+        liên tiếp và thường được sử dụng khi bạn cần so sánh cùng một biến với 
+        nhiều giá trị khác nhau.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let day = 1;
+
+switch (day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    default:
+        console.log("Unknown Day");
+}</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Fallthrough</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, bạn có thể <b>sử dụng switch-case</b> mà <b>không có break</b> ở mỗi case, gọi là <b>fallthrough</b>. 
+        Điều này cho phép nhiều case chạy cùng một đoạn code.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let month = 5; // Giả sử tháng 5
+
+switch (month) {
+    case 1:
+    case 2:
+    case 3:
+        console.log("Quý 1");
+        break;
+    case 4:
+    case 5:
+    case 6:
+        console.log("Quý 2"); // Đầu ra cho tháng 5
+        break;
+    case 7:
+    case 8:
+    case 9:
+        console.log("Quý 3");
+        break;
+    case 10:
+    case 11:
+    case 12:
+        console.log("Quý 4");
+        break;
+    default:
+        console.log("Tháng không hợp lệ");
+}
+
+// Kết quả: Quý 2</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Switch case trong hàm</h3>
+    <p class="content__desc mb-10">
+        Trong một số trường hợp, khi viết <b>switch trong hàm</b>, bạn <b>không cần sử dụng break</b> ở cuối mỗi case. 
+        Điều này thường xảy ra khi bạn sử dụng <b>return</b> để trả về <b>giá trị</b>.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function getQuarter(month) {
+switch (month) {
+    case 1:
+    case 2:
+    case 3:
+        return "Quý 1";
+    case 4:
+    case 5:
+    case 6:
+        return "Quý 2";
+    case 7:
+    case 8:
+    case 9:
+        return "Quý 3";
+    case 10:
+    case 11:
+    case 12:
+        return "Quý 4";
+    default:
+        return "Tháng không hợp lệ";
+}
+}
+
+console.log(getQuarter(2)); // Quý 1
+console.log(getQuarter(5)); // Quý 2
+console.log(getQuarter(8)); // Quý 3
+console.log(getQuarter(11)); // Quý 4
+console.log(getQuarter(13)); // Tháng không hợp lệ</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Khi return được thực thi, nó không chỉ trả về giá trị mà còn kết thúc sự 
+            thực thi của hàm ngay lập tức, do đó không cần break để ngăn chặn việc “rơi” vào case tiếp theo.
+        </p>
+        <p class="content__desc"><b>Không cần break</b>; cho case hoặc <b>default</b> ở <b>vị trí cuối cùng</b> trong <b>khối switch</b>.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">If-else và Switch case thay thế được cho nhau</h3>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">let temperature = 40;
+switch(true) {
+    case temperature > 30;
+        console.log("It's a hot day");
+        break;
+    case temperature > 20;
+        console.log("It's a nice day");
+        break;
+    default:
+        console.log("It's a cold day");
+}</code></pre>
 </div>
