@@ -1,0 +1,236 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Toán tử Logical</h2>
+    <p class="content__desc">
+        Toán tử logical trong lập trình JavaScript là các ký hiệu đặc biệt dùng để kết hợp các điều kiện logic. 
+        Chúng giúp xác định tính đúng hoặc sai của một hoặc nhiều điều kiện.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Toán tử AND (&&)</h3>
+    <p class="content__desc mb-10">
+        Trả về true nếu cả hai các biểu thức là true. 
+        Ví dụ: expr1 && expr2 trả về true nếu cả expr1 và expr2 đều true.
+    </p>
+    <p class="content__desc mb-10">
+        Sử dụng trong các tình huống cần tất cả các điều kiện phải đúng.
+    </p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+
+    <pre class="language-javascript"><code class="language-javascript">let temperature = 25; // Nhiệt độ 25 độ C
+let dayOff = "Sunday"; // Ngày nghỉ là Chủ nhật
+let today = "Sunday"; // Ngày hôm nay
+
+// Tách thành biến giúp code có ý nghĩa hơn
+let isWeatherGood = temperature > 20;
+let hasFreeTime = today === dayOff;
+
+if (isWeatherGood && hasFreeTime) {
+    console.log("Đi picnic!");
+} else {
+    console.log("Ở nhà!");
+}
+// Kết quả: Đi picnic!</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Toán tử OR (||)</h3>
+    <p class="content__desc mb-10">
+        Trả về true nếu ít nhất một trong các biểu thức là true. 
+        Ví dụ: expr1 || expr2 trả về true nếu expr1 hoặc expr2 là true.
+    </p>
+    <p class="content__desc mb-10">Thường dùng khi chỉ cần một trong các điều kiện đúng.</p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">let isComedyAvailable = true; // Có phim hài
+let isActionAvailable = false; // Không có phim hành động
+
+if (isComedyAvailable || isActionAvailable) {
+    console.log("Xem phim vui vẻ!");
+} else {
+    console.log("Chọn hoạt động khác!");
+}
+// Kết quả: Xem phim vui vẻ!</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Toán tử NOT (!)</h3>
+    <p class="content__desc mb-10">
+        Toán tử ! được sử dụng để phủ định một điều kiện, biến true thành false và ngược lại.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: !expr trả về false nếu expr là true.
+    </p>
+    <p class="content__desc mb-10">
+        Dùng để đảo ngược giá trị logic của một biểu thức.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let isCatLover = false;
+
+if (!isCatLover) {
+    console.log("Không thích mèo!");
+}
+// Kết quả: Không thích mèo!</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Độ ưu tiên của toán tử Logical:</h3>
+    <p class="content__desc mb-10">
+        Toán tử NOT (!) có độ ưu tiên cao hơn toán tử AND (&&). Toán tử AND (&&) có độ ưu tiên cao hơn so với OR (||).
+    </p>
+    <p class="content__desc mb-10">
+        Trong biểu thức kết hợp nhiều toán tử Logical, 
+        phần được xử lý trước sẽ tuân theo thứ tự ưu tiên này.
+    </p>
+    <p class="content__desc">
+        Để đảm bảo logic chính xác, sử dụng dấu ngoặc đơn () 
+        để xác định rõ ràng thứ tự thực hiện các biểu thức.
+    </p>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Exercise</h2>
+    <h3 class="content__heading-3 mb-10">Logical #1</h3>
+    <p class="content__desc mb-10">
+        Viết hàm canPurchaseCarInsurance(age, hasLicense, noAccidents)</br>
+        kiểm tra xem một người có thể mua bảo hiểm xe không. </br>
+        Điều kiện: trên 21 tuổi, có giấy phép lái xe và không có hồ sơ tai nạn trong quá khứ.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 1. Determines if a person is eligible to purchase
+*    car insurance based on age, license status, and accident history.
+*/
+const canPurchaseCarInsurance = (age, hasLicense, noAccidents) => {
+    if (age > 21 && hasLicense && noAccidents) {
+        return true;
+    }
+    return false;
+} 
+
+// Sample usage
+console.log(canPurchaseCarInsurance(22, true, true)); // true
+console.log(canPurchaseCarInsurance(20, true, true)); // false</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        Viết hàm canJoinFootballTeam(age, hasExperience) </br>
+        kiểm tra xem một người có được tham gia đội bóng không. </br>
+        Điều kiện: tuổi từ 18 đến 35 và có kinh nghiệm chơi bóng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 2. Checks if a person meets the age and experience requirements to
+*    join a local football team.
+*/
+const canJoinFootballTeam = (age, hasExperience) => {
+    if (age >= 18 && age <= 35 && hasExperience) {
+        return true;
+    }
+    return false;
+}
+
+// Sample usage
+// console.log(canJoinFootballTeam(25, true)); // true
+// console.log(canJoinFootballTeam(17, true)); // false</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        Viết hàm isBankAccountValid(isIdentityVerified, balance) </br>
+        kiểm tra xem tài khoản ngân hàng có hợp lệ. </br>
+        Điều kiện: đã xác minh danh tính và số dư tài khoản trên 100 đô.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 3. Verifies if a bank account is valid based on identity verification and a minimum balance requirement.
+*/
+const isBankAccountValid = (isIdentitfyVerified, balance) => {
+    if (isIdentitfyVerified && balance > 100) {
+        return true;
+    }
+    return false;
+}
+
+// Sample usage
+// console.log(isBankAccountValid(true, 150)); // true
+// console.log(isBankAccountValid(false, 200)); // false</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        Viết hàm canParticipateInMarathon(age, hasTrained) </br>
+        kiểm tra xem một người có thể tham gia giải chạy bộ. </br>
+        Điều kiện: tuổi từ 18 trở lên và đã tập luyện.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 4. Assesses eligibility to participate in a marathon based on age and sufficient training.
+*/
+const canParticipateInMarathon = (age, hasTrained) => {
+    if (age >= 18 && hasTrained) {
+        return true;
+    }
+    return false;
+}
+
+// Sample usage
+// console.log(canParticipateInMarathon(20, true)); // true
+// console.log(canParticipateInMarathon(20, false)); // false</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        Viết hàm canEnrollCookingClass(lovesCooking, noFoodAllergies) </br>
+        kiểm tra xem một người có thể tham gia khóa học nấu ăn. </br>
+        Điều kiện: yêu thích nấu ăn và không bị dị ứng thực phẩm.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 5. Evaluates if a person can enroll in a cooking class, considering their interest in cooking and absence of food allergies.
+*/
+const canEnrollCookingClass = (lovesCooking, noFoodAllergies) => {
+    if (lovesCooking && noFoodAllergies) {
+        return true;
+    }
+    return false;
+}
+
+// Sample usage
+// console.log(canEnrollCookingClass(true, true)); // true
+// console.log(canEnrollCookingClass(true, false)); // false</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Logical #2</h3>
+    <p class="content__desc mt-20 mb-10">
+        Viết hàm canOrganizeMusicFestival </br>
+        để đánh giá khả năng tổ chức một lễ hội âm nhạc. </br>
+        Điều kiện: số lượng ban nhạc ít nhất là 5, có đủ ngân sách quảng cáo, và dự báo thời tiết không có mưa.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* 1. Determines if a music festival can be organized based on the number of bands,
+*    sufficient advertising budget, and a rain-free weather forecast.
+*/
+const canOrganizeMusicFestival = (numberOfBands, sufficientAdvertisingBudget, rainFree) => {
+    if (numberOfBands >= 5 && sufficientAdvertisingBudget && rainFree !== 'rainy') {
+        return true;
+    }
+    return false;
+}
+
+// Sample usage
+console.log(canOrganizeMusicFestival(6, true, "sunny")); // true
+console.log(canOrganizeMusicFestival(4, true, "cloudy")); // false
+console.log(canOrganizeMusicFestival(5, false, "sunny")); // false
+console.log(canOrganizeMusicFestival(5, true, "rainy")); // false</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Logical #3</h3>
+    <p class="content__desc mb-10">
+        Viết hàm determineStudentCategory để xác định loại học viên dựa trên điểm thi và tỷ lệ tham gia lớp học. Điều kiện phân loại như sau: </br>
+        “Xuất sắc” nếu điểm từ 90 trở lên, và có mặt ít nhất 50% các buổi.</br>
+        “Giỏi” nếu điểm từ 75 đến 89, và có mặt ít nhất 70% các buổi.</br>
+        “Khá” nếu điểm từ 60 đến 74, và có mặt ít nhất 60% các buổi.</br>
+        “Trung bình” nếu điểm dưới 60, hoặc vắng mặt quá 40% các buổi.</br>
+        “Cần cải thiện” nếu vắng mặt quá 50% các buổi, bất kể điểm số.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* Classifies students based on exam scores and class attendance percentage.
+*/
+const determineStudentCategory = (score, classAttendPer) => {
+    if (classAttendPer < 0.5) {
+        return "Cần cải thiện";
+    }
+    if (score >= 90 && classAttendPer >= 0.5) {
+        return "Xuất sắc";
+    } else if (score >= 75 && classAttendPer >= 0.7) {
+        return "Giỏi";
+    } else if (score >= 60 && classAttendPer >= 0.6) {
+        return "Khá";
+    } else if (score < 60 || classAttendPer < 0.6) {
+        return "Trung bình";
+    }
+}
+
+// Sample usage
+// console.log(determineStudentCategory(92, 0.85)); // Xuất sắc</code></pre>
+</div>

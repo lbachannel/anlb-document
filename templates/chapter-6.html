@@ -88,7 +88,7 @@ else
     <h3 class="content__heading-3 mt-20 mb-10">Toán tử 3 ngôi (Ternary operator)</h3>
     <p class="content__desc mb-10">Một dạng rút gọn của lệnh if-else.</p>
     <pre class="language-javascript"><code class="language-javascript">let temperature = 32;
-        let result = temperature > 30 ? "It's a hot day." : "It's not a hot day.";</code></pre>
+let result = temperature > 30 ? "It's a hot day." : "It's not a hot day.";</code></pre>
 
     <h2 class="content__heading-2 mt-20 mb-20">Switch case</h2>
     <h3 class="content__heading-3 mb-10">Switch case cơ bản</h3>
@@ -152,26 +152,26 @@ switch (month) {
         Điều này thường xảy ra khi bạn sử dụng <b>return</b> để trả về <b>giá trị</b>.
     </p>
     <pre class="language-javascript"><code class="language-javascript">function getQuarter(month) {
-switch (month) {
-    case 1:
-    case 2:
-    case 3:
-        return "Quý 1";
-    case 4:
-    case 5:
-    case 6:
-        return "Quý 2";
-    case 7:
-    case 8:
-    case 9:
-        return "Quý 3";
-    case 10:
-    case 11:
-    case 12:
-        return "Quý 4";
-    default:
-        return "Tháng không hợp lệ";
-}
+    switch (month) {
+        case 1:
+        case 2:
+        case 3:
+            return "Quý 1";
+        case 4:
+        case 5:
+        case 6:
+            return "Quý 2";
+        case 7:
+        case 8:
+        case 9:
+            return "Quý 3";
+        case 10:
+        case 11:
+        case 12:
+            return "Quý 4";
+        default:
+            return "Tháng không hợp lệ";
+    }
 }
 
 console.log(getQuarter(2)); // Quý 1
