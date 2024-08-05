@@ -1,0 +1,93 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">HTML, CSS và JavaScript</h2>
+    <p class="content__desc mb-10">HTML (HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản)</p>
+    <p class="content__desc mb-10">CSS (Cascading Style Sheets - Các tập tin định kiểu theo tầng)</p>
+    <p class="content__desc">và JavaScript là 3 ngôn ngữ để phát triển web mà trình duyệt có thể hiểu.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">HTML</h3>
+    <p class="content__desc mb-10">HTML dùng để thêm ý nghĩa cho nội dung bằng cách đánh dấu nó</p>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            HTML là ngôn ngữ đánh dấu, HTML không phải là một ngôn ngữ lập trình.
+        </p>
+    </blockquote>
+    
+    <h3 class="content__heading-3 mt-20 mb-10">CSS</h3>
+    <p class="content__desc">CSS dùng để định dạng cho nội dung đã được đánh dấu bởi HTML</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">JavaScript</h3>
+    <p class="content__desc">JavaScript là một ngôn ngữ lập trình, giúp thêm tính tương tác cho trang web</p>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Ví HTML như phần khung của một ngôi nhà, thì CSS đóng vai trò trang trí cho ngôi nhà trở nên đẹp mắt, và JavaScript giúp ngôi nhà có nhiều tiện nghi hiện đại hơn.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Siêu văn bản</h3>
+    <p class="content__desc mb-10">
+        <b>Siêu văn bản (hypertext)</b> là loại văn bản chứa nhiều <b>loại dữ liệu</b> khác nhau như: 
+        <b>văn bản, âm thanh, hình ảnh, video,</b> … và các siêu liên kết đến các siêu văn bản khác.
+    </p>
+    <p class="content__desc">
+        Trong khi đó, <b>văn bản thông thường</b> (không phải siêu văn bản) <b>chỉ</b> bao gồm nội dung <b>văn bản</b> và <b>hình ảnh</b>. 
+        Ví dụ: một tờ <b>báo</b>, các trang trong một cuốn <b>sách</b>, … <b>không phải là siêu văn bản</b>.
+    </p>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Cấu trúc tiêu chuẩn của file HTML</h2>
+    <pre class="language-javascript"><code class="language-javascript">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;!-- Các thẻ meta ở đây --&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Nội dung trang web ở đây --&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Đảm bảo rằng bạn đặt DOCTYPE ngay đầu tài liệu HTML của mình mà không có bất cứ nội dung gì trước đó để đảm bảo khai báo này hoạt động đúng đắn trên mọi trình duyệt.
+        </p>
+    </blockquote>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Thuộc tính <b>lang</b> sử dụng để chỉ định ngôn ngữ của trang web. Các <b>công cụ dịch ngôn ngữ</b> và <b>trình đọc màn hình</b> sẽ <b>sử dụng thuộc tính này</b>.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tìm hiểu các thẻ meta</h3>
+    <p class="content__desc mb-10">Thẻ meta được sử dụng để cung cấp thêm thông tin và dữ liệu cho trang web.</p>
+    <p class="content__desc mb-10">Thẻ meta là một trong số thẻ tự đóng (self-closing tag), nhờ vậy không cần thêm thẻ đóng khi sử dụng thẻ meta.</p>
+    <p class="content__desc mb-10">Thẻ meta charset nhằm chỉ định bảng mã ký tự cho trang web (ví dụ: <meta charset="UTF-8" />). UTF-8 hỗ trợ hiển thị các ký tự ngoài khoảng A - Z. Luôn nhớ đặt thẻ meta charset tại vị trí đầu tiên trong thẻ &lt;head&gt;</p>
+    <p class="content__desc mb-10">Thẻ meta &lt;title&gt; cung cấp tiêu đề trang web hiển thị trên tab trình duyệt, hiển thị trong kết quả tìm kiếm (ví dụ: Google Search).</p>
+    <p class="content__desc mb-10">Thẻ meta viewport để hỗ trợ trang web hiển thị trên các thiết bị có kích cỡ màn hình khác nhau (PC, tablet, mobile). Nếu thiếu thẻ meta viewport, khi truy cập trên thiết bị di động, nội dung có thể bị thu nhỏ và cần phải phóng to để dễ dàng đọc được.</p>
+    <p class="content__desc">Thẻ meta Open Graph cung cấp thông tin cho trình thu thập dữ liệu của Facebook, hỗ trợ hiển thị thông tin trang web khi được chia sẻ trên mạng xã hội này.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Boilerplate là gì và cách sử dụng</h3>
+    <p class="content__desc mb-10">
+        Boilerplate được coi <b>là</b> những đoạn code được <b>tiêu chuẩn hóa</b> và <b>tái sử dụng</b> ở <b>nhiều nơi</b> mà <b>ít</b> khi có sự <b>thay đổi</b>.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Thay vì</b> phải viết đi viết lại những <b>đoạn code</b> đó <b>nhiều lần</b> 
+        thì <b>boilerplate</b> thường được <b>tạo sẵn</b> bằng một cách nào đó <b>giúp tiết kiệm thời gian</b> hơn khi sử dụng (ví dụ như: phím tắt, cú pháp tắt, vv).
+    </p>
+    <p class="content__desc">
+        Có thể tạo nhanh cấu trúc HTML cơ bản bằng cách gõ ! và sau đó nhấn phím Tab (được hỗ trợ bởi Emmet)
+    </p>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Các thẻ HTML thông dụng</h2>
+    <p class="content__desc mb-10">Thẻ h1 sử dụng làm tiêu đề chính, thẻ h2 sử dụng làm tiêu đề phụ</p>
+    <p class="content__desc mb-10">Thẻ p sử dụng để chứa các đoạn văn bản</p>
+    <p class="content__desc mb-10">Thẻ b, i, u để in đậm, in ngiêng và gạch chân</p>
+    <p class="content__desc mb-10">Thẻ a tạo ra các liên kết có thể nhấn vào, sử dụng thuộc tính href để chứa liên kết</p>
+    <p class="content__desc mb-10">Thẻ img để hiển thị hình ảnh, liên kết tới hình ảnh được khai báo trong thuộc tính src</p>
+    <p class="content__desc mb-10">Thẻ ul, li để hiển thị danh sách không có số thứ tự</p>
+    <p class="content__desc">Thẻ ol, li để hiển thị danh sách có số thứ tự</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tìm hiểu thuộc tính trong HTML</h3>
+    <p class="content__desc mb-10">Thuộc tính (attribute) được sử dụng để bổ sung thêm thông tin và dữ liệu cho các thẻ HTML.</p>
+    <p class="content__desc mb-10">Các thuộc tính có dạng key="value" và luôn được viết trong thẻ mở của các thẻ HTML (<b>không bao giờ được viết trong thẻ đóng</b>).</p>
+    <p class="content__desc mb-10"></p>
+    <p class="content__desc mb-10"></p>
+</div>
