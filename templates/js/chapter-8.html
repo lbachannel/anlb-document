@@ -190,8 +190,15 @@ console.log(x); // Uncaught ReferenceError: x is not defined</code></pre>
 // Vẫn truy cập được x, dù nó nằm trong block if
 console.log(x); // Tôi là biến var</code></pre>
     <blockquote class="blockquote blockquote--normal mt-10">
-        <p class="content__desc">
+        <p class="content__desc mb-10">
             <b>Hậu quả: Biến x có phạm vi toàn cục, không giới hạn trong block if.</b>
+        </p>
+        <p class="content__desc">
+            Một biến khai báo với var trong một block {} 
+            thực sự có phạm vi toàn cục nếu không nằm trong một hàm 
+            và module. Trường hợp khai báo var trong một block nằm bên trong 
+            một hàm thì nó sẽ có phạm vi hàm. Sở dĩ có điều này là 
+            bởi vì var không có phạm vi khối, phạm vi hẹp nhất của var là phạm vi hàm.
         </p>
     </blockquote>
 
