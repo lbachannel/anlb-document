@@ -1,0 +1,61 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Truthy và Falsy là gì?</h2>
+    <p class="content__desc mb-10">
+        Trong JavaScript, mọi giá trị đều có thể được coi là “truthy” hoặc “falsy”. 
+        Một giá trị khi được chuyển sang boolean trả về true được xem là “truthy”.
+    </p>
+    <p class="content__desc">
+        Ngược lại, nếu giá trị tạo ra false, nó được gọi là “falsy”.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các giá trị “falsy” trong JavaScript</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">false: Đây là giá trị Boolean false rõ ràng.</p>
+        <p class="content__desc mb-10">0: Số không. Bao gồm -0 (số không âm) và 0n (số 0 kiểu bigint).</p>
+        <p class="content__desc mb-10">"": Chuỗi rỗng.</p>
+        <p class="content__desc mb-10">null: Đại diện cho một giá trị “không có gì” hay “trống rỗng”.</p>
+        <p class="content__desc mb-10">undefined: Biến chưa được gán giá trị, hoặc hàm không có giá trị trả về sẽ trả về undefined, v.v.</p>
+        <p class="content__desc">NaN: Kết quả của một phép toán số học không hợp lệ.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các giá trị “truthy” trong JavaScript</h3>
+    <p class="content__desc mb-10">Toàn bộ các giá trị không phải “falsy” sẽ là “truthy”. Các giá trị này bao gồm:</p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">Chính giá trị Boolean true.</p>
+        <p class="content__desc mb-10">Tất cả các chuỗi khác rỗng (" " (chứa khoảng trắng), "0", "false", v.v).</p>
+        <p class="content__desc mb-10">Tất cả các Number khác 0, -0 và không phải NaN (bao gồm số âm và số dương).</p>
+        <p class="content__desc mb-10">Các giá trị BigInt khác 0n.</p>
+        <p class="content__desc">Tất cả các đối tượng, kể cả các mảng và đối tượng rỗng ([] và {}).</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">“document.all” là một ngoại lệ duy nhất</h3>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc mb-10">document.all, từng được sử dụng để truy cập các phần tử HTML trong DOM, giờ đây <b>đã lỗi thời</b>.</p>
+        <p class="content__desc mb-10">
+            Mặc dù vậy, nó vẫn là một giá trị “falsy”, không thuộc vào nhóm false, 0, -0, 0n, "", null, undefined, hoặc NaN. 
+            Điều này làm nó trở thành một ngoại lệ trong quy tắc “falsy” thông thường của JavaScript.
+        </p>
+        <p class="content__desc">Khi kiểm tra loại của document.all với typeof, nó lại trả về "undefined", mặc dù nó không phải là undefined:</p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h3 class="content__heading-3 mb-10">Tính ứng dụng trong thực tế</h3>
+    <p class="content__desc mb-10">Câu lệnh if trong JavaScript được thực thi nếu giá trị của điều kiện là “truthy”.</p>
+    <p class="content__desc mb-10">Điều này có nghĩa là không cần giá trị phải chính xác là true hay false theo nghĩa Boolean thuần túy, mà dựa trên khái niệm “truthy” và “falsy” của JavaScript.</p>
+
+    <p class="content__desc mb-10">Nếu giá trị là Truthy: Câu lệnh if sẽ được thực thi.</p>
+    <p class="content__desc mb-10">Nếu giá trị là Falsy: Câu lệnh trong if sẽ không được thực thi, câu lệnh trong else sẽ được thực thi (nếu có).</p>
+    <pre class="language-javascript"><code class="language-javascript">let myString = "";
+
+if (myString) { // Thay vì: if (myString === "") {...}
+    console.log("Chuỗi có dữ liệu");
+} else {
+    console.log("Chuỗi rỗng"); // Kết quả này sẽ được in ra
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">Giải thích: myString là một chuỗi rỗng ("") và được đánh giá là “falsy”.</p>
+        <p class="content__desc">Do đó, điều kiện trong if trả về false và khối lệnh else được thực thi.</p>
+    </blockquote>
+</div>
