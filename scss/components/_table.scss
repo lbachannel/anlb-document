@@ -2,7 +2,7 @@
 
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse;  
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 thead th {
@@ -13,8 +13,9 @@ thead th {
     padding: 10px;
 }
 tbody td {
+    --text: center;
     padding: 10px;
-    text-align: center;
+    text-align: var(--text);
     border-bottom: 1px solid #ddd;
 }
 tbody tr:nth-child(even) {
@@ -27,4 +28,8 @@ code {
     background-color: #f4f4f4;
     padding: 3px;
     border-radius: 3px;
+}
+
+.red {
+    color: red;
 }

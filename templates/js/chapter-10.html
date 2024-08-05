@@ -186,7 +186,7 @@ parseFloat("123.45"); // 123.45</code></pre>
                 <td>true -> 1, false -> 0</td>
                 <td>NaN</td>
             </tr>
-        </tbody>
+
             <tr>
                 <td>
                     Xử lý null
@@ -230,5 +230,297 @@ Boolean(""); // false</code></pre>
 
     <div class="separate"></div>
 
-    <h2 class="content__heading-2">Quy tắc ép kiểu ngầm</h2>
+    <h2 class="content__heading-2 mb-20">Quy tắc ép kiểu ngầm</h2>
+    <h3 class="content__heading-3 mb-10">Ép kiểu ngầm với toán tử so sánh ==</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, khi so sánh x == y, kết quả sẽ trả về true hoặc false. 
+        Quá trình so sánh này được thực hiện như sau:
+    </p>
+    <p class="content__desc mb-10">1. Nếu x và y cùng kiểu dữ liệu:</p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">1.1 <b>Nếu cả hai</b> là <b>undefined</b> hoặc <b>null</b>, trả về <b>true</b>.</p>
+        <p class="content__desc mb-10">1.2 Nếu là số:</p>
+        <p class="content__desc mb-10 ti-30">1.2.1 Nếu <b>một trong hai</b> là <b>NaN</b>, trả về <b>false</b>.</p>
+        <p class="content__desc mb-10 ti-30">1.2.2 Nếu cả <b>hai số giống hệt</b> nhau, trả về <b>true</b>.</p>
+        <p class="content__desc mb-10">
+            1.3 Nếu là <b>chuỗi</b>, so sánh từng ký tự (<b>cùng độ dài</b> và <b>giống nhau từng ký tự theo vị trí</b>) 
+            để xác định chúng có giống hệt nhau không.
+        </p>
+        <p class="content__desc mb-10">
+            1.4 Nếu là boolean, trả về <b>true</b> nếu <b>cả hai cùng true</b> hoặc <b>cùng false</b>.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">2. Nếu x là null và y là undefined, hoặc ngược lại, trả về true.</p>
+    <p class="content__desc mb-10">3. Nếu một trong hai là số và cái kia là chuỗi, chuyển đổi chuỗi thành số rồi so sánh.</p>
+    <p class="content__desc mb-10">4. Nếu một trong hai là boolean, chuyển đổi boolean thành số rồi so sánh.</p>
+    <p class="content__desc mb-10">
+        5. Nếu một trong hai là đối tượng và cái kia là chuỗi hoặc số, chuyển đổi đối 
+        tượng thành giá trị nguyên thủy rồi so sánh.
+    </p>
+    <p class="content__desc mb-10">6. Nếu không thỏa mãn các trường hợp trên, trả về false.</p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">Trong trường hợp “Nếu x là null và y là undefined, hoặc ngược lại, trả về true,” không có sự ép kiểu ngầm định giữa null và undefined.</p>
+        <p class="content__desc mb-10">Đây là một quy tắc đặc biệt trong JavaScript khi sử dụng toán tử so sánh bằng lỏng lẻo (==).</p>
+        <p class="content__desc mb-10">Theo quy tắc này, null và undefined được coi là bằng nhau mà không cần chuyển đổi kiểu dữ liệu của chúng.</p>
+        <p class="content__desc mb-10">Điều này có nghĩa là không có sự chuyển đổi kiểu dữ liệu nào xảy ra;</p>
+        <p class="content__desc">JavaScript đơn giản chỉ coi chúng là giống nhau trong trường hợp cụ thể này (so sánh ==).</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ép kiểu ngầm với toán tử số học</h3>
+    <p class="content__desc mb-10">Toán tử cộng (+)</p>
+    <p class="content__desc mb-10">
+        Trong JavaScript, toán tử cộng (+) có thể thực hiện cả phép cộng số học và nối chuỗi. 
+        Cách hoạt động của nó được xác định như sau:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Xem xét giá trị của biểu thức bên trái và bên phải của toán tử.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Chuyển đổi giá trị này sang kiểu nguyên thủy (ToPrimitive).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nếu một trong hai giá trị sau khi chuyển đổi là chuỗi, thực hiện nối chuỗi.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nếu không, chuyển đổi cả hai giá trị sang số (ToNumber) và thực hiện phép cộng.
+    </p>
+    <p class="content__desc mb-10">Ví dụ</p>
+    <p class="content__desc mb-10 ti-30">"5" + 2 sẽ có kết quả là "52" (nối chuỗi).</p>
+    <p class="content__desc mb-10 ti-30">5 + "2" cũng sẽ trở thành "52".</p>
+    <p class="content__desc ti-30">5 + 2 sẽ có kết quả là 7 (phép cộng số).</p>
+
+    <p class="content__desc mt-20 mb-10">Toán tử trừ (-)</p>
+    <p class="content__desc mb-10">
+        Toán tử trừ (-) chỉ thực hiện phép trừ số học. Trong quá trình này, toán tử trừ chuyển đổi 
+        cả hai giá trị sang số rồi mới thực hiện phép trừ.
+    </p>
+    <p class="content__desc mb-10 ti-30">5 - "2" sẽ trả về 3 (chuyển "2" thành số).</p>
+    <p class="content__desc ti-30">"10" - "2" sẽ trả về 8 (chuyển "10" và "2" thành số).</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Bảng chuyển đổi kiểu dữ liệu</h3>
+    <p class="content__desc mb-10">
+        Bảng dưới đây cung cấp một cái nhìn tổng quan về cách các giá trị khác nhau trong JavaScript 
+        được chuyển đổi sang các kiểu dữ liệu Number, String và Boolean.
+    </p>
+
+    <table class="mb-10">
+        <thead>
+            <tr>
+                <th>Giá trị gốc</th>
+                <th>Chuyển thành số</th>
+                <th>Chuyển thành chuỗi</th>
+                <th>Chuyển thành boolean</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>false</td>
+                <td>0</td>
+                <td>“false”</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>true</td>
+                <td>1</td>
+                <td>“true”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>“0”</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>“1”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>“0”</td>
+                <td>0</td>
+                <td>“0”</td>
+                <td class="red">true</td>
+            </tr>
+            <tr>
+                <td>“000”</td>
+                <td>0</td>
+                <td>“000”</td>
+                <td class="red">true</td>
+            </tr>
+            <tr>
+                <td>“1”</td>
+                <td>1</td>
+                <td>“1”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>NaN</td>
+                <td>NaN</td>
+                <td>“NaN”</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>Infinity</td>
+                <td>Infinity</td>
+                <td>“Infinity”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>-Infinity</td>
+                <td>-Infinity</td>
+                <td>“-Infinity”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>“”</td>
+                <td>0</td>
+                <td>“”</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>“20”</td>
+                <td>20</td>
+                <td>“20”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>“twenty”</td>
+                <td>NaN</td>
+                <td>“twenty”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>[]</td>
+                <td>0</td>
+                <td>“”</td>
+                <td class="red">true</td>
+            </tr>
+            <tr>
+                <td>[20]</td>
+                <td>20</td>
+                <td>“20”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>[10, 20]</td>
+                <td>NaN</td>
+                <td>“10,20”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>[“twenty”]</td>
+                <td>NaN</td>
+                <td>“twenty”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>[“ten”, “twenty”]</td>
+                <td>NaN</td>
+                <td>“ten,twenty”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>function sum() {}</td>
+                <td>NaN</td>
+                <td>“function sum() {}”</td>
+                <td>true</td>
+            </tr>
+            <tr>
+                <td>{}</td>
+                <td>NaN</td>
+                <td>“[object Object]”</td>
+                <td class="red">true</td>
+            </tr>
+            <tr>
+                <td>null</td>
+                <td>0</td>
+                <td>“null”</td>
+                <td>false</td>
+            </tr>
+            <tr>
+                <td>undefined</td>
+                <td class="red">NaN</td>
+                <td>“undefined”</td>
+                <td>false</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc"><b class="red">Giá trị màu đỏ</b> chỉ các giá trị mà một số lập trình viên có thể không mong đợi.</p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Lưu ý quan trọng</h2>
+    <p class="content__desc mb-10">
+        <b>Nên sử dụng toán tử so sánh nghiêm ngặt</b>: Để tránh những hành vi không mong muốn từ ép kiểu ngầm, nên sử dụng toán tử ===.
+    </p>
+    <p class="content__desc mb-10">
+        Toán tử này chỉ trả về true khi cả hai giá trị có cùng kiểu dữ liệu và giá trị.
+    </p>
+    <p class="content__desc mb-10">
+        Tư duy nghiêm ngặt với kiểu dữ liệu: Khi lập trình, 
+        hãy chú ý đến việc sử dụng cùng kiểu dữ liệu trong so sánh và các phép tính toán.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này giúp tránh những lỗi logic không mong muốn.
+    </p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">3 === "3"; // false, vì một là số và một là chuỗi
+3 === 3;   // true, cùng kiểu và giá trị</code></pre>
+    <p class="content__desc mt-10">
+        Nắm vững các quy tắc và kỹ thuật ép kiểu trong 
+        JavaScript sẽ giúp bạn viết code chính xác hơn, tránh được những lỗi phổ biến, 
+        và hiểu rõ hơn về cách ngôn ngữ này xử lý dữ liệu.
+    </p>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Exercise</h2>
+    <p class="content__desc mb-10">
+        Viết hàm calculate nhận vào ba tham số: a, b (dưới dạng chuỗi), và operator (chuỗi chỉ định phép toán).
+    </p>
+    <p class="content__desc mb-10">
+        Hàm này sẽ thực hiện phép toán (add, subtract, multiply, divide) trên hai tham số đã 
+        chuyển đổi từ chuỗi sang số và trả về kết quả. Hàm cần xử lý trường hợp sau khi chuyển đổi là NaN.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">/**
+* Calculates the result based on the given operator and operands.
+* @param {string} a - The first operand as a string.
+* @param {string} b - The second operand as a string.
+* @param {string} operator - The operator to perform ("add", "subtract", "multiply", "divide").
+* @returns {number|string} - The result of the calculation or an error message.
+*/
+function calculate(a, b, operator) {
+    if (isNaN(a) || isNaN(b)) {
+        return "Invalid input number";
+    } else if (Number(b) === 0) {
+        return "Cannot divide by zero";
+    } else {
+        switch (operator) {
+            case "add":
+                return Number(a) + Number(b);
+            case "subtract":
+                return Number(a) - Number(b);
+            case "multiply":
+                return Number(a) * Number(b);
+            case "divide":
+                return Number(a) / Number(b);
+            default:
+                return "Invalid operator";
+        }
+    }
+}
+
+// Sample usage
+console.log(calculate("5", "3", "add"));      // 8
+console.log(calculate("5", "3", "subtract")); // 2
+console.log(calculate("5", "3", "multiply")); // 15
+console.log(calculate("5", "0", "divide"));   // Cannot divide by zero
+console.log(calculate("five", "3", "add"));   // Invalid input number
+console.log(calculate("5", "three", "add"));  // Invalid input number
+console.log(calculate("5", "3", "modulus"));  // Invalid operator</code></pre>
 </div>

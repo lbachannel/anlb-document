@@ -128,6 +128,10 @@ b, strong {
   margin-bottom: 10px;
 }
 
+.ti-30 {
+  text-indent: 30px;
+}
+
 .row > *, .container-fluid, .container {
   padding-left: calc(var(--grid-gutter-x) * 0.5);
   padding-right: calc(var(--grid-gutter-x) * 0.5);
@@ -1562,8 +1566,9 @@ thead th {
 }
 
 tbody td {
+  --text: center;
   padding: 10px;
-  text-align: center;
+  text-align: var(--text);
   border-bottom: 1px solid #ddd;
 }
 
@@ -1579,6 +1584,10 @@ code {
   background-color: #f4f4f4;
   padding: 3px;
   border-radius: 3px;
+}
+
+.red {
+  color: red;
 }
 
 .container-fluid--size {
