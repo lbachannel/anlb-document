@@ -163,4 +163,37 @@ console.log(typeof calculateTax); // function</code></pre>
             Chúng ta sẽ cùng tìm hiểu chúng trong các phần nâng cao hơn trong tương lai nhé.
         </p>
     </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Cách kiểm tra kiểu dữ liệu</h2>
+    <h3 class="content__heading-3 mb-10">Các kiểu dữ liệu</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10"><b>String</b>: Chuỗi ký tự, kiểm tra bằng <b>typeof</b>.</p>
+        <p class="content__desc mb-10"><b>Number</b>: Số, kiểm tra bằng <b>typeof</b>, cần loại trừ <b>NaN</b>.</p>
+        <p class="content__desc mb-10"><b>BigInt</b>: Số nguyên lớn, kiểm tra bằng <b>typeof</b>.</p>
+        <p class="content__desc mb-10"><b>Boolean</b>: Giá trị true hoặc false, kiểm tra bằng <b>typeof</b>.</p>
+        <p class="content__desc mb-10"><b>Null</b>: “Không có gì”, phải so sánh trực tiếp với <b>null</b> do <b>typeof</b> trả về "<b>object</b>".</p>
+        <p class="content__desc mb-10"><b>Undefined</b>: Biến chưa được gán giá trị, kiểm tra bằng <b>typeof</b>.</p>
+        <p class="content__desc mb-10"><b>Symbol</b>: Định danh duy nhất, xác nhận bằng <b>typeof</b>.</p>
+        <p class="content__desc mb-10"><b>Object</b>: Cặp khóa và giá trị, cần kiểm tra <b>không phải null</b> và <b>không phải Array</b>.</p>
+        <p class="content__desc mb-10"><b>Array</b>: Danh sách giá trị, dùng <b>Array.isArray()</b> hoặc <b>instanceof Array</b> để kiểm tra.</p>
+        <p class="content__desc"><b>Function</b>: Thực hiện tác vụ và giúp tái sử dụng code, kiểm tra bằng <b>typeof</b>.</p>
+    </blockquote>
+    <h3 class="content__heading-3 mt-10 mb-10">4 trường hợp cần ghi nhớ cách kiểm tra:</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            <b>Number</b>: Cần <b>loại trừ NaN</b>.
+            // typeof variable === 'number' && !isNaN(variable)
+        </p>
+        <p class="content__desc mb-10">
+            <b>Null</b>: <b>So sánh trực tiếp với null</b>.
+            // variable === null
+        </p>
+        <p class="content__desc mb-10">
+            <b>Object</b>: Nhớ <b>loại trừ Array</b> và <b>Null</b>.
+            // typeof variable === 'Object' && variable !== null && !Array.isArray(variable)
+        </p>
+        <p class="content__desc">
+            <b>Array</b>: <b>Sử dụng Array.isArray()</b> hoặc <b>instanceof Array</b>.
+        </p>
+    </blockquote>
 </div>

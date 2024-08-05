@@ -1,17 +1,9 @@
 @use "../abstracts";
 
 table {
-    width: 50%;
+    width: 100%;
     border-collapse: collapse;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-
-    @include abstracts.screen(lg) {
-        width: 100%;
-    }
-
-    @include abstracts.screen(md) {
-        width: 100%;
-    }
 }
 thead th {
     --gradient-to: #eb4853;

@@ -1,0 +1,234 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Ép kiểu (Type coercion)</h2>
+    <p class="content__desc mb-10">
+        Ép kiểu (Type coercion) trong JavaScript là quá trình chuyển đổi giá trị từ một kiểu dữ liệu này sang một kiểu khác.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này thường xảy ra tự động, chẳng hạn khi sử dụng toán tử so sánh == hoặc các toán tử số học như +, -, v.v.
+    </p>
+    <p class="content__desc mb-10">Ví dụ</p>
+    <pre class="language-javascript"><code class="language-javascript">"3" + 2; // "32"</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Ở đây, JavaScript đã tự động chuyển số 2 thành chuỗi và 
+            kết hợp nó với chuỗi "3", tạo ra kết quả là "32", không phải là 5.
+        </p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Ép kiểu rõ ràng và ép kiểu ngầm</h2>
+    <h3 class="content__heading-3 mb-10">Ép kiểu rõ ràng</h3>
+    <p class="content__desc mb-10">
+        Ép kiểu rõ ràng là khi bạn chủ động chuyển đổi kiểu dữ liệu 
+        bằng cách sử dụng các hàm như <b>Number()</b>, <b>String()</b>, <b>Boolean()</b>, v.v.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Number("123"); // 123</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Trong JavaScript, mỗi kiểu dữ liệu cơ bản đều có các hàm chuyển đổi 
+        tương ứng để thực hiện chuyển đổi giữa các kiểu.
+    </p>
+    <p class="content__desc mb-10">Kiểu số (number): Có hàm Number() để chuyển đổi giá trị sang kiểu số.</p>
+    <p class="content__desc mb-10">Kiểu chuỗi (string): Có hàm String() để chuyển đổi giá trị sang kiểu chuỗi.</p>
+    <p class="content__desc mb-10">Kiểu boolean (boolean): Có hàm Boolean() để chuyển đổi giá trị sang kiểu boolean.</p>
+    <p class="content__desc mb-10">Đối tượng (object): Có hàm Object() để tạo hoặc chuyển đổi giá trị thành đối tượng.</p>
+    <p class="content__desc mb-10">Mảng (array): Có hàm Array() để tạo mảng mới hoặc chuyển đổi giá trị thành mảng.</p>
+    <p class="content__desc mb-10">Hàm (function): Có hàm Function() để tạo hàm mới.</p>
+    <p class="content__desc">null và undefined: Không có hàm chuyển đổi kiểu dữ liệu tương ứng.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ép kiểu ngầm</h3>
+    <p class="content__desc mb-10">
+        Ép kiểu ngầm xảy ra khi JavaScript tự động quyết định kiểu dữ liệu, 
+        thường là trong các phép toán và so sánh.
+    </p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">5 + ""; // "5"</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Hiểu rõ về ép kiểu trong JavaScript rất quan trọng để tránh những lỗi không mong muốn trong quá trình lập trình. 
+            Đặc biệt, nên chú ý đến những tình huống ép kiểu ngầm, vì chúng có thể dẫn đến hiểu nhầm.
+        </p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Các trường hợp ép kiểu phổ biến</h2>
+    <h3 class="content__heading-3 mb-10">Ép kiểu sang chuỗi</h3>
+    <p class="content__desc mb-10">
+        Bất kỳ kiểu dữ liệu nào trong JavaScript cũng có thể được chuyển đổi thành chuỗi. 
+        Dưới đây là 3 phương pháp phổ biến và ví dụ minh họa:
+    </p>
+    <p class="content__desc mb-10">
+        <b>Cách 1</b>: Sử dụng hàm <b>String()</b>.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">String(123); // "123"</code></pre>
+    <p class="content__desc mt-10 mb-10"><b>Cách 2</b>: Sử dụng phương thức <b>toString()</b>.</p>
+    <pre class="language-javascript"><code class="language-javascript">(123).toString(); // "123"
+// Lưu ý: không áp dụng được cho `null` và `undefined`</code></pre>
+    <p class="content__desc mt-10 mb-10"><b>Cách 3</b>: <b>Nối chuỗi</b> hoặc <b>Template literals</b>.</p>
+    <pre class="language-javascript"><code class="language-javascript">`${123}`; // "123"
+// hoặc
+123 + ""; // "123"</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">BẢNG SO SÁNH CÁC CÁCH ÉP KIỂU SANG CHUỖI</h3>
+    <p class="content__desc mb-10">
+        Bảng dưới đây cung cấp cái nhìn trực quan về điểm giống và khác nhau 
+        cho các cách ép kiểu sang chuỗi như String(), .toString(), toán tử + và Template literals.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Phương thức</th>
+                <th>Mô tả</th>
+                <th>Lưu ý</th>
+                <th>Ví dụ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>String(value)</td>
+                <td>Chuyển đổi value sang chuỗi.</td>
+                <td>Hoạt động với mọi kiểu dữ liệu.</td>
+                <td>String(123) -> "123"</td>
+            </tr>
+
+            <tr>
+                <td>
+                    value.toString()
+                </td>
+                <td>Chuyển đổi value sang chuỗi.</td>
+                <td>Không hoạt động với null và undefined.</td>
+                <td>(123).toString() -> "123"</td>
+            </tr>
+
+            <tr>
+                <td>
+                    Template literals hoặc nối chuỗi
+                </td>
+                <td>Chuyển đổi value sang chuỗi. Ví dụ: ${value} hoặc value + "".</td>
+                <td>Hoạt động với mọi kiểu dữ liệu.</td>
+                <td>123 + "" -> "123"</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ép kiểu sang số</h3>
+    <p class="content__desc mb-10">Dưới đây là một số cách chuyển đổi giá trị sang kiểu số trong JavaScript, cùng với ví dụ minh họa:</p>
+    <p class="content__desc mb-10">Cách 1: Sử dụng hàm Number().</p>
+    <pre class="language-javascript"><code class="language-javascript">Number("456"); // 456
+Number(true); // 1
+Number(null); // 0</code></pre>
+    <p class="content__desc mt-10 mb-10">Cách 2: Sử dụng toán tử cộng +.</p>
+    <pre class="language-javascript"><code class="language-javascript">+"456"; // 456
++true; // 1
++null; // 0</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Lưu ý: Các giá trị "" (chuỗi rỗng), "0" (chuỗi chứa số 0), "000", 0, -0, null, false, 
+            [], {} và new Date(0) khi ép kiểu sang Number sẽ trả về 0.
+        </p>
+    </blockquote>
+    <p class="content__desc mb-10">
+        Các giá trị là chuỗi không phải là số ("abc"), undefined, và NaN không chuyển đổi thành 0 
+        khi sử dụng Number() hoặc +. Thay vào đó, chúng sẽ trả về NaN (Not-a-Number).
+    </p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">Number("abc"); // NaN
+Number(undefined); // NaN</code></pre>
+    <p class="content__desc mt-10 mb-10">Cách 3: Sử dụng parseInt() và parseFloat().</p>
+    <pre class="language-javascript"><code class="language-javascript">parseInt("123", 10); // 123
+parseFloat("123.45"); // 123.45</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">Lưu ý: Cách hoạt động của parseInt() và parseFloat() khác với các cách ép kiểu sang Number ở trên. Cụ thể, nó hoạt động như sau:</p>
+    </blockquote>
+    
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">Khi đầu vào là một chuỗi: parseInt() và parseFloat() sẽ phân tích chuỗi đó để tìm số đầu tiên và chuyển số đó sang kiểu Number.</p>
+        <p class="content__desc mb-10">Nếu không tìm thấy số nào, kết quả sẽ là NaN.</p>
+        <p>Khi đầu vào không phải chuỗi: parseInt() và parseFloat() trước tiên sẽ chuyển giá trị đó thành chuỗi. Sau đó, thực hiện quá trình phân tích như bước trên.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">BẢNG SO SÁNH CÁC CÁCH ÉP KIỂU SANG SỐ</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Tính năng/Phương thức</th>
+                <th>Number(value) / +value</th>
+                <th>parseFloat(value) / parseInt(value)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Xử lý chuỗi</td>
+                <td>Chặt chẽ</td>
+                <td>Linh hoạt</td>
+            </tr>
+
+            <tr>
+                <td>
+                    VD chuỗi phức tạp
+                </td>
+                <td>"123abc" -> NaN</td>
+                <td>parseFloat("123abc") -> 123,<br>
+                    parseInt("123abc") -> 123
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Xử lý số thực
+                </td>
+                <td>Chính xác</td>
+                <td>parseFloat giữ nguyên, parseInt làm tròn xuống</td>
+            </tr>
+
+            <tr>
+                <td>
+                    Xử lý boolean
+                </td>
+                <td>true -> 1, false -> 0</td>
+                <td>NaN</td>
+            </tr>
+        </tbody>
+            <tr>
+                <td>
+                    Xử lý null
+                </td>
+                <td>0</td>
+                <td>NaN</td>
+            </tr>
+            <tr>
+                <td>
+                    Xử lý undefined
+                </td>
+                <td>NaN</td>
+                <td>NaN</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ép kiểu sang Boolean</h3>
+    <p class="content__desc mb-10">Có hai cách chính để chuyển đổi giá trị sang kiểu boolean:</p>
+    <p class="content__desc mb-10">Cách 1: Sử dụng hàm Boolean().</p>
+    <pre class="language-javascript"><code class="language-javascript">Boolean(1); // true
+Boolean(0); // false
+Boolean("hello"); // true
+Boolean(""); // false</code></pre>
+    <p class="content__desc mt-10 mb-10">Cách 2: Sử dụng toán tử NOT hai lần !!</p>
+    <pre class="language-javascript"><code class="language-javascript">!!0; // false
+!!1; // true</code></pre>
+    <p class="content__desc mt-10">
+        Chỉ có 6 giá trị sau đây khi ép kiểu sang boolean sẽ trả về false: false, 0, "" (chuỗi rỗng), null, undefined, và NaN. 
+        Mọi giá trị khác khi ép sang boolean đều trở thành true.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tại sao ít khi chuyển kiểu dữ liệu khác sang Object?</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, việc chuyển đổi từ các kiểu dữ liệu đơn giản sang Object 
+        không phổ biến do cấu trúc dữ liệu và mức độ phức tạp khác nhau.
+    </p>
+    <p class="content__desc">
+        Ví dụ, chuyển một số hoặc chuỗi thành Object có thể không mang lại giá trị thực tế và làm tăng độ phức tạp của code.
+    </p>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2">Quy tắc ép kiểu ngầm</h2>
+</div>
