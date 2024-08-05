@@ -1,0 +1,11 @@
+.footer {
+    margin-top: 50px;
+    flex-shrink: 0;
+    padding: 25px 0;
+    text-align: center;
+    background: #fff;
+    &__copyright {
+        font-size: 1.6rem;
+        line-height: 1;
+    }
+}

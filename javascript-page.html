@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
+                    8. Phạm vi (Scope)
                 </li>
 
                 <li class="sidebar-tab__item">
@@ -66,83 +66,81 @@
                     36. Lập trình hướng đối tượng
                 </li>
 
-                <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
-                </li>
-
-
-                <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
-                </li>
-
-                <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
-                </li>
-
-                <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
-                </li>
-
-                <li class="sidebar-tab__item">
-                    36. Lập trình hướng đối tượng
-                </li>
             </ul>
             <div class="separate-sidebar"></div>
             <button id="toggle-btn" class="toggle-btn">
                 <img class="sidebar__icon" src="./assets/img/icons/arrow.svg" alt="">
             </button>
         </div>
-        <!-- main -->
-        <main class="container-fluid container-fluid--size">
-            <!-- contents -->
-            <div class="row row-cols-1">
-                <!-- content 1 -->
-                <div id="chapter-2" class="content content--active"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-2", "./templates/chapter-2.html");
-                    });
-                </script>
-
-                <!-- content 2 -->
-                <div id="chapter-3" class="content"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-3", "./templates/chapter-3.html");
-                    });
-                </script>
-
-                <!-- content 3 -->
-                <div id="chapter-4" class="content"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-4", "./templates/chapter-4.html");
-                    });
-                </script>
-
-                <!-- content 4 -->
-                <div id="chapter-5" class="content"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-5", "./templates/chapter-5.html");
-                    });
-                </script>
-                <!-- content 5 -->
-                <div id="chapter-6" class="content"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-6", "./templates/chapter-6.html");
-                    });
-                </script>
-                <!-- content 6 -->
-                <div id="chapter-7" class="content"></div>
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                        load("#chapter-7", "./templates/chapter-7.html");
-                    });
-                </script>
+        <div class="content-wrapper">
+            <div class="main">
+                <!-- main -->
+                <main class="container-fluid container-fluid--size">
+                    <!-- contents -->
+                    <div class="row row-cols-1">
+                        <!-- content 1 -->
+                        <div id="chapter-2" class="content content--active"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-2", "./templates/chapter-2.html");
+                            });
+                        </script>
+        
+                        <!-- content 2 -->
+                        <div id="chapter-3" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-3", "./templates/chapter-3.html");
+                            });
+                        </script>
+        
+                        <!-- content 3 -->
+                        <div id="chapter-4" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-4", "./templates/chapter-4.html");
+                            });
+                        </script>
+        
+                        <!-- content 4 -->
+                        <div id="chapter-5" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-5", "./templates/chapter-5.html");
+                            });
+                        </script>
+                        <!-- content 5 -->
+                        <div id="chapter-6" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-6", "./templates/chapter-6.html");
+                            });
+                        </script>
+                        <!-- content 6 -->
+                        <div id="chapter-7" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-7", "./templates/chapter-7.html");
+                            });
+                        </script>
+                        <!-- content 7 -->
+                        <div id="chapter-8" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-8", "./templates/chapter-8.html");
+                            });
+                        </script>
+                    </div>
+                </main>
             </div>
-        </main>
+            <!-- Footer -->
+            <footer id="footer" class="footer"></footer>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    load("#footer", "./templates/footer.html");
+                })
+            </script>
+        </div>
     </div>
 
     <!-- Bước 2: Nhúng code JavaScript của PrismJS -->

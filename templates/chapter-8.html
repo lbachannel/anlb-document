@@ -1,0 +1,241 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Phạm vi (Scope)</h2>
+    <p class="content__desc">
+        Phạm vi là khu vực trong code nơi một biến có thể được truy cập và sử dụng. <br>
+        Hiểu về phạm vi bạn có thể phân biệt rõ ràng một biến hoặc hàm có thể truy cập và sử dụng ở những nơi nào trong code.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Phạm vi toàn cục (Global scope)</h3>
+    <p class="content__desc mb-10">
+        Một biến được <b>khai báo</b> ở <b>ngoài</b> mọi <b>hàm</b> và <b>block</b> (khối code) là một <b>biến toàn cục</b>. <br>
+        Nó có thể được truy cập và <b>sử dụng</b> từ <b>bất kỳ đâu</b> trong code, kể cả bên trong các hàm.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let globalVar = "Tôi là cây toàn cục, nhìn thấy tôi từ mọi nơi!";
+
+// Bên ngoài
+console.log(globalVar);
+
+function checkGlobalVar() {
+    // Bên trong hàm
+    console.log(globalVar);
+}
+
+checkGlobalVar();</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Phạm vi hàm (Function scope)</h3>
+    <p class="content__desc">
+        Trong JavaScript, mỗi hàm tạo ra một phạm vi mới. <br>
+        <b>Các biến</b> được khai báo trong hàm (<b>bao gồm cả các tham số</b> của hàm) <br>
+        <b>chỉ</b> có thể được <b>truy cập trong phạm vi</b> của <b>hàm</b> đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function funcGarden() {
+    let localVar = "Tôi là cây cục bộ, chỉ nhìn thấy tôi trong phòng này!";
+    console.log(localVar); // Tôi là cây cục bộ, chỉ nhìn thấy tôi trong phòng này!
+}
+
+funcGarden();
+
+console.log(localVar); // Uncaught ReferenceError: localVar is not defined</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10 mb-10">
+        <p class="content_desc">
+            Biến chưa được khai báo hoặc nằm ngoài phạm vi truy cập hợp lệ.
+        </p>
+    </blockquote>
+    <p class="content_desc mb-10">Hàm <b>lồng nhau</b>.</p>
+    <p class="content_desc mb-10"><b>Hàm con</b> có thể <b>truy cập</b> và <b>sử dụng</b> các biến được khai báo ở các <b>hàm cha</b></p>
+    <pre class="language-javascript"><code class="language-javascript">let globalVar = "Biến toàn cục";
+
+function outerFunction() {
+    let outerVar = "Biến ngoài";
+
+    function innerFunction() {
+        let innerVar = "Biến trong";
+
+        console.log(innerVar); // Biến trong
+        console.log(outerVar); // Biến ngoài
+        console.log(globalVar); // Biến toàn cục
+    }
+
+    innerFunction();
+
+    console.log(outerVar); // Biến ngoài
+    // console.log(innerVar); // Uncaught ReferenceError: innerVar is not defined
+}
+
+outerFunction();
+
+console.log(globalVar); // Biến toàn cục
+// console.log(outerVar); // Uncaught ReferenceError: outerVar is not defined</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Mình sử dụng đồ đạc trong phòng và bên ngoài phòng. Người khác thì không được vào phòng xài đồ của mình.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Phạm vi khối (Block scope)</h3>
+    <p class="content__desc mb-10">
+        Phạm vi khối có nghĩa là các biến được <b>khai báo</b> bên <b>trong</b> một <b>khối</b> code 
+        (thường là bên trong các <b>dấu ngoặc nhọn</b> {}) 
+        chỉ có thể truy cập được bên trong khối code đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">if (true) {
+    let blockScopedVar = "Tôi chỉ tồn tại trong khối if này";
+    console.log(blockScopedVar); // Tôi chỉ tồn tại trong khối if này
+}
+    
+console.log(blockScopedVar); // Uncaught ReferenceError: blockScopedVar is not defined</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Thậm chí sử dụng độc lập một cặp {} để tạo một khối.
+        </p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">{
+    let blockScopedVar = "Tôi chỉ tồn tại trong khối này";
+    console.log(blockScopedVar); // Tôi chỉ tồn tại trong khối này
+}
+    
+console.log(blockScopedVar); // Uncaught ReferenceError: blockScopedVar is not defined</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            <b>Trước</b> ES6 (2015) JavaScript <b>chỉ</b> có <b>2 phạm vi</b> là <b>Global scope</b> và <b>Function scope</b>. 
+            <b>ES6 cung cấp</b> thêm hai từ khóa <b>let</b> và <b>const</b> cho phép tạo biến có phạm vi khối, 
+            các biến được khai báo bên trong một khối {} sẽ không thể được truy cập từ bên ngoài khối.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Phạm vi module (Module scope)</h3>
+    <p class="content__desc mb-10">
+        <b>Trong</b> một <b>module</b>, <b>biến</b>, <b>hàm</b>, hoặc các <b>thành phần khác</b> 
+        mà bạn khai báo <b>chỉ</b> có thể <b>truy cập</b> và sử dụng <b>trong</b> chính <b>module đó</b>,
+    </p>
+    <p class="content__desc mb-10"><b>Trừ khi</b> chúng được <b>export</b> để sử dụng ở nơi khác.</p>
+    <p class="content__desc">Để <b>sử dụng modules</b> trong trang web của bạn, <b>thêm</b> thuộc tính <b>type="module"</b> vào <b>thẻ script</b> trong <b>HTML</b>.</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;script type=&quot;module&quot; src=&quot;main.js&quot;&gt;&lt;/script&gt;</code></pre>
+    <p class="content__desc mt-10 mb-10"><b>Export</b> các giá trị <b>từ</b> một <b>module khác</b>:</p>
+    <pre class="language-javascript"><code class="language-javascript">// File: myModule.js
+export const myVar = 1;
+export function myFunction() {
+    console.log("Hello world");
+}</code></pre>
+    <p class="content__desc mt-10 mb-10"><b>Import</b> và <b>sử dụng</b> các <b>giá trị được export</b>:</p>
+    <pre class="language-javascript"><code class="language-javascript">// File: main.js
+import { myVar, myFunction } from './myModule.js';
+
+console.log(myVar); // 1
+myFunction(); // Hello world</code></pre>
+    <p class="content__desc mt-10 mb-10"><b>Sử dụng modules</b> giúp bạn <b>tổ chức mã nguồn</b> một cách <b>hiệu quả</b>.</p>
+    <p class="content__desc mb-10"><b>Tách biệt logic</b> và <b>tái sử dụng</b> mã giữa <b>các file</b> và <b>dự án khác nhau</b></p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">Phạm vi <b>module</b> xuất hiện khi bạn sử dụng <b>ES6 Modules</b>.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Mỗi hàm sẽ tạo ra một phạm vi mới</h3>
+    <pre class="language-javascript"><code class="languge-javascript">// (1) Phạm vi ngoài vườn
+function trongNha() {
+    // (2) Phạm vi trong nhà
+
+    function trongPhong() {
+    // (3) Phạm vi trong phòng
+    }
+}</code></pre>
+    <h3 class="content__heading-3 mt-20 mb-10">Cách JavaScript tìm kiếm biến (Scope chain)</h3>
+    <p class="content__desc mb-10">Scope Chain là chuỗi các phạm vi lồng nhau.</p>
+    <p class="content__desc">Nơi mỗi phạm vi có thể truy cập biến từ phạm vi bên ngoài của nó</p>
+    <pre class="language-javascript"><code class="language-javascript">// (3) Tìm thấy biến petHouse
+let petHouse = "Nhà chiHua"; // Biến toàn cục
+
+function trongNha() {
+    // (2) Tìm biến petHouse trong phạm vi trongNha
+    // Kết quả: không thấy => Tiếp tục tìm kiếm phạm vi ngoại cục
+
+    function trongPhong() {
+        // (1) Tìm biến petHouse trong phạm vi trongPhong
+        // Kết quả: không thấy => Tiếp tục tìm kiếm phạm vi ngoại cục
+        console.log(petHouse);
+    }
+    trongPhong();
+}
+
+trongNha();</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">Trong JavaScript, các biến khai báo ở <b>phạm vi khác</b> nhau dù đặt <b>trùng tên vẫn hợp lệ</b>, nó sẽ là các biến khác nhau và độc lập trong phạm vi của nó.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Hãy sử dụng let và const thay vì dùng var</h3>
+    <p class="content__desc mb-10">Sử dụng <b>let</b> và <b>const</b> giúp <b>hạn chế lỗi</b> liên quan đến <b>phạm vi</b>.</p>
+    <p class="content__desc mb-10">Vì let và const có <b>phạm vi block</b>, nên sẽ an toàn hơn về mặt phạm vi và giúp quản lý biến hiệu quả hơn.</p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">Có nghĩa là đứng ngoài block không thể sử dụng biến đó. <b>Trừ khi</b> biến đó được khởi tạo là <b>var</b></p>
+    </blockquote>
+    <p class="content__desc mb-10">Ví dụ let hoặc const:</p>
+    <pre class="language-javascript"><code class="language-javascript">if (true) {
+    let x = "Tôi là biến var";
+}
+
+// Không được phép truy cập
+console.log(x); // Uncaught ReferenceError: x is not defined</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            <b>Biến x có phạm vi cục bộ, giới hạn trong block if.</b>
+        </p>
+    </blockquote>
+    <p class="content__desc mt-10 mb-10">Ví dụ var:</p>
+    <pre class="language-javascript"><code class="language-javascript">if (true) {
+    var x = "Tôi là biến var";
+}
+
+// Vẫn truy cập được x, dù nó nằm trong block if
+console.log(x); // Tôi là biến var</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            <b>Hậu quả: Biến x có phạm vi toàn cục, không giới hạn trong block if.</b>
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Không hiểu rõ phạm vi hàm</h3>
+    <p class="content__desc mb-10">Sử dụng biến khai báo trong một hàm. Ở ngoài phạm vi hàm đó.</p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascipt"><code class="language-javascript">function myFunction() {
+    var y = "Tôi là biến cục bộ";
+}
+myFunction();
+console.log(y); // Uncaught ReferenceError: y is not defined</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            <b>Hậu quả: Gây lỗi không tìm thấy biến (ReferenceError) khi cố gắng truy cập biến cục bộ từ bên ngoài hàm.</b>
+        </p>
+    </blockquote>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Cách trả lời phỏng vấn</h2>
+    <p class="content__desc mb-10">Đối với cách khai báo biến hoặc hàm</p>
+    <p class="content__desc mb-10">chúng ta thường quan tâm đến phạm vi hẹp nhất mà chúng có thể tạo ra</p>
+    <p class="content__desc mb-10">nên cách nói dưới đây sẽ áp dụng cho câu trả lời khi đi phỏng vấn:</p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10"><b>let</b> và <b>const</b>: Các biến được khai báo bằng let hoặc const <b>có</b> “<b>phạm vi khối</b>” (<b>block scope</b>).</p>
+        <p class="content__desc mb-10">Điều này có nghĩa là chúng <b>chỉ</b> tồn tại và có thể được <b>truy cập trong khối</b> code mà chúng được khai báo.</p>
+        <p class="content__desc mb-10">Một <b>khối</b> code <b>là</b> phần được <b>bao bọc bởi cặp ngoặc nhọn {}</b>.</p>
+    </blockquote>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            <b>var</b> và <b>function</b>: Ngược lại, <b>biến</b> được <b>khai báo</b> bằng <b>var</b> và <b>hàm</b> 
+            được khai báo bắt đầu với <b>function</b> có “<b>phạm vi hàm</b>” (<b>function scope</b>).
+        </p>
+        <p class="content__desc mb-10">Nghĩa là chúng có thể được truy cập từ bất kỳ nơi nào trong hàm mà chúng được định nghĩa.</p>
+    </blockquote>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">Tất cả các biến và hàm sẽ ở phạm vi toàn cục nếu chúng không nằm trong bất kỳ hàm, block, và module nào.</p>
+    </blockquote>
+    <p class="content__desc mt-10 mb-10">
+        Nhận thức về sự khác biệt giữa các loại phạm vi này.
+    </p>
+    <p class="content__desc mb-10">
+        Giúp bạn viết code chính xác và hiệu quả hơn.
+    </p>
+    <p class="content__desc">
+        Đồng thời tránh được các lỗi không mong muốn liên quan tới phạm vi.
+    </p>
+</div>
