@@ -1,0 +1,166 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Kiểu dữ liệu - Data types</h2>
+    <p class="content__desc mb-10">Trong <b>JavaScript</b> có <b>8 kiểu dữ liệu</b> bao gồm:</p>
+    <p class="content__desc mb-10">1. String</p>
+    <p class="content__desc mb-10">2. Number</p>
+    <p class="content__desc mb-10">3. Bigint</p>
+    <p class="content__desc mb-10">4. Boolean</p>
+    <p class="content__desc mb-10">5. Undefined</p>
+    <p class="content__desc mb-10">6. Null</p>
+    <p class="content__desc mb-10">7. Symbol</p>
+    <p class="content__desc">8. Object</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">String</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần biểu diễn văn bản.</p>
+    <p class="content__desc mb-10">Ví dụ: Lưu tên người dùng.</p>
+    <pre class="language-javascript"><code class="language-javascript">let userName = "Tommy Shelby";
+
+console.log(typeof userName); // string</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Sử dụng typeof để kiểm tra kiểu dữ liệu của một biến, lệnh này sẽ trả về một chuỗi.</p>
+    </blockquote>
+    <p class="content__desc">
+        <b>Quy ước đặt tên</b>: <b>Không có quy ước</b> cụ thể, đặt tên biến tùy theo ý nghĩa giá trị của biến sẽ lưu trữ.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Number</h3>
+    <p class="content__desc mb-10">Sử dụng khi làm việc với toán học và số học.</p>
+    <p class="content__desc mb-10">Ví dụ: Tính tuổi từ ngày sinh.</p>
+    <pre class="language-javascript"><code class="language-javascript">let birthYear = 1990;
+let currentYear = 2024;
+let age = currentYear - birthYear;
+
+console.log(typeof birthYear); // number</code></pre>
+    <p class="content__desc mt-10">
+        <b>Quy ước đặt tên</b>: <b>Không có quy ước</b> cụ thể, đặt tên biến tùy theo ý nghĩa giá trị của biến sẽ lưu trữ.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">BigInt</h3>
+    <p class="content__desc mb-10">
+        Khi bạn cần đại diện cho các số lớn, 
+        mà giá trị của chúng vượt quá giới hạn của kiểu Number thông thường 
+        (2^53 - 1, tương đương khoảng 9007199254740991).
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: Tính toán trong lĩnh vực tài chính, khoa học, hoặc kỹ thuật, 
+        nơi cần sự chính xác với các con số cực lớn.
+    </p>
+    <p class="content__desc mb-10">Ví dụ: Tính toán với số lượng lớn.</p>
+    <pre class="language-javascript"><code class="language-javascript">let largeNumber = BigInt("9007199254740991");
+// or
+let bigNumber = 9007199254740991n;
+
+console.log(typeof largeNumber); // bigint
+console.log(typeof bigNumber); // bigint</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <b>Quy ước đặt tên</b>: Thường <b>thêm “Big”</b> hoặc <b>“Large”</b> vào tên để phản ánh 
+        sự lớn của số.
+    </p>
+    <p class="content__desc">Ví dụ: let largeNumber = BigInt("9007199254740991");</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Boolean</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần biểu diễn đúng/sai hoặc có/không.</p>
+    <p class="content__desc mb-10">Ví dụ: Kiểm tra người dùng đã đăng nhập hay chưa.</p>
+    <pre class="language-javascript"><code class="language-javascript">let isLoggedIn = true;
+
+console.log(typeof isLoggedIn); // boolean</code></pre>
+    <p class="content__desc mt-10">
+        <b>Quy ước đặt tên</b>: Thường bắt đầu với các từ như 
+        <b>'is', 'can', 'has', 'should'</b> để phản ánh rõ ràng giá trị đúng/sai.
+    </p>
+    <p class="content__desc">Ví dụ: let isLoggedIn = true;</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Undefined (Không xác định/Chưa được khởi tạo)</h3>
+    <p class="content__desc mb-10">Sử dụng khi một biến được khai báo nhưng chưa được gán giá trị.</p>
+    <p class="content__desc mb-10">Ví dụ: Khai báo biến mà chưa gán giá trị.</p>
+    <pre class="language-javascript"><code class="language-javascript">let userLocation;
+
+console.log(typeof userLocation); // undefined</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Null (Chưa có gì/Trống rỗng)</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần thể hiện rằng một biến 
+        chưa có giá trị cụ thể, hoặc không tìm thấy dữ liệu, v.v.
+    </p>
+    <p class="content__desc mb-10">Ví dụ: Thể hiện không tìm thấy đối tượng.</p>
+    <pre class="language-javascript"><code class="language-javascript">let searchResult = null;
+
+console.log(typeof searchResult); // object</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Trong JavaScript, mặc dù null không phải là một đối tượng, 
+            nhưng do cách JavaScript được thiết kế, typeof trả về "object" cho null. 
+            Điều này được biết đến là một “bug” hay sai sót của ngôn ngữ, 
+            nhưng nó đã trở thành một phần của tiêu chuẩn và cần phải được nhớ khi kiểm tra 
+            kiểu dữ liệu của một biến.
+        </p>
+    </blockquote>
+    <p class="content__desc">Quy ước đặt tên: Không có quy ước cụ thể, đặt tên biến tùy theo ý nghĩa giá trị của biến sẽ lưu trữ.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Symbol (Giá trị duy nhất)</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần tạo ra một giá trị duy nhất.</p>
+    <p class="content__desc mb-10">Ví dụ: Tạo một ID duy nhất.</p>
+    <pre class="language-javascript"><code class="language-javascript">let uniqueId = Symbol('id');
+
+console.log(typeof uniqueId); // symbol</code></pre>
+    <p class="content__desc mt-10">
+       <b> Quy ước đặt tên</b>: <b>Không có quy ước</b> cụ thể, đặt tên biến tùy theo ý nghĩa giá trị của biến sẽ lưu trữ.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Object</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần lưu trữ và quản lý dữ liệu theo cấu trúc key-value (khóa & giá trị).</p>
+    <p class="content__desc mb-10">Ví dụ: Lưu trữ thông tin người dùng.</p>
+    <pre class="language-javascript"><code class="language-javascript">let user = {
+    name: "Nguyễn Văn A",
+    age: 30
+};
+
+console.log(typeof user); // object</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <b>Quy ước đặt tên</b>: Thường là sử dụng <b>danh từ số ít</b>, mô tả cho thực thể mà nó đại diện.
+    </p>
+    <p class="content__desc mb-10">Ví dụ 1: let user = {name: "Nguyễn Văn A", age: 30};.</p>
+    <p class="content__desc">Ví dụ 2: let product = {id: 1, name: "Điện thoại", price: 500};.</p>
+
+    <div class="separate"></div>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">Trong JavaScript, kiểu dữ liệu <b>BigInt</b> và <b>Symbol</b> là những kiểu <b>ít được sử dụng</b> nhất</p>
+        <p class="content__desc mb-10"><b>so với</b> các <b>kiểu dữ liệu</b> khác như <b>String</b>, <b>Number</b>, <b>Boolean</b>, <b>Object</b>, <b>null</b>, và <b>undefined</b>.</p>
+        <p class="content__desc"><b>Lý do</b> chính cho việc <b>sử dụng ít</b> hơn của <b>BigInt</b> và <b>Symbol</b> có thể được giải thích như sau:</p>
+    </blockquote>
+    <p class="content__desc mt-10 mb-10"><b>BigInt</b>: BigInt được sử dụng chủ yếu khi <b>làm việc</b> với các <b>số rất lớn</b> mà kiểu <b>Number</b> thông thường <b>không thể xử lý chính xác</b> (<b>số lớn hơn 2^53 - 1</b>).</p>
+    <p class="content__desc">Trong thực tế lập trình hàng ngày, tình huống yêu cầu xử lý các số lớn đến mức này khá hiếm gặp.</p>
+
+    <p class="content__desc mt-20 mb-10"><b>Symbol</b>: Symbol được thiết kế để tạo các <b>thuộc tính duy nhất</b> cho các <b>đối tượng</b>, nhưng nhu cầu này <b>không phải</b> là <b>phổ biến</b> trong mọi ứng dụng JavaScript.</p>
+    <p class="content__desc"><b>Symbol</b> thường được sử dụng trong các trường hợp cần <b>đảm bảo tính duy nhất</b> hoặc <b>tránh xung đột tên thuộc tính</b>.</p>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Dạng đặc biệt của Object</h2>
+    <h3 class="content__heading-3 mb-10">Array (Mảng)</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần lưu trữ một danh sách các mục, chẳng hạn như danh sách tên các sản phẩm.</p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">let products = ["iPhone", "Samsung Galaxy", "Google Pixel"];
+
+console.log(typeof products); // object</code></pre>
+    <p class="content__desc mt-10 mb-10">Quy ước đặt tên: Số nhiều, thể hiện rằng biến chứa nhiều mục.</p>
+    <p class="content__desc mb-10">Ví dụ 1: let fruits = ["Apple", "Banana", "Cherry"];.</p>
+    <p class="content__desc">Ví dụ 2: let colors = ["Red", "Pink", "Orange"];.</p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Function (Hàm)</h3>
+    <p class="content__desc mb-10">Sử dụng khi cần thực hiện một tác vụ lặp đi lặp lại, ví dụ như tính toán giá sau thuế.</p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">function calculateTax(price) {
+    const taxRate = 0.1;
+    return price * (1 + taxRate);
+}
+
+console.log(typeof calculateTax); // function</code></pre>
+    <p class="content__desc mt-10 mb-10">Quy ước đặt tên: Thường bắt đầu với một động từ, mô tả hành động của hàm.</p>
+    <p class="content__desc mb-10">Ví dụ 1: function calculateArea(width, height) {...}.</p>
+    <p class="content__desc mb-10">Ví dụ 2: function createLink(url, displayName) {...}.</p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Trong JavaScript còn nhiều dạng Object đặc biệt khác như: Map, Set, v.v. 
+            Chúng ta sẽ cùng tìm hiểu chúng trong các phần nâng cao hơn trong tương lai nhé.
+        </p>
+    </blockquote>
+</div>
