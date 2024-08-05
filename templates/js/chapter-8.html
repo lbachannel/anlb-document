@@ -160,9 +160,20 @@ function trongNha() {
 }
 
 trongNha();</code></pre>
-    <blockquote class="blockquote blockquote--normal mt-10">
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
         <p class="content__desc">Trong JavaScript, các biến khai báo ở <b>phạm vi khác</b> nhau dù đặt <b>trùng tên vẫn hợp lệ</b>, nó sẽ là các biến khác nhau và độc lập trong phạm vi của nó.</p>
     </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">let myVar = "Hello An";
+
+if (true) {
+    let myVar = "Hello world";
+
+    if (true) {
+    let myVar = "Hello Binh An";
+    }
+}
+
+console.log(myVar); // Hello An</code></pre>
 
     <h3 class="content__heading-3 mt-20 mb-10">Hãy sử dụng let và const thay vì dùng var</h3>
     <p class="content__desc mb-10">Sử dụng <b>let</b> và <b>const</b> giúp <b>hạn chế lỗi</b> liên quan đến <b>phạm vi</b>.</p>
