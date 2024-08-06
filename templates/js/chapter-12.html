@@ -3,14 +3,14 @@
     <h3 class="content__heading-3 mb-10">Toán tử AND và OR không chỉ trả về Boolean</h3>
     <blockquote class="blockquote blockquote--normal">
         <p class="content__desc">
-            Thực tế, toán tử && và || sẽ trả về giá trị của một trong các toán hạng, 
-            không nhất thiết phải là giá trị Boolean.
+            Thực tế, toán tử <b>&&</b> và <b>||</b> sẽ <b>trả về giá trị</b> của một trong các <b>toán hạng</b>, 
+            <b>không nhất thiết</b> phải <b>là</b> giá trị <b>Boolean</b>.
         </p>
     </blockquote>
 
     <h4 class="content__heading-4 mt-10 mb-10">Nguyên lý hoạt động của toán tử AND</h4>
-    <p class="content__desc mb-10">Toán tử && trả về giá trị “falsy” đầu tiên.</p>
-    <p class="content__desc mb-10">Nếu không có giá trị “falsy”, trả về giá trị cuối cùng.</p>
+    <p class="content__desc mb-10">Toán tử <b>&&</b> trả về giá trị “falsy” đầu tiên.</p>
+    <p class="content__desc mb-10"><b>Nếu không có giá trị “falsy”</b>, <b>trả về giá trị cuối cùng</b>.</p>
     <p class="content__desc mb-10">Ví dụ:</p>
     <pre class="language-javascript"><code class="language-javascript">// Trả về falsy đầu tiên
 false && true; // false
@@ -23,9 +23,9 @@ false && true; // false
 ["Red", "Blue"] && { name: "John" } && "Hello"; // "Hello"
 true && 1 && "Hello" && ["Red", "Green"]; // ["Red", "Green"]</code></pre>
     <p class="content__desc mt-10 mb-10">
-        Tại sao lại có nguyên lý này?: Toán tử && được dùng để kiểm tra 
-        tất cả điều kiện đều đúng. Vì vậy, chỉ cần gặp điều kiện sai đầu tiên 
-        là có thể kết luận biểu thức là sai.
+        Tại sao lại có nguyên lý này?: <b>Toán tử &&</b> được dùng để kiểm tra 
+        <b>tất cả điều kiện đều đúng</b>. Vì vậy, <b>chỉ cần gặp điều kiện sai đầu tiên</b> 
+        là có thể <b>kết luận</b> biểu thức <b>là sai</b>.
     </p>
     <p class="content__desc mb-10">
         Trả về giá trị “falsy” đầu tiên để phục vụ if kiểm tra và 
@@ -34,8 +34,14 @@ true && 1 && "Hello" && ["Red", "Green"]; // ["Red", "Green"]</code></pre>
 
     <h4 class="content__heading-4 mt-20 mb-10">Nguyên lý hoạt động toán tử OR</h4>
     <p class="content__desc mb-10">
-        Trả về giá trị “truthy” đầu tiên. Nếu không có giá trị “truthy”, 
-        trả về giá trị cuối cùng.
+        Toán tử <b>||</b> trả về giá trị “truthy” đầu tiên.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Nếu không có giá trị “truthy”</b>, 
+        <b>trả về giá trị cuối cùng</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ:
     </p>
     <pre class="language-javascript"><code class="language-javascript">// Trả về truthy đầu tiên
 1 || 0; // 1
@@ -48,11 +54,11 @@ true && 1 && "Hello" && ["Red", "Green"]; // ["Red", "Green"]</code></pre>
 "" || 0 || null; // null
 NaN || -0 || undefined || false; // false</code></pre>
     <p class="content__desc mt-10 mb-10">
-        <b>Tại sao lại có nguyên lý này?</b>: Toán tử || được dùng để kiểm tra ít nhất 
-        có một điều kiện đều đúng.
+        <b>Tại sao lại có nguyên lý này?</b>: <b>Toán tử ||</b> được dùng để <b>kiểm tra ít nhất</b> 
+        có <b>một điều kiện đều đúng</b>.
     </p>
     <p class="content__desc mb-10">
-        Vì vậy, chỉ cần gặp điều kiện đúng đầu tiên là có thể kết luận biểu thức là đúng.
+        Vì vậy, <b>chỉ cần gặp điều kiện đúng đầu tiên</b> là có thể <b>kết luận</b> biểu thức <b>là đúng</b>.
     </p>
     <p class="content__desc">
         Trả về giá trị “truthy” đầu tiên để phục vụ if kiểm tra và tiết kiệm tài nguyên 
@@ -148,4 +154,122 @@ displayName && console.log(displayName); // John</code></pre>
             Việc hiểu rõ cách sử dụng chúng sẽ giúp bạn viết code hiệu quả và dễ đọc hơn.
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Toán tử Nullish Coalescing</h2>
+    <p class="content__desc mb-10">
+        Toán tử <b>Nullish coalescing (??) là toán tử logical</b>
+        <b>trả về toán hạng bên phải</b> của nó <b>khi</b> <b>toán hạng bên trái là null</b> hoặc <b>undefined</b>.
+    </p>
+    <p class="content__desc">Ngược lại trả về toán hạng bên trái của nó.</p>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Toán tử <b>Nullish coalescing (??)</b> được giới thiệu trong <b>ECMAScript 2020 (ES11)</b>
+            cung cấp một cách <b>tiện lợi</b> để <b>xử lý</b> các <b>giá trị null</b> và <b>undefined</b>.</p>
+    </blockquote>
+
+    <p class="content__desc mt-10 mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">let username = null
+let defaultUsername = "Guest";
+let showUsername = userName ?? defaultUsername;
+console.log(showUsername); // Guest</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ví dụ thực tế sử dụng Nullish coalescing</h3>
+    <p class="content__desc mb-10">
+        Tạo một hàm getElement có ba tham số là array, index và defaultValue.
+    </p>
+    <p class="content__desc mb-10">
+        Hàm sẽ trả về giá trị của phần tử tương ứng với index
+    </p>
+    <p class="content__desc mb-10">
+        nếu giá trị là undefined thì trả về giá trị mặc định (defaultValue).
+    </p>
+
+    <blockquote class="blockquote blockquote--warning mb-10">
+        <p class="content__desc">Ví dụ 1: Sử dụng toán tử OR ||. <b>(Có vấn đề)</b></p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">function getElement(array, index, defaultValue) {
+    return array[index] || defaultValue;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">Kết quả trả về sai mong đợi</p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 5, 0];
+
+getElement(numbers, 0, "Empty"); // 1 (đúng)
+getElement(numbers, 1, "Empty"); // 5 (đúng)
+// expected 0 but actual empty
+getElement(numbers, 2, "Empty"); // arr[2] là 0 <=> 0 || default => "Empty" (sai)</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách khắc phục với if-else</b></p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">function getElement(array, index, defaultValue) {
+    if (array[index] !== null && array[index] !== undefined) {
+        return array[index];
+    }
+    return defaultValue;
+}</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách khắc phục với toán tử 3 ngôi</b></p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">function getElement(array, index, defaultValue) {
+    const value = array[index];
+    const hasValue = value !== null && value !== undefined;
+    return hasValue ? array[index] : defaultValue;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Tuy nhiên, cách sử dụng if-else và toán tử 3 ngôi có thể đúng về mặt logic</b>
+    </p>
+    <p class="content__desc mb-10">
+        <b>Nhưng chưa mang lại ưu điểm về tính “ngắn gọn và dễ hiểu”. </b>
+    </p>
+    <p class="content__desc">
+        <b>Sử dụng toán tử Nullish coalescing trong tình huống này là một lựa chọn tốt.</b>
+    </p>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">Cách khắc phục với toán tử Nullish coalescing</b></p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">function getElement(array, index, defaultValue) {
+    // null hoặc undefined thì lấy default
+    return array[index] ?? defaultValue; 
+}</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Khi nào nên sử dụng Nullish coalescing?</h3>
+    <p class="content__desc mb-10">
+        Sử dụng Nullish coalescing khi bạn muốn kiểm tra và xử lý các giá trị không chắc chắn như null hoặc undefined.
+    </p>
+    <p class="content__desc mb-10">
+        Đặc biệt hữu ích trong các tình huống như: lấy giá trị từ mảng, object hoặc kiểm tra giá trị của một biến.
+    </p>
+    <p class="content__desc mb-10">
+        Khi bạn muốn giữ lại các giá trị “falsy” khác như: 0, false, chuỗi rỗng "" v.v, nhưng vẫn muốn xử lý null và undefined.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">So sánh Nullish Coalescing (??) và OR (||):</h3>
+    <p class="content__desc mb-10">
+        <b>Toán tử OR (||)</b> sẽ trả về giá trị đầu tiên nếu nó là “truthy”, 
+        hoặc giá trị thứ hai nếu giá trị đầu tiên là “falsy”.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này có thể dẫn đến việc không mong muốn khi xử lý các giá trị “falsy” khác như 0, false, "", v.v.
+    </p>
+    <p class="content__desc">
+        <b>Nullish coalescing chỉ xét</b> đến <b>null</b> và <b>undefined</b>, toán tử này trở thành lựa chọn tốt hơn khi 
+        bạn <b>không muốn các giá trị “falsy” khác bị ảnh hưởng</b>.
+    </p>
+
+    <h2 class="content__heading-2 mt-20 mb-10">Những lưu ý quan trọng</h2>
+    <blockquote class="blockquote blockquote--warning mb-10">
+        <p class="content__desc">
+            Lỗi cú pháp khi kết hợp với AND (&&) hoặc OR (||): 
+            Cần sử dụng dấu ngoặc để rõ ràng về ưu tiên của các toán tử.
+        </p>
+    </blockquote>
+    <p class="content__desc mb-10">Ví dụ</p>
+    <pre class="language-javascript"><code class="languge-javascript">let result = (value1 ?? value2) && value3;
+// Hoặc
+let result = value1 ?? (value2 && value3);</code></pre>
 </div>
