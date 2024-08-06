@@ -272,4 +272,98 @@ getElement(numbers, 2, "Empty"); // arr[2] là 0 <=> 0 || default => "Empty" (sa
     <pre class="language-javascript"><code class="languge-javascript">let result = (value1 ?? value2) && value3;
 // Hoặc
 let result = value1 ?? (value2 && value3);</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Exercise</h2>
+    <h3 class="content__heading-3 mb-10">Tạo hàm validateAge</h3>
+    <p class="content__desc mb-10">
+        Viết hàm <b>validateAge</b> nhận vào <b>một tham số age</b>, 
+        có thể là số, null, hoặc undefined. Hàm cần kiểm tra:
+    </p>
+    <p class="content__desc mb-10">
+        Nếu age là <b>null</b> hoặc <b>undefined</b>, trả về chuỗi <b>Error: Age is null or undefined</b>.
+    </p>
+    <p class="content__desc mb-10">Nếu age là <b>số hợp lệ</b> và <b>không âm</b>, trả về <b>true</b>.</p>
+    <p class="content__desc mb-10">Trong <b>mọi trường hợp khác</b>, trả về <b>false</b>.</p>
+    <p class="content__desc mb-10">Cách 1</p>
+    <pre class="language-javascript"><code class="language-javascript">function validateAge(age) {
+    return (age !== null && age !== undefined) ? (!isNaN(age) && typeof(age) === "number" && age >= 0) : "Error: Age is null or undefined";
+}
+
+// Sample usage
+console.log(validateAge(25));    // true
+console.log(validateAge(null));  // "Error: Age is null or undefined"
+console.log(validateAge(-5));    // false</code></pre>
+
+    <p class="content__desc mt-20 mb-10">Cách 2</p>
+    <pre class="language-javascript"><code class="language-javascript">function validateAge(age) {
+        const errorMessage = "Error: Age is null or undefined";
+        const validAge = age ?? errorMessage;
+        return validAge === errorMessage ? errorMessage : (typeof validAge === "number" && !isNaN(validAge) && validAge >= 0);
+    }
+    
+    // Sample usage
+    console.log(validateAge(25));    // true
+    console.log(validateAge(null));  // "Error: Age is null or undefined"
+    console.log(validateAge(-5));    // false</code></pre>
+    
+    <p class="content__desc mt-20 mb-10">Cách 3</p>
+    <pre class="language-javascript"><code class="language-javascript">function validateAge(age) {
+    if (age === null || age === undefined) {
+        return "Error: Age is null or undefined";
+    }
+    return !isNaN(age) && typeof age === "number" && age >= 0;
+}
+
+// Sample usage
+console.log(validateAge(25));    // true
+console.log(validateAge(null));  // "Error: Age is null or undefined"
+console.log(validateAge(-5));    // false</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tạo hàm formatName</h3>
+    <p class="content__desc mb-10">
+        Viết <b>hàm formatName</b> nhận vào <b>hai tham số</b>: <b>firstName</b> và <b>lastName</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Hàm sẽ <b>trả về một chuỗi đầy đủ</b>, bao gồm <b>firstName và lastName</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Nếu <b>firstName</b> hoặc <b>lastName</b> là <b>null</b> hoặc <b>undefined</b>, hãy thay thế bằng một chuỗi rỗng.
+    </p>
+    <p class="content__desc mb-10">Cách 1</p>
+    <pre class="language-javascript"><code class="language-javascript">function formatName(firstName, lastName) {
+    return `${firstName ?? ""} ${lastName ?? ""}`
+}
+
+// Sample usage
+console.log(formatName("John", "Doe")); // John Doe
+console.log(formatName(null, "Doe"));   // Doe
+console.log(formatName("John"));        // John
+console.log(formatName());              //</code></pre>
+
+    <p class="content__desc mt-20 mb-10">Cách 2</p>
+    <pre class="language-javascript"><code class="language-javascript">function formatName(firstName, lastName) {
+    const formattedFirstName = firstName ?? "";
+    const formattedLastName = lastName ?? "";
+    return `${formattedFirstName} ${formattedLastName}`;
+}
+
+// Sample usage
+console.log(formatName("John", "Doe")); // John Doe
+console.log(formatName(null, "Doe"));   // Doe
+console.log(formatName("John"));        // John
+console.log(formatName());              //</code></pre>
+
+    <p class="content__desc mt-20 mb-10">Cách 3</p>
+    <pre class="language-javascript"><code class="language-javascript">function formatName(firstName, lastName) {
+    firstName = (firstName !== null && firstName !== undefined) ? firstName : "";
+    lastName = (lastName !== null && lastName !== undefined) ? lastName : "";
+    return `${firstName} ${lastName}`;
+}
+
+// Sample usage
+console.log(formatName("John", "Doe")); // John Doe
+console.log(formatName(null, "Doe"));   // Doe
+console.log(formatName("John"));        // John
+console.log(formatName());              //</code></pre>
 </div>
