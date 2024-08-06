@@ -1,0 +1,151 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Toán tử Logical nâng cao</h2>
+    <h3 class="content__heading-3 mb-10">Toán tử AND và OR không chỉ trả về Boolean</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Thực tế, toán tử && và || sẽ trả về giá trị của một trong các toán hạng, 
+            không nhất thiết phải là giá trị Boolean.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Nguyên lý hoạt động của toán tử AND</h4>
+    <p class="content__desc mb-10">Toán tử && trả về giá trị “falsy” đầu tiên.</p>
+    <p class="content__desc mb-10">Nếu không có giá trị “falsy”, trả về giá trị cuối cùng.</p>
+    <p class="content__desc mb-10">Ví dụ:</p>
+    <pre class="language-javascript"><code class="language-javascript">// Trả về falsy đầu tiên
+false && true; // false
+0 && 1; // 0
+"" && null; // ""
+5 && NaN && 6; // NaN
+
+// Không có falsy, trả về giá trị cuối cùng
+6 && 8; // 8
+["Red", "Blue"] && { name: "John" } && "Hello"; // "Hello"
+true && 1 && "Hello" && ["Red", "Green"]; // ["Red", "Green"]</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Tại sao lại có nguyên lý này?: Toán tử && được dùng để kiểm tra 
+        tất cả điều kiện đều đúng. Vì vậy, chỉ cần gặp điều kiện sai đầu tiên 
+        là có thể kết luận biểu thức là sai.
+    </p>
+    <p class="content__desc mb-10">
+        Trả về giá trị “falsy” đầu tiên để phục vụ if kiểm tra và 
+        tiết kiệm tài nguyên (không cần kiểm tra các điều kiện còn lại).
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Nguyên lý hoạt động toán tử OR</h4>
+    <p class="content__desc mb-10">
+        Trả về giá trị “truthy” đầu tiên. Nếu không có giá trị “truthy”, 
+        trả về giá trị cuối cùng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// Trả về truthy đầu tiên
+1 || 0; // 1
+"Hello" || ""; // "Hello"
+"Hi" || "Hello"; // "Hi"
+10 || "Hello" || true; // 10
+
+// Không có truthy, trả về giá trị cuối cùng
+0 || NaN; // NaN
+"" || 0 || null; // null
+NaN || -0 || undefined || false; // false</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <b>Tại sao lại có nguyên lý này?</b>: Toán tử || được dùng để kiểm tra ít nhất 
+        có một điều kiện đều đúng.
+    </p>
+    <p class="content__desc mb-10">
+        Vì vậy, chỉ cần gặp điều kiện đúng đầu tiên là có thể kết luận biểu thức là đúng.
+    </p>
+    <p class="content__desc">
+        Trả về giá trị “truthy” đầu tiên để phục vụ if kiểm tra và tiết kiệm tài nguyên 
+        (không cần kiểm tra các điều kiện còn lại).
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Đánh giá ngắn gọn” là gì?</h4>
+    <p class="content__desc mb-10">
+        Đánh giá ngắn gọn (Short-Circuit Evaluation) là khi có thể biết kết quả cuối cùng 
+        mà không cần xem xét hết biểu thức
+    </p>
+    <p class="content__desc mb-10">Quá trình kiểm tra sẽ dừng và trả về kết quả.</p>
+    <p class="content__desc mb-10">Giúp tránh làm công việc thừa</p>
+    <p class="content__desc mb-10">Giúp tối ưu hơn vì xử lý trở nên nhanh hơn.</p>
+
+    <p class="content__desc mb-10">
+        <b>Có hai loại “Đánh giá ngắn gọn”:</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Toán tử && (AND): Nếu biểu thức bên trái là “falsy”, 
+        toàn bộ biểu thức sẽ trả về giá trị của biểu thức bên trái 
+        mà không cần đánh giá biểu thức bên phải.
+    </p>
+    <p class="content__desc ti-30">
+        Toán tử || (OR): Nếu biểu thức bên trái là “truthy”, 
+        toàn bộ biểu thức sẽ trả về giá trị của biểu thức bên trái 
+        mà không cần đánh giá biểu thức bên phải.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Cách tận dụng “Đánh giá ngắn gọn”</h4>
+    <p class="content__desc mb-10 ti-30">
+        Toán tử && (AND): Sắp xếp các điều kiện có khả năng trả về “falsy” nhiều hơn lên trước.
+    </p>
+    <p class="content__desc ti-30">
+        Toán tử || (OR): Sắp xếp các điều kiện có khả năng trả về “truthy” nhiều hơn lên trước.
+    </p>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">Điều này giúp tối ưu hóa việc đánh giá biểu thức và cải thiện hiệu suất của chương trình.</p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các ứng dụng khác của toán tử AND và OR</h3>
+    <p class="content__desc mb-10">
+        Dựa vào nguyên lý hoạt động của toán tử && và || nên chúng 
+        có thể được sử dụng trong nhiều trường hợp khác nhau, không chỉ dùng với if-else.
+    </p>
+    <p class="content__desc mb-10">Cách dùng if-else:</p>
+    <pre class="language-javascript"><code class="language-javascript">let greeting = "Xin chào!";
+if (greeting) {
+    alert(greeting); // Xin chào!
+}</code></pre>
+    <p class="content__desc mt-20 mb-10">Cách dùng toán tử AND:</p>
+    <pre class="language-javascript"><code class="language-javascript">let greeting = "Xin chào!";
+greeting && alert(greeting); // Xin chào!</code></pre>
+    <p class="content__desc mb-10">Trong trường hợp này, greeting có giá trị “truthy” ("Xin chào!")</p>
+    <p class="content__desc mb-10">do đó toán tử AND tiếp tục đánh giá và thực thi hàm alert(greeting).</p>
+
+    <p class="content__desc mt-20 mb-10">Cách dùng toán tử OR:</p>
+    <pre class="language-javascript"><code class="language-javascript">let userName = null; // Có thể là null hoặc các chuỗi khác
+let displayName = userName || "Guest";
+
+console.log(displayName); // Guest</code></pre>
+    <p class="content__desc mt-10">
+        Trường hợp này userName là null nên toán tử OR sẽ tiếp tục đánh giá tới giá trị "Guest" 
+        (truthy) và trả về giá trị này.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Lấy một giá trị theo độ ưu tiên</h4>
+    <p class="content__desc mb-10">
+        Đề bài: Cho 3 biến firstName, lastName và email phục vụ cho việc in ra tên người dùng.
+    </p>
+    <p class="content__desc mb-10">
+        Luôn in ra một trong 3 giá trị, ưu tiên theo thứ tự firstName, lastName và email
+    </p>
+    <p class="content__desc mb-10">
+        nếu cả 3 biến không có giá trị thì không in ra.
+    </p>
+    <p class="content__desc mb-10">
+        Áp dụng toán tử OR và AND:
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let firstName = "John";
+let lastName = "Smith";
+let email = "johnsmith@gmail.com";
+let displayName = firstName || lastName || email || "Guest";
+
+displayName && console.log(displayName); // John</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Cả toán tử AND và OR đều rất linh hoạt và có thể được 
+            sử dụng trong nhiều tình huống khác nhau, từ kiểm tra điều kiện đơn giản 
+            đến xây dựng logic phức tạp. 
+            Việc hiểu rõ cách sử dụng chúng sẽ giúp bạn viết code hiệu quả và dễ đọc hơn.
+        </p>
+    </blockquote>
+</div>

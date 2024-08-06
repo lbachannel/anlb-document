@@ -39,6 +39,21 @@
                 filter: brightness(0) saturate(100%) invert(18%) sepia(43%) saturate(5873%) hue-rotate(351deg) brightness(92%) contrast(76%);
             }
         }
+
+        &-4 {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 500;
+            color: #a43434;
+            gap: 5px;
+            &::before {
+                content: url("../../assets/img/icons/heading-4.svg");
+                width: 15px;
+                height: 15px;
+                filter: brightness(0) saturate(100%) invert(23%) sepia(24%) saturate(5022%) hue-rotate(341deg) brightness(97%) contrast(78%);
+            }
+        }
     }
 
     &--active {
