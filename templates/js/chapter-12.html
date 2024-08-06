@@ -297,15 +297,15 @@ console.log(validateAge(-5));    // false</code></pre>
 
     <p class="content__desc mt-20 mb-10">Cách 2</p>
     <pre class="language-javascript"><code class="language-javascript">function validateAge(age) {
-        const errorMessage = "Error: Age is null or undefined";
-        const validAge = age ?? errorMessage;
-        return validAge === errorMessage ? errorMessage : (typeof validAge === "number" && !isNaN(validAge) && validAge >= 0);
-    }
-    
-    // Sample usage
-    console.log(validateAge(25));    // true
-    console.log(validateAge(null));  // "Error: Age is null or undefined"
-    console.log(validateAge(-5));    // false</code></pre>
+    const errorMessage = "Error: Age is null or undefined";
+    const validAge = age ?? errorMessage;
+    return validAge === errorMessage ? errorMessage : (typeof validAge === "number" && !isNaN(validAge) && validAge >= 0);
+}
+
+// Sample usage
+console.log(validateAge(25));    // true
+console.log(validateAge(null));  // "Error: Age is null or undefined"
+console.log(validateAge(-5));    // false</code></pre>
     
     <p class="content__desc mt-20 mb-10">Cách 3</p>
     <pre class="language-javascript"><code class="language-javascript">function validateAge(age) {
