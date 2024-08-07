@@ -1,0 +1,233 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Vòng lặp (Loops)</h2>
+    <h3 class="content__heading-3 mb-10">Vòng lặp là gì?</h3>
+    <p class="content__desc">
+        Vòng lặp trong lập trình là một cấu trúc cho phép chúng ta thực thi một khối mã lặp đi lặp lại một 
+        số lần nhất định hoặc cho đến khi một điều kiện nhất định được thỏa mãn.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các loại vòng lặp trong JavaScript</h3>
+    <p class="content__desc">
+        Có nhiều loại vòng lặp khác nhau, mỗi loại sẽ có tình huống cụ thể phù hợp để sử dụng khác nhau.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Vòng lặp For</h4>
+    <p class="content__desc mb-10">
+        <b>Cú pháp</b>: Cấu trúc cơ bản của vòng lặp For bao <b>gồm ba phần</b>: <b>khởi tạo</b>, <b>điều kiện lặp</b>, và <b>cập nhật</b>. 
+        Mỗi phần được phân tách bằng dấu chấm phẩy (;).
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">for (let i = 1; i <= 100; i++) {
+    console.log(i);
+}</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Vòng lặp While</h4>
+    <p class="content__desc mb-10">
+        Vòng lặp while thực hiện khối lệnh dựa trên một điều kiện và 
+        tiếp tục lặp cho đến khi điều kiện đó không còn đúng.
+    </p>
+    <p class="content__desc mb-10">
+        Thích hợp cho các tình huống khi số lần lặp không biết trước.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// Ví dụ 1: In số từ 1 đến 100
+let i = 1;
+
+while (i <= 100) {
+    console.log(i);
+    i++;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">Ví dụ: Tìm ước chung lớn nhất (cách 1)</p>
+    <pre class="language-javascript"><code class="language-javascript">let a = 60;
+let b = 48;
+
+// Đảm bảo rằng a luôn lớn hơn b
+if (b > a) {
+    let temp = a; 
+    a = b;       
+    b = temp;
+}
+
+// Thực hiện vòng lặp để tìm UCLN sử dụng thuật toán Euclid
+while (b != 0) {
+    let temp = b; 
+    b = a % b;     
+    a = temp;   
+    // Lặp lại quy trình này cho đến khi b bằng 0
+}
+
+// Khi b = 0, a chính là UCLN của hai số ban đầu
+console.log(`Ước chung lớn nhất là ${a}`); // Ước chung lớn nhất là 12</code></pre>
+
+    <p class="content__desc mt-10 mb-10">Ví dụ: Tìm ước chung lớn nhất (cách 2)</p>
+    <pre class="language-javascript"><code class="language-javascript">let a = 60;
+let b = 48;
+
+// Lặp lại cho đến khi a và b bằng nhau
+while (a !== b) {
+    if (a > b) {
+        a -= b; // a = a - b
+    } else {
+        b -= a; // b = b - a
+    }
+    // Quá trình này lặp lại cho đến khi a và b bằng nhau,
+    // Lúc này, a hoặc b chính là ước chung lớn nhất của hai số ban đầu.
+}
+
+// In ra ước chung lớn nhất
+console.log(`Ước chung lớn nhất là ${a}`); // Ước chung lớn nhất là 12</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Vòng lặp Do-While</h4>
+    <p class="content__desc mb-10">
+        Vòng lặp Do-While là một cấu trúc lặp thực hiện hành động trước rồi mới kiểm tra điều kiện lặp sau.
+    </p>
+    <p class="content__desc">
+        Điều này đảm bảo rằng thân vòng lặp sẽ được thực thi ít nhất một lần, 
+        ngay cả khi điều kiện ban đầu không được thỏa mãn.
+    </p>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Sự lựa chọn giữa While và For thường dựa trên yếu tố cá nhân và tình huống cụ thể.
+        </p>
+        <p class="content__desc">
+            For thường được ưa chuộng khi số lần lặp đã biết trước hoặc dễ xác định, còn While thì 
+            phù hợp với các tình huống mà điều kiện dừng phức tạp hơn hoặc không rõ ràng ngay từ đầu.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Vòng lặp lồng nhau</h3>
+    <p class="content__desc mb-10">
+        Khái niệm vòng lặp lồng nhau: Vòng lặp lồng nhau xảy ra khi một vòng lặp 
+        (for, while, hoặc do...while) được đặt bên trong vòng lặp khác.
+    </p>
+    <p class="content__desc">
+        Điều này tạo điều kiện cho việc xử lý hiệu quả các 
+        cấu trúc dữ liệu như mảng đa chiều hoặc thực hiện các tác vụ kết hợp phức tạp.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Ví dụ 1: Tính tổng mảng đa chiều</h4>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+let totalSum = 0;
+
+for (let i = 0; i < numbers.length; i++) {
+    for (let j = 0; j < numbers[i].length; j++) {
+        totalSum += numbers[i][j];
+    }
+}
+
+console.log(totalSum);</code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Lệnh Break và Continue</h2>
+    <h3 class="content__heading-3 mb-10">Lệnh Break</h3>
+    <p class="content__desc mb-10">
+        Lệnh break được sử dụng để thoát ra khỏi vòng lặp và 
+        dừng việc thực thi các lệnh tiếp theo trong vòng lặp đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        break;
+    }
+    console.log(i);
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Lưu ý: Lệnh break chỉ dừng vòng lặp mà nó thuộc về, không ảnh hưởng đến 
+            các vòng lặp bên ngoài (vòng lặp lồng nhau) hoặc phía trước/sau nó.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Kỹ thuật label trong JS</h4>
+    <p class="content__desc mb-10">
+        Kỹ thuật đặt label trong JavaScript và goto trong C có sự tương đồng 
+        về việc điều khiển dòng thực thi, nhưng chúng không hoàn toàn giống nhau. 
+    </p>
+    <p class="content__desc mb-10">
+        Label trong JavaScript an toàn và hạn chế hơn, trong khi 
+        goto trong C linh hoạt hơn nhưng dễ gây ra lỗi và khó bảo trì.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">outerLoop:
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            break outerLoop;
+        }
+        console.log(`i = ${i}, j = ${j}`);
+    }
+}</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Lệnh Continue</h3>
+    <p class="content__desc mb-10">
+        Lệnh continue được sử dụng để bỏ qua phần còn lại của code 
+        trong vòng lặp cho lần lặp hiện tại, tiếp tục với lần lặp tiếp theo.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">for (let i = 0; i < 10; i++) {
+    if (i === 5) {
+        continue;
+    }
+    console.log(i);
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Lưu ý: Lệnh continue chỉ ảnh hưởng đến lần lặp hiện tại, 
+            giúp bỏ qua một số trường hợp không mong muốn mà không thoát khỏi vòng lặp.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h3 class="content__heading-3 mb-20">Vòng lặp for-in và for-of</h3>
+    <h4 class="content__heading-4 mb-10">Vòng lặp for-in</h4>
+    <p class="content__desc mb-10">
+        Vòng lặp for-in duyệt qua các thuộc tính của một object. 
+        Thích hợp khi bạn cần truy cập vào tất cả các keys (tên thuộc tính) của một object.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = { name: "Nguyen Van A", age: 30 };
+// Duyệt qua keys và giá trị
+for (const key in person) {
+    console.log(`${key}: ${person[key]}`);
+}</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Vòng lặp for-of</h4>
+    <p class="content__desc mb-10">
+        Vòng lặp for-of duyệt qua các giá trị của tất cả các phần tử trong một mảng và chuỗi.
+    </p>
+    <p class="content__desc mb-10">
+        Là sự lựa chọn tốt khi bạn cần xử lý từng giá trị của một 
+        cấu trúc dữ liệu có thể duyệt được như mảng và chuỗi.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const colors = ["red", "green", "blue"];
+
+for (const color of colors) {
+    console.log(color);
+}</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Sự khác biệt chính giữa for-in, for-of và for</h4>
+    <p class="content__desc mb-10">
+        <b>Mục đích sử dụng</b>: for phù hợp cho các trường hợp cần điều khiển chi tiết vòng lặp;
+    </p>
+    <p class="content__desc mb-10">
+        for-in để duyệt qua các thuộc tính của object;
+    </p>
+    <p class="content__desc mb-10">
+        for-of để duyệt qua các giá trị của cấu trúc dữ liệu có thể duyệt được như mảng và chuỗi.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Kiểu dữ liệu đích</b>: for và for-of thường được sử dụng với mảng và chuỗi;
+    </p>
+    <p class="content__desc mb-10">
+        for-in được thiết kế để làm việc với object.
+    </p>
+    <p class="content__desc">
+        <b>Cách sử dụng</b>: for cần khai báo biến đếm, điều kiện lặp, và biểu thức cập nhật; for-in và for-of 
+        đều dựa trên cú pháp giản lược hơn, tập trung vào các thuộc tính hoặc giá trị.
+    </p>
+</div>
