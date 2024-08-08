@@ -1,0 +1,496 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Object literals là gì?</h2>
+    <p class="content__desc mb-10">
+        Object literals trong JavaScript là một cách để tạo ra một object.
+    </p>
+    <p class="content__desc mb-10">
+        Object này chứa một tập hợp các cặp key-value
+    </p>
+    <p class="content__desc mb-10">
+        nơi key là một chuỗi (hoặc Symbol) và value có thể là bất kỳ giá trị nào trong JavaScript.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">// Lưu trữ thông tin người dùng
+const user = {
+    username: "user123",
+    email: "user@example.com",
+    signUpDate: "2021-01-01",
+};
+
+// Định nghĩa cấu hình cho một ứng dụng
+const config = {
+    apiUrl: "https://api.example.com",
+    apiKey: "abc123",
+    timeout: 5000,
+};</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Có một số cách tạo object khác như: hàm constructor, Object.create(); chúng ta sẽ học nó ở các bài sau bạn nhé.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Làm việc với Object (cơ bản)</h2>
+    <h3 class="content__heading-3 mb-10">Thêm một cặp key-value mới</h3>
+    <p class="content__desc mb-10">
+        <b>Thêm</b> mới các cặp <b>key-value</b> để mở rộng thông tin hoặc cấu hình của object
+    </p>
+    <p class="content__desc mb-10">
+        <b>Có hai phương pháp chính</b> để làm điều này:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Sử dụng dấu chấm (.)</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Sử dụng dấu ngoặc vuông ([]).</b>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">const car = {
+    make: "Toyota",
+    model: "Camry",
+};
+
+// Thêm cặp key-value mới
+
+car.year = 2021; // Sử dụng dấu chấm
+
+car['color'] = 'Gray'; // Sử dụng dấu ngoặc vuông
+
+console.log(`Năm sản xuất ${car.year}`);
+console.log(`Màu sắc: ${car['color']}`);</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            object car được mở rộng thêm các thuộc tính mới mà không làm mất giá trị cũ của nó.
+        </p>
+        <p class="content__desc">
+            Bạn có thể chọn phương pháp phù hợp với nhu cầu cụ thể của mình để làm cho code dễ đọc và dễ bảo trì.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Xóa một cặp key-value</h3>
+    <p class="content__desc mb-10">
+        Việc quản lý dữ liệu trong object không chỉ dừng lại ở việc thêm và cập nhật.
+    </p>
+    <p class="content__desc mb-10">
+        Đôi khi, bạn cũng cần phải xóa bỏ các thuộc tính không cần thiết.
+    </p>
+    <p class="content__desc mb-10">
+        Để xóa một cặp key-value khỏi một object, bạn sử dụng từ khóa delete.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">const employee = {
+    name: "Bob",
+    position: "Manager",
+};
+
+// Xóa key "position" khỏi object
+delete employee.position;</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Việc xóa thuộc tính khỏi object giúp bạn quản lý dữ liệu một cách linh hoạt hơn, 
+            cho phép loại bỏ các thông tin không cần thiết, từ đó giữ cho dữ liệu của bạn được gọn gàng.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Sử dụng Object destructuring</h2>
+    <p class="content__desc mb-10">
+        Object destructuring là một kỹ thuật trong JavaScript giúp bạn “phân rã” object
+    </p>
+    <p class="content__desc mb-10">
+        cho phép truy cập nhanh chóng và trực tiếp vào một hoặc nhiều thuộc tính của object 
+        mà không cần phải truy cập từng thuộc tính một.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này làm cho code của bạn trở nên sạch sẽ và dễ đọc hơn
+    </p>
+    <p class="content__desc mb-10">
+        đặc biệt khi bạn cần sử dụng nhiều thuộc tính từ cùng một object.
+    </p>
+    <pre class="language-javsscript"><code class="language-javascript">const book = {
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+};
+
+const { title, author } = book;
+
+console.log(`Tiêu đề sách: ${title}`);
+console.log(`Tác giả: ${author}`);</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Sử dụng object destructuring giúp làm giảm số lượng code 
+            khi truy cập các thuộc tính của object, 
+            từ đó code trở nên rõ ràng và dễ đọc hơn.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Duyệt qua các cặp key-value</h3>
+    <p>
+        Sử dụng vòng lặp for...in, một cấu trúc lặp cung cấp một cách 
+        dễ dàng để duyệt qua tất cả các keys của một object.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = {
+    name: "John",
+    age: 30,
+    isEmployed: true,
+};
+
+// Duyệt qua object và in ra mỗi cặp key-value
+for (const key in person) {
+    console.log(`${key}: ${person[key]}`);
+}</code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Tại sao vẫn sửa được Object tạo bởi const?</h2>
+    <p class="content__desc mb-10">
+        Trong JavaScript, từ khóa <b>const</b> được sử dụng để khai báo các biến mà <b>giá trị</b> 
+        của chúng <b>không thể thay đổi thông qua việc gán lại</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Tuy nhiên, <b>điều này không có nghĩa là giá trị</b> mà <b>const tham chiếu đến không thể được thay đổi</b>. 
+        <b>Điều này đặc biệt đúng với các object và array</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Khi bạn sử dụng const để khai báo một object, bạn không thể gán lại toàn bộ object đó với một giá trị khác, 
+        nhưng bạn <b>có thể thay đổi</b> các <b>thuộc tính</b> bên trong <b>object</b> đó.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này xảy ra bởi vì const chỉ đảm bảo tham chiếu (địa chỉ bộ nhớ) tới object không thay đổi
+    </p>
+    <p class="content__desc mb-10">
+        nhưng không ngăn cản việc thay đổi nội dung mà tham chiếu đó trỏ đến.
+    </p>
+    <pre class="language-javascript"><code class="languge-javascript">const person = { name: "John" };
+
+person.name = "Jane"; // Hợp lệ
+
+console.log(person);
+
+// Uncaught TypeError: Assignment to constant variable.
+person = { name: "Mike" }; // Lỗi</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Thuộc tính và phương thức</h2>
+    <h3 class="content__heading-3 mb-10">Thuộc tính (Properties)</h3>
+    <p class="content__desc mb-10">
+        Thuộc tính là các giá trị được lưu trữ trong object
+    </p>
+    <p class="content__desc mb-10">
+        Mỗi thuộc tính có một tên (key) và một giá trị (value) tương ứng.
+    </p>
+    <p class="content__desc mb-10">
+        Giá trị của thuộc tính có thể là bất kỳ kiểu dữ liệu nào 
+        trong JavaScript, kể cả là một object khác.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const dog = {
+    // Thuộc tính
+    name: "Scooby Doo",
+    age: 5,
+};</code></pre>
+    <h3 class="content__heading-3 mt-10 mb-10">Phương thức (Methods)</h3>
+
+    <p class="content__desc mb-10">
+        Phương thức là các hàm được định nghĩa bên trong object.
+    </p>
+    <p class="content__desc mb-10">
+        Các phương thức này có thể thực thi các hành động 
+        trên dữ liệu được lưu trữ trong object 
+        hoặc thực hiện các chức năng khác liên quan đến object đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const dog = {
+    // Thuộc tính
+    name: 'Scooby Doo',
+    age: 5,
+
+    // Phương thức
+    speak: function() {
+        console.log('Go go...');
+    }
+};
+
+// Gọi phương thức
+dog.speak(); // Go go...</code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Từ khóa this là gì?</h2>
+    <p class="content__desc mb-10">
+        <b>this</b> là một từ khóa trong Javascript, <b>THAM CHIẾU ĐẾN ĐỐI TƯỢNG MÀ NÓ THUỘC VỀ</b>.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = {
+    firstName: 'John',
+    lastName: 'Smith',
+    getFullName: function() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+};
+
+console.log(person.getFullName()); // John Smith</code></pre>
+    <h3 class="content__heading-3 mt-10 mb-10">Tại sao cần sử dụng this?</h3>
+    <p class="content__desc mb-10">
+        this cung cấp một phương thức linh hoạt 
+        để truy cập vào đối tượng mà function đang thao tác.
+    </p>
+    <p class="content__desc">
+        Điều này không chỉ tăng cường khả năng tái sử dụng và bảo trì code 
+        mà còn giúp làm cho chương trình của chúng ta dễ hiểu và quản lý hơn.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = {
+    name: 'Alice',
+    greet: function() {
+        // Nên viết là
+        console.log('Hello, ' + this.name);
+
+        // Thay vì
+        //console.log('Hello, ' + person.name);
+    }
+};
+
+person.greet(); // Hello, Alice</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Destructuring (Phân rã)</h2>
+    <p class="content__desc mb-10">
+        Cho phép bạn trích xuất nhiều thuộc tính từ một object vào các biến riêng biệt một cách ngắn gọn.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = {
+    name: 'John',
+    age: 30
+};
+const { name, age } = person;
+
+console.log(name); // John
+console.log(age); // 30</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Đối với cấu trúc Object phức tạp hơn:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const course = {
+    title: 'JavaScript Pro',
+    info: {
+        url: 'https://fullstack.edu.vn',
+        description: 'JavaScript Basic, Advanced.',
+        keywords: 'js basic, js advanced'
+    }
+};
+
+const {
+    title,
+    info: {
+        keywords: topics
+    }
+} = course;
+
+console.log(title); // JavaScript Pro
+console.log(topics); // js basic, js advanced</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Enhanced object literals</h3>
+    <p class="content__desc mb-10">
+        Enhanced object literals cung cấp một cách viết ngắn gọn và mạnh mẽ hơn cho object literals.
+    </p>
+    <p class="content__desc">
+        Tính năng này bao gồm một số cải tiến để giúp việc khai báo 
+        và làm việc với object trở nên dễ dàng và trực quan hơn.
+    </p>
+    <h4 class="content__heading-4 mt-10 mb-10">Property shorthand (Viết tắt thuộc tính)</h4>
+    <pre class="language-javascript"><code class="language-javascript">const name = "John Doe";
+const age = 30;
+
+const person = { name, age };
+
+console.log(person); // {name: "John Doe", age: 30}</code></pre>
+    <h4 class="content__heading-4 mt-10 mb-10">Method shorthand (Viết tắt phương thức)</h4>
+    <pre class="language-javascript"><code class="language-javascript">const dog = {
+    name: "Scooby Doo",
+    speak() {
+        console.log('Go go...');
+    }
+};
+
+dog.speak(); // Go go...</code></pre>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Computed property names (Tên thuộc tính động)</h4>
+    <p class="content__desc mb-10">
+        Cho phép bạn sử dụng biểu thức trong ngoặc vuông [] để đặt tên cho các thuộc tính của object.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const property = 'lastName';
+const person = {
+    firstName: 'John',
+    [property]: 'Smith'
+};
+
+console.log(person.lastName); // Smith</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Các tính năng trên giúp giảm đáng kể lượng code 
+            cần viết khi làm việc với Object literals.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Phương thức của Object #1</h2>
+    <h3 class="content__heading-3 mb-10">Object.keys(obj)</h3>
+    <p class="content__desc mb-10">
+        Phương thức Object.keys <b>trả về một mảng</b> chứa 
+        tất cả các <b>keys</b> (tức là tên của các <b>thuộc tính</b>) từ một <b>đối tượng</b>.
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            Điều này rất hữu ích khi bạn cần duyệt qua tất cả các thuộc tính của một đối tượng, 
+            hoặc khi bạn muốn kiểm tra đối tượng có những thuộc tính nào.
+        </p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">const obj = { a: 1, b: 2, c: 3 };
+
+// Sử dụng Object.keys để lấy ra tất cả keys của đối tượng
+console.log(Object.keys(obj));</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Object.values(obj)</h3>
+    <p class="content__desc mb-10">
+        Phương thức Object.values trả về một mảng chứa 
+        tất cả các giá trị của các thuộc tính từ một đối tượng.
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            Điều này giúp bạn dễ dàng truy cập và xử lý các giá trị của 
+            đối tượng mà không cần quan tâm đến các keys của chúng.
+        </p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">const obj = { a: 1, b: 2, c: 3 };
+
+// Sử dụng Object.values để lấy ra tất cả values của đối tượng
+console.log(Object.values(obj)); // [1, 2, 3]</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Object.entries(obj)</h3>
+    <p class="content__desc mb-10">
+        Phương thức Object.entries trả về một mảng chứa các cặp 
+        [key, value] cho mỗi thuộc tính trong đối tượng.
+    </p>
+    <p class="content__desc mb-10">
+        Mỗi cặp [key, value] là một mảng gồm hai phần tử, với phần tử đầu tiên là 
+        tên của thuộc tính (key) và phần tử thứ hai là giá trị tương ứng của thuộc tính đó (value). 
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const obj = { a: 1, b: 2, c: 3 };
+
+// Sử dụng Object.entries để lấy ra các cặp [key, value]
+console.log(Object.entries(obj)); // [["a", 1], ["b", 2], ["c", 3]]</code></pre>
+
+    <h2 class="content__heading-2 mt-20 mb-20">Phương thức của Object #2</h2>
+    <h3 class="content__heading-3 mb-10">Object.assign(target, …sources)</h3>
+    <p class="content__desc mb-10">
+        Phương thức Object.assign cho phép bạn sao chép các thuộc tính từ một hoặc nhiều đối tượng nguồn 
+        (source objects) vào một đối tượng đích (target object).
+    </p>
+
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            Nó rất hữu ích trong các tình huống bạn muốn 
+            kết hợp các thuộc tính từ nhiều đối tượng vào một đối tượng duy nhất, 
+            hoặc khi bạn cần tạo một bản sao của đối tượng với một số thay đổi nhỏ.
+        </p>
+    </blockquote>
+    <pre class="language-script"><code class="language-javascript">// Định nghĩa đối tượng đích và đối tượng nguồn
+const target = { a: 1, b: 2 };
+const source = { b: 4, c: 5 };
+
+// Sử dụng Object.assign để sao chép thuộc tính từ source sang target
+const returnedTarget = Object.assign(target, source);
+
+// Hiển thị kết quả
+console.log(target); // { a: 1, b: 4, c: 5 }
+console.log(returnedTarget); // { a: 1, b: 4, c: 5 }
+</code></pre>
+    <h3 class="content__heading-3 mt-10 mb-10">Object.freeze(obj)</h3>
+    <p class="content__desc mb-10">
+        Sử dụng phương thức Object.freeze để “đóng băng” một đối tượng
+    </p>
+    <p class="content__desc mb-10">
+        Làm cho tất cả các thuộc tính của đối tượng đó trở nên không thể thay đổi
+    </p>
+    <p class="content__desc mb-10">
+        Một khi đối tượng đã bị đóng băng, bạn sẽ không thể:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Thêm thuộc tính mới vào đối tượng
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Sửa đổi giá trị của các thuộc tính hiện có
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Xóa các thuộc tính từ đối tượng
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">const frozenObj = Object.freeze({ a: 1 });
+
+frozenObj.a = 2; // Cố gắng thay đổi giá trị của 'a' không có hiệu lực
+frozenObj.b = 3; // Cố gắng thêm thuộc tính mới 'b' không thành công
+
+console.log(frozenObj.a); // 1
+console.log(frozenObj.b); // undefined</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Bảo vệ tính toàn vẹn của dữ liệu trong một đối tượng, ngăn chặn sự thay đổi không mong muốn.
+        </p>
+        <p class="content__desc">
+            Tạo các “hằng số đối tượng” trong chương trình, nơi bạn không muốn bất kỳ thuộc tính nào của đối tượng bị thay đổi sau khi nó được tạo.
+        </p>
+    </blockquote>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc mb-10">
+            Lưu ý: Mặc dù Object.freeze ngăn chặn sự thay đổi của đối tượng 
+            ở cấp độ ngoài cùng, nó không áp dụng cho các đối tượng con.
+        </p>
+        <p class="content__desc">
+            Điều này có nghĩa là nếu một thuộc tính của đối tượng “đóng băng” là một đối tượng khác, bạn vẫn có thể thay đổi thuộc tính của đối tượng con đó.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Object.seal(obj)</h3>
+    <p class="content__desc mb-10">
+        Sử dụng Object.seal để ngăn chặn việc thêm hoặc xóa các thuộc tính từ một đối tượng
+    </p>
+    <p class="content__desc mb-10">
+        Trong khi vẫn cho phép sửa đổi giá trị của các thuộc tính hiện tại.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này hữu ích khi bạn muốn cố định cấu trúc của một đối tượng nhưng không 
+        muốn hạn chế khả năng cập nhật giá trị của các thuộc tính.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const sealedObj = Object.seal({ a: 1 });
+
+sealedObj.a = 2; // Thay đổi giá trị của thuộc tính 'a' thành công
+sealedObj.b = 3; // Cố gắng thêm thuộc tính mới 'b' không thành công
+
+console.log(sealedObj.a); // 2
+console.log(sealedObj.b); // undefined</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Object.seal thường được sử dụng khi bạn muốn cố định 
+            cấu trúc của đối tượng để ngăn chặn thêm hoặc xóa thuộc tính, 
+            nhưng vẫn muốn cho phép thay đổi giá trị của các thuộc tính hiện có.
+        </p>
+        <p class="content__desc">
+            Điều này giúp đảm bảo tính toàn vẹn của đối tượng trong 
+            quá trình thực thi chương trình, ngăn chặn các thay đổi 
+            không mong muốn đến cấu trúc đối tượng mà vẫn giữ được sự linh hoạt.
+        </p>
+    </blockquote>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc mb-10">
+            Lưu ý: Giống như Object.freeze, Object.seal cũng chỉ áp dụng cho cấp độ ngoài cùng của đối tượng.
+        </p>
+        <p class="content__desc">
+            Những đối tượng con sẽ không bị ảnh hưởng bởi 
+            Object.seal và có thể được thêm hoặc xóa thuộc tính bình thường.
+        </p>
+    </blockquote>
+</div>

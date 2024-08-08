@@ -1,0 +1,30 @@
+@use "../abstracts";
+.wrap-img {
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include abstracts.screen(xxl) {
+        width: 55%;
+    }
+
+    @include abstracts.screen(xl) {
+        width: 70%;
+    }
+
+    @include abstracts.screen(lg) {
+        width: 85%;
+    }
+
+    @include abstracts.screen(md) {
+        width: 90%;
+    }
+
+    @include abstracts.screen(sm) {
+        width: 100%;
+    }
+
+    &__image {
+        width: 100%;
+    }
+}
