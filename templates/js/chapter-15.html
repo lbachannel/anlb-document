@@ -1,10 +1,6 @@
 <div class="content-wrap">
     <h2 class="content__heading-2 mb-10">Primitive và Reference types</h2>
     <h3 class="content__heading-3 mb-10">Primitive types</h3>
-    <figure class="wrap-img">
-        <img class="wrap-img__image" src="./assets/img/chapter-15/1.png" alt="">
-    </figure>
-    <h4 class="content__heading-4 mb-10">Primitive types là gì?</h4>
     <p class="content__desc mb-10">
         Trong JavaScript, các kiểu dữ liệu nguyên thủy 
         (primitive types) bao gồm: string, number, bigint, boolean, symbol, null và undefined.
@@ -14,16 +10,41 @@
         chỉ chứa một giá trị đơn giản và không phải là một đối tượng.
     </p>
 
-    <h4 class="content__heading-4 mt-20 mb-10">Cách Primitive types được lưu trữ</h4>
+    <h3 class="content__heading-3 mt-20 mb-10">Cách Primitive types được lưu trữ</h3>
     <p class="content__desc mb-10">
-        Các giá trị nguyên thủy được lưu trực tiếp tại vị trí bộ nhớ mà biến chỉ đến
+        Các giá trị nguyên thủy được lưu trực tiếp tại vị trí bộ nhớ mà biến chỉ đến - <b>VÙNG NHỚ STACK</b>
     </p>
     <p class="content__desc mb-10">
         Không giống như reference types (chỉ lưu địa chỉ tham chiếu đến nơi chứa dữ liệu thực tế).
     </p>
     <pre class="language-javascript"><code class="language-javascript">let userName = "Bob";
 let userAge = 25;</code></pre>
-    <figure class="wrap-img mt-20">
-        <img class="wrap-img__image" src="./assets/img/chapter-15/2.png" alt="">
-    </figure>
+
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ưu điểm khi sử dụng Primitive types?</h3>
+    <p class="content__desc mb-10">
+        Hiệu suất cao hơn: Vì giá trị được lưu trực tiếp trong 
+        vị trí bộ nhớ của biến, việc truy cập và xử lý dữ liệu nhanh chóng.
+    </p>
+    <p class="content__desc mb-10">
+        So sánh giá trị dễ dàng: Khi so sánh 2 giá trị nguyên thủy, 
+        JavaScript sẽ so sánh giá trị thực tế của chúng, đảm bảo tính chính xác.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Primitive types là bất biến</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, các giá trị nguyên thủy là <b>bất biến (immutable)</b>. 
+    </p>
+    <p class="content__desc mb-10">
+        <b>Điều này</b> có <b>nghĩa là</b> một <b>khi</b> một <b>giá trị nguyên thủy được tạo</b>, <b>giá trị đó không thể thay đổi</b>.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let str = "hello";
+str[0] = "ABC";
+
+console.log(str); // hello</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Reference types</h3>
+    <p class="content__desc mb-10">
+        <b>Kiểu tham chiếu</b> (<b>Reference types</b>) trong JavaScript bao gồm các kiểu dữ liệu như <b>object</b>, <b>array</b>, <b>function</b>
+    </p>
 </div>
