@@ -45,6 +45,84 @@ console.log(str); // hello</code></pre>
 
     <h3 class="content__heading-3 mt-20 mb-10">Reference types</h3>
     <p class="content__desc mb-10">
-        <b>Kiểu tham chiếu</b> (<b>Reference types</b>) trong JavaScript bao gồm các kiểu dữ liệu như <b>object</b>, <b>array</b>, <b>function</b>
+        <b>Kiểu tham chiếu</b> (<b>Reference types</b>) trong JavaScript bao gồm các kiểu dữ liệu như <b>object</b>, <b>array</b>, <b>function</b>, và các đối tượng khác.
     </p>
+    <p class="content__desc">
+        Khác với kiểu dữ liệu nguyên thủy, <b>kiểu tham chiếu lưu</b> trữ <b>địa chỉ</b> (<b>tham chiếu</b>) của giá trị <b>trong bộ nhớ (vùng STACK)</b>, <b>thay vì giá trị thực</b> tế.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tại sao cần sử dụng Reference types?</h3>
+    <p class="content__desc mb-10">
+        <b>Lưu trữ và quản lý cấu trúc dữ liệu phức tạp</b>: Cho phép tạo ra các cấu trúc dữ liệu như 
+        <b>đối tượng</b> và <b>mảng</b> để lưu trữ và quản lý thông tin một cách có tổ chức.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Thao tác linh hoạt</b>: Cung cấp khả năng <b>thao tác dữ liệu thông qua</b> các <b>phương thức</b> và <b>thuộc tính</b>, <b>hỗ trợ lập trình hướng đối tượng</b>.
+    </p>
+
+    <div class="separate"></div>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Biến tham chiếu, con trỏ, pointer, biến object - <b>VÙNG STACK (lưu tọa độ)</b>
+        </p>
+
+        <p class="content__desc">
+            Thuộc tính và giá trị - <b>VÙNG HEAP (lưu giá trị thực)</b>
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Các lỗi sai thường gặp</h2>
+    <h3 class="content__heading-3 mb-10">Không hiểu rõ về tính chất tham chiếu</h3>
+    <pre class="language-javascript"><code class="language-javascript">let original = { name: "John" };
+let copy = original;
+
+copy.name = "Jane"; // đây là giá trị thực tại vùng nhớ heap đã bị thay đổi vì được trỏ/tham chiếu cùng 1 tọa độ
+
+console.log(original.name); // Jane
+console.log(copy.name); // Jane</code></pre>
+    
+    <p class="content__desc mt-10">
+        <b>Cách giải quyết</b>: <b>Sử dụng Object.assign()</b> để tạo bản sao mới.
+    </p>
+    <p class="content__desc mt-10">
+        Sẽ tạo vùng tọa độ mới
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let original = { name: "John" };
+let copy = Object.assign({}, original);
+
+copy.name = "Jane";
+
+console.log(original.name); // John
+console.log(copy.name); // Jane</code></pre>
+    
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Lưu ý cách này chỉ là <b>sao chép nông (shallow copy)</b>. 
+            <b>Nếu có object con bên trong</b> thì nó chỉ sao chép tham chiếu, chứ không tạo ra object mới cho object con đó.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Cách giải quyết khi cần sao chép sâu (deep copy)</b> là sử dụng hàm <b>structuredClone()</b> có sẵn trong JavaScript.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let person = {
+    name: "John",
+    info: {
+        id: 1234
+    }
+};
+let personCopy = structuredClone(person);
+
+console.log(person.info === personCopy.info); // false</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Hàm <b>structuredClone()</b> sẽ nhận vào một <b>object</b> và trả về một <b>object</b> mới - là sao chép sâu (deep copy) của object ban đầu.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
 </div>
