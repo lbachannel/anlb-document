@@ -1,0 +1,193 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Thẻ a</h2>
+    <p class="content__desc mb-10">
+        Thẻ &lt;a&gt; (anchor - điểm neo, neo một liên kết) được dùng để 
+        tạo ra một liên kết cho các loại nội dung như văn bản, hình ảnh, v.v.
+    </p>
+    <p class="content__desc">
+        Thuộc tính href (hypertext reference) 
+        trong thẻ &lt;a&gt; được dùng để khai báo URL mà trang web sẽ được chuyển đến.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Ví dụ dùng thẻ a liên kết tới Google</h3>
+    <p class="content__desc mb-10">
+        Có thể bạn chưa biết, chỉ cần thêm chuỗi truy vấn 
+        <b>?q=keywords</b> lên URL của Google là có thể <b>điền sẵn</b> từ khóa <b>cho ô tìm kiếm</b>.
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;https://google.com/?q=hoc%20html%20css&quot;&gt;Tới Google&lt;/a&gt;</code></pre>
+    <p class="content__desc mt-10">
+        <b>Kí tự %20 mã hóa của dấu cách trên URL</b>, bạn <b>có thể thay thế bằng kí tự +</b>. 
+        Nếu thay thế %20 thành dấu cách, trình duyệt sẽ tự động mã hóa trở lại %20.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Nếu sử dụng href=“#” khi nhấn vào thẻ &lt;a&gt; sẽ lên đầu trang</h3>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;#&quot;&gt;Lên đầu trang&lt;/a&gt;</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Nếu để trống href thì thẻ &lt;a&gt; sẽ tham chiếu vào trang hiện tại</h3>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;&quot;&gt;Tải lại trang&lt;/a&gt;</code></pre>
+
+    <div class="separate"></div>
+
+    <h3 class="content__heading-3 mb-10">Thuộc tính target</h3>
+    <p class="content__desc mb-10">
+        Thuộc tính target sử dụng trong thẻ &lt;a&gt; quyết định trang web được 
+        mở từ trang hiện tại hoặc mở trong một tab mới của trình duyệt.
+    </p>
+    <p class="content__desc mb-10">
+        Có 2 giá trị được sử dụng phổ biến:
+    </p>
+    <p class="content__desc mb-10">
+        <b>_self</b> là mở liên kết từ trang hiện tại (mặc định)
+    </p>
+    <p class="content__desc">
+        <b>_blank</b> là mở liên kết trong tab mới
+    </p>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Vấn đề bảo mật và hiệu năng khi dùng target=“_blank”</h3>
+    <p class="content__desc mb-10">
+        Khi sử dụng target="_blank" có 2 vấn đề về bảo mật và hiệu suất:
+    </p>
+    <p class="content__desc mb-10">
+        Tại trang đích có thể sử dụng <b>window.opener</b> để kiểm soát được cửa sổ trang gốc của chúng ta
+    </p>
+    <p class="content__desc mb-10">
+        ví dụ chạy window.opener.location.href = 'https://fullstack.edu.vn' 
+        là có thể chuyển hướng cửa sổ gốc tới https://fullstack.edu.vn.
+    </p>
+    <p class="content__desc mb-10">
+        Hãy tưởng tượng bạn bị chuyển tới một URL có nội dung “độc hại” như các trang 
+        giả mạo để đánh cắp tài khoản ngân hàng, thông tin cá nhân, v.v.
+    </p>
+    <p class="content__desc mb-10">
+        Trang đích chạy cùng tiến trình xử lý Javascript với trang gốc, 
+        nếu trang đích sử dụng nhiều logic “nặng” hoặc tối ưu chưa tốt về mặt hiệu năng 
+        có thể làm ảnh hưởng tới trang web của bạn đang được mở tại cửa sổ gốc.
+    </p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Để khắc phục vấn đề trên, hãy thêm <b>rel="noopener"</b> vào 
+            <b>toàn bộ</b> các <b>thẻ a có target="_blank"</b> nhé.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Phương thức tel, mailto</h3>
+    <p class="content__desc mb-10">
+        Ngoài việc được dùng để liên kết tới một URL thì thẻ &lt;a&gt;
+        cũng có thể liên kết tới một số điện thoại, một địa chỉ email.
+    </p>
+    <p class="content__desc mb-10">
+        Sử dụng 2 phương thức trong thuộc tính href để làm điều này:
+    </p>
+    <p class="content__desc mb-10">
+        mailto để liên kết tới một email. Ví dụ: mailto:example@gmail.com
+    </p>
+    <p class="content__desc mb-10">
+        tel để liên kết tới một số điện thoại. Ví dụ: tel:0999999999 hoặc tel:+84999999999
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;mailto:example@gmail.com&quot;&gt;Gửi email cho tôi&lt;/a&gt;
+&lt;a href=&quot;tel:0999999999&quot;&gt;Gọi cho tôi&lt;/a&gt;</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Liên kết tới địa chỉ email</h4>
+    <p class="content__desc mb-10">
+        Với mailto, bạn có thêm một danh sách các tham sau:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>cc</b>: danh sách email sẽ nhận được bản sao của thư (không bắt buộc).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>bcc</b>: danh sách email ẩn sẽ nhận được bản sao của thư (không bắt buộc).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>subject</b>: chủ đề của thư (không bắt buộc).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>body</b>: nội dung của mail (không bắt buộc).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>?</b>: dấu phân cách giữa phần mailto và tham số (không bắt buộc).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>&</b>: dấu phân cách tham số (không bắt buộc).
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;mailto:example@gmail.com?cc=ccexample@gmail.com&amp;bcc=bccexample@gmail.com&amp;subject=Request Support&amp;body=Body of Request Support&quot;&gt;Liên hệ với chúng tôi&lt;/a&gt;</code></pre>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Thuộc tính href với hash và id</h3>
+    <h4 class="content__heading-4 mb-10">Khi nào trình duyệt hiển thị thanh cuộn?</h4>
+    <p class="content__desc">
+        Theo mặc định, khi nội dung trang web vượt quá chiều cao 
+        của thẻ html, body thì sẽ xuất hiện thanh cuộn.
+    </p>
+    <h4 class="content__heading-4 mt-20 mb-10">hash là gì?</h4>
+    <p class="content__desc mb-10">
+        Hash (hash mark - dấu thăng #) trong URL trỏ trình 
+        duyệt tới một vị trí cụ thể trong trang web. 
+        Thông thường, bạn sẽ thấy # được sử dụng ở phần sau của một URL.
+    </p>
+    <p class="content__desc mb-10">
+        Khi nhấn vào một liên kết chứa #, trình duyệt sẽ đi tới 
+        vị trí của thẻ HTML có id tương ứng.
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;#meet-laravel&quot;&gt;Meet Laravel&lt;/a&gt;</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        thì trình duyệt sẽ tới vị trí của thẻ có id="meet-laravel":
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;h2 id=&quot;meet-laravel&quot;&gt;Meet Laravel&lt;/h2&gt;</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">ID là gì?</h4>
+    <p class="content__desc">
+        ID (identifier - định danh) là một thuộc tính để tạo định danh duy nhất cho một 
+        phần tử HTML trong cùng một trang (theo tiêu chuẩn của W3C).
+    </p>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Cách sử dụng thẻ h với danh sách</h3>
+    <h4 class="content__heading-4 mb-10">Trường hợp không nên dùng thẻ h trong danh sách</h4>
+    <p class="content__desc mb-10">
+        Danh sách tóm tắt, mục lục, dàn ý... Việc sử dụng thêm thẻ h là không cần thiết vì:
+    </p>
+    <p class="content__desc mb-10">
+        Về ngữ nghĩa, phần tóm tắt này đơn thuần là một danh sách, không có tiêu đề ở bên trong 
+        (các mục trong danh sách chỉ tham chiếu tới các tiêu đề trong nội dung)
+    </p>
+    <p class="content__desc mb-10">
+        Sử dụng thẻ h ở đây là dư thừa, cũng không mang ý nghĩa tối ưu hơn cho SEO
+    </p>
+    <p class="content__desc mb-10">
+        vì công cụ thu thập dữ liệu đã hiểu được nội dung dựa theo cấu trúc thẻ h ở phía dưới.
+    </p>
+
+    <h4 class="content__heading-4 mb-10">Trường hợp có thể dùng thẻ h trong danh sách</h4>
+    <p class="content__desc mb-10">
+        Nếu chỉ xét ở góc độ kiến thức HTML thông thường (HTML semantic) 
+        thì việc sử dụng các thẻ h trong một danh sách là điều không cần thiết.
+    </p>
+    <p class="content__desc mb-10">
+        Đứng ở góc độ SEO, các công cụ tìm kiếm sẽ ưu tiên các nội dung trong các thẻ h. Ví dụ:
+    </p>
+    <p class="content__desc mb-10">
+        Nội dung trong &lt;h1&gt; được cho là quan trọng nhất trong trang
+    </p>
+    <p class="content__desc mb-10">
+        Tiếp theo đó là các tiêu đề &lt;h2&gt;, &lt;h3&gt;, v.v
+    </p>
+    <p class="content__desc mb-10">
+        Tiếp nữa là các nội dung khác: văn bản, hình ảnh (alt của ảnh, sẽ được học ở bài 158), v.v
+    </p>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Thẻ a có thể liên kết tới nhiều loại tài nguyên</h2>
+    <p class="content__desc">
+        Liên kết tới tài nguyên như hình ảnh, video, pdf, v.v
+    </p>
+    <h3 class="content__heading-3 mt-20 mb-10">Tạo liên kết tải xuống cho các tài nguyên được lưu trữ trên cùng tên miền</h3>
+    <p class="content__desc mb-10">
+        Khi href của thẻ &lt;a&gt; trỏ về URL cùng tên miền với trang web hiện tại, 
+        có thể thêm thuộc tính download để liên kết trở thành một liên kết tải xuống.
+    </p>
+    <pre class="language-html"><code class="language-html">&lt;a href=&quot;https://htmlcss.fullstack.edu.vn/assets/f8_icon.png&quot; download&gt;Logo F8&lt;/a&gt;</code></pre>
+
+</div>
