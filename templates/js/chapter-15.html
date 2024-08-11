@@ -125,4 +125,421 @@ console.log(person.info === personCopy.info); // false</code></pre>
     </blockquote>
 
     <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Các cách so sánh objects</h2>
+
+    <h3 class="content__heading-3 mb-10">So sánh objects là gì?</h3>
+
+    <p class="content__desc mb-10">
+        Trong JavaScript, objects không được so sánh trực tiếp dựa trên nội dung của chúng 
+        như các kiểu dữ liệu nguyên thủy (ví dụ như số hoặc chuỗi).
+    </p>
+    <p class="content__desc mb-10">
+        Thay vào đó, khi so sánh hai objects, JavaScript so sánh các tham chiếu đến các đối tượng đó.
+    </p>
+    <p class="content__desc mb-10">
+        Nếu hai biến tham chiếu đến cùng một object, chúng mới được coi là bằng nhau.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let car1 = { make: 'Toyota', model: 'Corolla' };
+let car2 = { make: 'Toyota', model: 'Corolla' };
+let car3 = car1;
+
+// Khác tham chiếu
+console.log(car1 === car2); // false
+
+// Cùng tham chiếu
+console.log(car1 === car3); // true</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p>
+            So sánh objects thường được dùng để xác định xem 
+            hai biến có tham chiếu đến cùng một vị trí trong bộ nhớ không, 
+            hoặc để kiểm tra xem hai object có chứa cùng một cặp khóa/giá trị không.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các cách so sánh objects</h3>
+    <h4 class="content__heading-4 mb-10">Dùng toán tử === để so sánh tham chiếu</h4>
+    <p class="content__desc mb-10">
+        So sánh hai biến object xem chúng có cùng tham chiếu đến một object không.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let person1 = { name: "Alice" };
+let person2 = person1;
+
+console.log(person1 === person2); // true</code></pre>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Sử dụng JSON.stringify để so sánh nội dung</h4>
+    <p class="content__desc mb-10">
+        Chuyển đổi objects thành chuỗi JSON và so sánh chuỗi đó.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let student1 = { id: 1, name: "Bob" };
+let student2 = { id: 1, name: "Bob" };
+
+console.log(JSON.stringify(student1) === JSON.stringify(student2)); // true</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc mb-10">
+            Tuy nhiên, điểm yếu của phương pháp này là khi các thuộc tính và giá trị giống nhau, 
+            nhưng thứ tự khác nhau sẽ cho kết quả false.
+        </p>
+        <p class="content__desc mb-10">
+            Khi đó, chúng ta có thể sử dụng đệ quy để so sánh sâu (deep compare).
+        </p>
+        <p class="content__desc">
+            Để đơn giản, ta có thể sử dụng _.isEqual() của thư viện Lodash.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Dùng thư viện bên ngoài như Lodash</h4>
+    <p class="content__desc mb-10">
+        Sử dụng hàm _.isEqual() từ thư viện Lodash để so sánh 
+        sâu (deep compare) giữa các objects.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    let obj1 = { part: { id: 10, name: &apos;Top&apos; } };
+    let obj2 = { part: { id: 10, name: &apos;Top&apos; } };
+
+    console.log(_.isEqual(obj1, obj2)); // true
+&lt;/script&gt;</code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Function constructor</h2>
+    <h3 class="content__heading-3 mb-20">Hàm tạo và Instance là gì?</h3>
+    <h4 class="content__heading-4 mb-10">Hàm tạo là gì?</h4>
+    <p class="content__desc mb-10">
+        Hàm tạo (function constructor) là một hàm đặc biệt 
+        được sử dụng để tạo và khởi tạo các đối tượng.
+    </p>
+
+    <p class="content__desc mb-10">
+        Hàm tạo giống như một khuôn mẫu cho các đối tượng, 
+        nơi bạn có thể định nghĩa thuộc tính và phương thức 
+        ban đầu cho đối tượng mới được tạo ra.
+    </p>
+
+    <p class="content__desc mb-10">
+        Khi bạn tạo một đối tượng mới từ hàm tạo, bạn sử dụng từ khóa new để gọi hàm tạo đó.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+const person = new Person("John", 30);
+console.log(person);</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc">
+            Ví dụ trên tạo ra một hàm tạo Person, 
+            sau đó sử dụng new để tạo một instance mới của Person.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Instance là gì?</h4>
+    <p class="content__desc mb-10">
+        Một <b>instance</b> là một <b>đối tượng</b> cụ thể <b>được tạo từ</b> một <b>hàm tạo</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Instance kế thừa tất cả các thuộc tính và phương thức từ hàm tạo mà nó được tạo ra
+    </p>
+    <p class="content__desc mb-10">
+        nhưng giá trị của các thuộc tính có thể khác nhau giữa các instance.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">function Car(make, model) {
+    this.make = make;
+    this.model = model;
+}
+
+const myCar = new Car("Toyota", "Corolla");
+console.log(myCar);</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Trong ví dụ trên, myCar là một instance của hàm tạo Car.
+        </p>
+        <p class="content__desc">
+            Hàm tạo cho phép bạn tạo nhiều đối tượng 
+            có cùng cấu trúc thuộc tính và phương thức 
+            mà không cần định nghĩa lại chúng mỗi lần.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tại sao cần sử dụng các hàm tạo</h3>
+    <p class="content__desc">
+        Các hàm tạo cho phép chúng ta tạo nhiều đối tượng có cùng khuôn mẫu 
+        mà không cần định nghĩa lại các thuộc tính và phương thức cho mỗi đối tượng.
+    </p>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Ưu điểm khi dùng:</h4>
+    <p class="content__desc mb-10 ti-30">
+        Tái sử dụng code, giảm trùng lặp code.
+    </p>
+    <p class="content__desc ti-30">
+        Tạo đối tượng theo một khuôn mẫu nhất quán.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Quy ước đặt tên hàm tạo</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, khi đặt tên cho hàm tạo, 
+        quy ước thông thường là sử dụng Pascal Case
+    </p>
+    <p class="content__desc mb-10">
+        Tức là viết hoa chữ cái đầu tiên của mỗi từ.
+    </p>
+    <p class="content__desc mb-10">
+        Đối với hàm tạo gồm hai từ trở lên, mỗi từ sẽ bắt đầu bằng chữ hoa.
+    </p>
+    <p class="content__desc mb-10">
+        Và quan trọng, tên của hàm tạo thường là danh từ số ít
+    </p>
+    <p class="content__desc mb-10">
+        Vì mỗi hàm tạo đều được thiết kế để tạo ra một instance 
+        duy nhất của một loại đối tượng cụ thể tại một thời điểm.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ, một hàm tạo cho một đối tượng Person sẽ <b>được đặt tên</b> 
+        là <b>Person</b>, <b>chứ không phải</b> là <b>person</b> hay <b>PERSON</b>.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">// Hàm tạo cho đối tượng Person
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+// Ví dụ tên hàm tạo có 2 từ trở lên
+function StudentRecord(name, grade) {
+    this.name = name;
+    this.grade = grade;
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc mb-10">
+            Việc sử dụng danh từ số ít trong tên hàm tạo nhấn mạnh rằng mỗi lần bạn 
+            gọi hàm tạo, bạn đang tạo ra một “instance” duy nhất của loại đối tượng đó.
+        </p>
+        <p class="content__desc mb-10">
+            Dù có thể tạo ra nhiều instance từ một hàm tạo, 
+            nhưng mỗi lần tạo ra chỉ là một đối tượng duy nhất
+        </p>
+        <p class="content__desc">
+            Vì vậy danh từ số ít giúp phản ánh rõ ràng mục đích và cách sử dụng của hàm tạo.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-20">Các sai lầm thường gặp</h3>
+    <h4 class="content__heading-4 mb-10">Quên từ khóa new</h4>
+    <p class="content__desc mb-10">
+        Khi quên sử dụng từ khóa new, this trong hàm tạo sẽ không trỏ đến đối tượng mới 
+        mà trỏ tới đối tượng global (trong trường hợp của browser là window), gây ra lỗi.
+    </p>
+
+    <blockquote class="blockquote blockquote--warning mb-10">
+        <p class="content__desc">
+            Việc this trỏ tới window các bạn sẽ được học thêm ở bài “Từ khóa this nâng cao” tại chương sau.
+        </p>
+    </blockquote>
+
+    <p class="content__desc">
+        <b>Cách giải quyết</b>: <b>Luôn</b> nhớ <b>sử dụng new khi tạo đối tượng từ hàm tạo</b>.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Sử dụng hàm tạo cho việc không cần thiết</h4>
+    <p class="content__desc mb-10">
+        Sử dụng hàm tạo khi một hàm bình thường có thể 
+        đáp ứng được nhu cầu, gây ra sự phức tạp không cần thiết.
+    </p>
+    <p class="content__desc">
+        <b>Cách giải quyết</b>: <b>Xác định rõ ràng nhu cầu</b> trước <b>khi quyết định sử dụng hàm tạo</b>. 
+        Trong một số trường hợp, một <b>hàm bình thường</b> hoặc <b>object literal</b> có thể đủ.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Sử dụng camelCase thay vì PascalCase</h4>
+    <p class="content__desc mb-10">
+        SAI
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function carModel(brand, model) { // Sai: nên là CarModel
+    this.brand = brand;
+    this.model = model;
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc mb-10">
+            Điều này không phù hợp với quy ước đặt tên cho hàm tạo trong JavaScript.
+        </p>
+        <p class="content__desc">
+            Gây khó hiểu cho người đọc code.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mt-10 mb-10">
+        ĐÚNG
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">function CarModel(brand, model) { // Sai: nên là CarModel
+        this.brand = brand;
+        this.model = model;
+    }</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Sử dụng động từ đặt tên hàm tạo</h4>
+    <p class="content__desc mb-10">
+        <b>Đặt tên hàm tạo</b> bắt đầu <b>bằng một động từ</b> (ví dụ: CreateUser) <b>là không phù hợp</b>
+    </p>
+    <p class="content__desc">
+        <b>Vì hàm tạo</b> nên <b>tập trung</b> vào việc <b>“là gì” hơn là “làm gì”</b>.
+    </p>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Sử dụng danh từ số nhiều đặt tên hàm tạo</h4>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc">
+            Đặt tên hàm tạo bằng danh từ số nhiều, ví dụ như Users, 
+            <b>gây hiểu nhầm</b> rằng hàm tạo sẽ tạo ra nhiều thực thể cùng lúc, 
+            <b>trong khi thực tế mỗi lần chỉ tạo ra một đối tượng</b>.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Các hàm tạo dựng sẵn</h2>
+    <h3 class="content__heading-3 mb-10">Các hàm tạo dựng sẵn là gì?</h3>
+    <p class="content__desc mb-10">
+        Các <b>hàm tạo dựng sẵn</b> (<b>built-in function constructor</b>) trong JavaScript là 
+        những hàm được <b>cung cấp sẵn</b> bởi ngôn ngữ lập trình 
+        để tạo ra các kiểu dữ liệu cơ bản hoặc phức tạp một cách nhanh chóng và tiện lợi.
+    </p>
+    <p class="content__desc mb-10">
+        Gồm: <b>String</b>, <b>Number</b>, <b>Array</b>, <b>Object</b>, <b>Function</b>, v.v.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        String: Tạo chuỗi mới.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Number: Tạo số mới.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Boolean: Tạo true hoặc false mới.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Array: Tạo mảng mới.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Object: Tạo đối tượng mới.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Function: Tạo hàm mới.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let str = new String("Hello");
+let num = new Number(123);
+let arr = new Array(1, 2, 3);
+let obj = new Object();
+let func = new Function("x", "y", "return x + y");</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Trong thực tế, chúng ta thường sử dụng các hàm tạo này 
+            (sử dụng như một hàm thông thường - không sử dụng từ khóa new) 
+            với mục đích chuyển đổi kiểu dữ liệu (ép kiểu), ít khi sử dụng nó để tạo ra các đối tượng.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Hàm tạo trả về đối tượng khi sử dụng từ khóa new</h3>
+    <p class="content__desc">
+        Khi sử dụng từ khóa new với các hàm tạo như String, Number, Boolean, Array, Object, 
+        và Function các hàm tạo này sẽ trả về một đối tượng.
+    </p>
+    <h4 class="content__heading-4 mt-20 mb-10">String</h4>
+    <p class="content__desc mb-10">
+        Khi sử dụng new String(), JavaScript sẽ tạo một đối tượng String mới. 
+        Điều này khác với việc chỉ sử dụng 
+        chuỗi literal như "hello", mà không sử dụng new.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let strObj = new String("hello");
+console.log(typeof strObj); // object</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Number</h4>
+    <p class="content__desc mb-10">
+        Tương tự, new Number() tạo một đối tượng Number mới, 
+        không giống như sử dụng một số literal như 123 (không phải một đối tượng).
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numObj = new Number(123);
+console.log(typeof numObj); // object</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Boolean</h4>
+    <p class="content__desc mb-10">
+        new Boolean() tạo một đối tượng Boolean mới. 
+        Điều này cũng khác với việc sử dụng giá trị boolean literal như true hoặc false.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let boolObj = new Boolean(true);
+console.log(typeof boolObj); // object</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Array</h4>
+    <p class="content__desc mb-10">
+        new Array() tạo một đối tượng Array mới. Điều này không khác biệt nhiều 
+        so với việc sử dụng cú pháp literal như [] vì cả hai đều tạo ra đối tượng Array.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let arrObj = new Array(1, 2, 3);
+console.log(typeof arrObj); // object</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Object</h4>
+    <p class="content__desc mb-10">
+        new Object() hoặc cú pháp literal {} đều tạo ra một đối tượng mới.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let obj = new Object();
+console.log(typeof obj); // object</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Function</h4>
+    <p class="content__desc mb-10">
+        new Function() tạo một đối tượng Function mới, cho phép bạn định nghĩa hàm động.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let funcObj = new Function("a", "b", "return a + b");
+console.log(typeof funcObj); // function</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-20">
+        <p class="content__desc mb-10">
+            Sử dụng từ khóa new với các kiểu dữ liệu này tạo ra các đối tượng wrapper tương ứng
+        </p>
+        <p class="content__desc mb-10">
+            Cho phép bạn truy cập vào các phương thức và thuộc tính của đối tượng.
+        </p>
+        <p class="content__desc mb-10">
+            Tuy nhiên, trong nhiều trường hợp, việc sử dụng kiểu dữ liệu primitive 
+            (ví dụ: chuỗi literal, số, và giá trị boolean) là đủ
+        </p>
+        <p class="content__desc">
+            Và được ưu tiên vì tính đơn giản và hiệu suất tốt hơn.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-20">Các sai lầm thường gặp</h3>
+    <h4 class="content__heading-4 mb-10">Sử dụng hàm tạo khi không cần thiết</h4>
+    <p class="content__desc mb-10">
+        Việc sử dụng hàm tạo cho một số kiểu dữ liệu đơn giản như String hay Number có 
+        thể không cần thiết và làm tăng kích thước của code.
+    </p>
+    <p class="content__desc mb-10">
+        Cách giải quyết: Sử dụng các cách đơn giản, truyền thống đã học ở các chương trước.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// Sử dụng
+let str = "Hello";
+
+// Thay vì
+let str = new String("Hello");</code></pre>
+
+    <p class="content__desc mt-10 mb-10">Hoặc</p>
+    <pre class="language-javascript"><code class="language-javascript">// Sử dụng
+function sum(a, b) {
+    return a + b;
+}
+
+// Thay vì
+let sum = new Function("a", "b", "return a + b");</code></pre>
+    
 </div>
