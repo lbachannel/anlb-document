@@ -196,4 +196,88 @@ console.log(typeof calculateTax); // function</code></pre>
             <b>Array</b>: <b>Sử dụng Array.isArray()</b> hoặc <b>instanceof Array</b>.
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Toán tử void là gì?</h2>
+    <p class="content__desc mb-10">
+        <b>Toán tử void</b> (Ý nghĩa: không có giá trị) được sử dụng 
+        để đánh giá một biểu thức và <b>luôn trả về</b> giá trị <b>undefined</b>,
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">console.log(void 0); // undefined
+console.log(void (2 + 2)); // undefined
+
+function sum(a, b) {
+    return a + b;
+}
+
+console.log(void sum(2, 3)); // undefined</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-20">Một số ứng dụng của void</h3>
+    <h4 class="content__heading-4 mb-10">Tránh kết quả trả về ngoài ý muốn</h4>
+    <p class="content__desc">
+        Khi bạn muốn thực thi một biểu thức mà không quan tâm đến kết quả trả về, 
+        bạn có thể dùng void để đảm bảo kết quả luôn là undefined.
+    </p>
+    <h4 class="content__heading-4 mt-20 mb-10">Ngăn chặn hành động mặc định của liên kết</h4>
+    <p class="content__desc mb-10">
+        void thường được sử dụng trong các thẻ &lt;a&gt; để ngăn chặn 
+        hành động mặc định (chẳng hạn như chuyển hướng trang):
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;a href=&quot;javascript:void(0);&quot;&gt;Click me&lt;/a&gt;</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Khi nhấp vào liên kết này, trang sẽ không bị chuyển hướng hay tải lại trang 
+        vì kết quả của javascript:void(0) là undefined, không dẫn đến hành động nào.
+    </p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p>
+            Thực tế thì trường hợp này thay các giá trị khác 
+            undefined vào vẫn ngăn chặn hành vi mặc định (trừ giá trị là chuỗi). 
+            Tuy nhiên, theo quy ước thì void(0) được sử dụng bởi nó tường minh, dễ hiểu và ngắn gọn.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-20 mb-10">An toàn hơn khi làm việc với undefined</h4>
+    <p class="content__desc mb-10">
+        undefined trong JavaScript có thể bị ghi đè, dẫn đến các hành vi không mong muốn.
+    </p>
+    <p class="content__desc mb-10">
+        Sử dụng void 0 luôn trả về giá trị undefined
+    </p>
+    <p class="content__desc mb-10">
+        đảm bảo rằng bạn không gặp phải các tình huống không mong đợi do undefined bị thay đổi.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function isUndefined(value) {
+    return value === void 0;
+}
+
+const colors = ['red'];
+
+console.log(isUndefined(colors[9]));</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Tại sao không dùng void 1, void true, hay void bất_kỳ_gì khác?</h4>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Không có lý do kỹ thuật nào ngăn cản bạn sử dụng void 1, void true, 
+            hay bất kỳ giá trị nào khác thay cho 0. 
+        </p>
+        <p class="content__desc mb-10">
+            Tuy nhiên, void 0 đã trở thành tiêu chuẩn và được sử dụng phổ biến 
+            bởi vì nó đơn giản, dễ hiểu, và dễ nhận biết.
+        </p>
+        <p class="content__desc mb-10">
+            Thậm chí, các thư viện “minify” code bằng cách thay thế undefined bằng void 0:
+        </p>
+        <p class="content__desc mb-10">
+            Điều này mang lại 2 lợi ích chính:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Đảm bảo tính chính xác khi cần so sánh với undefined
+        </p>
+        <p class="content__desc ti-30">
+            Giảm dung lượng bởi số ký tự của void 0 ngắn hơn undefined
+        </p>
+    </blockquote>
 </div>

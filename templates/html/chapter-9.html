@@ -1,0 +1,129 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Thẻ img</h2>
+    <p class="content__desc mb-10">
+        Thẻ &lt;img&gt; (image - hình ảnh) được dùng để hiển thị hình ảnh trên trang web. 
+        Đây là một thẻ tự đóng (self-closing tag);
+    </p>
+    <p class="content__desc mb-10">
+        src (bắt buộc)
+    </p>
+    <p class="content__desc mb-10">
+        alt (bắt buộc)
+    </p>
+    <p class="content__desc">
+        width và height
+    </p>
+    <h3 class="content__heading-3 mt-20 mb-10">Thuộc tính src</h3>
+    <p class="content__desc mb-10">
+        Thuộc tính src (source - nguồn) được dùng 
+        để xác định đường dẫn (URL, path) của hình ảnh sẽ được hiển thị.
+    </p>
+    <p class="content__desc mb-10">
+        Lưu ý, thẻ &lt;img&gt; không thực sự chèn hình ảnh vào trang web.
+    </p>
+    <p class="content__desc mb-10">
+        Thẻ thẻ &lt;img&gt; tạo ra một không gian để hiển thị hình ảnh 
+        trong trang web, hình ảnh sẽ được tải từ đường dẫn trong src.
+    </p>
+    <p class="content__desc mb-10">
+        Vì vậy, hình ảnh trên trang web có thể bị lỗi khi:
+    </p>
+    <p class="content__desc mb-10">
+        Hình ảnh không tồn tại (bị xóa, gõ sai URL, v.v)
+    </p>
+    <p class="content__desc">
+        Lỗi kết nối mạng, không thể tải được hình ảnh.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tránh không chỉ định width, height</h3>
+    <p class="content__desc mb-10">
+        Bạn nên tránh không chỉ định width và height 
+        cho hình ảnh vì điều này có thể gây ra một số vấn đề sau:
+    </p>
+    <p class="content__desc mb-10">
+        Trình duyệt không thể biết được kích thước của hình ảnh trong khi tải, 
+        dẫn tới nội dung trang web có thể bị nhảy/giật sau khi hình ảnh được hiển thị.
+    </p>
+    <p class="content__desc">
+        Người dùng có thể nhấn vào một liên kết ngoài ý muốn, nếu đúng lúc nhấn thì một 
+        hình ảnh được hiển thị khiến nội dung bị đẩy xuống một đoạn.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Tránh đặt width, height sai tỉ lệ ảnh</h3>
+    <p class="content__desc mb-10">
+        Nếu đặt width, height sai tỉ lệ ảnh gốc có thể làm ảnh hiển thị bị méo, lỗi.
+    </p>
+    <p class="content__desc">
+        Kích thước gốc của ảnh là 128 x 128 có tỉ lệ là 1 (128 / 128 = 1). 
+        Quan trọng là bạn sử dụng đúng tỉ lệ ảnh gốc thì ảnh sẽ không bao giờ bị méo. 
+        Ví dụ, hình ảnh trên có thể hiển thị tốt ở 100 x 100, 60 x 60, v.v.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Thuộc tính alt</h3>
+    <p class="content__desc mb-10">
+        Thuộc tính alt (alternative - thay thế) dùng để chỉ định 
+        văn bản thay thế trong trường hợp hình ảnh không hiển thị.
+    </p>
+    <p class="content__desc mb-10">
+        Tên ảnh đúng là f8_icon.png đã bị sửa thành f8_icon_abc.png 
+        (hình ảnh không tồn tại). Vì vậy đây được coi là một URL lỗi và hình ảnh 
+        không được hiển thị, văn bản trong thuộc tính alt đã được hiển thị thay thế.
+    </p>
+    <p class="content__desc mb-10">
+        Những tình huống phổ biến văn bản thay thế được sử dụng:
+    </p>
+    <p class="content__desc mb-10">
+        Hình ảnh bị lỗi (bị xóa, lỗi khi tải ảnh, v.v)
+    </p>
+    <p class="content__desc mb-10">
+        Công cụ tìm kiếm thu thập dữ liệu trên trang
+    </p>
+    <p class="content__desc">
+        Người dùng sử dụng trình đọc màn hình
+    </p>
+    <h3 class="content__heading-3 mt-20 mb-10">Lợi ích khi sử dụng thuộc tính alt</h3>
+    <p class="content__desc mb-10">
+        Việc sử dụng thuộc tính alt đôi khi không được chú ý, 
+        điều này là không nên vì nó mang lại khá nhiều lợi ích.
+    </p>
+    <p class="content__desc mb-10">
+        Những lợi ích tiêu biểu:
+    </p>
+    <p class="content__desc mb-10">
+        Người dùng vẫn nhận được thông tin dù ảnh lỗi
+    </p>
+    <p class="content__desc mb-10">
+        Công cụ tìm kiếm hiểu hình ảnh nói về điều gì
+    </p>
+    <p class="content__desc">
+        Trình đọc màn hình đọc nội dung của thuộc tính alt
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Cách dùng thuộc tính alt đúng đắn</h3>
+    <p class="content__desc mb-10">
+        Cách đơn giản nhất đó là bạn hãy tự đặt câu hỏi:
+    </p>
+    <p class="content__desc mb-10">
+        Nếu hình ảnh không hiển thị thì nội dung văn bản nào có thể 
+        thay thế nó mà vẫn đảm bảo biểu đạt được nội dung của hình ảnh.
+    </p>
+    <p class="content__desc mb-10">
+        Nếu bạn vẫn thấy khó, hãy tham khảo các tình huống sau:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Hình ảnh là Logo của trang web, văn bản thay thế 
+        có thể là: tên tổ chức, tên thương hiệu, v.v.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Hình ảnh biểu tượng cho các chức năng hoặc vai trò, 
+        văn bản thay thế là tên của chức năng hoặc vai trò đó.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Hình ảnh nằm trong nội dung blog hoặc tài liệu, 
+        văn bản thay thế là thông tin tóm tắt của đoạn văn trước hình ảnh đó.
+    </p>
+    <p class="content__desc ti-30">
+        Hình ảnh chỉ mang tính trang trí thì để alt="" (lưu ý là không bỏ thuộc tính alt 
+        vì các trình phân tích có thể coi là bạn đã quên thêm thuộc tính này).
+    </p>
+</div>
