@@ -1,0 +1,143 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Cơ chế Autoboxing</h2>
+    <h3 class="content__heading-3 mb-10">Autoboxing là gì?</h3>
+    <p class="content__desc mb-10">
+        Autoboxing là một cơ chế trong JavaScript mà qua đó 
+        các giá trị nguyên thủy (primitive values) 
+        như number, string, và boolean được tự động chuyển đổi thành đối 
+        tượng tương ứng khi cần thiết.
+    </p>
+    <p class="content__desc mb-10">
+        Cơ chế này cho phép các giá trị nguyên thủy 
+        sử dụng các phương thức và thuộc tính của đối tượng tương ứng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let str = "hello";
+
+console.log(str.toUpperCase()); // "HELLO"</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Autoboxing giúp việc làm việc với các giá trị nguyên thủy 
+            linh hoạt hơn bằng cách cung cấp quyền truy cập vào các 
+            phương thức hữu ích mà không cần phải chuyển đổi rõ ràng chúng thành đối tượng.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-20">Nguyên lý hoạt động</h3>
+    <h4 class="content__heading-4 mb-10">Quá trình Autoboxing</h4>
+    <p class="content__desc mb-10">
+        Bước 1: Khai báo và khởi tạo biến
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let str = "hello";</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Bước 2: Gọi phương thức toUpperCase()
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">console.log(str.toUpperCase());</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Khi gọi phương thức toUpperCase() trên biến str, các công việc được thực hiện như sau:
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            <b>Autoboxing</b>: JavaScript nhận ra rằng "hello" là một chuỗi nguyên thủy và cần 
+            phải truy cập phương thức toUpperCase() của đối tượng String.
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Do đó, JavaScript tạm thời chuyển đổi chuỗi nguyên thủy "hello" 
+            thành một đối tượng (new String("hello")).
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Quá trình này được gọi là “autoboxing”, nơi giá trị nguyên thủy 
+            được “đóng gói” trong một đối tượng tương ứng tạm thời.
+        </p>
+
+        <p class="content__desc mb-10">
+            <b>Thực hiện phương thức</b>: Sau khi chuỗi được chuyển đổi thành đối tượng, 
+            phương thức toUpperCase() 
+            được gọi trên đối tượng đó (phương thức này được kế thừa từ String.prototype).
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Phương thức này chuyển tất cả các ký tự trong chuỗi thành chữ hoa.
+        </p>
+        <p class="content__desc">
+            <b>Kết quả</b>: Phương thức toUpperCase() trả về chuỗi mới "HELLO".
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Code minh họa</h4>
+    <pre class="language-javascript"><code class="language-javascript">// Giá trị nguyên thủy
+let str = "hello";
+
+// Autoboxing ngầm: tạo đối tượng tạm thời
+let strObject = new String(str);
+
+// Gọi phương thức trên đối tượng
+let upperStr = strObject.toUpperCase();
+
+// In ra "HELLO"
+console.log(upperStr);</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc">
+            Trong thực tế, bạn không cần phải viết code như ví dụ trên để autoboxing xảy ra, 
+            vì JavaScript tự động thực hiện điều này cho bạn khi cần.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-20">Sai lầm thường gặp</h3>
+    <h4 class="content__heading-4 mb-10">Quên rằng autoboxing không áp dụng cho null và undefined</h4>
+    <p class="content__desc mb-10">
+        Các giá trị null và undefined không có đối tượng bao bọc tương ứng 
+        và sẽ gây lỗi khi cố gắng truy cập thuộc tính hoặc phương thức.
+    </p>
+    <p class="content__desc mb-10">
+        Cách giải quyết: Kiểm tra giá trị trước khi thực hiện phương thức.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let value = null;
+
+if (value) {
+    // Lỗi nếu không kiểm tra trước
+    console.log(value.toString());
+}</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Prototype chain</h2>
+    <h3 class="content__heading-3 mb-10">chuỗi prototype là gì?</h3>
+    <p class="content__desc mb-10">
+        Chuỗi <b>prototype</b> trong JavaScript là một cơ chế mà các đối tượng có thể <b>kế thừa</b> 
+        các <b>thuộc tính</b> và <b>phương thức từ các đối tượng khác</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Mỗi đối tượng có một thuộc tính __proto__ trỏ tới 
+        prototype của nó, tạo thành một chuỗi liên kết các đối tượng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function Person(name) {
+    this.name = name;
+}
+
+Person.prototype.greet = function() {
+    console.log(`My name is ${this.name}`);
+};
+
+const alice = new Person('Alice');
+
+alice.greet();
+console.log(alice.__proto__ === Person.prototype); // true (cùng tham chiếu)</code></pre>
+    <h3 class="content__heading-3 mt-20 mb-10">Tại sao cần sử dụng chuỗi prototype?</h3>
+    <p class="content__desc mb-10">
+        Chuỗi prototype giúp tối ưu bộ nhớ và tăng hiệu quả trong việc tái sử dụng mã nguồn.
+    </p>
+    <p class="content__desc mb-10">
+        Khi một phương thức hoặc thuộc tính không tồn tại trên một đối tượng
+    </p>
+    <p class="content__desc mb-10">
+        JavaScript sẽ tìm kiếm trong chuỗi prototype.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Ưu điểm</b>: <b>Tiết kiệm bộ nhớ</b> bằng cách chia sẻ các 
+        phương thức và thuộc tính chung giữa các đối tượng.
+    </p>
+    <p class="content__desc ti-30">
+        <b>Ứng dụng</b>: <b>Tạo các đối tượng có phương thức chung</b>: Các đối tượng có thể chia sẻ 
+        <b>cùng một phương thức</b> mà <b>không cần định nghĩa lại</b>.
+    </p>
+</div>

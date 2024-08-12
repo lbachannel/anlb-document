@@ -64,6 +64,10 @@ console.log(str); // hello</code></pre>
 
     <blockquote class="blockquote blockquote--normal">
         <p class="content__desc mb-10">
+            Trong JavaScript, Các giá trị nguyên thủy được lưu trực tiếp 
+            trong bộ nhớ <b>Stack</b> tại vị trí mà biến chỉ đến.
+        </p>
+        <p class="content__desc mb-10">
             Biến tham chiếu, con trỏ, pointer, biến object - <b>VÙNG STACK (lưu tọa độ)</b>
         </p>
 
@@ -152,7 +156,7 @@ console.log(car1 === car2); // false
 console.log(car1 === car3); // true</code></pre>
 
     <blockquote class="blockquote blockquote--normal mt-10">
-        <p>
+        <p class="content__desc">
             So sánh objects thường được dùng để xác định xem 
             hai biến có tham chiếu đến cùng một vị trí trong bộ nhớ không, 
             hoặc để kiểm tra xem hai object có chứa cùng một cặp khóa/giá trị không.
@@ -383,10 +387,10 @@ function StudentRecord(name, grade) {
         ĐÚNG
     </p>
 
-    <pre class="language-javascript"><code class="language-javascript">function CarModel(brand, model) { // Sai: nên là CarModel
-        this.brand = brand;
-        this.model = model;
-    }</code></pre>
+    <pre class="language-javascript"><code class="language-javascript">function CarModel(brand, model) {
+    this.brand = brand;
+    this.model = model;
+}</code></pre>
 
     <h4 class="content__heading-4 mt-20 mb-10">Sử dụng động từ đặt tên hàm tạo</h4>
     <p class="content__desc mb-10">
