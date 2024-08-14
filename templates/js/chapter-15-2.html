@@ -252,18 +252,18 @@ jerry.atk = 10;</code></pre>
         Kể cả thuộc tính có kế thừa hay không, nó vẫn sẽ giống nhau
     </p>
     <p class="content__desc mb-10">
-        Nhược điểm: Thuộc tính riêng cần phải khác nhau thì cách này không phù hợp.
+        <b>Nhược điểm</b>: Thuộc tính riêng cần phải khác nhau thì cách này không phù hợp.
     </p>
 
     <h4 class="content__heading-4 mb-10">Object.create()</h4>
     <p class="content__desc mb-10">
-        Ưu điểm: đảm bảo đối tượng tạo ra sẽ kế thừa từ cùng 1 prototype. Dễ dàng tạo thuộc tính và phương thức khác nhau.
+        <b>Ưu điểm</b>: đảm bảo đối tượng tạo ra sẽ <b>kế thừa từ cùng 1 prototype</b>. <b>Dễ dàng tạo thuộc tính</b> và <b>phương thức khác nhau</b>.
     </p>
     <p class="content__desc mb-10">
         Đơn giản, dễ dàng triển khai. bởi vì tạo ra 1 obj prototype. rồi dùng Object.create(obj) là xong.
     </p>
     <p class="content__desc mb-10">
-        Nhược điểm: tính đồng nhất không tốt như hàm tạo. Thuộc tính riêng có thể không giống nhau
+        <b>Nhược điểm</b>: tính <b>đồng nhất không tốt</b> như hàm tạo. <b>Thuộc tính riêng có thể không giống nhau</b>
     </p>
     <p class="content__desc mb-10">
         Việc bảo trì và phát triển trong tương lai sẽ dễ gặp vấn đề hơn so với sử dụng hàm tạo
@@ -271,7 +271,7 @@ jerry.atk = 10;</code></pre>
 
     <blockquote class="blockquote blockquote--normal">
         <p class="content__desc mb-10">
-            Tóm lại: khi cần sự đồng nhất chặt chẽ, nhu cầu tái sử 
+            <b>Tóm lại</b>: khi cần sự đồng nhất chặt chẽ, nhu cầu tái sử 
             dụng đoạn code này nhiều lần trong dự án thì dùng hàm tạo.
         </p>
         <p class="content__desc">
