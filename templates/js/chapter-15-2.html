@@ -190,4 +190,121 @@ console.log(person); // {} no properties</code></pre>
     </p>
     <pre class="language-javascript"><code class="language-javascript">const num = new Number(123);
 console.log(Object.getPrototypeOf(num));</code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Cơ bản về Object.create()</h2>
+
+    <p class="content__desc mb-10">
+        Đặt vấn đề: tạo ra hàm tạo nhân vật Character.
+    </p>
+    <p class="content__desc mb-10">
+        Có thuộc tính name, hp, atk và có phương thức tấn công attack
+    </p>
+    <p class="content__desc mb-10">
+        Yêu cầu là phương thức này phải viết ra prototype để tối ưu bộ nhớ
+    </p>
+    <p class="content__desc mb-10">
+        <b>Dùng hàm tạo</b> để giải trước
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function Character(name, hp, atk) {
+    this.name = name;
+    this.hp = hp;
+    this.atk = atk;
+}
+
+Character.prototype.attack = function (target) {
+    target.hp -= this.atk;
+}
+
+// tạo ra 2 nhân vật tom & jerry
+const tom = new Character("Tom", 100, 20);
+const jerry = new Character("Jerry", 80, 10);</code></pre>
+
+    <p class="content__desc mb-10">
+        <b>Dùng Object.create()</b> để giải
+    </p>
+    <p class="content__desc mb-10">
+        Object.create() là phương thức để tạo ra 1 đối tượng mới và có thể chỉ định 1 đối tượng khác làm prototype cho đối tượng mới đó
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const prototype = {
+    attack: function(target) {
+        target.hp -= this.atk;
+    }
+};
+
+const tom = Object.create(prototype);
+tom.name = "Tom";
+tom.hp = 100;
+tom.atk = 20;
+
+const jerry = Object.create(prototype);
+jerry.name = "Jerry";
+jerry.hp = 80;
+jerry.atk = 10;</code></pre>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Ưu nhược điểm giữa hai cách và khi nào dùng cách nào</h3>
+    <h4 class="content__heading-4 mb-10">Hàm tạo</h4>
+    <p class="content__desc mb-10">
+        <b>Ưu điểm</b>: đảm bảo đối tượng sau khi tạo sẽ <b>giống nhau</b> từ <b>thuộc tính</b> đến <b>phương thức</b>
+    </p>
+    <p class="content__desc mb-10">
+        Kể cả thuộc tính có kế thừa hay không, nó vẫn sẽ giống nhau
+    </p>
+    <p class="content__desc mb-10">
+        Nhược điểm: Thuộc tính riêng cần phải khác nhau thì cách này không phù hợp.
+    </p>
+
+    <h4 class="content__heading-4 mb-10">Object.create()</h4>
+    <p class="content__desc mb-10">
+        Ưu điểm: đảm bảo đối tượng tạo ra sẽ kế thừa từ cùng 1 prototype. Dễ dàng tạo thuộc tính và phương thức khác nhau.
+    </p>
+    <p class="content__desc mb-10">
+        Đơn giản, dễ dàng triển khai. bởi vì tạo ra 1 obj prototype. rồi dùng Object.create(obj) là xong.
+    </p>
+    <p class="content__desc mb-10">
+        Nhược điểm: tính đồng nhất không tốt như hàm tạo. Thuộc tính riêng có thể không giống nhau
+    </p>
+    <p class="content__desc mb-10">
+        Việc bảo trì và phát triển trong tương lai sẽ dễ gặp vấn đề hơn so với sử dụng hàm tạo
+    </p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Tóm lại: khi cần sự đồng nhất chặt chẽ, nhu cầu tái sử 
+            dụng đoạn code này nhiều lần trong dự án thì dùng hàm tạo.
+        </p>
+        <p class="content__desc">
+            Còn nhu cầu chỉ đơn giản là muốn tạo ra 1 object và kế thừa 
+            từ 1 object có sẵn, hoặc nhu cầu giống prototype và khác nhau 
+            thuộc tính riêng thì dùng Object.create();
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-20 mb-10">1 lưu ý quan trọng</h4>
+    <p class="content__desc mb-10">
+        Khi chỉ định các thuộc tính riêng lẻ trên từng 
+        đối tượng được tạo ra cho dù có trùng tên ở prototype 
+        thì vẫn không sửa được prototype. Mà nó sẽ ghi đè
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const prototype = {
+    getName() {
+        return this.name;
+    }
+}
+
+const tom = Object.create(prototype);
+tom.name = "Tom";
+console.log(tom.getName()); // Tom
+
+const jerry = Object.create(prototype);
+jerry.name = "Jerry";
+// Override, nhưng không thể sửa getName gốc nhé, chỉ sửa ở đối tượng này.
+jerry.getName = function() {
+    return `Hello, my name is ${this.name}`;
+}
+console.log(jerry.getName()); // Hello, my name is Jerry</code></pre>
 </div>
