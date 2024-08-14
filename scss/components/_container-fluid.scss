@@ -1,3 +1,13 @@
+@use "../abstracts";
 .container-fluid--size {
-    padding-top: 15px;
+    --grid-gutter-x: 120px;
+    padding-top: 35px;
+
+    @include abstracts.screen(lg) {
+        --grid-gutter-x: 50px;
+    }
+
+    @include abstracts.screen(md) {
+        --grid-gutter-x: 30px;
+    }
 }

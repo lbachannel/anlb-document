@@ -120,8 +120,49 @@ Person.prototype.greet = function() {
 
 const alice = new Person('Alice');
 
-alice.greet();
-console.log(alice.__proto__ === Person.prototype); // true (cùng tham chiếu)</code></pre>
+alice.greet(); // My name is Alice
+console.log(alice.__proto__ === Person.prototype); // true (cùng tham chiếu)
+
+/**
+ *  Khi 1 đối tượng được tạo ra rồi.
+ *  Cách kiểm tra đối tượng đó được tạo ra bởi hàm tạo nào
+ *  Vd: const alice = new Person('Alice');
+ */
+console.log(alice.__proto__.constructor) // Person(name) { this.name = name;}
+
+// Cách 1 này kiểm tra xem có chắc chắn rằng object có được khởi tạo bởi Person hay không
+if (alice.__proto__.constructor === Person) {
+    console.log("Alice được tạo ra từ Person")
+}
+
+// Cách 2 này khác bên trên là chỉ cần kiểm tra đúng chuỗi kế thừa của nó thôi là đã trả về true
+// nghĩa là alice không nhất thiết khởi tạo trực tiếp từ Person
+// mà chỉ cần trong chuỗi kế thừa phía sau đấy nó có Person là nó sẽ đúng
+// vd: alice instanceof Object => true. (chỉ cần đúng chuỗi sẽ đúng)
+if (alice instanceof Person) {
+    console.log('Alice được tạo ra từ Person')
+}</code></pre>
+    <h3 class="content__heading-3 mt-20 mb-10">Ông tổ Object</h3>
+    <p class="content__desc mb-10">Các hàm tạo được khởi tạo từ JavaScript như Number(), Boolean(), String() v.v</p>
+    <p class="content__desc mb-10">Trước tiên nó sẽ kế thừa từ chính hàm tạo của nó prototype</p>
+    <p class="content__desc">Sau đó tới kế thừa ông tổ object</p>
+    <pre class="language-javascript"><code class="language-javascript">const obj = new Number(999);
+console.log(obj.__proto__.__proto__ === Object.prototype); // true
+
+// Thêm 1 ví dụ
+const str = new String("Hello");
+
+console.log(str.__proto__); // Trước tiên str sẽ kế thừa String.prototype
+// prototype của nó lại kế thừa ông tổ object</code></pre>
+
+    <blockquote class="blockquote blockquote--warning mt-10 mb-10">
+        <p class="content__desc">
+            Lưu ý: Object.create(null); // sẽ không kế thừa bất cứ thứ gì 
+        </p>
+    </blockquote>
+    <pre class="language-javascript"><code class="language-javascript">const person = Object.create(null);
+console.log(person); // {} no properties</code></pre>
+
     <h3 class="content__heading-3 mt-20 mb-10">Tại sao cần sử dụng chuỗi prototype?</h3>
     <p class="content__desc mb-10">
         Chuỗi prototype giúp tối ưu bộ nhớ và tăng hiệu quả trong việc tái sử dụng mã nguồn.
@@ -136,8 +177,17 @@ console.log(alice.__proto__ === Person.prototype); // true (cùng tham chiếu)<
         <b>Ưu điểm</b>: <b>Tiết kiệm bộ nhớ</b> bằng cách chia sẻ các 
         phương thức và thuộc tính chung giữa các đối tượng.
     </p>
-    <p class="content__desc ti-30">
+    <p class="content__desc mb-10 ti-30">
         <b>Ứng dụng</b>: <b>Tạo các đối tượng có phương thức chung</b>: Các đối tượng có thể chia sẻ 
         <b>cùng một phương thức</b> mà <b>không cần định nghĩa lại</b>.
     </p>
+
+    <p class="content__desc mb-10">
+        Ngày nay __proto__ không còn được tiêu chuẩn hóa nữa.
+    </p>
+    <p class="content__desc mb-10">
+        Cách thức được tiêu chuẩn hóa:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const num = new Number(123);
+console.log(Object.getPrototypeOf(num));</code></pre>
 </div>

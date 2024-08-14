@@ -1440,7 +1440,7 @@ b, strong {
   }
 }
 .sidebar-tab__item {
-  padding: 20px;
+  padding: 12px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1591,7 +1591,18 @@ code {
 }
 
 .container-fluid--size {
-  padding-top: 15px;
+  --grid-gutter-x: 120px;
+  padding-top: 35px;
+}
+@media (max-width: 991.98px) {
+  .container-fluid--size {
+    --grid-gutter-x: 50px;
+  }
+}
+@media (max-width: 767.98px) {
+  .container-fluid--size {
+    --grid-gutter-x: 30px;
+  }
 }
 
 .content {
