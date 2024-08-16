@@ -22,6 +22,9 @@
             <!-- Tabs -->
             <ul class="sidebar-tab">
                 <li class="sidebar-tab__item sidebar-tab__item--active">
+                    1. Test js
+                </li>
+                <li class="sidebar-tab__item">
                     2. Tìm hiểu về JS
                 </li>
                 <li class="sidebar-tab__item">
@@ -74,6 +77,9 @@
                 <li class="sidebar-tab__item">
                     15.2 Object nâng cao
                 </li>
+                <li class="sidebar-tab__item">
+                    16. Làm việc với Arrays
+                </li>
 
             </ul>
             <div class="separate-sidebar"></div>
@@ -88,7 +94,14 @@
                     <!-- contents -->
                     <div class="row row-cols-1">
                         <!-- content 1 -->
-                        <div id="chapter-2" class="content content--active"></div>
+                        <div id="chapter-1" class="content content--active"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-1", "./templates/js/chapter-1.html");
+                            });
+                        </script>
+
+                        <div id="chapter-2" class="content"></div>
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 load("#chapter-2", "./templates/js/chapter-2.html");
@@ -195,6 +208,13 @@
                                 load("#chapter-15-2", "./templates/js/chapter-15-2.html");
                             });
                         </script>
+                        <!-- content 15 -->
+                        <div id="chapter-16" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-16", "./templates/js/chapter-16.html");
+                            });
+                        </script>
                     </div>
                 </main>
             </div>
@@ -212,5 +232,7 @@
     <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
     <!-- JavaScript -->
     <script src="./assets/js/script.js"></script>
+    <!-- test only -->
+    <script src="./main.js"></script>
 </body>
 </html>
