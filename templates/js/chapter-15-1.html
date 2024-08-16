@@ -122,11 +122,23 @@ let personCopy = structuredClone(person);
 
 console.log(person.info === personCopy.info); // false</code></pre>
 
-    <blockquote class="blockquote blockquote--normal mt-10">
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
         <p class="content__desc">
             Hàm <b>structuredClone()</b> sẽ nhận vào một <b>object</b> và trả về một <b>object</b> mới - là sao chép sâu (deep copy) của object ban đầu.
         </p>
     </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">function deepCopy(obj) {
+    return structuredClone(obj);
+}
+
+const originalArray = [1, 2, { a: 3, b: 4 }];
+const copiedArray = deepCopy(originalArray);
+
+copiedArray[2].a = 10;
+
+console.log(originalArray[2].a); // 3
+console.log(copiedArray[2].a); // 10</code></pre>
 
     <div class="separate"></div>
 
@@ -209,6 +221,137 @@ console.log(JSON.stringify(student1) === JSON.stringify(student2)); // true</cod
 
     console.log(_.isEqual(obj1, obj2)); // true
 &lt;/script&gt;</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Pass by value và Pass by reference</h2>
+    <h3 class="content__heading-3 mb-10">Pass by value là gì?</h3>
+    <p class="content__desc mb-10">
+        Pass by value (truyền theo giá trị) là khái niệm mô tả cách một biến được truyền vào hàm.
+    </p>
+    <p class="content__desc mb-10">
+        Giá trị của biến đó được sao chép và bản sao này được truyền vào hàm dưới dạng tham số.
+    </p>
+    <p class="content__desc">
+        Điều này có nghĩa là khi gán lại giá trị của tham số 
+        bên trong hàm sẽ không làm ảnh hưởng tới biến gốc bên ngoài hàm.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function changeValue(y) {
+    y = 20;
+    console.log(y); // 20
+}
+
+let x = 10;
+changeValue(x);
+console.log(x); // 10</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Lưu ý: trong JavaScript chỉ có pass by value.
+        </p>
+        <p class="content__desc">
+            Một số người cho rằng JavaScript có pass by reference cho kiểu object 
+            (bao gồm cả array, function, v.v) thì đó là một sự nhầm lẫn.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Pass by reference là gì?</h3>
+    <p class="content__desc mb-10">
+        Pass by reference (truyền theo tham chiếu) 
+        là một khái niệm mô tả cách một biến được truyền vào hàm.
+    </p>
+    <p class="content__desc mb-10">
+        Khi một biến được truyền bằng cách pass by reference, thay vì truyền giá trị của biến đó, 
+        một tham chiếu (hoặc địa chỉ bộ nhớ) đến biến gốc được truyền vào hàm.
+    </p>
+    <p class="content__desc">
+        Điều này có nghĩa là bất kỳ thay đổi nào đối với tham số trong 
+        hàm sẽ ảnh hưởng trực tiếp đến biến gốc bên ngoài hàm ngay lập tức.
+    </p>
+
+    <pre class="language-php"><code class="language-php">&lt;?php
+function changeValue(&amp;$y) {
+    $y = 20;
+    echo $y; // 20
+}
+
+$x = 10;
+
+changeValue($x);
+
+echo $x; // 20</code></pre>
+    <h3 class="content__heading-3 mt-20 mb-10">Trong JavaScript chỉ có Pass by value</h3>
+    <p class="content__desc mb-10">
+        Trong JavaScript, mọi giá trị truyền vào hàm đều được truyền theo kiểu pass by value.
+    </p>
+    <p class="content__desc">
+        Điều này có nghĩa là khi bạn truyền một biến vào một hàm, 
+        JavaScript sẽ luôn tạo ra một bản sao giá trị của biến 
+        đó và truyền bản sao này vào hàm.
+    </p>
+    <h4 class="content__heading-4 mt-10 mb-10">Tại sao có sự nhầm lẫn rằng JavaScript có Pass by reference?</h4>
+    <p class="content__desc mb-10">
+        Sự nhầm lẫn này thường xuất phát từ việc truyền một object từ bên ngoài vào hàm
+    </p>
+    <p class="content__desc mb-10">
+        sau đó bên trong hàm thực hiện các <b>thay đổi thuộc tính</b> trên <b>object</b> nhận được
+    </p>
+    <p class="content__desc mb-10">
+        những thay đổi này được phản ánh thông qua biến gốc ngoài hàm.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này tạo cảm giác giống như tham chiếu của biến gốc được truyền trực tiếp vào hàm vậy.
+    </p>
+    <p class="content__desc mb-10">
+        Tuy nhiên, thực chất JavaScript chỉ sao chép giá trị của biến 
+        (lúc này là một tham chiếu tới object) và truyền vào hàm
+    </p>
+    <p class="content__desc mb-10">
+        chứ không truyền tham chiếu tới biến gốc vào hàm.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: Thay đổi thuộc tính của object bên trong hàm, object bên ngoài hàm cũng thay đổi.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function changeValue(obj) {
+    obj.name = 'Bob';
+}
+
+let person = {
+    name: 'John'
+};
+
+changeValue(person);
+
+console.log(person); // {name: 'Bob'}</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Ví dụ: Gán lại tham số trong hàm, biến ngoài hàm không bị ảnh hưởng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">function changeValue(obj) {
+    obj = {
+        name: 'Bob'
+    };
+}
+
+let person = {
+    name: 'John'
+};
+
+changeValue(person);
+
+console.log(person); // {name: 'John'}</code></pre>
+
+    <blockquote>
+        <p>
+            Nếu là pass by reference thì việc gán lại obj bên trong hàm sẽ làm biến 
+            person ở ngoài hàm cũng sẽ thay đổi theo ngay lập tức.
+        </p>
+        <p>
+            Bởi với pass by reference, thay vì tạo bản sao của biến gốc, 
+            thì tham chiếu tới biến gốc được truyền vào hàm
+        </p>
+        <p>
+            nên việc gán lại tham số trong hàm sẽ làm thay đổi biến bên ngoài hàm ngay lập tức.
+        </p>
+    </blockquote>
 
     <div class="separate"></div>
 
