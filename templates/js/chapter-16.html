@@ -1,0 +1,209 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Làm việc với mảng cơ bản</h2>
+    <h3 class="content__heading-3 mb-10">Phương pháp học mảng hiệu quả</h3>
+    <p class="content__desc mb-10">
+        1. Phương thức này dùng để làm gì, hữu ích trong tình huống nào
+    </p>
+    <p class="content__desc mb-10">
+        2. Những tham số nào, vai trò của từng tham số
+    </p>
+    <p class="content__desc">
+        3. Hàm return về cái gì 
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">push()</h3>
+    <p class="content__desc mb-10">
+        push() thêm một hoặc nhiều phần tử vào cuối mảng và trả về độ dài mới của mảng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana"];
+let newLength = fruits.push("Cherry");
+
+console.log(fruits); // ["Apple", "Banana", "Cherry"]
+console.log(newLength) // 3</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Mảng sẽ bị thay đổi sau khi gọi method này.
+        </p>
+        <p class="content__desc mb-10">
+            <b>Trường hợp sử dụng</b>: Khi muốn <b>thêm một</b> hoặc <b>nhiều phần tử</b> 
+            vào cuối mảng. Đây là <b>cách cơ bản</b> và <b>phổ biến nhất</b> để thêm dữ liệu vào một mảng.
+        </p>
+        <p class="content__desc">
+            Ngoài ra, push() <b>có thể nhận nhiều tham số hơn</b>, tương ứng với số phần tử muốn thêm vào cuối mảng.
+        </p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana"];
+
+// Thêm nhiều phần tử vào cuối mảng cùng một lúc
+fruits.push("Cherry", "Dragonfruit", "Elderberry");
+
+console.log(fruits); // ["Apple", "Banana", "Cherry", "Dragonfruit", "Elderberry"]</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">pop()</h3>
+    <p class="content__desc mb-10">
+        pop() loại bỏ phần tử cuối cùng của mảng và trả về phần tử đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry"];
+let lastFruit = fruits.pop();
+
+console.log(lastFruit); // Cherry
+console.log(fruits); // ["Apple", "Banana"]</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Mảng sẽ bị thay đổi sau khi gọi method này.
+        </p>
+        <p class="content__desc">
+            <b>Trường hợp sử dụng</b>: Khi <b>cần xóa</b> và <b>lấy phần tử cuối</b> cùng của <b>mảng</b>.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">unshift()</h3>
+    <p class="content__desc mb-10">
+        unshift() thêm một hoặc nhiều phần tử vào đầu mảng và trả về độ dài mới của mảng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Banana", "Cherry"];
+let newLength = fruits.unshift("Apple");
+
+console.log(fruits); // ["Apple", "Banana", "Cherry"]
+console.log(newLength); // 3</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Mảng sẽ bị thay đổi sau khi gọi method này.
+        </p>
+        <p class="content__desc mb-10">
+            <b>Trường hợp sử dụng</b>: Khi muốn <b>thêm một</b> hoặc <b>nhiều phần tử vào đầu mảng</b>. 
+            <b>Đặc biệt hữu ích</b> khi bạn muốn <b>giữ nguyên thứ tự của các phần tử sau khi thêm</b> mới.
+        </p>
+        <p class="content__desc">
+            Ngoài ra, unshift() có thể nhận nhiều tham số hơn, tương ứng với số phần tử muốn thêm vào đầu mảng.
+        </p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [3, 4, 5];
+
+// Thêm 1 và 2 vào đầu mảng
+numbers.unshift(1, 2);
+
+console.log(numbers); // [1, 2, 3, 4, 5]</code></pre>
+    
+    <h3 class="content__heading-3 mt-20 mb-10">shift()</h3>
+    <p class="content__desc mb-10">
+        shift() loại bỏ phần tử đầu tiên của mảng và trả về phần tử đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry"];
+let firstFruit = fruits.shift();
+
+console.log(firstFruit); // Apple
+console.log(fruits); // ["Banana", "Cherry"]</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Mảng sẽ bị thay đổi sau khi gọi method này.
+        </p>    
+        <p class="content__desc">
+            <b>Trường hợp sử dụng</b>: Khi muốn <b>xóa phần tử đầu tiên</b> của mảng 
+            và <b>cần sử dụng giá trị của phần tử</b> đó. Phương thức này thường <b>được dùng</b> trong các <b>tình huống</b> như <b>xử lý hàng đợi</b>.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Tìm kiếm và kiểm tra phần tử</h2>
+    <h3 class="content__heading-3 mb-10">indexOf()</h3>
+    <p class="content__desc mb-10">
+        indexOf() tìm chỉ số đầu tiên của một phần tử trong mảng. Nếu không tìm thấy, trả về -1.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.indexOf("Banana")); // 1
+console.log(fruits.indexOf("Mango")); // -1</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: So sánh giữa các phần tử là chính xác (strict equality), tức là cả kiểu dữ liệu và giá trị.
+        </p>
+        <p class="content__desc mb-10">
+            <b>Trường hợp sử dụng</b>: Khi cần xác định vị trí của một phần tử trong mảng. 
+            Đặc biệt hữu ích khi kiểm tra xem một giá trị có tồn tại trong mảng hay không và biết được vị trí của nó.
+        </p>
+        <p class="content__desc">
+            Ngoài ra, indexOf() có thể nhận thêm một tham số thứ hai, đó là vị trí bắt đầu tìm kiếm trong mảng.
+        </p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry", "Apple"];
+
+// Tìm "Apple" bắt đầu từ vị trí 2
+console.log(fruits.indexOf("Apple", 2)); // 3</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">lastIndexOf()</h3>
+    <p>
+        lastIndexOf() tìm chỉ số cuối cùng của một phần tử trong mảng. Nếu không tìm thấy, trả về -1.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 2, 1];
+
+console.log(numbers.lastIndexOf(2)); // 3</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Tìm kiếm từ cuối mảng về đầu mảng.
+        </p>
+        <p class="content__desc mb-10">
+            <b>Trường hợp sử dụng</b>: Khi cần tìm vị trí xuất hiện cuối cùng của một phần tử, 
+            đặc biệt hữu ích trong các mảng có các phần tử lặp lại và bạn muốn biết vị trí lần xuất hiện cuối cùng của chúng.
+        </p>
+        <p class="content__desc">
+            Ngoài ra, giống như indexOf(), lastIndexOf() 
+            cũng có thể nhận một tham số thứ hai là vị trí bắt đầu tìm kiếm, nhưng nó sẽ tìm từ cuối mảng lên.
+        </p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 4, 2, 5];
+
+// Tìm "2" bắt đầu từ vị trí 4 về đầu mảng
+console.log(numbers.lastIndexOf(2, 3)); // 1</code></pre>
+    
+    <h3 class="content__heading-3 mt-20 mb-10">includes()</h3>
+    <p class="content__desc mb-10">
+        includes() kiểm tra xem một mảng có chứa một phần tử nhất định hay không, trả về true hoặc false.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3];
+
+console.log(numbers.includes(2)); // true
+console.log(numbers.includes(4)); // false</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Phương thức này sử dụng same-value-zero comparison algorithm 
+            để xác định xem một mảng có chứa một giá trị nhất định hay không. 
+            Điều này khác biệt so với strict equality (===) ở chỗ nó coi NaN là bằng nhau (trong khi NaN === NaN trả về false).
+        </p>
+        <p class="content__desc">
+            <b>Trường hợp sử dụng</b>: Khi cần kiểm tra xem một mảng có chứa một phần tử nhất định hay không, 
+            mà không quan tâm đến vị trí của phần tử đó.
+        </p>
+    </blockquote>
+    
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Chuyển đổi và đảo ngược mảng</h2>
+    <h3 class="content__heading-3 mb-10">join()</h3>
+    <p class="content__desc mb-10">
+        join() nối tất cả các phần tử của mảng thành một chuỗi, với một dấu phân cách giữa chúng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.join(" / ")); // Apple / Banana / Cherry</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Nếu mảng có phần tử undefined hoặc null, chúng sẽ được chuyển thành chuỗi rỗng trong chuỗi kết quả.
+        </p>
+        <p class="content__desc">
+            <b>Trường hợp sử dụng</b>: Khi muốn biến một mảng thành một chuỗi, 
+            có thể dùng để tạo ra một chuỗi từ các phần tử của mảng, 
+            như tạo ra một danh sách được ngăn cách bằng dấu phẩy, hoặc một đoạn văn.
+        </p>
+    </blockquote>
+</div>
