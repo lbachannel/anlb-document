@@ -206,4 +206,272 @@ console.log(fruits.join(" / ")); // Apple / Banana / Cherry</code></pre>
             như tạo ra một danh sách được ngăn cách bằng dấu phẩy, hoặc một đoạn văn.
         </p>
     </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">reverse()</h3>
+    <p class="content__desc mb-10">
+        reverse() đảo ngược thứ tự của một mảng và trả về mảng đã được đảo ngược.
+    </p>
+    <pre class="languge-javascript"><code class="language-javascript">let numbers = [1, 2, 3];
+
+// Đảo ngược thứ tự các phần tử
+const reversed = numbers.reverse();
+
+console.log(reversed); // [3, 2, 1]</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>: Mảng sẽ bị thay đổi sau khi gọi method này.
+        </p>
+        <p class="content__desc">
+            <b>Trường hợp sử dụng</b>: Khi muốn đảo ngược thứ tự 
+            các phần tử trong mảng, có thể dùng cho việc 
+            sắp xếp hoặc đơn giản chỉ là để đảo ngược thứ tự hiển thị.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">toString()</h3>
+    <p class="content__desc mb-10">
+        toString() chuyển đổi mảng thành một 
+        chuỗi các giá trị, cách nhau bằng dấu phẩy.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let fruits = ["Apple", "Banana", "Cherry"];
+
+console.log(fruits.toString()); // Apple,Banana,Cherry</code></pre>
+<blockquote class="blockquote blockquote--normal mt-10">
+    <p class="content__desc mb-10">
+        <b>Lưu ý</b>: Tương tự như join() nhưng không thể chỉ định dấu phân cách.
+    </p>
+    <p class="content__desc">
+        <b>Trường hợp sử dụng</b>: Khi cần chuyển một mảng thành một chuỗi 
+        để hiển thị hoặc lưu trữ. Phương thức này tự động được gọi khi 
+        một mảng cần được chuyển đổi thành chuỗi, như trong việc nối chuỗi (ép kiểu).
+    </p>
+</blockquote>   
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các sai lầm thường gặp</h3>
+    <h4 class="content__heading-4 mb-10">Quên rằng push(), pop(), unshift(), shift() và reverse() thay đổi mảng ban đầu</h4>
+    <p class="content__desc mb-10">
+        Sai lầm: Sử dụng các phương thức này với suy nghĩ mảng ban đầu 
+        không thay đổi, dẫn đến việc mất mát dữ liệu không mong muốn.
+    </p>
+    <p class="content__desc mb-10">
+        Khắc phục: Luôn nhớ rằng những phương thức này sẽ thay đổi mảng gốc.
+    </p>
+    <p class="content__desc">
+        Nếu muốn giữ nguyên mảng ban đầu, cân nhắc sử dụng các phương thức 
+        khác hoặc sao chép mảng trước khi thực hiện thay đổi.
+    </p>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Sử dụng indexOf() trên mảng có chứa NaN</h4>
+    <p class="content__desc mb-10">
+        Sai lầm: indexOf() không thể tìm thấy NaN trong mảng 
+        vì NaN không bằng chính nó (NaN === NaN là false).
+    </p>
+    <p class="content__desc">
+        Khắc phục: Sử dụng includes() để xử lý trường hợp có NaN.
+    </p>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-20">Phương thức slice() và splice()</h2>
+    <h3 class="content__heading-3 mb-10">Tìm hiểu phương thức slice()</h3>
+    <p class="content__desc mb-10">
+        Phương thức slice() tạo một bản sao hoặc trích xuất một phần 
+        của mảng ban đầu mà không làm thay đổi mảng ban đầu.
+    </p>
+    <p class="content__desc mb-10">
+        Nó trả về một mảng mới chứa các phần tử được trích xuất từ mảng gốc.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">array.slice(start, end);</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Cách sử dụng:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        slice(): Trích xuất toàn bộ mảng.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        slice(start): Trích xuất mảng bắt đầu từ chỉ số start đến cuối mảng.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        slice(start, end): Trích xuất một phần của mảng từ chỉ số start đến trước chỉ số end.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let fruits = [
+    "Apple",
+    "Banana",
+    "Mango",
+    "Orange",
+    "Papaya"
+];
+let result = fruits.slice(2, 4);
+
+console.log(result); // ["Mango", "Orange"]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        slice() rất hữu ích khi bạn cần tạo một bản sao nhanh chóng của một 
+        phần mảng mà không muốn thay đổi mảng gốc. Nó cho phép bạn:
+    </p>
+    <p class="content__desc mb-10">
+        Trích xuất một phần của mảng mà không gây ảnh hưởng đến mảng ban đầu.
+    </p>
+    <p class="content__desc">
+        Tạo bản sao của mảng để thực hiện thao tác trên 
+        đó mà không làm ảnh hưởng dữ liệu mảng ban đầu.
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Các cách làm việc với slice()</h3>
+    <h4 class="content__heading-4 mb-10">1. Tạo bản sao của toàn bộ mảng</h4>
+    <p class="content__desc mb-10">
+        Để tạo một bản sao của toàn bộ mảng, 
+        bạn có thể gọi slice() mà không cần truyền tham số (hoặc truyền số 0).
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+let copyOfNumbers = numbers.slice();
+// hoặc: let copyOfNumbers = numbers.slice(0);
+
+console.log(copyOfNumbers); // [1, 2, 3, 4, 5]</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Lúc này, việc chỉnh sửa vào mảng copyOfNumbers 
+            sẽ không ảnh hưởng tới mảng ban đầu (numbers).
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt-10 mb-10">2. Trích xuất một phần của mảng</h4>
+    <p class="content__desc mb-10">
+        Bạn có thể trích xuất một phần của mảng bằng cách chỉ định chỉ số bắt đầu và kết thúc.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+let result = numbers.slice(1, 4);
+
+console.log(result); // [2, 3, 4]</code></pre>
+        
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Ví dụ, bạn có một danh sách sản phẩm và trên trang chủ của 
+            bạn chỉ muốn hiển thị 3 sản phẩm đầu tiên, 
+            bạn có thể sử dụng array.slice(0, 3) để lấy ra mảng mới gồm 3 phần tử đầu tiên của mảng.
+        </p>
+    </blockquote>
+    <h4 class="content__heading-4 mt-10 mb-10">3. Sử dụng chỉ số âm</h4>
+    <p class="content__desc mb-10">
+        slice() cũng hỗ trợ chỉ số âm, nơi -1 đại diện cho phần tử cuối cùng của mảng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+let result = numbers.slice(-3);
+
+console.log(result); // [3, 4, 5]</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Ví dụ, bạn có một danh sách các thông báo và chỉ muốn 
+            hiển thị 5 thông báo mới nhất trên giao diện, 
+            bạn có thể sử dụng array.slice(-5) để lấy ra 
+            mảng mới gồm 5 phần tử cuối cùng của mảng.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Tìm hiểu phương thức splice()</h2>
+    <h3 class="content__heading-3 mb-10">Phương thức splice() là gì?</h3>
+    <p class="content__desc mb-10">
+        Phương thức splice() được sử dụng để thêm hoặc loại bỏ các phần tử trong một mảng
+    </p>
+    <p class="content__desc mb-10">
+        Nó hữu ích khi muốn thêm và loại bỏ phần tử tại bất kỳ vị trí nào trong mảng.
+    </p>
+    <p class="content__desc mb-10">
+        Phương thức này sẽ sửa đổi vào mảng ban đầu.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">array.splice(start, deleteCount, item1, item2, ...);</code></pre>
+    <p class="content__desc mb-10">
+        Ý nghĩa các tham số:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        start: chỉ định vị trí bắt đầu thêm hoặc loại bỏ phần tử trong mảng.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nếu giá trị này là âm, start sẽ được tính từ cuối mảng, 
+        với -1 là phần tử cuối cùng của mảng.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        deleteCount (tùy chọn): số lượng phần tử cần loại bỏ, bắt đầu từ vị trí start.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nếu deleteCount bị bỏ qua hoặc lớn hơn số phần tử còn lại từ vị trí start đến cuối mảng, 
+        thì tất cả các phần tử từ start đến cuối mảng sẽ bị loại bỏ.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nếu deleteCount là 0, phương thức này sẽ không xóa bất kỳ phần tử nào 
+        nhưng vẫn có thể thêm các phần tử mới vào mảng tại vị trí chỉ định.
+    </p>
+    <p class="content__desc ti-30">
+        item1, item2, ... (tùy chọn): các phần tử cần được thêm vào mảng, bắt đầu từ vị trí start. 
+        Nếu không có phần tử nào được thêm, splice() chỉ đơn giản loại bỏ các phần tử khỏi mảng.
+    </p>
+
+    <h3 class="content__heading-4 mt-20 mb-10">Các cách làm việc với splice()</h4>
+    <h4 class="content__heading-4 mb-10">1. Thêm phần tử vào mảng</h4>
+    <p class="content__desc mb-10">
+        Để thêm một hoặc nhiều phần tử vào mảng, 
+        bạn chỉ cần đặt deleteCount thành 0 và thêm các phần tử sau đó.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 4, 5];
+
+// Thêm số 3 vào vị trí index 2
+numbers.splice(2, 0, 3);
+
+console.log(numbers); // [1, 2, 3, 4, 5]</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Trường hợp thêm một hoặc nhiều phần tử vào 
+            đầu hoặc cuối mảng bạn có thể dùng unshift() và push() cho ngắn gọn và đơn giản. 
+        </p>
+        <p class="content__desc">
+            Tuy nhiên, trường hợp cần thêm một hoặc nhiều phần tử 
+            vào các vị trí khác bạn sẽ cần sử dụng tới splice().
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt20 mb-10">2. Loại bỏ phần tử từ mảng</h4>
+    <p class="content__desc mb-10">
+        Bạn có thể loại bỏ phần tử khỏi mảng bằng cách chỉ định 
+        số lượng phần tử cần loại bỏ mà không cần thêm phần tử mới.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let numbers = [1, 2, 3, 4, 5];
+
+// Loại bỏ 3 phần tử bắt đầu từ vị trí 1
+numbers.splice(1, 3);
+
+console.log(numbers); // [1, 5]</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Sử dụng shift() và pop() chỉ hiệu quả trong tình 
+            huống cần loại bỏ một phần tử ở đầu hoặc cuối mảng. 
+            Trong tình huống cần loại bỏ một 
+            hoặc nhiều phần tử liên tiếp nhau ở các vị trí khác bạn sẽ cần sử dụng tới splice().
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mt20 mb-10">3. Thay thế phần tử trong mảng</h4>
+    <p class="content__desc mb-10">
+        Bạn có thể thay thế một hoặc nhiều phần tử 
+        trong mảng bằng cách loại bỏ chúng và thêm các phần tử mới cùng một lúc.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">let animals = ["Dog", "Cat", "Rabbit", "Horse"];
+
+// Thay thế "Rabbit" bằng "Snake"
+animals.splice(2, 1, "Snake");
+
+console.log(animals); // ["Dog", "Cat", "Snake", "Horse"]</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Một cách khác để thay thế "Rabbit" bằng "Snake" ở trên là 
+            animals[2] = "Snake". Tuy nhiên cách này chỉ hiệu quả 
+            khi thay thế một phần tử. Trường hợp bạn cần thay thế 
+            nhiều phần tử một lúc thì cần sử dụng tới splice().
+        </p>
+    </blockquote>
 </div>
