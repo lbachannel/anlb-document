@@ -1,0 +1,29 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Overload & Method</h2>
+    <p class="content__desc mb-10">
+        Hiện tượng 1 class bất kì chứa nhiều hàm trùng tên nhưng khác phần tham số
+        đầu vào, phải khác kiểu data type.
+    </p>
+    <p class="content__desc mb-10">
+        Được gọi là <b>OVERLOAD</b>/<b>OVERLOADING</b> - quá tải hàm
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void printIntegers(int n) {...}
+public static void printIntegers(long n) {...}</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Pass by value</h3>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    int n = getAPositiveInteger();
+    printIntegerList(n);
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Truyền tham trị (đối số), pass by value
+        </p>
+        <p class="content__desc">
+            OOP pass by reference - truyền tham chiếu, con trỏ, địa chỉ
+        </p>
+    </blockquote>
+</div>

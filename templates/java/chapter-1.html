@@ -1,0 +1,131 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Kiểu dữ liệu & biến</h2>
+    <h3 class="content__heading-3 mb-10">Biến là gì?</h3>
+    <p class="content__desc mb-10">
+        Biến là 1 vùng ram được đặt tên, chiếm 1 số byte nhất định tùy loại.
+    </p>
+    <p class="content__desc mb-10">
+        Dữ liệu, thông tin mà nó sẽ chứa bên trong
+    </p>
+    <p class="content__desc">
+        <b>Vùng ram</b> dùng để lưu trữ dữ liệu thông tin và xử lý.
+    </p>
+
+    <h3 class="content__heading-3 mb-10 mt-10">Primitive Data Type</h3>
+    <p class="content__desc mb-10">
+        Có 8 loại dữ liệu nguyên thủy
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Data type</th>
+                <th>Số byte</th>
+                <th>Số bit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="--text:center;">
+                    byte
+                </td>
+                <td style="--text:center;">
+                    1 byte
+                </td>
+                <td style="--text:center;">8</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    short
+                </td>
+                <td style="--text:center;">
+                    2 byte
+                </td>
+                <td style="--text:center;">16</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    int
+                </td>
+                <td style="--text:center;">
+                    4 byte
+                </td>
+                <td style="--text:center;">32</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    long
+                </td>
+                <td style="--text:center;">
+                    8 byte
+                </td>
+                <td style="--text:center;">64</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    float
+                </td>
+                <td style="--text:center;">
+                    4 byte
+                </td>
+                <td style="--text:center;">32</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    double
+                </td>
+                <td style="--text:center;">
+                    8 byte
+                </td>
+                <td style="--text:center;">64</td>
+            </tr>
+            <tr></tr>
+                <td style="--text:center;">
+                    boolean
+                </td>
+                <td style="--text:center;">
+                    không chỉ định rõ kích thước, hoặc 1 bit
+                </td>
+                <td style="--text:center;">false/true</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    char
+                </td>
+                <td style="--text:center;">
+                    2 byte
+                </td>
+                <td style="--text:center;">16</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Integer</h3>
+    <pre class="language-javascript"><code class="language-javascript">int age = 20;
+long m = 3000000000; // error
+long m = 3000000000L; // correct</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Mọi con số, kí tự xuất hiện trong code được gọi là literal value
+        </p>
+        <p class="content__desc">
+            Số nguyên xuất hiện trong code mặc định là int.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Double</h3>
+    <p class="content__desc">Java ưu tiên <b>double</b> hơn <b>float</b></p>
+    <pre class="language-javascript"><code class="language-javascript">float vat = 0.1; // error
+float vat = 0.1F; // correct</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Characters</h3>
+    <p>char 2 byte, lưu bảng mã Unicode</p>
+    <pre class="language-javascript"><code class="language-javascript">char m = '$';</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Boolean</h3>
+    <pre class="language-javascript"><code class="language-javascript">boolean marriedStatus = false;
+if (marriedStatus == true) {
+    System.out.println("Đánh đồn có địch mới vui");
+} else {
+    System.out.println("Vườn hồng có lối nhưng chưa ai vào");
+}</code></pre>
+</div>

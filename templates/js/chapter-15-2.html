@@ -307,4 +307,49 @@ jerry.getName = function() {
     return `Hello, my name is ${this.name}`;
 }
 console.log(jerry.getName()); // Hello, my name is Jerry</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Tìm hiểu valueOf() và toString()</h2>
+    <h3 class="content__heading-3 mb-10">Object.prototype.valueOf() - Object.prototype.toString()</h3>
+    <p class="content__desc mb-10">
+        Khi đưa 1 object vào 1 biểu thức. Trước tiên Js sẽ tự động gọi phương thức valueOf()
+        trên đối tượng.
+    </p>
+    <p class="content__desc mb-10">
+        Nếu giá trị trả về của valueOf là giá trị nguyên thủy. Thì nó sẽ lấy giá trị nguyên thủy
+    </p>
+    <p class="content__desc mb-10">
+        Nhưng nếu valueOf trả về giá trị không nguyên thủy. Thì nó sẽ gọi toString() 
+    </p>
+    <p class="content__desc mb-10">
+        Để nhận về cái chuỗi nguyên thủy để thực hiện biểu thức
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const person = {
+    name: "john",
+}
+// JS tự động gọi toString()
+console.log(person + "ABC") // [object Object]ABC
+
+const number = new Number(999);
+console.log(number + "ABC"); // 999ABC</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Nếu không có toán tử. Thì sẽ gọi toString() luôn.
+        </p>
+    </blockquote>
+    <p class="content__desc mb-10">
+        Ví dụ
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const obj = {
+    valueOf() {
+        console.log("valueOf");
+    },
+    toString() {
+        console.log("toString");
+        return [object Object];
+    },
+}
+
+// không gọi valueOf() vì không có toán tử
+console.log(`${obj}`); // [object Object]</code></pre>
 </div>

@@ -1,0 +1,58 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">ôn lại ES6+</h2>
+    <h3 class="content__heading-3 mb-10">Arrow Function</h3>
+    <pre class="language-javascript"><code class="language-javascript">const logger = log => console.log(log);
+logger("Message...");</code></pre>
+    <blockquote class="blockquote blockquote--warning mt-10">
+        <p class="content__desc">
+            Constructor không sử dụng được arrow function
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Enhanced Object Literals</h3>
+    <p class="content__desc mb-10">
+        Định nghĩa key: value cho object
+    </p>
+    <p class="content__desc mb-10">
+        Định nghĩa method cho object
+    </p>
+    <p class="content__desc mb-10">
+        Định nghĩa key cho object dưới dạng biến
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">var name = "JavaScript";
+var price = 1000;
+
+// Định nghĩa key: value cho object
+var course = {
+    name,
+    price
+};
+console.log(course)
+
+// Định nghĩa method cho object
+var person = {
+    name: "Tommy",
+    getName() {
+        return this.name;
+    }
+}
+
+// Định nghĩa key cho object dưới dạng biến
+var fieldName = "name";
+var fieldPrice = "price";
+
+const course = {
+    [fieldName]: "JavaScript",
+    [fieldPrice]: 1000
+}</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Destructuring, Rest</h3>
+    <pre class="language-javascript"><code class="language-javascript">var array = ["html", "css", "Sass", "JavaScript", "ReactJs", "NextJs"];
+var [a, b, c, d, e, f] = array;
+
+console.log(a, b); // html, css
+console.log(rest); // [ "Sass", "JavaScript", "ReactJs", "NextJs" ]</code></pre>
+
+    <h3>JS Modules</h3>
+</div>

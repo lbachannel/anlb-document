@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java | Document</title>
+    <!-- Fonts -->
+    <link rel="stylesheet" href="./assets/fonts/stylesheet.css">
+    <!-- CSS Style -->
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <!-- Bước 1: Nhúng link cdn Highlight code -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="wrapper js-tabs">
+        <!-- Sidebar -->
+        <div id="sidebar" class="sidebar">
+            <h1 class="logo sidebar__logo">
+                <a class="logo__link sidebar__logo--small" href="./index.html">AnLB</a>
+            </h1>
+            <!-- Tabs -->
+            <ul class="sidebar-tab">
+                <li class="sidebar-tab__item sidebar-tab__item--active">
+                    1. Kiểu dữ liệu và biến
+                </li>
+
+                <li class="sidebar-tab__item">
+                    1. Overload && Method
+                </li>
+            </ul>
+            <div class="separate-sidebar"></div>
+            <button id="toggle-btn" class="toggle-btn">
+                <img class="sidebar__icon" src="./assets/img/icons/arrow.svg" alt="">
+            </button>
+        </div>
+        <div class="content-wrapper">
+            <div class="main">
+                <!-- main -->
+                <main class="container-fluid container-fluid--size">
+                    <!-- contents -->
+                    <div class="row row-cols-1">
+                        <!-- content 1 -->
+                        <div id="chapter-1" class="content content--active"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-1", "./templates/java/chapter-1.html");
+                            });
+                        </script>
+
+                        <!-- content 2 -->
+                        <div id="chapter-2" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-2", "./templates/java/chapter-2.html");
+                            });
+                        </script>
+                    </div>
+                </main>
+            </div>
+            <!-- Footer -->
+            <footer id="footer" class="footer"></footer>
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    load("#footer", "./templates/footer.html");
+                })
+            </script>
+        </div>
+    </div>
+
+    <!-- Bước 2: Nhúng code JavaScript của PrismJS -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+    <!-- JavaScript -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
