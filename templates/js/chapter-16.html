@@ -486,6 +486,11 @@ console.log(animals); // ["Dog", "Cat", "Snake", "Horse"]</code></pre>
         Cú pháp
     </p>
     <pre class="language-javascript"><code class="language-javascript">let newArray = array1.concat(array2, array3, ..., arrayX);</code></pre>
+    
+    <p class="content__desc mt-10 mb-10"></p>
+        Ví dụ
+    </p>
+    
     <pre class="language-javascript"><code class="language-javascript">let fruits = ['apple', 'banana'];
 let vegetable = ['carrot', 'pea'];
 
@@ -494,8 +499,33 @@ let combined = fruits.concat(vegetable);
 console.log(combined); // ['apple', 'banana', 'carrot', 'pea']</code></pre>
 
     <h3 class="content__heading-3 mt-20 mb-10">flat</h3>
-    <p>
+    <p class="content__desc mb-10">
         Làm phẳng mảng. [1, 2, [3, 4]] => [1, 2, 3, 4]
     </p>
+    <p class="content__desc mb-10">
+        Không truyền đối số thì mặc định là 1
+    </p>
+    <p class="content__desc mb-10">
+        Không làm thay đổi mảng gốc
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let arr = [1, 2, [3, 4, [5, 6]]];
+
+let flatArray1 = arr.flat(1);
+console.log(flatArray1); // [1, 2, 3, 4, Array(2)]
+
+let flatArray2 = arr.flat(2);
+    
+console.log(flatArray2); // [1, 2, 3, 4, 5, 6]</code></pre>
+
+    <h4 class="content__heading-4 mt-20 mb-10">Làm phẳng tối đa mảng</h4>
+    <p class="content__desc mb-10">
+        Sử dụng <b>Infinity</b> để làm phẳng toàn bộ các mảng con.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">let deeplyNested = [1, [2, [3, [4, [5]]]]];
+let completelyFlat = deeplyNested.flat(Infinity);
+
+console.log(completelyFlat); // [1, 2, 3, 4, 5]</code></pre>
 
 </div>
