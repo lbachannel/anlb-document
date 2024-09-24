@@ -654,5 +654,28 @@ console.log(sum); // 10</code></pre>
             callback.call(thisArg, this[i], i, this);
         }
     }
-};</code></pre>
+};
+
+// trường hợp sử dụng tham số thứ 2 của forEach
+const obj = {
+    numbers: [1, 2, 3],
+    add(number) {
+        this.numbers.push(number);
+    },
+    // sử dụng tham số thứ 2
+    import(numbers) {
+        numbers.forEach(this.add, this); 
+    }
+
+    // hoặc sử dụng Arrow Function không cần tham số thứ 2
+    import2(numbers) {
+        numbers.forEach(num => this.add(num));
+    }
+};
+
+obj.add(4);
+obj.add(5);
+obj.import([6, 7, 8]);
+
+console.log(obj.numbers); // [1, 2, 3, 4, 5, 6, 7]</code></pre>
 </div>
