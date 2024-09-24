@@ -527,5 +527,132 @@ console.log(flatArray2); // [1, 2, 3, 4, 5, 6]</code></pre>
 let completelyFlat = deeplyNested.flat(Infinity);
 
 console.log(completelyFlat); // [1, 2, 3, 4, 5]</code></pre>
+    
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Phương thức forEach</h2>
+    <p class="content__desc mb-10">
+        Phương thức này không trả về giá trị mới mà chỉ thực hiện 
+        hành động lặp qua và xử lý các phần tử của mảng.
+    </p>
+    <p class="content__desc mb-10">
+        Cú pháp
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">array.forEach(function(currentValue, index, arr) { ... }, thisValue);</code></pre>
+    <p class="content__desc mt-10 mb-10"></p>
+        Ví dụ
+    </p>
 
+    <pre class="language-javascript"><code class="language-javascript">const fruits = ['apple', 'banana', 'cherry'];
+fruits.forEach(function(item, index) {
+    console.log(index, item); // 0 "apple" // 1 "banana" // 2 "cherry"
+});</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Dùng forEach thực hiện phép tính tổng
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const numbers = [1, 2, 3, 4];
+let sum = 0;
+
+numbers.forEach(number => {
+    sum += number;
+});
+
+console.log(sum); // 10</code></pre>
+    <h3 class="content__heading-3 mt-20 mb-10">Khác biệt giữa forEach và vòng lặp khi duyệt mảng</h3>
+    <p class="content__desc mb-10">
+        Cả forEach và vòng lặp truyền thống (như for, while) 
+        đều có thể được sử dụng để duyệt qua các phần tử của mảng trong JavaScript, 
+        nhưng chúng có một số khác biệt về cách sử dụng và tính năng.
+    </p>
+    <h4 class="content__heading-4 mb-10">Khác biệt về tính năng</h4>
+    <p class="content__desc mb-10">
+        <b>forEach</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Được thiết kế để duyệt qua mỗi phần tử của mảng một cách dễ dàng 
+        và thực thi một hàm cho mỗi phần tử.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Không thể sử dụng break hay continue để kết thúc sớm hoặc bỏ qua 
+        các phần tử. Việc sử dụng return trong forEach chỉ kết thúc hàm hiện tại 
+        chứ không kết thúc vòng lặp, lần lặp tiếp theo vẫn được diễn ra.
+    </p>
+    <p class="content__desc ti-30 mb-10">
+        Chỉ thực hiện hàm với các phần tử có giá trị, không xử lý các phần tử trống (empty).
+    </p>
+    <p class="content__desc mb-10">
+        <b>Vòng lặp truyền thống (for, while):</b>
+    </p>
+
+    <p class="content__desc ti-30 mb-10">
+        Có thể dừng hoặc thoát khỏi vòng lặp bất cứ lúc nào 
+        sử dụng break hoặc return (khi ở trong một hàm).
+    </p>
+    <p class="content__desc ti-30 mb-10">
+        Cho phép điều khiển chi tiết hơn về quá trình lặp, 
+        như bỏ qua một số phần tử với continue hoặc 
+        điều chỉnh điều kiện lặp tại bất kỳ điểm nào.
+    </p>
+    <p class="content__desc ti-30 mb-10">
+        Luôn duyệt qua tất cả các phần tử của mảng, kể cả các phần tử empty.
+    </p>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Khác biệt trong tính ứng dụng</h3>
+    <p class="content__desc mb-10">
+        <b>Sử dụng forEach:</b>
+    </p>
+
+    <p class="content__desc ti-30 mb-10">
+        Khi bạn muốn áp dụng một hàm lên mỗi phần tử của mảng và 
+        không quan tâm đến việc dừng hoặc thoát vòng lặp.
+    </p>
+    <p class="content__desc ti-30 mb-10">
+        Khi bạn muốn áp dụng một hàm lên mỗi phần tử và muốn viết code gọn gàng, rõ ràng hơn.
+    </p>
+
+    <p class="content__desc mb-10">
+        <b>Sử dụng vòng lặp truyền thống:</b>
+    </p>
+
+    <p class="content__desc ti-30 mb-10">
+        Khi bạn cần điều khiển chi tiết hơn quá trình lặp, 
+        như dừng lặp khi điều kiện nhất định được thỏa mãn.
+    </p>
+    <p class="content__desc ti-30 mb-10">
+        Khi bạn xử lý các bài toán phức tạp hơn, 
+        cần điều chỉnh logic lặp dựa trên điều kiện động.
+    </p>
+
+    <p class="content__desc mb-10">
+        <b>Khác biệt về sự hiệu quả</b>
+    </p>
+
+    <p class="content__desc ti-30 mb-10">
+        Vòng lặp truyền thống có thể hiệu quả hơn forEach 
+        trong một số trường hợp, đặc biệt là khi bạn cần 
+        dừng vòng lặp sớm hoặc bỏ qua một số phần tử cụ thể. 
+        forEach có thể mang lại lợi ích về việc viết code sạch sẽ và ít lỗi hơn 
+        nhưng có thể không hiệu quả bằng vòng lặp truyền thống khi cần kiểm soát 
+        nhiều hơn về luồng thực thi.
+    </p>
+
+    <h4 class="content__heading-4 mt-10 mb-10">Thiết kế forEach2</h4>
+
+    <pre class="language-javascript"><code class="language-javascript">Array.prototype.forEach2 = function(callback, thisArg) {
+    // Lấy chiều dài của mảng
+    const length = this.length;
+
+    // Lặp qua từng phần tử của mảng
+    for (let i = 0; i < length; i++) {
+        // Kiểm tra phần tử tại vị trí i có
+        // tồn tại trong mảng không
+        if (i in this) {
+            // Gọi hàm callback với ba tham số:
+            // phần tử hiện tại, index, và mảng gốc
+            // thisArg được sử dụng làm giá trị
+            // this trong khi gọi callback
+            callback.call(thisArg, this[i], i, this);
+        }
+    }
+};</code></pre>
 </div>
