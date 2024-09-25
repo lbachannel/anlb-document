@@ -104,4 +104,40 @@
             Nó cho phép máy tính diễn giải và thể hiện thông tin mà chúng ta có thể nhìn thấy và tương tác với.
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">toString()</h2>
+    <p class="content__desc mb-10">
+        Mặc định, phương thức này trả về một chuỗi bao gồm 
+        tên lớp của đối tượng và mã băm (hexa) của nó.
+    </p>
+    <p class="content__desc mb-10">
+        Không cần override. Khi System.out.println(chiHu); // gọi thầm toString()
+    </p>
+    <p class="content__desc mb-10">
+        JVM sẽ tự động băm cái vùng RAM của Object thành con số HEXA.
+    </p>
+    <P class="content__desc mb-10">
+        Đại diện cho value vùng RAM đó
+    </P>
+    <p class="content__desc mb-10">
+        Hash number <=> mã băm <=> mã Hexa => nén toàn bộ Data thành 1 con số
+        MD5, SHA-256...
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">data.Person@15db9742 // 15db9742 : hệ 16 
+data.Person@6d06d69c // 6d06d69c : hệ 16</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Tuy nhiên, việc ghi đè phương thức này giúp bạn có thể tùy chỉnh 
+        cách thức đại diện cho đối tượng dưới dạng chuỗi.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Override
+public String toString() {
+    return "Person{name='" + name + "', age=" + age + "}";
+}</code></pre>
 </div>
