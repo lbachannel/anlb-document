@@ -1,0 +1,122 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Try Catch</h2>
+    <p class="content__desc mb-10">
+        <b>Tái hiện</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void inputProfile() {
+    String name, address;
+    int yob;
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Input name: ");
+    name = sc.nextLine().toUpperCase();
+
+    System.out.print("Input yob: ");
+    yob = sc.nextInt();
+
+    System.out.print("Input address: ");
+    address = sc.nextLine().toUpperCase();
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Case 1: Số đặt trước chữ</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Input name: ...
+Input yob: ... // Hiện tượng trôi lệnh xuất hiện
+Input address: ...</code></pre>
+
+    <p class="content__desc mb-10">
+        Quá trình trôi lệnh diễn ra ntn?
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Khi nhập dữ liệu từ bàn phím, data không đi ngay vào biến.
+        Nó sẽ đi vào vùng ram của app. Vùng ram đó gọi là buffer
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        name = sc.nextLine(); khi gặp enter quy tắc của nextLine là hốt sạch.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nên nextLine sẽ hốt tất cả dữ liệu nhập bao hàm enter
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Sau đó ném bỏ enter đi, phần còn lại gán vào biến
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        nextInt() thì cần con số nguyên (để lại rác trong buffer). Khi nhập: 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        2001 ManThien => enter
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nó lấy đúng phần nguyên 2001 và vẫn để lại dấu cách ManThien và enter trong buffer
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Và thế là thằng sau nextLine().
+        Nguyên tắc line là 1 dòng. Dòng thì kết thúc bằng enter.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Lúc này trong buffer có dấu cách ManThien, enter và buffer gửi cho nextLine.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Thằng nextLine hốt và vứt enter đi phần còn lại là dấu cách và ManThien và gán vào biến.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Kết luận address: ManThien, <b>hiện tượng trôi lệnh</b>
+    </p>
+
+    <p class="content__desc mb-10">
+        <b>Solution 1: Xóa bộ đệm</b>
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            System.out.print("Input yob: "); <br>
+            yob = sc.nextInt();<br>
+            sc.nextLine();
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">
+        <b>Solution 2</b>
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            yob = Integer.parseInt(sc.nextLine());
+        </p>
+    </blockquote>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Case 2: Nhập cà chớn</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Input yob: 2001MT // java.util.InputMismatchException</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Mặc định JVM sẽ giết app nếu có cà chớn xảy ra. Để đảm bảo an toàn cho app, xử lí data
+    </p>
+    <p class="content__desc mb-10">
+        Dùng try-catch để báo JVM biết đừng giết, tao tự xử, nhốt các lệnh cà chớn lại
+    </p>
+    <p class="content__desc mb-10">
+        <b>Solution 1: sử dụng try-catch && gán default value</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">try {
+    System.out.print("Input yob: ");
+    yob = Integer.parseInt(sc.nextLine());
+} catch (Exception e) {
+    // e là thư/message JVM gửi cho mình báo rằng có lỗi
+    // xử lí sao ? nhiều cách: default value (ko hay)
+    yob = 69;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Solution 2 (cách hay): sử dụng try-catch và bắt nhập lại</b>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">while (true) {
+    try {
+        System.out.print("Input yob: ");
+        yob = Integer.parseInt(sc.nextLine());
+        break;
+    } catch (Exception e) {
+        System.out.println("Do you know how to input a positive nunber");
+    }
+}</code></pre>
+</div>
