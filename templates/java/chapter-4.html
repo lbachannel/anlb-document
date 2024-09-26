@@ -1,0 +1,78 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Static</h2>
+    <p class="content__desc mb-10">
+        Static chỉ chơi với static
+    </p>
+    <p class="content__desc mb-10">
+        Dùng static cho những gì không của riêng object mà là của cả họ
+    </p>
+    <p class="content__desc mb-10">
+        Dùng static cho những gì là tiện ích/Utility/Helper chỉ cần
+        một vùng ram
+    </p>
+    <p class="content__desc mb-10">
+        với mục đích cung cấp dịch vụ/service cho các object khác
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ Math.sqrt(), Math.abs(), String.format() đều là method static
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class Student {
+    private String id;
+    public static String name; 
+
+    public void showProfile() {...};
+    public static void sayHi() {...};
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>public static String name;</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Khi new mới 1 object. <b>instance variable name</b> sẽ được clone 
+        vào 1 vùng nhớ mới có tên là <b>Student static zone</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Khi thuộc tính name khởi tạo dùng static.
+        Thì khi các obj được tạo mới. name của obj sau cùng sẽ được lưu vào
+        static zone. 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Đây là lý do tất cả obj đều có cùng name (value) của đứa khởi tạo sau cùng.
+    </p>
+    <p class="content__desc mb-10">
+        <b>public static void sayHi() {...};</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Đối với method sayHi() đang dùng static.
+        nếu obj a chấm thì sẽ không hiển thị sayHi().
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Lý do là vì method sayHi() là của cả họ Student.
+        Chứ không thuộc cá nhân mỗi đối tượng
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Vì là của chung, nên sẽ chấm trực tiếp qua tên Class.
+        Student.sayHi();
+    </p>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc mb-10">
+            an.sayHi();
+        </p>
+        <p class="content__desc">
+            Khi chấm sẽ không hiển thị method sayHi(), phải tự gõ, không lỗi,
+            nhưng không nên theo kiểu này
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Thế giờ đã hiểu hai loại dấu chấm</h3>
+    <p class="content__desc mb-10">
+        Chấm trực tiếp qua tên Class tức là chạm sờ STATIC
+    </p>
+    <p class="content__desc mb-10">
+        Chấm qua con đường new tức là bạn đang hàm ý chơi với
+        non-static
+    </p>
+    <p class="content__desc">
+        Vì nó là đồ riêng của từng object
+    </p>
+</div>

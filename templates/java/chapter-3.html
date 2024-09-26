@@ -9,6 +9,12 @@
         là những thứ ta có thể đếm, sờ, mô tả, phân biệt được
     </p>
 
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            Thuộc tính được gọi là <b>instance variable</b>
+        </p>
+    </blockquote>
+
     <h3 class="content__heading-3 mb-10">Class là gì?</h3>
     <p class="content__desc mb-10">
         Sự phân nhóm, tên gọi cho 1 nhóm các đối tượng. Theo 1 tiêu chí nào đó
@@ -140,4 +146,63 @@ data.Person@6d06d69c // 6d06d69c : hệ 16</code></pre>
 public String toString() {
     return "Person{name='" + name + "', age=" + age + "}";
 }</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Encapsulation</h2>
+    <pre class="language-javascript"><code class="language-javascript">public class Dog {
+    public String name;
+    private int yob;
+    private double weight;
+
+    public Dog(String name, int yob, double weight) {
+        this.name = name;
+        this.yob = yob;
+        this.weight = weight;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getYob() {
+        return yob;
+    }
+
+    public void setYob(int yob) {
+        this.yob = yob;
+    }
+
+    public double getWeight() {
+        return weight;
+    }
+
+    public void getWeight(double weight) {
+        this.weight = weight;
+    }
+
+    public void bark() {
+        System.out.printf("|%-10s|%4d|%4.1f|\n", name, yob, weight);
+    }
+}</code></pre>
+
+    <p class="content__desc">CÂU HỎI PHỎNG VẤN</p>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Encapsulation</b> là quá trình đóng gói các 
+            <b>thuộc tính</b> và <b>phương thức</b> trong một class
+        </p>
+        <p class="content__desc mb-10">
+            đồng thời bảo vệ chúng bằng cách kiểm soát truy cập thông qua 
+            các mức độ truy cập (<b>access modifiers</b>) như <b>private</b>, 
+            <b>protected</b>, và <b>public</b>.
+        </p>
+        <p class="content__desc">
+            Điều này giúp bảo vệ dữ liệu và ẩn chi tiết thực thi khỏi người dùng bên ngoài.
+        </p>
+    </blockquote>
 </div>
