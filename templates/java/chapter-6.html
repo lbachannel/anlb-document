@@ -48,4 +48,19 @@ for (int i = 0; i < 5; i++) {
             Chơi mảng obj là cần biến count đếm xem đã có bao nhiêu biến được gán value
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Sort Object Array</h2>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void sortObjectArray() {
+    Student[] arr = new Student[2];
+    arr[0] = new Student("se001", "ahihi", 9.0);
+    arr[1] = new Student("se002", "ahoho", 5.0);
+    
+    if (arr[0].getGPA() > arr[1].getGPA()) {
+        Student tmp = arr[0];
+        arr[0] = arr[1];
+        arr[1] = tmp;
+    }
+}</code></pre>
 </div>
