@@ -112,6 +112,81 @@
     </blockquote>
 
     <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Object Inside-Out</h2>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+        Student s1 = new Student("SE123", "Tommy", 1996, 8.9);
+    
+        s1 = new Student("SE125", "John", 1997, 8.5);
+    
+    
+    }</code></pre>
+    
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Một vùng ram new Object mà không còn ai trỏ tới. JVM có chương trình ngầm gọi là GARBAGE COLLECTOR (Cty môi trường đô thị)
+        </p>
+        <p class="content__desc mb-10">
+            JVM máy ảo Java chạy trên Windows, giám sát vùng ram app viết bằng Java. Có cà chớn không, giết app, cảnh báo khi chơi try-catch
+        </p>
+        <p class="content__desc mb-10">
+            Ngoài ra nó giám sát có vùng new mồ côi nào không, vùng Heap không con trỏ
+        </p>
+        <p class="content__desc mb-10">
+            Vùng HEAP sẽ bị clear. Garbage Collector sẽ tự động giải phóng bộ nhớ mà đối tượng này chiếm giữ. Điều này giúp tránh lãng phí tài nguyên và tránh hiện tượng memory leak (rò rỉ bộ nhớ).
+        </p>
+        <p class="content__desc mb-10">
+            Garbage Collection không xảy ra ngay lập tức khi một đối tượng mất tham chiếu, mà sẽ được kích hoạt tự động khi Java cần giải phóng bộ nhớ, đặc biệt khi:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Bộ nhớ heap gần đầy.
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Ứng dụng yêu cầu nhiều bộ nhớ và cần giải phóng các đối tượng không còn được sử dụng.
+        </p>
+        <p class="content__desc">
+            Bạn có thể gợi ý cho JVM kích hoạt Garbage Collection 
+            sớm hơn bằng cách gọi System.gc(), nhưng việc này chỉ là gợi ý, 
+            không đảm bảo rằng Garbage Collection sẽ diễn ra ngay lập tức.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">
+        <b>Backup Object</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Student s1 = new Student("SE123", "Tommy", 1996, 8.9);
+
+    Student backupObj = s1;
+
+    s1 = new Student("SE125", "John", 1997, 8.5);
+}</code></pre>
+
+    <p class="content__desc mb-10">
+        <b>2 biến Object cùng trỏ cùng 1 vùng new</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Student s1 = new Student("SE123", "Tommy", 1996, 8.9);
+
+    Student s2 = s1; // cùng tọa độ, cùng địa chỉ, cùng 1 vùng nhớ HEAP
+}</code></pre>
+
+    <p class="content__desc mb-10">
+        <b>Anonymous Object: object vô danh</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    new Student("SE666789", "AHIHI", 1999, 8.9).showProfile();
+}</code></pre>
+
+    <p class="content__desc mb-10">
+        <b>Hàm trả về tọa độ của 1 object</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static Student getStudent() {
+    Student s1 = new Student("SE666789", "AHIHI", 1999, 8.9);
+    return s1;
+}</code></pre>
+
+
+    <div class="separate"></div>
     <h2 class="content__heading-2 mb-10">toString()</h2>
     <p class="content__desc mb-10">
         Mặc định, phương thức này trả về một chuỗi bao gồm 

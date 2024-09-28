@@ -79,4 +79,32 @@
     <p class="content__desc">
         Vì nó là đồ riêng của từng object
     </p>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Thiết kế library/utility - Mytoys</h2>
+    <pre class="language-javascript"><code class="language-javascript">public class MyToys {
+    private static Scanner sc = new Scanner(System.in);
+    
+    public static int inputAnInteger(String msg, String error, int min, int max) {
+        int n, tmp;
+        if (min > max) {
+            tmp = min;
+            min = max;
+            max = tmp;
+        }
+        do {
+            try {
+                System.out.print(msg);
+                n = Integer.parseInt(sc.nextLine());
+                if (n < min || n > max) {
+                    throw new Exception();
+                }
+                return n;
+            } catch (Exception e) {
+                System.out.println(error);
+            }
+        } while (true);
+    }
+}</code></pre>
 </div>

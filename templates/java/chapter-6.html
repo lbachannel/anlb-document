@@ -1,0 +1,51 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Primitive Array</h2>
+    <p class="content__desc mb-10">
+        Trong Java, <b>cấm tuyệt đối chỉ định kích thước mảng trong lệnh khai báo</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">double vol[365]; // => error
+double vol[365] = {0, 5, 10, 15, 20, 25, 30}; // => error</code></pre>
+    <p class="content__desc mb-10">
+        Cú pháp đúng:
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">double v[] = {0, 5, 10, 15, 20, 25, 30}; // new ngầm, implicit</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        hoặc
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">double arr[] = new double[365]; // new rõ ràng, explicit</code></pre>
+    <pre class="language-javascript"><code class="language-javascript">double array[] = new double[]{5, 10, 15, 20, 25};</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Không nguy hiểm khi loop. Vì primitive nếu chưa gán thì default là 0 thì in ra 0.
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Object Array</h2>
+    <pre class="language-javascript"><code class="language-javascript">Student s[] = new Student[50];
+s[0] = new Student("se001", "ahihi", 1999, 9.0);
+s[1] = new Student("se002", "ahoho", 1999, 8.5);
+s[2] = new Student("se003", "ahehe", 1999, 7);
+
+for (int i = 0; i < 5; i++) {
+    s[i].showProfile();
+}
+
+// => when s[3] jvm will kill the app. 
+// Because JVM will send you Null pointer Exception. 
+// Since the variable has not been assigned, the default value is zero.
+    </code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Nguyên tắc khi chơi với mảng Object
+        </p>
+        <p class="content__desc mb-10">
+            Không được loop hết, mà chỉ loop đến chỗ nào đã gán. Vì phần còn lại trỏ null, default = 0
+        </p>
+        <p class="content__desc">
+            Chơi mảng obj là cần biến count đếm xem đã có bao nhiêu biến được gán value
+        </p>
+    </blockquote>
+</div>
