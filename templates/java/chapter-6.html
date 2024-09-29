@@ -63,4 +63,21 @@ for (int i = 0; i < 5; i++) {
         arr[1] = tmp;
     }
 }</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Bubble Sort</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void sortObjectArray() {
+    int arr[] = {1000, -1000, 5, 15, -20, 3, 7, 33};
+    
+    for (int i = 0; i < arr.length - 1; i++) {
+        for (int j = i + 1; j < arr.length; j++) {
+            if (arr[i] > arr[j]) {
+                int tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp; 
+            }
+        }
+    }
+}</code></pre>
 </div>

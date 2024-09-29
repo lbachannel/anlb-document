@@ -1,0 +1,89 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Student Management</h2>
+    <p class="content__desc mb-10">
+        data
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public class Student {
+    private String id;
+    private String name;
+    private int yob;
+    private double gpa;
+
+    public Student(String id, String name, int yob, double gpa) {
+        this.id = id;
+        this.name = name;
+        this.yob = yob;
+        this.gpa = gpa;
+    }
+
+    public String getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id = id;
+    }
+    public String getName() {
+        return name;
+    }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public int getYob() {
+        return yob;
+    }
+    public void setYob(int yob) {
+        this.yob = yob;
+    }
+    public double getGpa() {
+        return gpa;
+    }
+    public void setGpa(double gpa) {
+        this.gpa = gpa
+    }
+
+    public void showProfile() {
+        System.out.printf("|%-10s|%-25s|%4d|%3.1f|");
+    }
+}</code></pre>
+
+    <pre class="language-javascript"><code class="language-javascript">public class Shelf {
+    private Student[] stdList = new Student[30];
+    private Scanner sc = new Scanner(System.in);
+    private int length = 0;
+
+    public void inputAStudent() {
+        String id, name;
+        int yob;
+        double gpa;
+        System.out.println("Input student(s) #" + (count + 1) + "/" + stdList.length);
+        System.out.print("Input id: ");
+        id = sc.nextLine();
+        System.out.print("Input name: ");
+        name = sc.nextLine();
+        System.out.print("Input yob: ");
+        yob = Integer.parseInt(sc.nextLine());
+        System.out.print("Input gpa: ");
+        gpa = Double.parseDouble(sc.nextLine());
+        stdList[length] = new Student(id, name, yob, gpa);
+        length++;
+    }
+
+    public void printStudentList() {
+        System.out.println("The student list");
+        for (int i = 0; i < length; i++) {
+            stdList[i].showProfile();
+        }
+    }
+}</code></pre>
+
+    <p class="content__desc">
+        main
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Shelf shelf = new Shelf();
+
+    shelf.inputAStudent();
+    shelf.printStudentList();
+}</code></pre>
+</div>
