@@ -1,72 +1,110 @@
 <div class="content-wrap">
     <h2 class="content__heading-2 mb-10">Inheritance</h2>
     <p class="content__desc mb-10">
+        <b>Inheritance</b> là một khái niệm trong lập trình hướng đối tượng,
+        cho phép một lớp (class) <b>kế thừa thuộc tính</b> và <b>phương thức</b> từ một lớp khác.
+    </p>
+    <p class="content__desc mb-10">
+        Lớp con có thể <b>tái sử dụng</b> các thuộc tính và phương thức từ lớp cha.
+    </p>
+    <p class="content__desc mb-10">
+        Đồng thời có thể <b>mở rộng</b> hoặc <b>ghi đè</b> nếu cần. 
+        Điều này giúp <b>giảm</b> sự <b>lặp lại</b> trong mã
+        và <b>tăng</b> tính <b>tái sử dụng</b>
+    </p>
+    <h3 class="content__heading-3 mb-10">Override</h3>
+    <p class="content__desc mb-10">
+        <b>Override</b> là hiện tượng <b>con</b> có hàm trùng tên với hàm của <b>cha</b>.
+    </p>
+    <p class="content__desc mb-10">
+        Override chỉ xảy ra khi khai 
+        <b>cha new con</b>. Tức là gọi hàm cha nhưng <b>con ưu tiên</b>. 
+        <span class="color-red">(xem hình 8.1 vùng ram của biến tham chiếu s1)</span>
+    </p>
+    <p class="content__desc">
+        Khai con new con thì không thấy, vì gọi trực tiếp hàm con rồi
+    </p>
+    <h3 class="content__heading-3 mt-20 mb-10">Concrete class - lớp cụ thể</h3>
+    <p class="content__desc mb-10">
+        Vùng nhớ cha mở rộng 1 chút thành vùng nhớ con.
+    </p>
+    <p class="content__desc mb-10">
+        Vùng nhớ con = vùng nhớ cha + extends (mở rộng thêm)
+    </p>
+    <figure class="content-img mb-10">
+        <img src="../../assets/img/inheritance.jpg" alt="inheritance" class="content-img__img">
+        <figcaption>
+            <em>Hình 8.1</em>
+        </figcaption>
+    </figure>
+    <p class="content__desc mb-10">
         data
     </p>
-    <pre class="language-javascript"><code class="language-javascript">public class Rectangle {
-    protected String owner;
-    protected String color;
-    protected double width;
-    private double length;
+    <pre class="language-javascript"><code class="language-javascript">public class Parent {
+    protected String assetOne;
+    protected String assetTwo;
     
-    public Rectangle(String owner, String color, double width, double length) {
-        this.owner = owner;
-        this.color = color;
-        this.width = width;
-        this.length = length;
+    public Rectangle(String assetOne, String assetTwo) {
+        this.assetOne = assetOne;
+        this.assetTwo = assetTwo;
     }
 
-    public String getOwner() {
-        return owner;
-    }
+    // getter & setter & toString...
 
-    public void setOwner(String owner) {
-        this.owner = owner;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public double getWidth() {
-        return width;
-    }
-
-    public void setWidth(double width) {
-        this.width = width;
-    }
-
-    public double getLength() {
-        return length;
-    }
-
-    public void setLength(double length) {
-        this.length = length;
-    }
-
-    public int getArea() {
-        return width * length;
-    }
-
-    public void paint() {
-        System.out.printf("|RECTANGLE |%-15s|%10s|%4.1f|%4.1f|%7.2f|\n", owner, color, width, length, getArea());
+    public void showProfile() {
+        System.out.printf("Parent - asset1: " + assetOne + " - asset2: " + assetTwo);
     }
 }</code></pre>
-    <pre class="language-javascript"><code class="language-javascript">public class Square extends Rectangle {
-    public Square(String owner, String color, double edge) {
-        super(owner, color, edge, edge);
+    <pre class="language-javascript"><code class="language-javascript">public class Child extends Parent {
+    public Square(String assetOne, String assetTwo) {
+        super(assetOne, assetTwo);
     }
 
     @Override
-    public void paint() {
-        System.out.printf("|SQUARE    |%-15s|%10s|%4.1f|    %7.2f|\n", owner, color, width, getArea());
+    public void showProfile() {
+        System.out.printf("Child - asset1: " + assetOne + " - asset2: " + assetTwo);
+    }
+
+    public void sayHello() {
+        System.out.print("Hi everyone, I'm a rich kid!!!");
     }
 }</code></pre>
     <p class="content__desc mb-10">
-        <b>super</b> chính là new Rectangle
+        <b>super</b> chính là new Parent
     </p>
+
+    <p class="content__desc mb-10">
+        <b class="color-red">Đặt vấn đề</b>: khi khai cha new con
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">Parent child = new Child("Villa", "1000 BTC");</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Biến object chấm <b>không thể sờ</b> vào <b>phương thức sayHi</b>
+    </p>
+    <p class="content__desc mb-10">
+        Lý do: khai báo kiểu cha, chấm theo cha. Mặc dù trong RAM vẫn có.
+    </p>
+    <p class="content__desc mb-10">
+        Cách 1: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Parent child = new Child("Villa", "1000 BTC");
+Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng new Child</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Cách 2: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (không tốn 1 con trỏ Child)
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Parent c1 = new Child("Villa", "1000 BTC");
+((Child)c1).sayHello(); </code></pre>
+
+<blockquote class="blockquote blockquote--normal">
+    <p class="content__desc mb-10">
+        Chốt hạ:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Để thấy được hàm dị biệt của con, phải DRIFT con trỏ, kéo dãn sợi dây thun, ép kiểu
+    </p>
+    <p class="content__desc ti-30">
+        2 cách nhưng bản chất là 1. Kéo xuống đáy vùng new.
+    </p>
+</blockquote>
 </div>
