@@ -2,7 +2,8 @@
     <h2 class="content__heading-2 mb-10">Inheritance</h2>
     <p class="content__desc mb-10">
         <b>Inheritance</b> là một khái niệm trong lập trình hướng đối tượng,
-        cho phép một lớp (class) <b>kế thừa thuộc tính</b> và <b>phương thức</b> từ một lớp khác.
+        cho phép một lớp (subclass) con thừa hưởng các thuộc tính (fields) và phương thức (methods) 
+        từ một lớp cha (parent class | superclass).
     </p>
     <p class="content__desc mb-10">
         Lớp con có thể <b>tái sử dụng</b> các thuộc tính và phương thức từ lớp cha.
@@ -24,7 +25,7 @@
     <p class="content__desc">
         Khai con new con thì không thấy, vì gọi trực tiếp hàm con rồi
     </p>
-    <h3 class="content__heading-3 mt-20 mb-10">Concrete class - lớp cụ thể</h3>
+    <h3 class="content__heading-3 mt-20 mb-10">Kế thừa level 1: Concrete class - lớp cụ thể</h3>
     <p class="content__desc mb-10">
         Vùng nhớ cha mở rộng 1 chút thành vùng nhớ con.
     </p>
@@ -107,4 +108,50 @@ Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng 
         2 cách nhưng bản chất là 1. Kéo xuống đáy vùng new.
     </p>
 </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mt-20 mb-10">Kế thừa level 2: Abstract Class (Cha trừu tượng, con cụ thể)</h3>
+    <pre class="language-javascript"><code class="language-javascript">public abstract class Shape {
+    protected String owner;
+    protected String color;
+    protected String borderColor;
+
+    // getter & setter & toString()...
+
+    public abstract double getArea();
+
+    public abstract double getPerimeter();
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Class là gom object
+    </p>
+    <p class="content__desc mb-10">
+        Thì Abstract là dạng gom class, những class có điểm tương đồng
+    </p>
+    <p class="content__desc mb-10 color-red">
+        CÂU HỎI PHỎNG VẤN
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            <b>Abstract class (lớp trừu tượng)</b> là một loại lớp trong lập trình hướng đối tượng
+            được sử dụng để định nghĩa các hành vi chung cho các lớp con,
+            nhưng không thể khởi tạo trực tiếp.
+        </p>
+        <p class="content__desc mb-10">
+            Lớp này có thể chứa:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            <b>Phương thức trừu tượng</b>: Phương thức không có phần triển khai (<b>chỉ có khai báo</b>), 
+            buộc các lớp con phải tự định nghĩa lại.
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            <b>Phương thức thông thường</b>: Phương thức có phần triển khai sẵn, các lớp con có thể 
+            sử dụng hoặc ghi đè (override) nếu cần.
+        </p>
+        <p class="content__desc">
+            Mục đích của abstract class là tạo ra một khung sườn cho các lớp con, 
+            giúp chúng chia sẻ mã chung và đảm bảo các lớp con triển khai đầy đủ các hành vi cần thiết.
+        </p>
+    </blockquote>
 </div>
