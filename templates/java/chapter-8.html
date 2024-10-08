@@ -74,25 +74,63 @@
         <b>super</b> chính là new Parent
     </p>
 
-    <p class="content__desc mb-10">
-        <b class="color-red">Đặt vấn đề</b>: khi khai cha new con
-    </p>
+    <h4 class="content__heading-4 mb-20">Đặt vấn đề: khi khai cha new con</h4>
 
     <pre class="language-javascript"><code class="language-javascript">Parent child = new Child("Villa", "1000 BTC");</code></pre>
     <p class="content__desc mt-10 mb-10">
-        Biến object chấm <b>không thể sờ</b> vào <b>phương thức sayHi</b>
+        Biến object chấm <b>không thể sờ</b> vào <b>phương thức sayHi()</b>
     </p>
     <p class="content__desc mb-10">
         Lý do: khai báo kiểu cha, chấm theo cha. Mặc dù trong RAM vẫn có.
     </p>
     <p class="content__desc mb-10">
-        <b>Cách 1</b>: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (1 biến con trỏ tốn 8 byte trong RAM)
+        <b>Cách 1</b>: 
     </p>
+    <p class="content__desc mb-10 ti-30">
+        Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Tốn 1 biến con trỏ. Kích thước là 8 byte <=> 10^18.
+    </p>
+    <p class="content__desc mb-10">
+        Tại sao lại là 8 byte???
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Vì máy mình là window 64 bit. Công nghệ là 64 bit. 64 bit tức là thanh RAM nó đánh địa chỉ.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Dùng 64 bit để lưu số địa chỉ trong RAM.
+        Lưu địa chỉ, lưu tọa độ, tao cần 8 byte.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Nghĩa là số nhà được dùng 64 bit để đánh. Cho nên nó cần được lưu 64 bit. Thì nó mới có khả năng trỏ tới các địa chỉ
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc mb-10">
+            Ngoài lề:
+        </p>
+        <p class="content__desc">
+            Cho nên khứa nào sử dụng window-32 bit mà dùng RAM 8gb là vô nghĩa. Vì tối đa là 4gb.
+        </p>
+    </blockquote>
     <pre class="language-javascript"><code class="language-javascript">Parent child = new Child("Villa", "1000 BTC");
 Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng new Child</code></pre>
 
     <p class="content__desc mt-10 mb-10">
         <b>Cách 2</b>: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (không tốn 1 con trỏ Child)
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">(Child)c1. // không có ra sayHello()</code></pre>
+    <p class="content__desc mt-10 mb-10 ti-30">
+        Dấu chấm cực mạnh về độ ưu tiên.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Hàm ý: sử dụng vùng ram của biến con trỏ
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Gắn với đúng data type của biến con trỏ. c1. là biến của cha nên sẽ chấm vào new Cha, vùng ram của cha
+    </p>
+    <p class="content__desc mb-10">
+        Solution: ép kiểu xong đi đã rồi chấm
     </p>
     <pre class="language-javascript"><code class="language-javascript">Parent c1 = new Child("Villa", "1000 BTC");
 ((Child)c1).sayHello(); </code></pre>
