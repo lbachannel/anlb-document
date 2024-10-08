@@ -86,13 +86,13 @@
         Lý do: khai báo kiểu cha, chấm theo cha. Mặc dù trong RAM vẫn có.
     </p>
     <p class="content__desc mb-10">
-        Cách 1: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new.
+        <b>Cách 1</b>: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (1 biến con trỏ tốn 8 byte trong RAM)
     </p>
     <pre class="language-javascript"><code class="language-javascript">Parent child = new Child("Villa", "1000 BTC");
 Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng new Child</code></pre>
 
     <p class="content__desc mt-10 mb-10">
-        Cách 2: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (không tốn 1 con trỏ Child)
+        <b>Cách 2</b>: Ta sử dụng kỹ thuật DRIFT. Tổ lái con trỏ xuống đáy vùng new. (không tốn 1 con trỏ Child)
     </p>
     <pre class="language-javascript"><code class="language-javascript">Parent c1 = new Child("Villa", "1000 BTC");
 ((Child)c1).sayHello(); </code></pre>
