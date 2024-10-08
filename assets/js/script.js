@@ -26,6 +26,7 @@ function load(selector, path) {
             }
         })
         .finally(() => {
+            Prism.highlightAll();
             window.dispatchEvent(new Event("template-loaded"));
         });
 }
