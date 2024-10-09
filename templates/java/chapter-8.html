@@ -149,6 +149,15 @@ Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng 
 
     <div class="separate"></div>
     <h3 class="content__heading-3 mt-20 mb-10">Kế thừa level 2: Abstract Class (Cha trừu tượng, con cụ thể)</h3>
+    <p class="content__desc mb-10">
+        Class là gom object
+    </p>
+    <p class="content__desc mb-10">
+        Thì Abstract là dạng gom class, những class có điểm tương đồng
+    </p>
+    <p class="content__desc mb-10">
+        <b>superclass (parent class)</b>
+    </p>
     <pre class="language-javascript"><code class="language-javascript">public abstract class Shape {
     protected String owner;
     protected String color;
@@ -159,14 +168,166 @@ Child tmp = (Child) child; // mày hãy xuống lấy cho tao tọa độ vùng 
     public abstract double getArea();
 
     public abstract double getPerimeter();
+
+    public abstract void paint();
 }</code></pre>
 
     <p class="content__desc mt-10 mb-10">
-        Class là gom object
+        <b>subclass (child class)</b>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public class Rectangle extends Shape {
+    protected double width, length;
+
+    public Rectangle(double width, double length, String owner, String color, String borderColor) {
+        super(owner, color, borderColor);
+        this.width = width;
+        this.length = length;
+    }
+
+    // getter & setter & toString()
+
+    @Override
+    public double getArea() {
+        return width * length;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return (width + length) * 2;
+    }
+
+    @Override
+    public void paint() {
+        System.out.printf("|RECTANGLE ....|");
+    }
+}</code></pre>
+
+    <pre class="language-javascript"><code class="language-javascript">public class Disk extends Shape {
+    private static final double PI = 3.14;
+
+    private double radius;
+
+    public Rectangle(double radius, String owner, String color, String borderColor) {
+        super(owner, color, borderColor);
+        this.radius = radius;
+    }
+
+    // getter & setter & toString()
+
+    @Override
+    public double getArea() {
+        return Disk.PI * radius * radius;
+    }
+
+    @Override
+    public double getPerimeter() {
+        return 2 * Disk.PI * radius;
+    }
+
+    @Override
+    public void paint() {
+        System.out.printf("|Disk ....|");
+    }
+}</code></pre>
+
+    <pre class="language-javascript"><code class="language-javascript">public class Triangle extends Shape {
+    protected double a, b, c;
+
+    public Triangle(String owner, String color, String borderColor, double a, double b, double c) {
+        super(owner, color, borderColor);
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    // getter & setter & toString()
+
+    @Override
+    public double getArea() {
+        double p = getPerimeter() / 2;
+        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
+    }
+
+    @Override
+    public double getPerimeter() {
+        return a + b + c;
+    }
+
+    @Override
+    public void paint() {
+        System.out.printf("|Triangle ....|");
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>sub-subclass</b>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public Square extends Rectangle {
+    public Square(String owner, String color, String borderColor, double edge) {
+        super(owner, color, borderColor, edge, edge);
+    }
+
+    @Override
+    public void paint() {
+        System.out.printf("|Square ....|");
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>main</b>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    sortShapes();
+}
+
+public static void sortShapes() {
+    // Hình chữ nhật
+    Rectangle r1 = new Rectangle("r1", "pink", "magenta", 5, 6); // Khai con new con
+    Shape r2 = new Rectangle("r2", "magenta", "pink", 6, 5); // Khai cha new con
+
+    // Hình vuông
+    Square s1 = new Square("s1", "pink", "magenta", 7); // khai con new con
+    Rectangle s2 = new Square("s2", "pink", "magenta", 8); // khai cha new con
+    Shape s3 = new Square("s3", "pink", "magenta", 7); // khai ông nội new cháu
+
+    // Hình tròn
+    Disk d1 = new Disk("d1", "pink", "magenta", 6); // khai con new con
+    Shape d2 = new Disk("d2", "pink", "magenta", 6); // khai cha new con
+
+    // Hình tam giác
+    Triangle t1 = new Triangle("t1", "pink", "magenta", 3, 4, 5); // khai con new con
+    Shape t2 = new Triangle("t2", "pink", "magenta", 3, 4, 5); // khai cha new con
+
+    Shape box[] = new Shape[] {r1, r2, s1, s2, s3, d1, d2, t1, t2};
+    for (Shape x : box) {
+        x.paint(); // => POLYMORPHISM
+    }
+
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Cùng là hàm paint() nhưng có N cách chạy/implement khác nhau tùy ngữ cảnh. 
+        <b>Con qua mặt cha - Cháu qua mặt cha và ông nội</b>
     </p>
     <p class="content__desc mb-10">
-        Thì Abstract là dạng gom class, những class có điểm tương đồng
+        Từ 1 hàm paint() ánh xạ N cách viết code/implement/thực thi lúc chạy.
+        gọi là hiện tượng đa ánh xạ, đa hình dạng, đa nhân cách. 
     </p>
+    <p class="content__desc mb-10">
+        Tính đa hình của 1 cái tên hàm, giúp linh hoạt viết code, dễ mỡ rộng.
+        Vuông theo vuông, Tròn theo Tròn, Chữ nhật theo chữ nhật
+    </p>
+    <p class="content__desc mb-10">
+        Vẫn gọi chung 1 tên gọi paint() từ ông tổ. 
+    </p>
+    <p class="content__desc mb-10">
+        Kỹ thuật đa hình dạng cài đặt và chạy kiểu này, kĩ thuật linh hoạt này được gọi
+        là tính đa hình <b>POLYMORPHISM</b>
+    </p>
+
     <p class="content__desc mb-10 color-red">
         CÂU HỎI PHỎNG VẤN
     </p>
