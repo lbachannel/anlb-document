@@ -353,4 +353,66 @@ public static void sortShapes() {
             giúp chúng chia sẻ mã chung và đảm bảo các lớp con triển khai đầy đủ các hành vi cần thiết.
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+
+    <h3 class="content__heading-3 mb-10">Kế thừa level 3: Anonymous class</h3>
+    <p class="content__desc mb-10">
+        Anonymous class chỉ xảy ra ở abstract class.
+        Nghĩa là không xác định được con cụ thể. Chỉ biết là thuộc nhóm Cha
+    </p>
+    <p>
+        Ví dụ: vẽ 1 hình ngoằn ngoèo không thuộc hcn, hv, ht. Nhưng nó chính xác vẫn là hình.
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void playWithAnonymousClass() {
+    Shape anonymous = new Shape() {
+        @Override
+        public double getArea() {...}
+
+        @Override
+        public double getPerimeter() {...}
+
+        @Override
+        public void paint() {...}
+    };
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            <b>Lưu ý</b>:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Anonymous class và anonymous object là <b>khác nhau</b>
+        </p>
+        <pre class="language-javascript"><code class="language-javascript">new Rectangle("s1", "pink", "magenta", 6, 5).paint(); // anonymous object</code></pre>
+        <p class="content__desc mt-20 mb-10 color-red">
+            <b>Anonymous class</b>:
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Định nghĩa</b>: Anonymous class là một lớp không có tên, được khai báo và khởi tạo ngay lập tức khi cần dùng.
+            Nó thường được sử dụng để ghi đè phương thức hoặc hiện thực một interface mà không cần tạo một lớp riêng biệt.
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Mục đích</b>: Được sử dụng để tạo một lớp mới có logic cụ thể mà chỉ 
+            dùng một lần tại thời điểm khởi tạo.
+        </p>
+        <p class="content__desc ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Cấu trúc</b>: Được khai báo khi khởi tạo một đối tượng từ một lớp hoặc interface có sẵn, 
+            ví dụ như trong một callback hoặc xử lý sự kiện.
+        </p>
+        <p class="content__desc mt-20 mb-10 color-red">
+            <b>Anonymous object</b>:
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Định nghĩa</b>: Anonymous object là một đối tượng được 
+            khởi tạo mà không gán cho bất kỳ biến nào, nghĩa là bạn tạo ra nó và sử dụng ngay lập tức mà không lưu trữ nó để dùng lại.
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Mục đích</b>: Được sử dụng khi đối tượng chỉ cần thực hiện một tác vụ duy nhất, sau đó không cần giữ lại tham chiếu đến đối tượng.
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>Cấu trúc</b>: Thông thường, anonymous object được sử dụng trực tiếp khi gọi phương thức.
+        </p>
+    </blockquote>
 </div>
