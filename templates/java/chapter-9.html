@@ -1,0 +1,142 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Interface</h2>
+    <p class="content__desc mb-10">
+        <b>Interface</b> là bộ quy tắc hành xử/ứng xử/cam kết ai đó tham gia
+        thì phải theo hành động đã cam kết, nhưng sáng tạo trong hành động (implement)
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public interface RCB {
+    public double run(); // public abstract double run(); the same
+    public abstract void showRecord();
+}</code></pre>
+
+    <p class="content__desc mt-10">
+        JDK (Java 8) cho phép interface có hàm có code
+    </p>
+
+    <div class="separate"></div>
+    <p class="content__desc mb-10">
+        Trong Java 1 class con chỉ có tối đa 1 cha - Single Inheritance (đơn kế thừa). Extends 1 class Cha duy nhất.
+        Trong C++ nhiều cha, đa kế thừa
+    </p>
+    <p class="content__desc mb-10">
+        <b class="color-red">Đặt vấn đề</b>:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Cha-1: hàm f() có code
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Cha-2: hàm z() hàm f() có code
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Cha-3: hàm f() có code
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Con kế thừa cả Cha-1, Cha-2, Cha-3
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Hỏi rằng: khi con chấm f() lấy hàm của ai ????? => <b>ambiguous</b>
+    </p>
+    <p class="content__desc mb-10">
+        Java fix bằng cách: Con chỉ kế thừa duy nhất 1 Cha.
+        Cha hàm f() có code hoặc không code => không quan tâm.
+    </p>
+    <p class="content__desc mb-10">
+        Cha có hàm f() có code xài luôn | abstract f() thì con phải code
+    </p>
+    <p class="content__desc mb-10">
+        Nay Java Con 1 cha, nhưng lại được quyền tham gia <b>nhiều</b> CLB => Interface
+    </p>
+    <p class="content__desc mb-10">
+        Interface c1 hàm abstract...f()
+    </p>
+    <p class="content__desc mb-10">
+        Interface c2 hàm abstract...f()
+    </p>
+    <p class="content__desc mb-10">
+        Con extends Cha như bình thường, implements clb c1, c2...
+    </p>
+    <p class="content__desc mb-10">
+        Con ơi mày phải có code ngay f(), chỉ duy nhất hàm f() ở con có code. 
+    </p>
+    <p class="content__desc mb-10">
+        Không bối rối f() vì chỉ duy nhất 1 phiên bản code f()
+    </p>
+
+    <p class="content__desc mb-10">
+        <b class="color-red">CÂU HỎI PHỎNG VẤN</b>
+    </p>
+    <p class="content__desc mb-10">
+        Tại sao không có đa kế thừa và nếu không có đa kế thừa thì có cách nào hóa giải hay không
+    </p>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Trong Java, không có khái niệm đa kế thừa, 1 con chỉ tối đa 1 cha
+        </p>
+        <p class="content__desc mb-10">
+            Nhưng interface sẽ giải quyết câu chuyện đa kế thừa.
+            Thông qua việc tận dụng tất cả hành động của nơi khác.
+        </p>
+        <p class="content__desc mb-10">
+            Nhưng những hành động này toàn là abstract. Cho dù có trùng tên method thì cũng không sợ
+        </p>
+        <p class="content__desc mb-10">
+            Do bên đứa con có trách nhiệm implements. Cuối cùng thì nó chạy xài phiên bản của con chứ không sử dụng
+            tùm lum của các cha như trong đa kế thừa truyền thống.
+        </p>
+        <p class="content__desc mb-10">
+            Cho nên điều này sẽ không gây ra khái niệm <b>ambiguous</b> tang gia bối rối. 
+            Mà vẫn giải quyết được câu chuyện đa kế thừa
+        </p>
+        <p class="content__desc mb-10">
+            Tuy nhiên có 1 nhược điểm:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Những hành động của Cha chỉ là abstract. Còn đa kế thừa truyền thống 
+            là cụ thể được luôn
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+
+    <pre class="language-javascript"><code class="language-javascript">class Cha {
+    public void f() {
+        System.out.println("Phương thức f() từ class Cha");
+    }
+}
+
+interface Interface {
+    default void f() {
+        System.out.println("Phương thức f() từ Interface");
+    }
+}
+
+class Con extends Cha implements Interface {
+    // Không override method f()
+}
+
+public class Test {
+    public static void main(String[] args) {
+        Con con = new Con();
+        con.f(); // Kết quả sẽ in ra: "Phương thức f() từ class Cha"
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Java quy định rằng <b>method từ class cha sẽ được ưu tiên</b> so 
+        với default method từ interface.
+    </p>
+    <p class="content__desc mb-10">
+        Điều này có nghĩa là, nếu class con không override method f(), 
+        thì khi thực thi method f(), phiên bản của class cha sẽ được chạy, 
+        và Java sẽ bỏ qua default method của interface.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Kết luận</b>:
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Nếu class con không override method f() và cả class cha và interface đều có method f() cụ thể, 
+            thì Java sẽ ưu tiên sử dụng method từ class cha.
+        </p>
+    </blockquote>
+</div>
