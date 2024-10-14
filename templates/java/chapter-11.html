@@ -1,5 +1,105 @@
 <div class="content-wrap">
-    <h2 class="content__heading-2 mb-10">Wrapper Class</h2>
+    <h2 class="content__heading-2 mb-20">Wrapper Class</h2>
+    <h3 class="content__heading-3 mb-10">Cơ chế Autoboxing</h3>
+
+    <h4 class="content__heading-4 mb-10">Integer, Long, Short, Byte</h4>
+    <p class="content__desc mb-10">
+        Cơ chế <b>Integer cache pool</b> xảy ra khi sử dụng autoboxing và chỉ cache các giá trị trong khoảng <b>-128 đến 127</b>.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void playWithPointers() {
+    Integer n1 = 2003;
+    Integer n2 = 2003;
+
+    if (n1 == n2) {
+        System.out.println("n1 bằng n2");
+    } else {
+        System.out.println("n1 không bằng n2"); 
+    }
+
+    // Kết quả: n1 không bằng n2
+}</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Khi so sánh n1 == n2, kết quả sẽ là false
+        </p>
+        <p class="content__desc mb-10">
+            Nguyên nhân là Java không cache các giá trị Integer lớn hơn 127
+        </p>
+        <p class="content__desc mb-10">
+            nên n1 và n2 trỏ đến hai đối tượng 
+            Integer khác nhau trong heap. mặc dù giá trị bên trong chúng đều là 2003
+        </p>
+        <p class="content__desc">
+            Do đó, việc so sánh bằng == sẽ so sánh địa chỉ bộ nhớ 
+            của hai đối tượng, dẫn đến kết quả false.
+        </p>
+    </blockquote>
+
+    <pre class="language-javascript"><code class="language-javascript">public static void playWithPointers() {
+    Integer n5 = 100;
+    Integer n6 = 100;
+
+    if (n5 == n6) {
+        System.out.println("n5 bằng n6");
+    } else {
+        System.out.println("n5 không bằng n6"); 
+    }
+
+    // Kết quả: n5 bằng n6
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc mb-10">
+            Khi so sánh n5 == n6, kết quả sẽ là true
+        </p>
+        <p class="content__desc mb-10">
+            Điều này xảy ra vì trong Java, các giá trị Integer từ -128 đến 127 
+            được cache trong bộ nhớ (<b>Integer cache pool</b>).
+        </p>
+        <p class="content__desc mb-10">
+            Khi gán giá trị trong khoảng này, n5 và n6 
+            thực sự trỏ đến cùng một đối tượng trong cache, 
+            dẫn đến kết quả true khi so sánh bằng ==.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">
+        <b>KẾT LUẬN</b>
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc mb-10">
+            Với các giá trị từ -128 đến 127, toán tử == có thể so sánh đúng vì Java sử dụng caching.
+        </p>
+        <p class="content__desc">
+            Vì vậy, khi so sánh giá trị của các wrapper, tốt nhất bạn nên sử dụng phương thức .equals() để đảm bảo so sánh chính xác giá trị bên trong thay vì địa chỉ bộ nhớ.
+        </p>
+    </blockquote>
+
+    <h4 class="content__heading-4 mb-10">Double, Float</h4>
+    <p class="content__desc mb-10">
+        Java không cache các giá trị cho kiểu Double. 
+        Do đó, nếu bạn sử dụng toán tử == để so sánh hai đối tượng Double, 
+        kết quả sẽ phụ thuộc vào việc chúng có trỏ đến cùng một đối tượng 
+        trong bộ nhớ hay không.
+    </p>
+
+    <h4 class="content__heading-4 mb-10">Character</h4>
+    <p class="content__desc mb-10">
+        Character trong Java cũng sử dụng caching cho các 
+        giá trị từ <b>\u0000</b> đến <b>\u007F</b> (tức là <b>0</b> đến <b>127</b>).
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">Character c1 = "A";
+Character c2 = "A";
+c1 == c2; // true
+
+Character c3 = 200;
+Character c4 = 200;
+c3 == c4; // false
+</code></pre>
+
+    <div class="separate"></div>
+
     <p class="content__desc mb-10">
         Tất cả 8 Wrapper Class đều là read-only, <b>IMMUTABLE CLASS</b>
     </p>
@@ -15,4 +115,20 @@
     <p class="content__desc mb-10 ti-30">Double</p>
     <p class="content__desc mb-10 ti-30">Boolean: boolean</p>
     <p class="content__desc mb-10 ti-30">Character: char</p>
+
+    <div class="separate"></div>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Chốt hạ:
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            String, wrapper, object. Khi so sánh chấm gọi hàm để so sánh
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            > >= < <= == != dùng cho PRIMITIVE
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            == != được dùng thêm cho null
+        </p>
+    </blockquote>
 </div>
