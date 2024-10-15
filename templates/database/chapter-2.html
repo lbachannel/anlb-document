@@ -1,0 +1,45 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Basic SELECT</h2>
+    <h3 class="content__heading-3 mb-10">Select only</h3>
+    <p class="content__desc mb-10">
+        1. Hôm nay ngày bao nhiêu
+    </p>
+    <pre><code class="language-sql">SELECT GETDATE() AS [Hôm nay là ngày]</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        2. Hôm nay là tháng mấy
+    </p>
+    <pre><code class="language-sql">SELECT MONTH(GETDATE()) AS [Bây giờ là tháng]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        3. Trị tuyệt đối của -5 là 
+    </p>
+    <pre><code class="language-sql">SELECT ABS(-5) AS [Trị tuyệt đối của -5 là]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        4. 5 + 5 bằng mấy
+    </p>
+    <pre><code class="language-sql">SELECT 5 + 5 AS [5 + 5 bằng]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        5. In ra tên của mình
+    </p>
+    <pre><code class="language-sql">SELECT N'Lai Bỉnh An' AS [Fullname]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        6. Tính tuổi
+    </p>
+    <pre><code class="language-sql">SELECT YEAR(GETDATE()) - 1996 AS [Year of birth]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        7. In tên và tuổi
+    </p>
+    <pre><code class="language-sql">-- LỖI VÌ LỘN XỘN KIỂU DATA
+SELECT N'Lai' + N' Bỉnh An' + (YEAR(GETDATE()) - 1996) + ' years old';
+
+-- Solution 1: sử dụng convert về chuỗi
+SELECT N'Lai' + N' Bỉnh An ' + CONVERT(VARCHAR, YEAR(GETDATE()) - 1996) + ' years old' AS [My profile];
+
+-- Solution 2: sử dụng cast về chuỗi
+SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' years old' AS [My profile];</code></pre>
+
+</div>
