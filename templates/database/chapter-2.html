@@ -36,10 +36,81 @@
     <pre><code class="language-sql">-- LỖI VÌ LỘN XỘN KIỂU DATA
 SELECT N'Lai' + N' Bỉnh An' + (YEAR(GETDATE()) - 1996) + ' years old';
 
--- Solution 1: sử dụng convert về chuỗi
+-- Solution 1: sử dụng convert về chuỗi | [] dùng để tạo khoảng trắng
 SELECT N'Lai' + N' Bỉnh An ' + CONVERT(VARCHAR, YEAR(GETDATE()) - 1996) + ' years old' AS [My profile];
 
 -- Solution 2: sử dụng cast về chuỗi
 SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' years old' AS [My profile];</code></pre>
 
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Select one table</h3>
+    <p class="content__desc mb-10">
+        1. Xem thông tin tất cả khách hàng
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Customers</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        2. Xem chi tiết đơn hàng
+    </p>
+    <pre><code class="language-sql">SELECT * FROM [Order Details]</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        3. In ra thông tin khách hàng gồm: id, CompanyName, ContactName
+    </p>
+    <pre><code class="language-sql">SELECT CustomerID, CompanyName, ContactName FROM Customers</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        4. In thông tin nhân viên gồm: fullname, tính luôn tuổi
+    </p>
+    <pre><code class="language-sql">SELECT FirstName + ' ' + LastName AS Fullname, YEAR(GETDATE()) - YEAR(BirthDate) AS Age FROM Employees;</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        5. Công thức tính tổng tiền phải trả từng món: <b>đơn giá x số lượng x (1 - discount %)</b>
+    </p>
+    <pre><code class="language-sql">SELECT *, UnitPrice * Quantity * (1 - Discount) AS [Sub total] FROM [Order Details];</code></pre>
+    
+    <div class="separate"></div>
+    
+    <h3 class="content__heading-3 mb-10">Select distinct</h3>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc">
+            Nếu distinct đi kèm với id/key nó vô dụng.
+        </p>
+    </blockquote>
+    
+    <p class="content__desc mb-10">
+        1. Liệt kê danh sách tiêu đề(danh xưng) của nhân viên
+    </p>
+    <pre><code class="language-sql">SELECT DISTINCT TitleOfCourtesy FROM Employees;</code></pre>
+    
+    <p class="content__desc mb-10">
+        2. Có bao nhiêu quốc gia xuất hiện trong thông tin khách hàng, in ra.
+    </p>
+    <pre><code class="language-sql">SELECT DISTINCT Country FROM Customers;</code></pre>
+    
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Select order by</h3>
+    <p class="content__desc mb-10">
+        Sort: mặc định không nói gì cả thì là sort tăng dần
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Tăng</b> dần - <b>ASCENDING/ASC</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Giảm</b> dần - <b>DESCENDING/DESC</b>
+    </p>
+    <p class="content__desc mb-10">
+        1. In ra danh sách nhân viên <b>tăng</b> dần theo năm sinh
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Employees ORDER BY BirthDate;</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        2. In ra danh sách nhân viên <b>giảm</b> dần theo năm sinh
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Employees ORDER BY BirthDate DESC;</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        3. In ra danh sách nhân viên <b>giảm</b> dần theo tuổi
+    </p>
+    <pre><code class="language-sql">SELECT EmployeeID, LastName, FirstName, BirthDate, YEAR(GETDATE()) - YEAR(BirthDate) AS Age 
+FROM Employees 
+ORDER BY Age DESC;</code></pre>
 </div>
