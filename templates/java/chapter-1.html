@@ -128,4 +128,96 @@ if (marriedStatus == true) {
 } else {
     System.out.println("Vườn hồng có lối nhưng chưa ai vào");
 }</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">JVM - JRE - JDK</h2>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Khi <b>chạy chương trình Java</b> sẽ thông qua <b>2 bước</b>: 
+        </p>
+        <p class="content__desc mb-10 ti-30">
+            Các <b>file code</b> sẽ <b>được compiler</b> (biên dịch) thành các mã <b>byte code</b> dưới dạng <b>file .class</b>
+        </p>
+        <p class="content__desc ti-30">
+            Tiếp theo thì các mã byte code sẽ được <b>thông dịch Interpreter</b> thành <b>mã máy machine code</b>
+            để máy có thể hiểu và thực thi chương trình.
+        </p>
+    </blockquote>
+
+    <div class="compiler mt-20 mb-20">
+        <div class="compiler__wrap">
+            <span class="compiler__wrap-text">Source code</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Compiler (biên dịch)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Byte Code (.class)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Interpreter (thông dịch)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Machine Code (mã máy)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Output</span>
+        </div>
+    </div>
+
+    <h3 class="content__heading-3 mb-10">JVM</h3>
+    <p class="content__desc mb-10">
+        JVM: Java Virtual Machine (máy ảo Java)
+    </p>
+    <p class="content__desc mb-10">
+        JVM chịu trách nhiệm chuyển đổi các mã byte code thành mã máy
+        tại thời điểm thực thi chương trình
+    </p>
+    <p class="content__desc mb-10">
+        Nhưng chỉ với JVM thôi thì chưa đủ. Thường chương trình Java chúng ta sẽ
+        có thêm một số thư viện Libraries để chạy chương trình
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: <b>Java Standard Library</b>: 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.lang
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.util
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.io ....
+    </p>
+
+    <h3 class="content__heading-3 mb-10">JRE</h3>
+    <p class="content__desc mb-10">
+        JRE: Java Runtime Enviroment (Môi trường thực thi Java)
+    </p>
+    <p class="content__desc mb-10">
+        JRE = JVM + Libraries
+    </p>
+    <p class="content__desc mb-10">
+        Về cơ bản nếu chỉ muốn chạy chương trình Java thôi.
+        Thì chỉ cần cài JRE là đủ.
+    </p>
+    <h3 class="content__heading-3 mb-10">JDK</h3>
+    <p class="content__desc mb-10">
+        JDK: Java Development Kit
+    </p>
+    <p class="content__desc mb-10">
+        JDK = Development tools + JRE (JVM + Libraries)
+    </p>
+    <p class="content__desc mb-10">
+        Bên cạnh đó nó còn có công cụ phát triển (Development tools) như là:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Trình biên dịch (compiler)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Công cụ quản lý gói
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Công cụ Debugger
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Mọi người cần phát triển ứng dụng Java. thì cần phải cài đặt JDK
+        </p>
+    </blockquote>
 </div>
