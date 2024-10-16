@@ -130,6 +130,38 @@ if (marriedStatus == true) {
 }</code></pre>
 
     <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Biến var</h2>
+    <h3 class="content__heading-3 mb-10">JDK10 - LOCAL VARIABLE TYPE INFERENCE</h3>
+    <p class="content__desc mb-10">
+        Từ JDK10, Java hỗ trợ khả năng khai báo biến cục bộ
+        trong hàm mà không cần chỉ rõ data type một cách
+        tường minh - type inference (suy luận kiểu) bằng cách
+        sử dụng từ khoá var. 
+    </p>
+    <p class="content__desc mb-10">
+        Java Compiler sẽ dựa trên cách
+        khai báo biến và gán giá trị để suy luận ra kiểu dữ liệu
+        của biến.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Một số lưu ý khi dùng var</b>
+    </p>
+    <p class="content__desc mb-10">
+        Bắt buộc phải gán giá trị cho biến khi khai báo có dùng var
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x; // bị báo lỗi
+var y = "Do IT Now"; // hợp lệ</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Không thể gán giá trị null cho biến lúc khai báo
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x = null; //bị báo lỗi</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Không đổi kiểu dữ liệu ban đầu của biến sang kiểu khác
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x = 10;
+x = "Hello"; // //bị báo lỗi tương thích kiểu dữ liệu do x đã được xác định là int</code></pre>
+
+    <div class="separate"></div>
     <h2 class="content__heading-2 mb-10">JVM - JRE - JDK</h2>
     <blockquote class="blockquote blockquote--normal">
         <p class="content__desc mb-10">
