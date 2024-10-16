@@ -104,13 +104,30 @@ SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' yea
     </p>
     <pre><code class="language-sql">SELECT * FROM Employees ORDER BY BirthDate;</code></pre>
     <p class="content__desc mt-10 mb-10">
-        2. In ra danh sách nhân viên <b>giảm</b> dần theo năm sinh
-    </p>
-    <pre><code class="language-sql">SELECT * FROM Employees ORDER BY BirthDate DESC;</code></pre>
-    <p class="content__desc mt-10 mb-10">
-        3. In ra danh sách nhân viên <b>giảm</b> dần theo tuổi
+        2. In ra danh sách nhân viên <b>giảm</b> dần theo tuổi
     </p>
     <pre><code class="language-sql">SELECT EmployeeID, LastName, FirstName, BirthDate, YEAR(GETDATE()) - YEAR(BirthDate) AS Age 
 FROM Employees 
 ORDER BY Age DESC;</code></pre>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Select where</h3>
+    <p class="content__desc mb-10">
+        Toán tử: != <> cùng ý nghĩa
+    </p>
+    <p class="content__desc mb-10">
+        1. In ra danh sách khách hàng đến từ Mỹ, Ý và sắp xếp theo cụm
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Customers 
+WHERE Country = 'Italy' OR Country = 'USA'
+ORDER BY Country</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        2. Những nhân viên nào không ở Luân Đôn
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Employees WHERE City != 'London';
+
+SELECT * FROM Employees WHERE City <> 'London';
+
+SELECT * FROM Employees WHERE NOT(City = 'London');</code></pre>
 </div>
