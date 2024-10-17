@@ -57,17 +57,25 @@ SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' yea
     <p class="content__desc mt-10 mb-10">
         3. In ra thông tin khách hàng gồm: id, CompanyName, ContactName
     </p>
-    <pre><code class="language-sql">SELECT CustomerID, CompanyName, ContactName FROM Customers</code></pre>
+    <pre><code class="language-sql">SELECT 
+CustomerID,
+CompanyName,
+ContactName
+FROM Customers</code></pre>
     
     <p class="content__desc mt-10 mb-10">
         4. In thông tin nhân viên gồm: fullname, tính luôn tuổi
     </p>
-    <pre><code class="language-sql">SELECT FirstName + ' ' + LastName AS Fullname, YEAR(GETDATE()) - YEAR(BirthDate) AS Age FROM Employees;</code></pre>
+    <pre><code class="language-sql">SELECT FirstName + ' ' + LastName AS Fullname, 
+YEAR(GETDATE()) - YEAR(BirthDate) AS Age
+FROM Employees;</code></pre>
     
     <p class="content__desc mt-10 mb-10">
         5. Công thức tính tổng tiền phải trả từng món: <b>đơn giá x số lượng x (1 - discount %)</b>
     </p>
-    <pre><code class="language-sql">SELECT *, UnitPrice * Quantity * (1 - Discount) AS [Sub total] FROM [Order Details];</code></pre>
+    <pre><code class="language-sql">SELECT *,
+UnitPrice * Quantity * (1 - Discount) AS [Sub total]
+FROM [Order Details];</code></pre>
     
     <div class="separate"></div>
     
@@ -81,7 +89,8 @@ SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' yea
     <p class="content__desc mb-10">
         1. Liệt kê danh sách tiêu đề(danh xưng) của nhân viên
     </p>
-    <pre><code class="language-sql">SELECT DISTINCT TitleOfCourtesy FROM Employees;</code></pre>
+    <pre><code class="language-sql">SELECT DISTINCT TitleOfCourtesy
+FROM Employees;</code></pre>
     
     <p class="content__desc mb-10">
         2. Có bao nhiêu quốc gia xuất hiện trong thông tin khách hàng, in ra.
@@ -106,7 +115,12 @@ SELECT N'Lai' + N' Bỉnh An ' + CAST(YEAR(GETDATE()) - 1996 AS VARCHAR) + ' yea
     <p class="content__desc mt-10 mb-10">
         2. In ra danh sách nhân viên <b>giảm</b> dần theo tuổi
     </p>
-    <pre><code class="language-sql">SELECT EmployeeID, LastName, FirstName, BirthDate, YEAR(GETDATE()) - YEAR(BirthDate) AS Age 
+    <pre><code class="language-sql">SELECT
+EmployeeID,
+LastName,
+FirstName,
+BirthDate,
+YEAR(GETDATE()) - YEAR(BirthDate) AS Age 
 FROM Employees 
 ORDER BY Age DESC;</code></pre>
 
@@ -125,9 +139,56 @@ ORDER BY Country</code></pre>
     <p class="content__desc mt-10 mb-10">
         2. Những nhân viên nào không ở Luân Đôn
     </p>
-    <pre><code class="language-sql">SELECT * FROM Employees WHERE City != 'London';
+    <pre><code class="language-sql">SELECT *
+FROM Employees
+WHERE City != 'London';
 
-SELECT * FROM Employees WHERE City <> 'London';
+SELECT *
+FROM Employees
+WHERE City <> 'London';
 
-SELECT * FROM Employees WHERE NOT(City = 'London');</code></pre>
+SELECT *
+FROM Employees
+WHERE NOT(City = 'London');</code></pre>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Select range (BETWEEN, IN)</h3>
+    <p class="content__desc mb-10">
+        1. Liệt kê danh sách nhân viên sinh trong năm 1960...1970
+    </p>
+    <pre><code class="language-sql">SELECT * FROM Employees 
+WHERE YEAR(BirthDate) BETWEEN 1960 AND 1970
+ORDER BY BirthDate DESC</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        2. Liệt kê các đơn hàng có trọng lượng từ 100...500
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Orders
+WHERE Freight BETWEEN 100 AND 500</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        3. Liệt kê các đơn hàng gửi tới Anh, Pháp, Mĩ
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Orders
+WHERE ShipCountry IN ('UK', 'France', 'USA')</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        4. Liệt kê các đơn hàng không gửi tới Anh, Pháp, Mĩ
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Orders
+WHERE ShipCountry NOT IN ('UK', 'France', 'USA')</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        5. Liệt kê các đơn hàng trong năm 1996 ngoại trừ các tháng
+        6 7 8 9
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Orders
+WHERE YEAR(OrderDate) = 1996 AND MONTH(OrderDate) NOT IN (6, 7, 8, 9)</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            <b>IN</b>: chỉ khi liệt kê <b>tập giá trị</b> thì mới chơi với IN
+        </p>
+    </blockquote>
 </div>
