@@ -191,4 +191,30 @@ WHERE YEAR(OrderDate) = 1996 AND MONTH(OrderDate) NOT IN (6, 7, 8, 9)</code></pr
             <b>IN</b>: chỉ khi liệt kê <b>tập giá trị</b> thì mới chơi với IN
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Select null</h3>
+    <p class="content__desc mb-10">
+        Trong thực tế có những lúc dữ liệu/info chưa xác định được nó là gì.
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: kí tên danh sách thi. Điểm sẽ chấm và cập nhật sau.
+    </p>
+    <p class="content__desc mb-10">
+        1. Ai chưa xác định khu vực ở (Region null)
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Employees
+WHERE Region IS NULL</code></pre>
+    <p class="content__desc mb-10">
+        2. Những nhân viên đại diện kinh doanh và xác định
+        được nơi lưu trú
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Employees
+WHERE Title = 'Sales Representative' AND NOT(Region IS NULL)
+
+SELECT *
+FROM Employees
+WHERE Title = 'Sales Representative' AND Region IS NOT NULL</code></pre>
 </div>
