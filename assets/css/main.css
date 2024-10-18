@@ -1475,7 +1475,7 @@ b, strong {
   text-align: center;
 }
 .sidebar.collapsed {
-  width: 305px;
+  width: 250px;
 }
 @media (max-width: 767.98px) {
   .sidebar.collapsed {
@@ -1485,12 +1485,6 @@ b, strong {
 .sidebar.collapsed .sidebar__icon {
   width: 20px;
   height: 20px;
-}
-.sidebar.collapsed .sidebar-tab__item {
-  font-size: 1.8rem;
-}
-.sidebar.collapsed .sidebar__logo--small {
-  font-size: 2.5rem;
 }
 
 .toggle-btn {
