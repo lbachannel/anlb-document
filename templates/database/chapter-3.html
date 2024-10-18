@@ -7,19 +7,64 @@
     <pre><code class="language-sql">SELECT * 
 FROM Employees
 WHERE City = ( 
-    SELECT 
-    City 
+    SELECT City 
     FROM Employees 
     WHERE FirstName = 'Robert' AND LastName = 'King'
 ) AND FirstName <> 'Robert' AND LastName <> 'King';</code></pre>
 
-    <p class="content__desc mb-10">
+    <p class="content__desc mt-10 mb-10">
         2. Liệt kê tất cả các đơn hàng có trọng lượng lớn hơn hoặc bằng trọng
         lượng đơn hàng 10555
     </p>
     <pre><code class="language-sql">SELECT * 
 FROM Orders
 WHERE Freight >= (
-    SELECT Freight FROM Orders WHERE OrderID = 10555
+    SELECT Freight 
+    FROM Orders 
+    WHERE OrderID = 10555
 ) AND OrderID != 10555;</code></pre>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Multiple value</h3>
+    <p>
+        1. In ra các món hàng thuộc nhóm bia/rượu
+        thịt, hải sản
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Products
+WHERE CategoryID IN (
+    SELECT CategoryID
+    FROM Categories 
+    WHERE CategoryName
+    IN ('Beverages', 'Meat/Poultry', 'Seafood')
+);</code></pre>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">All any</h3>
+    <p class="content__desc mb-10">
+        1. In ra số lớn nhát trong các số đã nhập
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Num
+WHERE Numbr >= ALL(
+    SELECT * FROM Num
+);</code></pre>
+
+    <p class="content__desc mb-10">
+        2. In ra số nhỏ nhát trong các số đã nhập
+    </p>
+    <pre><code class="language-sql">SELECT *
+FROM Num
+WHERE Numbr <= ALL(
+    SELECT * FROM Num
+);
+
+// trường hợp này sẽ luôn rỗng. 
+// Vì numbr mà lớn hơn (dấu =) dãy số bên trong danh sách
+// thì sẽ không có con số nào
+SELECT *
+FROM Num
+WHERE Numbr > ALL(
+    SELECT * FROM Num
+);</code></pre>
 </div>
