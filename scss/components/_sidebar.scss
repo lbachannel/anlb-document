@@ -27,8 +27,8 @@
     }
 
     &__icon {
-        width: 15px;
-        height: 15px;
+        width: 17px;
+        height: 17px;
         filter: brightness(0) saturate(100%) invert(44%) sepia(96%) saturate(1847%) hue-rotate(324deg) brightness(89%) contrast(109%);
     }
 
@@ -88,12 +88,6 @@
         @include abstracts.screen(md) {
             width: 100%;
         }
-    }
-
-
-    &.collapsed .sidebar__icon {
-        width: 20px;
-        height: 20px;
     }
 }
 
