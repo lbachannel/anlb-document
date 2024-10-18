@@ -1,3 +1,25 @@
 <div class="content-wrap">
-    <h2 class="content__heading-2 mb-10">Sub Query</h2>
+    <h2 class="content__heading-2 mb-20">Sub Query</h2>
+    <h3 class="content__heading-3 mb-10">Single value</h3>
+    <p class="content__desc mb-10">
+        1. Liệt kê các nhân viên cùng quê với King Robert
+    </p>
+    <pre><code class="language-sql">SELECT * 
+FROM Employees
+WHERE City = ( 
+    SELECT 
+    City 
+    FROM Employees 
+    WHERE FirstName = 'Robert' AND LastName = 'King'
+) AND FirstName <> 'Robert' AND LastName <> 'King';</code></pre>
+
+    <p class="content__desc mb-10">
+        2. Liệt kê tất cả các đơn hàng có trọng lượng lớn hơn hoặc bằng trọng
+        lượng đơn hàng 10555
+    </p>
+    <pre><code class="language-sql">SELECT * 
+FROM Orders
+WHERE Freight >= (
+    SELECT Freight FROM Orders WHERE OrderID = 10555
+) AND OrderID != 10555;</code></pre>
 </div>
