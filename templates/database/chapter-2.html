@@ -217,4 +217,68 @@ WHERE Title = 'Sales Representative' AND NOT(Region IS NULL)
 SELECT *
 FROM Employees
 WHERE Title = 'Sales Representative' AND Region IS NOT NULL</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Select like</h2>
+    <p class="content__desc mb-10">
+        Tìm chính xác, dùng <b>toán tử =</b>
+    </p>
+    <p class="content__desc mb-10">
+        Tìm gần đúng, tìm có sự xuất hiện, dùng toán tử like.
+        Ta cần thêm 2 thứ trợ giúp, dấu % và dấu _
+    </p>
+    <p class="content__desc mb-10">
+        <b>%</b> đại diện cho <b>1 chuỗi</b> bất kì nào đó
+    </p>
+    <p class="content__desc mb-10">
+        <b>_</b> đại diện cho <b>1 kí tự</b> bất kì nào đó
+    </p>
+    <p class="content__desc mb-10">
+        Vd: <b>'A%'</b> bất kì ai có tên xuất hiện bằng chữ A,
+        phần còn lại không quan tâm
+    </p>
+    <p class="content__desc mb-10">
+        Vd: <b>'A_'</b> bất kì ai có tên là 2 kí tự,
+        trong đó kí tự đầu phải là A
+    </p>
+    <p class="content__desc mb-10">
+        1. Nhân viên nào có tên bắt đầu chữ A, in ra cả fullname
+        được ghép đầy đủ
+    </p>
+    <pre><code class="language-sql">SELECT 
+EmployeeID,
+FirstName + " " LastName AS Fullname
+FROM Employees
+WHERE FirstName LIKE 'A%'
+
+SELECT 
+EmployeeID,
+CONCAT(FirstName, ' ', LastName) AS Fullname
+FROM Employees
+WHERE FirstName LIKE 'A%'</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        2. Nhân viên nào tên có chữ A cuối cùng
+    </p>
+    <pre><code class="language-sql">SELECT 
+EmployeeID,
+FirstName + " " LastName AS Fullname
+FROM Employees
+WHERE FirstName LIKE '%A'</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        3. Nhân viên nào tên có 4 kí tự
+    </p>
+    <pre><code class="language-sql">SELECT 
+EmployeeID,
+FirstName + " " LastName AS Fullname
+FROM Employees
+WHERE FirstName LIKE '____'</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        4. Sản phẩm nào tên có dài ngắn không quan trọng nhưng có 5 kí tự cuối cùng
+    </p>
+    <pre><code class="language-sql">SELECT 
+EmployeeID,
+FirstName + " " LastName AS Fullname
+FROM Employees
+WHERE FirstName LIKE '& _____'; // tên phải ít nhất 2 từ mới thỏa. Vd: Chang thì sẽ bị loại</code></pre>
 </div>
