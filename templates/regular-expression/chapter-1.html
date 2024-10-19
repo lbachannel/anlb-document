@@ -1,0 +1,138 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Regular Expression</h2>
+    <p class="content__desc mb-10">
+        Biểu thức có quy tắc: 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Một mẫu chuỗi có quy tắc để tìm kiếm, lọc, kiểm tra tính
+        hợp lệ của dữ liệu
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ký tự mẫu</th>
+                <th>Mô tả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="--text:center;">
+                    .
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho kí tự bất kì
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \d
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho số từ 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \D
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho các kí tự không phải là số 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \s
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho các kí tự khoảng trắng (whitespace): \t (tab), \n (xuống dòng), \r (enter)
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \S
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho các kí tự không phải kí tự khoảng trắng (whitespace)
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \w
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho các kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    \W
+                </td>
+                <td style="--text:center;">
+                    Đại diện cho các kí tự không phải các kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+
+            <tr>
+                <td style="--text:center;">
+                    *
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp 0 hoặc nhiều lần. <br>
+                    \d*: chuỗi trùng có thể có 0 hoặc nhiều số từ 0 - 9. <br>
+                    \w*: chuỗi trùng có thể có 0 hoặc nhiều kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    +
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp ít nhất 1 lần. <br>
+                    \d+: chuỗi trùng chứa ít nhất 1 số từ 0 - 9. <br>
+                    \w+: chuỗi trùng chứa ít nhất 1 kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    ?
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp 0 hoặc 1 lần. <br>
+                    \d?: chuỗi trùng chứa 0 hoặc 1 số từ 0 - 9. <br>
+                    \w?: chuỗi trùng chứa 1 kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    {n}
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp n lần. <br>
+                    \d{5}: chuỗi trùng phải chứa đúng 5 số từ 0 - 9. <br>
+                    \w{3}: chuỗi trùng phải chứa đúng 3 kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    {n,}
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp ít nhất n lần. <br>
+                    \d{3,}: chuỗi trùng phải chứa ít nhất 3 số từ 0 - 9. <br>
+                    \w{4,}: chuỗi trùng phải chứa ít nhất 4 kí tự từ a - z, 0 - 9
+                </td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    {n,m}
+                </td>
+                <td style="--text:center;">
+                    Trùng khớp ít nhất n lần, nhưng không hơn m lần. <br>
+                    \d{3,5}: chuỗi trùng phải chứa ít nhất 3 số từ 0 - 9, nhưng không quá 5 số. <br>
+                    \w{1,7}: chuỗi trùng phải chứa ít nhất 1 kí tự từ a - z, 0 - 9, nhưng không quá 7 kí tự
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
