@@ -1,0 +1,38 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Multiple types multiple bounds</h2>
+    <pre class="language-javascript"><code class="language-javascript">public class Demo {
+    public static void main(String[] args) {
+        maxValue(2, 5);
+    }
+
+    // multiple types
+    public static &lt;T extends Integer, T1 extends Integer&gt; void maxValue(T x, T1 y) {
+        if (x > y) {
+            System.out.println(x);
+        } else {
+            System.out.println(y);
+        }
+    }
+
+    // multiple bounds 
+    // T kế thừa number & T phải thực hiện (implement) interface Comparable.
+    public static &lt;T extends Number & Comparable&lt;T&gt;&gt; void maxValue(T x, T y) {
+        if (x.compareTo(y) > 0) {
+            System.out.println(x);
+        } else {
+            System.out.println(y);
+        }
+    }
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Trường hợp trên bắt buộc phải extends Integer vì thực hiện so sánh 2 vế
+        </p>
+        <p class="content__desc mb-10">
+            Nếu extends Number, Float, Double, Byte. 
+            Sẽ nhận thông báo lỗi khi biên dịch chương trình.
+            Hoặc nhận kết quả sai khi thực thi chương trình.
+        </p>
+    </blockquote>
+</div>

@@ -1,0 +1,87 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Deque Interface</h2>
+    <p class="content__desc mb-10">
+        Tương tự queue, nhưng phần tử có thể
+        được thêm vào và lấy ra tại cả 2 đầu
+    </p>
+    <p class="content__desc mb-10">
+        Deque là từ viết tắt của <b>Double Ended Queue</b>
+    </p>
+    <p class="content__desc mb-10">
+        Có 2 lớp hiện thực
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        ArrayDeque
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        LinkedList
+    </p>
+    <p class="content__desc mb-10">
+        Trường hợp sử dụng:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Chỉ đọc, ưu tiên tốc độ nhanh nhất, dùng <b>ArrayDeque</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Thêm, xóa phần tử, dùng <b>LinkedList</b>
+    </p>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">ArrayDeque</h3>
+    <p class="content__desc mb-10">
+        Mặc định khi tạo ra đối tượng ArrayDeque
+        sẽ được cấp phát 1 mảng là 16 phần tử
+    </p>
+    <p class="content__desc mb-10">
+        Ngoài ra có thể chỉ định số lượng phần tử được cấp phép trước.
+        Ở đây ta chỉ định là 10.
+        Tuy nhiên không cần lo lắng nếu sử dụng nhiều hơn 10 phần tử
+    </p>
+    <p class="content__desc mb-10">
+        Khi vượt 10 phần tử ArrayDeque sẽ tự động cấp phát tiếp 10 phần tử
+        và tiếp tục như vậy
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Deque deque = new ArrayDeque(10);
+    deque.add(3);
+    deque.addLast(5);
+    deque.addLast(8);
+    deque.addFirst(1);
+    deque.addFirst(2);
+
+    Iterator it = deque.iterator();
+    while(it.hasNext()) {
+        System.out.println(it.next()); // 2 1 3 5 8
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Lấy phần tử đầu và đồng thời xóa phần tử này</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Object first = deque.poll(); // 2</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <b>Lấy phần tử cuối và đồng thời xóa phần tử này</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Object last = deque.pollLast(); // 8</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            ArrayDeque lưu trữ các phần tử trong ô nhớ nằm liền kề nhau.
+            Chúng ta có 1 tập dữ liệu lớn mà yêu cầu chỉ là 
+            đọc các dữ liệu collection ra thôi.
+            thì nên sử dụng <b>ArrayDeque</b>
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">LinkedList</h3>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Lưu trữ các phần tử trong ô nhớ nằm rải rác
+        </p>
+        <p class="content__desc">
+            Nếu có thêm hoạt động là thêm hoặc xóa,
+            thì nên sử dụng là <b>LinkedList</b>
+        </p>
+    </blockquote>
+</div>

@@ -1,0 +1,117 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Set Interface</h2>
+    <p class="content__desc mb-10">
+        Không chứa giá trị trùng lắp
+    </p>
+    <p class="content__desc mb-10">
+        Có 3 lớp hiện thực:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        TreeSet
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        HashSet
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        LinkedHashSet
+    </p>
+    <p class="content__desc mb-10">
+        Trường hợp sử dụng:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Lưu trữ tập dữ liệu lớn và Không quan tâm thứ tự lưu trữ, 
+        <b>HashSet</b> để cho kết quả được nhanh nhất
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Muốn đạt hiệu suất và giữ lại thứ tự phần tử khi thêm vào dùng <b>LinkedHashSet</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Trường hợp muốn phần tử được tự động sắp xếp tăng dần dùng <b>TreeSet</b>
+    </p>
+
+    <div class="separate"></div>
+    <p class="content__desc mb-10">
+        <b>Iterator</b> là một loại <b>interface đặc biệt</b>.
+        Được thiết kế để chúng ta có thể duyệt qua bất kì loại Collections nào mà 
+        không quan tâm bên dưới các phần tử được tổ chức lưu trữ như thế nào
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>it.hasNext()</b>: kiểm tra còn phần tử hay không. return true || false
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>it.next()</b>: lấy ra phần tử đó
+    </p>
+    <h3 class="content__heading-3 mb-10">HashSet</h3>
+    <p class="content__desc mb-10">
+        Tất cả collections thuộc về Set interface đều có
+        method là iterator(), giúp ta trả về đối tượng
+        Iterator
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Set set = new HashSet();
+    set.add(1);
+    set.add(9);
+    set.add(3);
+    set.add(1);
+
+    Iterator it = set.iterator();
+    while(it.hasNext()) {
+        System.out.println(it.next()); // 1 // 9 // 3 
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>delete method</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">set.remove(3);</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>search method</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">if (set.contains(3)) {
+    System.out.println("Có giá trị 3");
+}</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <b>Thêm list collecttions vào set</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">List list = new ArrayList();
+list.add(18);
+list.add(17);
+
+set.addAll(list);</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Thứ tự thêm vào khác thứ tự in ra.
+        </p>
+        <p class="content__desc mb-10">
+            HashSet đã thay đổi thứ tự các phần tử. 
+            Nhằm mục đích truy cập các phần tử nhanh nhất có thể
+        </p>
+        <p class="content__desc">
+            Như vậy trong trường hợp chúng ta có
+            một lượng lớn các phần tử cần lưu trữ 
+            mà chúng ta <b>ưu tiên</b> về <b>tốc độ</b> 
+            của <b>hiệu suất truy cập</b> thì ta nên <b>sử dụng HashSet</b>
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">LinkedHashSet</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Thứ tự thêm vào như thế nào khi in ra sẽ giữ nguyên giống như vậy.
+        </p>
+        <p class="content__desc">
+            Không cho hiệu suất tốt bằng lớp hiện thực <b>HashSet()</b>
+        </p>
+    </blockquote>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">TreeSet</h3>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Tự động sắp xếp các phần tử theo thứ tự tăng dần.
+        </p>
+    </blockquote>
+</div>

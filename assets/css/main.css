@@ -1317,7 +1317,8 @@ b, strong {
   flex-shrink: 0;
 }
 .language__name {
-  font-size: 2rem;
+  font-size: 1.6rem;
+  line-height: 1.5;
 }
 .language:hover {
   opacity: 0.8;
@@ -1331,6 +1332,12 @@ b, strong {
 }
 .language__java {
   filter: brightness(0) saturate(100%) invert(36%) sepia(96%) saturate(711%) hue-rotate(164deg) brightness(96%) contrast(95%);
+}
+.language__collections {
+  filter: brightness(0) saturate(100%) invert(17%) sepia(89%) saturate(4667%) hue-rotate(355deg) brightness(94%) contrast(106%);
+}
+.language__generics {
+  filter: brightness(0) saturate(100%) invert(47%) sepia(99%) saturate(528%) hue-rotate(358deg) brightness(92%) contrast(96%);
 }
 .language__react {
   filter: brightness(0) saturate(100%) invert(79%) sepia(85%) saturate(2882%) hue-rotate(156deg) brightness(91%) contrast(81%);

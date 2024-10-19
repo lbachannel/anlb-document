@@ -1,0 +1,39 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Bounded type parameters</h2>
+    <pre class="language-javascript"><code class="language-javascript">public class Myposition &lt;T extends Number&gt; {
+    private T x;
+    private T y;
+
+    public T getX() {
+        return x;
+    }
+
+    public void setX(T x) {
+        this.x = x;
+    }
+
+    public T getY() {
+        return y;
+    }
+
+    public void setY(T y) {
+        this.y = y;
+    }
+}</code></pre>
+
+<p class="content__desc mt-10 mb-10">
+    Tham số <> phải là lớp con của Number
+</p>
+
+<pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    MyPosition&lt;Integer&gt; pos = new MyPosition();
+    pos.setX(5);
+    pos.setY(6);
+}</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Đây gọi là kỹ thuật ràng buộc kiểu Generics (Bounded type parameters)
+        </p>
+    </blockquote>
+</div>

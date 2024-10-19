@@ -1,0 +1,17 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Generics on Set</h2>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Set&lt;Integer&gt; set = new HashSet();
+    set.add(1);
+    set.add(2);
+    set.add(3);
+
+    int sum = 0;
+    Iterator&lt;Integer&gt; it = set.iterator();
+    while(it.hasNext()) {
+        int element = it.next();
+        sum += element;
+    }
+    System.out.println(sum);
+}</code></pre>  
+</div>

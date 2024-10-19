@@ -1,0 +1,100 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Map Interface</h2>
+    <p class="content__desc mb-10">
+        Lưu trữ các phần tử theo cặp khóa - giá trị (key - value)
+    </p>
+    <p class="content__desc mb-10">
+        Map không chứa các khóa trùng lặp
+    </p>
+    <p class="content__desc mb-10">
+        Mỗi khóa (key) chỉ tham chiếu tương ứng
+        1 giá trị (value)
+    </p>
+    <p class="content__desc mb-10">
+        Có 3 lớp hiện thực
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        HashMap
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        LinkedHashMap
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        TreeMap
+    </p>
+    <p class="content__desc mb-10">
+        Trường hợp sử dụng:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Lưu trữ tập dữ liệu lớn và Không quan tâm thứ tự lưu trữ, 
+        <b>HashMap</b> để cho kết quả được nhanh nhất
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Muốn đạt hiệu suất và giữ lại thứ tự phần tử khi thêm vào dùng <b>LinkedHashMap</b>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Trường hợp muốn các khóa key được tự động sắp xếp tăng dần dùng <b>TreeMap</b>
+    </p>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">HashMap</h3>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Map map = new HashMap();
+    map.put("java", "Java Collections Framework");
+    map.put("javascript", "JavaScript Pro");
+    map.put("html", "html css pro");
+
+    // không được trùng key, 
+    // giá trị của key khai báo sau sẽ ghi đè giá trị đầu
+    map.put("java", "Java SE");
+
+    Iterator it = map.keySet().iterator();
+    while(it.hasNext()) {
+        Object key = it.next();
+        Object value = map.get(key);
+        System.out.println(key + " - " + value);
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>delete method</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// key là java xóa tất
+map.remove("java");
+
+// Java SE vẫn còn tồn tại
+map.remove("java", "Java Collections Framework");</code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Thứ tự thêm vào khác thứ tự in ra.
+        </p>
+        <p class="content__desc mb-10">
+            HashMap đã thay đổi thứ tự các phần tử. 
+            Nhằm mục đích truy cập các phần tử nhanh nhất có thể
+        </p>
+        <p class="content__desc">
+            Như vậy trong trường hợp chúng ta có
+            một lượng lớn các phần tử cần lưu trữ 
+            mà chúng ta <b>ưu tiên</b> về <b>tốc độ</b> 
+            của <b>hiệu suất truy cập</b> thì ta nên <b>sử dụng HashMap</b>
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">LinkedHashMap</h3>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Thứ tự thêm vào như thế nào khi in ra sẽ giữ nguyên giống như vậy.
+        </p>
+        <p class="content__desc">
+            Không cho hiệu suất tốt bằng lớp hiện thực <b>HashMap()</b>
+        </p>
+    </blockquote>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">TreeMap</h3>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc">
+            Tự động sắp xếp các giá trị <b>key</b> theo thứ tự tăng dần
+        </p>
+    </blockquote>
+</div>

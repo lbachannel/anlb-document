@@ -1,0 +1,50 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Queue Interface</h2>
+    <p class="content__desc mb-10">
+        Phần tử được đưa vào từ cuối
+        (rear), và lấy ra từ đầu (head)
+    </p>
+    <p class="content__desc mb-10">
+        Còn được gọi là cấu trúc dữ liệu <b>first-in first-out</b>
+    </p>
+    <p class="content__desc mb-10">
+        Có 2 lớp hiện thực
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        LinkedList (First-in First-out FIFO)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        PriorityQueue
+    </p>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">LinkedList</h3>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Queue queue = new LinkedList();
+    queue.add("first");
+    queue.add("second");
+    queue.add("third");
+
+    Iterator it = queue.iterator();
+    while(it.hasNext()) {
+        System.out.println(it.next());
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Lấy phần tử đầu nhưng không xóa phần tử</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Object element = queue.peek(); // first</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <b>Lấy phần tử đầu và đồng thời xóa phần tử này</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">Object element = queue.poll(); // first</code></pre>
+    
+    <p class="content__desc mt-10 mb-10">
+        <b>Delete method (return boolean)</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">boolean isDelete = queue.remove("second"); // true</code></pre>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">PriorityQueue</h3>
+</div>

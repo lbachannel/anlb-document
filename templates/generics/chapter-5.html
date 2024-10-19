@@ -1,0 +1,16 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Generics on Map</h2>
+    <pre class="language-javascript"><code class="language-javascript">public static void main(String[] args) {
+    Map&lt;Integer, String&gt; map = new HashMap();
+    map.put(111, "String: 111");
+    map.put(222, "String: 222");
+    map.put(333, "String: 333");
+
+    Iterator&lt;Integer&gt; keys = map.keySet().iterator();
+    while(keys.hasNext()) {
+        int key = keys.next();
+        String value = map.get(key);
+        System.out.println(key + " - " value);
+    }
+}</code></pre>  
+</div>
