@@ -1,0 +1,45 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Tại sao cần Response Entity</h2>
+    <p class="content__desc mb-10">
+        Mô hình đang thực hiện: <b>client - server</b>
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc mb-10">
+            <b>Client</b> (browser/postman) gửi <b>request</b> (yêu cầu)
+            tới <b>server</b> (java) thông qua <b>RESTFul APIs</b>
+        </p>
+        <p class="content__desc">
+            <b>Server</b> (java) gửi <b>response</b> (phản hồi)
+            về cho <b>client</b> (browser/postman)
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">Hiện tại, phản hồi (response) đang ở dạng text, hoặc JSON object</p>
+    <p class="content__desc mb-10">
+        Để các hệ thống nói chuyện với nhau 1 cách đầy đủ nhất,
+        1 lời phản hồi (response) sẽ gồm:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Thông tin header</b>: (ví dụ bạn muốn dùng cookies chẳng hạn)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Thông tin status</b> (http status): mã phản hồi
+    </p>
+    <p class="content__desc ti-30">
+        <b>Thông tin body (nếu có)</b>: data phản hồi, thông thường dưới dạng JSON
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Minh họa 1 vài cách dùng thông dụng:</h3>
+    <p class="content__desc mb-10">
+        Trả về mình <b>status</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).body(null);</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Trả về <b>status</b> và <b>headers</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).headers(Instance_of_HttpHeaders).build();</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Trả về <b>status</b>, <b>headers</b> và <b>body</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).headers(Instance_of_HttpHeaders).body(Instance_of_object_send_back_to_client);</code></pre>
+</div>
