@@ -1,107 +1,191 @@
 <div class="content-wrap">
-    <h2 class="content__heading-2 mb-20">Tại sao cần Response Entity</h2>
+    <h2 class="content__heading-2 mb-20">Spring Dependency Injection</h2>
+    <h3 class="content__heading-3 mb-10">@Component và @Autowire</h3>
     <p class="content__desc mb-10">
-        Mô hình đang thực hiện: <b>client - server</b>
+        <mark>Cách chạy ứng dụng Spring Boot</mark>
+    </p>
+    <p class="content__desc mb-10">
+        1. Java core: khi run project, định nghĩa hàm main(), để chạy nó đầu tiên
+    </p>
+    <p class="content__desc mb-10">
+        2. Thì Spring Boot cũng vậy, phải chỉ cho Spring Boot biết nơi nó khởi chạy lần đầu, để nó cài đặt mọi thứ.
+    </p>
+    <p class="content__desc mb-10">
+        Cách thực hiện là thêm annotation <b class="color-red">@SpringBootApplication</b>
+        trên class chính và gọi <b class="color-red">SpringApplication.run(App.class, args);</b> để chạy project.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class App {
+    public static void main(String[] args) {
+        SpringApplication.run(App.class, args);
+    }
+}</code></pre>
+
+<p class="content__desc mt-10 mb-10">
+    Những nhiệm vụ chính của Spring là tạo ra một cái Container chứa các Dependency cho chúng ta.
+</p>
+<p class="content__desc mb-10">
+    <b class="color-red">SpringApplication.run(App.class, args)</b> chính là câu lệnh để tạo ra <b>container</b>. 
+    Sau đó nó tìm toàn bộ các <b>dependency</b> trong project của bạn và đưa vào đó.
+</p>
+<p class="content__desc mb-10">
+    Spring đặt tên cho container là ApplicationContext
+    </p>
+    <p class="content__desc mb-10">
+        và đặt tên cho các dependency là Bean
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@SpringBootApplication
+public class App {
+    public static void main(String[] args) {
+        // ApplicationContext chứa toàn bộ dependency trong project.
+        ApplicationContext context = SpringApplication.run(App.class, args);
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Vậy làm sao Spring biết đâu là <b>dependency</b>? Chúng ta tới với <mark>khái niệm @Component</mark>
+    </p>
+    <h4 class="content__heading-4 mb-10">@Component</h4>
+    <p class="content__desc mb-10 ti-30">
+        Là một Annotation (chú thích) đánh dấu trên các Class để giúp Spring biết nó là một Bean.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Spring Boot khi chạy sẽ dò tìm toàn bộ các Class cùng cấp hoặc ở trong các package thấp hơn
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Trong quá trình dò tìm này, khi gặp một class được đánh dấu @Component 
+        thì nó sẽ tạo ra một instance và đưa vào ApplicationContext để quản lý.
+    </p>
+    <p class="content__desc mb-10">
+        <mark>
+            <b>@Service</b>, <b>@Repository</b>, và <b>@Controller</b> thực chất đều là các annotation chuyên biệt hơn của @Component. 
+        </mark>
+    </p>
+    <p class="content__desc mb-10">
+        <mark>
+            Các annotation này đều ngầm kế thừa hành vi của @Component, nhưng đồng thời chúng mang ý nghĩa cụ thể hơn:
+        </mark>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        @Service: Dùng để đánh dấu các lớp có logic nghiệp vụ.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        @Repository: Dùng để đánh dấu các lớp làm việc với cơ sở dữ liệu (DAO).
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        @Controller: Dùng để đánh dấu các lớp xử lý các request HTTP (trong mô hình MVC).
+    </p>
+    <p class="content__desc mb-10">
+        <mark>Quá trình chạy sẽ như sau:</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Chạy ứng dụng bởi Spring App
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Dò tìm các class cùng cấp
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Phát hiện @Component
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Tạo ra new Obj() và đưa vào Context
+    </p>
+    <h4 class="content__heading-4 mb-10">@Autowired</h4>
+    <p class="content__desc mb-10">
+        <b>Tạo Class Girl</b> và có <b>một thuộc tính</b> là Outfit
+    </p>
+    <p class="content__desc mb-10">
+        <b>đánh dấu</b> Girl là một <b>@Component</b>. 
+        Tức Spring Boot cần tạo ra một instance của Girl để quản lý.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Component
+public class Girl {
+    @Autowired
+    Outfit outfit;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Thuộc tính Outfit đánh dấu anotation @Autowired
+    </p>
+    <p class="content__desc mb-10">
+        Điều này nói với Spring Boot hãy tự <b>inject</b> (tiêm) một 
+        <b>instance</b> của <b>Outfit</b> vào thuộc tính này khi khởi tạo Girl.
+    </p>
+    <blockquote class="blockquote blockquote--warning">
+        <p class="content__desc mb-10">
+            Lưu ý:
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Khi sử dụng @Autowired, Spring sẽ tìm kiếm một bean tương ứng trong ApplicationContext 
+            để tiêm vào đối tượng (trong trường hợp này là tiêm bean Outfit vào class Girl).
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Nếu Spring không tìm thấy bean nào cho Outfit 
+            (vì Outfit không được đánh dấu bằng @Component, @Service, hay các annotation tương tự), sẽ xảy ra lỗi
+        </p>
+        <p class="content__desc ti-30" style="padding-left: 29px; text-indent: 0px;">
+            <b>NoSuchBeanDefinitionException</b> hoặc lỗi không thể tìm thấy bean tương ứng.
+        </p>
+    </blockquote>
+    <h3 class="content__heading-3 mt-20 mb-10">Singleton (Design Pattern)</h3>
+    <p class="content__desc mb-10">
+        Điều đặc biệt là các <b>Bean</b> được quản lý bên trong <b>ApplicationContext</b> đều là singleton. 
+        <b class="color-red">Nếu không khai báo @Scope("prototype")</b>
+    </p>
+    <p class="content__desc mb-10">
+        Tất cả những <b>Bean</b> được quản lý trong <b>ApplicationContext</b> đều chỉ 
+        được tạo ra <b>một lần duy nhất</b> và khi có <b>Class</b> yêu cầu <b>@Autowired</b> 
+        thì nó sẽ lấy đối tượng có sẵn trong <b>ApplicationContext</b> để inject vào.
+    </p>
+    <p class="content__desc mb-10">
+        Trong Spring, khi bạn đánh dấu một bean là Singleton 
+        (đây là mặc định), Spring sẽ chỉ tạo một thể hiện duy nhất của bean đó trong Spring IoC container.
+    </p>
+    <p class="content__desc mb-10">
+        Nguyên lý <b>Singleton</b> có thể dễ hiểu theo ví dụ chuẩn này:
     </p>
     <blockquote class="blockquote blockquote--normal mb-10">
         <p class="content__desc mb-10">
-            <b>Client</b> (browser/postman) gửi <b>request</b> (yêu cầu)
-            tới <b>server</b> (java) thông qua <b>RESTFul APIs</b>
+            Nếu sáng nay công ty bị rớt mạng:
         </p>
-        <p class="content__desc">
-            <b>Server</b> (java) gửi <b>response</b> (phản hồi)
-            về cho <b>client</b> (browser/postman)
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Mặc dù tất cả nhân viên đều cần mạng để làm việc (giống như nhiều phần khác nhau 
+            trong ứng dụng cần sử dụng chung một tài nguyên),
+        </p>
+        <p class="content__desc ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Nhưng chỉ có một anh IT duy nhất (hoặc một đội IT duy nhất) 
+            chịu trách nhiệm sửa mạng. Các phòng ban khác không thể tự mình can thiệp vào việc sửa chữa này.
         </p>
     </blockquote>
 
-    <p class="content__desc mb-10">Hiện tại, phản hồi (response) đang ở dạng text, hoặc JSON object</p>
     <p class="content__desc mb-10">
-        Để các hệ thống nói chuyện với nhau 1 cách đầy đủ nhất,
-        1 lời phản hồi (response) sẽ gồm:
+        <mark>
+            Trong trường hợp bạn muốn mỗi lần sử dụng là một instance hoàn toàn mới. 
+            Thì hãy đánh dấu @Component đó bằng @Scope("prototype") => Gọi là prototype scope
+        </mark>
     </p>
-    <p class="content__desc mb-10 ti-30">
-        <b>Thông tin header</b>: (ví dụ bạn muốn dùng cookies chẳng hạn)
-    </p>
-    <p class="content__desc mb-10 ti-30">
-        <b>Thông tin status</b> (http status): mã phản hồi
-    </p>
-    <p class="content__desc ti-30">
-        <b>Thông tin body (nếu có)</b>: data phản hồi, thông thường dưới dạng JSON
+    <p class="content__desc mb-10">
+        Là thuật ngữ mô tả rõ ràng về phạm vi (scope) của bean đó trong Spring
     </p>
 
-    <h3 class="content__heading-3 mt-20 mb-10">Minh họa 1 vài cách dùng thông dụng:</h3>
-    <p class="content__desc mb-10">
-        Trả về mình <b>status</b>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).body(null);</code></pre>
-    <p class="content__desc mt-10 mb-10">
-        Trả về <b>status</b> và <b>headers</b>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).headers(Instance_of_HttpHeaders).build();</code></pre>
-    <p class="content__desc mt-10 mb-10">
-        Trả về <b>status</b>, <b>headers</b> và <b>body</b>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">ResponseEntity.status(HttpStatus.Ok).headers(Instance_of_HttpHeaders).body(Instance_of_object_send_back_to_client);</code></pre>
+    <pre class="language-javascript"><code class="language-javascript">@Component
+@Scope("prototype")
+public class Bikini implements Outfit {
+    @Override
+    public void wear() {
+        System.out.println("Mặc bikini");
+    }
+}</code></pre>
 
-    <div class="separate"></div>
-    <h2 class="content__heading-2 mb-20">Http Status Code hay dùng</h2>
-    <span>Tài liệu:</span>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" style="color: blue; text-decoration: underline; line-height: 1.5">
-        https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-    </a>
-    <p class="content__desc mt-20 mb-10">
-        <mark>Mã lỗi ám chỉ request thành công:</mark>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Kết</mark>
     </p>
-    <p class="content__desc mb-10">
-        <b>200</b> - request succeeded (hay dùng cho method GET/PUT/DELETE)
-    </p>
-    <p class="content__desc mb-10">
-        <b>201</b> - request created a resource (hay dùng cho method POST)
-    </p>
-    <p class="content__desc mb-10">
-        <b>204</b> - no content to return (dùng khi bạn muốn thông báo không có data ở phản hồi)
-    </p>
-    <p class="content__desc mb-10">
-        <b>202</b> - Accepted (the request has been accepted for processing, but the processing has
-        not been completed): dùng khi bạn chạy job/background task và muốn gửi phản hồi cho client
-    </p>
-    <p class="content__desc mt-20 mb-10">
-        <mark>Mã lỗi ám chỉ request thất bại (lỗi do client):</mark>
-    </p>
-    <p class="content__desc mb-10">
-        <b>400</b> - Bad request (lỗi exception, validate...)
-    </p>
-    <p class="content__desc mb-10">
-        <b>401</b> - Unauthorized (unauthenticated): bạn chưa đăng nhập, có nghĩa rằng bạn cần login
-        thành công thì mới có quyền sử dụng endpoint (API)
-    </p>
-    <p class="content__desc mb-10">
-        <b>403</b> - Forbidden (unauthorized): bạn đã đăng nhập thành công, tuy nhiên, bạn không có
-        quyền hạn (authorization) để thực hiện tác vụ này
-    </p>
-    <p class="content__desc mb-10">
-        <b>404</b> - Resource not found : đường dẫn URL không đúng hoặc tệp tài nguyên đã bị xóa hoặc không còn tồn tại.
-    </p>
-    <p class="content__desc mb-10">
-        <b>405</b> - Method not supported : check cho đúng method khi sử dụng với endpoint
-    </p>
-    <p class="content__desc mb-10">
-        <b>415</b> - Media not supported: bạn cần truyền đúng định dạng format mà server/client
-        mong muốn. Ví dụ, bạn không thể dùng JSON để gửi file lên
-        server (cần dùng formData)
-    </p>
-    <p class="content__desc mt-20 mb-10">
-        <mark>Mã lỗi ám chỉ request thất bại (lỗi do server):</mark>
-    </p>
-    <p class="content__desc mb-10">
-        <b>500</b> - Internal Server error: lỗi xảy ra bên trong Server, cần đọc logs để biết lỗi gì
-        (exception, bugs...)
-    </p>
-    <p class="content__desc mb-10">
-        <b>503</b> - Service Unavailable : server ngỏm (không chạy) nên không có sẵn để sử dụng
-    </p>
-    <p class="content__desc mb-10">
-        <b>504</b> - Gateway Timeout : server (có thể) không ngỏm, cơ mà không phản hồi trong thời
-        gian quy định (quá lâu để phản hồi)
+    <p class="content__desc">
+        Tới đây bạn đã tiếp cận với <b>hai khái niệm cơ bản nhất trong Spring Boot</b> và cũng <b>là nền tảng cốt lõi</b> của nó. 
+        Việc nắm được cách vận hành của <b>@Component</b> và <b>@Autowired</b> là bạn đã đi được nửa chặng đường rồi.
     </p>
 </div>
