@@ -1,0 +1,175 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Dependency Injection</h2>
+    <p class="content__desc mb-10">
+        <mark>Dependency Injection (DI)</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Là một kỹ thuật trong lập trình, 
+        đặc biệt là trong phát triển ứng dụng, giúp quản lý sự phụ thuộc 
+        giữa các đối tượng một cách linh hoạt và hiệu quả.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Để đạt được loose coupling</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Cho phép các phụ thuộc này được "tiêm" vào đối tượng từ bên ngoài, 
+        thông qua <b>constructor</b>, <b>methods</b>, hoặc <b>thuộc tính</b>.
+    </p>
+    <p class="content__desc mb-10">
+        <mark>Các thành phần chính của Dependency Injection:</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        1. <b>Service</b>: Đối tượng mà một lớp (class) phụ thuộc vào.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        2. <b>Client</b>: Lớp sử dụng service.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        3. <b>Injector</b>: Thành phần tạo ra các service và inject chúng vào client.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class MyService {                => Service
+    public void doSomething() {
+        System.out.println("Doing something!");
+    }
+}
+
+public class MyController {             => Client
+    private final MyService myService;
+
+    public MyController(MyService myService) { => Inject
+        this.myService = myService;
+    }
+
+    public void execute() {
+        myService.doSomething();
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>Các loại Dependency Injection:</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Constructor Injection</b>: Các phụ thuộc được cung cấp thông qua constructor của lớp.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Setter Injection</b>: Các phụ thuộc được cung cấp thông qua phương thức setter.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        <b>Interface Injection</b>: Client sẽ yêu cầu một dependency được cung cấp cho nó thông qua một interface.
+        <b class="color-red">rất ít khi được sử dụng</b>
+    </p>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Giới thiệu</h3>
+    <p class="content__desc mb-10">
+        <b>tight-coupling</b> hay "liên kết ràng buộc" là một khái niệm trong Java 
+        ám chỉ việc mối quan hệ giữa các Class quá chặt chẽ. 
+        Khi yêu cầu thay đổi logic hay một class bị lỗi sẽ dẫn tới ảnh hưởng tới toàn bộ các Class khác.
+    </p>
+    <p class="content__desc mb-10">
+        <b>loosely-coupled</b> là cách ám chỉ việc làm giảm bớt sự phụ thuộc giữa các Class với nhau.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>tight-coupling level 1</mark>
+    </p>
+    <p class="content__desc mb-10">
+        sortService đã hoàn thiện được nhiệm vụ
+    </p>
+    <p class="content__desc mb-10">
+        <b>Khó khăn</b>: khi yêu cầu thay đổi thuật toán sắp xếp sang QuickSort => <b>tạo Class QuickSortAlgorithm mới</b>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class BubbleSortAlgorithm {
+    public void sort(int [] array) { System.out.println("Sorting by bubble sort"); }
+}
+
+public class SortService {
+    private BubbleSortAlgorithm bubbleSortAlgorithm = new BubbleSortAlgorithm();
+
+    public SortService() {}
+
+    public void complexBusiness(int array[]){
+        bubbleSortAlgorithm.sort(array);
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>tight-coupling level 2</mark>
+    </p>
+    <p class="content__desc mb-10">
+        SortService sẽ chỉ quan hệ với một interface SortAlgorithm
+    </p>
+    <p class="content__desc mb-10">
+        Tuy nhiên với cách này thì mỗi quan hệ giảm bớt cố định, nhưng nó vẫn gắn chặt với BubbleSortAlgorithm.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public interface SortAlgorithm {
+    public void sort(int array[]);
+}
+
+public class BubbleSortAlgorithm implements SortAlgorithm{
+    @Override
+    public void sort(int[] array) {
+        System.out.println("sort by Bubble sorting");
+    }
+}
+
+public class SortService {
+    private SortAlgorithm sortAlgorithm;
+
+    public SortService(){
+        sortAlgorithm = new BubbleSortAlgorithm();
+    }
+
+    public void complexBusiness(int array[]){
+        sortAlgorithm.sort(array);
+    }
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>loosely-coupled</mark>
+    </p>
+    <p class="content__desc mb-10">
+        Mối liên hệ giữa 2 Class đã "lỏng lẻo" hơn trước rất nhiều
+    </p>
+    <p class="content__desc mb-10">
+        SortService sẽ không quan tâm tới việc thuật toán sắp xép là gì nữa.
+        SortAlgorithm sẽ được đưa vào từ bên ngoài tùy theo nhu cầu sử dụng.
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public interface SortAlgorithm {
+    public void sort(int array[]);
+}
+
+public class BubbleSortAlgorithm implements SortAlgorithm{
+    @Override
+    public void sort(int[] array) {
+        System.out.println("Bubble sort");
+    }
+}
+
+public class QuicksortAlgorithm implements SortAlgorithm {
+    @Override
+    public void sort(int[] array) {
+        System.out.println("Quick sort");
+    }
+}
+
+public class SortService {
+    private SortAlgorithm sortAlgorithm;
+
+    public SortService(SortAlgorithm sortAlgorithm){
+        this.sortAlgorithm = sortAlgorithm;
+    }
+
+    public void complexBusiness(int array[]){
+        sortAlgorithm.sort(array);
+    }
+}
+
+public static void main(String[] args) {
+    SortAlgorithm bubbleSortAlgorithm = new BubbleSortAlgorithm();
+    SortAlgorithm quickSortAlgorithm = new QuicksortAlgorithm();
+    SortService business1 = new SortService(bubbleSortAlgorithm);
+    SortService business2 = new SortService(quickSortAlgorithm);
+}</code></pre>
+
+    <h3 class="content__heading-3 mt-20">DI</h3>
+</div>
