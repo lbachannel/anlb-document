@@ -155,6 +155,7 @@ public class QuicksortAlgorithm implements SortAlgorithm {
 public class SortService {
     private SortAlgorithm sortAlgorithm;
 
+    // DEPENDENCY INJECTION HERE
     public SortService(SortAlgorithm sortAlgorithm){
         this.sortAlgorithm = sortAlgorithm;
     }
@@ -170,6 +171,4 @@ public static void main(String[] args) {
     SortService business1 = new SortService(bubbleSortAlgorithm);
     SortService business2 = new SortService(quickSortAlgorithm);
 }</code></pre>
-
-    <h3 class="content__heading-3 mt-20">DI</h3>
 </div>
