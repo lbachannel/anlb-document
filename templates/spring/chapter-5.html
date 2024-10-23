@@ -94,6 +94,12 @@ public class App {
     <p class="content__desc mb-10 ti-30">
         Tạo ra new Obj() và đưa vào Context
     </p>
+    <figure class="content-img mb-10">
+        <img src="./assets/img/component.png" alt="component" class="content-img__img">
+        <figcaption>
+            <em>Hình 5.1 (hình lấy trên mạng - ưu tiên dễ hiểu)</em>
+        </figcaption>
+    </figure>
     <h4 class="content__heading-4 mb-10">@Autowired</h4>
     <p class="content__desc mb-10">
         <b>Tạo Class Girl</b> và có <b>một thuộc tính</b> là Outfit
@@ -102,14 +108,19 @@ public class App {
         <b>đánh dấu</b> Girl là một <b>@Component</b>. 
         Tức Spring Boot cần tạo ra một instance của Girl để quản lý.
     </p>
+    <p class="content__desc mb-10">
+        Nghĩa là khi app run, class girl được tạo, gọi là instance và được
+        đưa vào Spring IOC container để quản lý
+    </p>
     <pre class="language-javascript"><code class="language-javascript">@Component
 public class Girl {
+    // Đánh dấu để Spring inject một đối tượng Outfit vào đây
     @Autowired
     Outfit outfit;
 }</code></pre>
 
     <p class="content__desc mt-10 mb-10">
-        Thuộc tính Outfit đánh dấu anotation @Autowired
+        Thuộc tính Outfit đánh dấu anotation <b>@Autowired</b>
     </p>
     <p class="content__desc mb-10">
         Điều này nói với Spring Boot hãy tự <b>inject</b> (tiêm) một 
@@ -131,6 +142,7 @@ public class Girl {
             <b>NoSuchBeanDefinitionException</b> hoặc lỗi không thể tìm thấy bean tương ứng.
         </p>
     </blockquote>
+
     <h3 class="content__heading-3 mt-20 mb-10">Singleton (Design Pattern)</h3>
     <p class="content__desc mb-10">
         Điều đặc biệt là các <b>Bean</b> được quản lý bên trong <b>ApplicationContext</b> đều là singleton. 
