@@ -31,14 +31,109 @@
     <p class="content__desc mb-10">
         4. Đếm xem có bao nhiêu City (bỏ qua thành phố trùng)
     </p>
-    <pre class="language-sql"><code class="language-sql">SELECT COUNT(*) FROM (SELECT DISTINCT City FROM Employees) AS Cities
+    <pre class="language-sql"><code class="language-sql">SELECT COUNT(*) 
+FROM (SELECT DISTINCT City FROM Employees) AS Cities
 
 -- câu ngon
-SELECT COUNT(DISTINCT City) FROM Employees</code></pre>
+SELECT COUNT(DISTINCT City) 
+FROM Employees</code></pre>
 
-    <p class="content__desc mb-10">
+    <p class="content__desc mt-10 mb-10">
         4. Đếm xem mỗi thành phố có bao nhiêu nhân viên
     </p>
-    <pre class="language-sql"><code class="language-sql">Seatle 2nv | Tacoma 1nv| Kirland 1nv| Redmon 1nv| London 4nv
-SELECT City, COUNT(City) AS [Num of emp] FROM Employees GROUP BY City</code></pre>
+    <pre class="language-sql"><code class="language-sql">-- Seattle 2nv | Tacoma 1nv| Kirland 1nv| Redmon 1nv| London 4nv
+SELECT City, 
+COUNT(City) AS [Num of emp] 
+FROM Employees GROUP BY City</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        5. Thành phố nào có 2 nv trở lên
+    </p>
+    <pre class="language-sql"><code class="language-sql">-- Seattle 2nv| London 4nv
+SELECT City, 
+COUNT(City) AS [Num of emp] 
+FROM Employees 
+GROUP BY City 
+HAVING COUNT(City) >= 2</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        6. Đếm số nhân viên của 2 thành phố Seattle và London
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT City,
+COUNT(City) AS [No emp] 
+FROM Employees 
+WHERE City = 'Seattle' OR City = 'London'
+GROUP BY City</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        7. Trong 2 thành phố, London và Seattle, thành phố nào có nhiều hơn 3 nv
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT City,
+COUNT(City) AS [No emp] 
+FROM Employees 
+WHERE City = 'Seattle' OR City = 'London'
+GROUP BY City
+HAVING COUNT(City) > 3</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Min</h3>
+    <p class="content__desc mb-10">
+        1. Năm sinh nào là bé nhất (lớn tuổi)
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT MIN(BirthDate) FROM Employees</code></pre>
+    
+    <h3 class="content__heading-3 mt-20 mb-10">Max</h3>
+    <p class="content__desc mb-10">
+        1. Trong các đơn hàng, đơn hàng nào có trọng lượng nặng nhẩt
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT * 
+FROM Orders
+WHERE Freight = (
+    SELECT MAX(Freight) 
+    FROM Orders
+);
+
+SELECT * 
+FROM Orders
+WHERE Freight >= ALL (
+    SELECT Freight FROM Orders
+);</code></pre> 
+
+    <h3 class="content__heading-3 mt-20 mb-10">Sum</h3>
+    <p class="content__desc mb-10">
+        1. Tính tổng khối lượng của các đơn hàng đã vận chuyển
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT SUM(Freight) AS [Freight in total] FROM Orders</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Average</h3>
+    <p class="content__desc mb-10">
+        1. Trung bình các đơn hàng nặng bao nhiêu
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT AVG(Freight) FROM Orders</code></pre>
+    <p class="content__desc mb-10">
+        2. Liệt kê các đơn hàng có trọng lượng nặng hơn
+        trọng lượng trung bình của tất cả
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT * 
+FROM Orders 
+WHERE Freight >= (
+    SELECT AVG(Freight) 
+    FROM Orders
+)</code></pre>
+
+    <p class="content__desc mb-10">
+        3. Có bao nhiêu đơn hàng có trọng lượng nặng 
+        hơn trọng lượng trung bình của tất cả
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT COUNT(*) 
+FROM Orders 
+WHERE Freight >= (
+    SELECT AVG(Freight)
+    FROM Orders
+)
+
+SELECT COUNT(*) FROM (
+    SELECT * FROM Orders WHERE Freight >= (
+        SELECT AVG(Freight) FROM Orders
+    )
+) AS [AVG]</code></pre>
 </div>
