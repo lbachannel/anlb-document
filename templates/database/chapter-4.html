@@ -1,0 +1,44 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Aggregate Functions</h2>
+    <p class="content__desc mb-10">
+        Database Engine hỗ trợ 1 nhóm hàm dùng thao tác trên nhóm dòng/cột.
+        Gom data tính toán - Gọi là Aggregate Functions, Aggregation
+    </p>
+    <p class="content__desc mb-10">
+        COUNT(), SUM(), MIN(), MAX(), AVG()
+    </p>
+
+    <h3 class="content__heading-3 mb-10">Count</h3>
+    <p class="content__desc mb-10">
+        1. Đếm xem có bao nhiêu nhân viên ở London
+    </p>
+    <pre class="language-javascript"><code class="language-sql">SELECT COUNT(*) FROM Employees WHERE City = 'London'</code></pre>
+    <p class="content__desc mb-10">
+        2. Đếm xem có bao nhiêu khu vực (region) null 
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT COUNT(*) FROM Employees WHERE Region IS NULL</code></pre>
+    
+    
+    <p class="content__desc mb-10">
+        3. Giá trị null không đếm được, lọc ra null mà đi count là vô nghĩa
+    </p>
+    <blockquote class="blockquote blockquote--warning mt-10 mb-10">
+        <p class="content__desc">
+            SELECT COUNT(Region) Employees WHERE Region IS NULL
+        </p>
+    </blockquote>
+    
+    <p class="content__desc mb-10">
+        4. Đếm xem có bao nhiêu City (bỏ qua thành phố trùng)
+    </p>
+    <pre class="language-sql"><code class="language-sql">SELECT COUNT(*) FROM (SELECT DISTINCT City FROM Employees) AS Cities
+
+-- câu ngon
+SELECT COUNT(DISTINCT City) FROM Employees</code></pre>
+
+    <p class="content__desc mb-10">
+        4. Đếm xem mỗi thành phố có bao nhiêu nhân viên
+    </p>
+    <pre class="language-sql"><code class="language-sql">Seatle 2nv | Tacoma 1nv| Kirland 1nv| Redmon 1nv| London 4nv
+SELECT City, COUNT(City) AS [Num of emp] FROM Employees GROUP BY City</code></pre>
+</div>
