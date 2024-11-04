@@ -88,11 +88,11 @@ Parameter 0 of constructor in me.loda.spring.helloprimaryqualifier.Girl required
         Và hiển nhiên Outfit bên trong Girl sẽ là <b>Fashion</b>.
     </p>
     <pre class="language-javascript"><code class="language-javascript">@Component
-        @Primary
-        public class Fashion implements Outfit {
-            @Override
-            public void wear() {
-                System.out.println("Mặc fashion style");
+@Primary
+public class Fashion implements Outfit {
+    @Override
+    public void wear() {
+        System.out.println("Mặc fashion style");
     }
 }</code></pre>
 
@@ -100,13 +100,13 @@ Parameter 0 of constructor in me.loda.spring.helloprimaryqualifier.Girl required
     Chạy thử chương trình:
 </p>
 <pre class="language-javascript"><code class="language-javascript">@SpringBootApplication
-    public class App {
-        public static void main(String[] args) {
-            // ApplicationContext chính là container, chứa toàn bộ các Bean
-            ApplicationContext context = SpringApplication.run(App.class, args);
+public class App {
+    public static void main(String[] args) {
+        // ApplicationContext chính là container, chứa toàn bộ các Bean
+        ApplicationContext context = SpringApplication.run(App.class, args);
             
-            // Khi chạy xong, lúc này context sẽ chứa các Bean có đánh
-            // dấu @Component.
+        // Khi chạy xong, lúc này context sẽ chứa các Bean có đánh
+        // dấu @Component.
             
         Girl girl = context.getBean(Girl.class);
         
@@ -122,8 +122,8 @@ Parameter 0 of constructor in me.loda.spring.helloprimaryqualifier.Girl required
     Output:
 </p>
 <pre class="language-javascript"><code class="language-javascript">Girl Instance: me.loda.spring.helloprimaryqualifier.Girl@eb9a089
-    Girl Outfit: me.loda.spring.helloprimaryqualifier.Fashion@1688653c
-    Mặc fashion style</code></pre>
+Girl Outfit: me.loda.spring.helloprimaryqualifier.Fashion@1688653c
+Mặc fashion style</code></pre>
     
     <blockquote class="blockquote blockquote--normal mt-10">
         <p class="content__desc">

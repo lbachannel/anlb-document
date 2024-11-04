@@ -1,0 +1,143 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Handle Exception</h2>
+    <p class="content__desc mb-10">
+        Trong Java, các loại exception được chia thành hai nhóm chính:
+    </p>
+    <p class="content__desc mb-10">
+        <mark>1. Checked Exceptions:</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Đây là những exception mà trình biên dịch yêu cầu bạn phải xử lý 
+        (thông qua việc sử dụng <b>try-catch</b> hoặc khai báo trong phương thức với từ khóa <b>throws</b>).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Ví dụ: <b class="color-red">IOException</b>, <b class="color-red">SQLException</b>, <b class="color-red">ClassNotFoundException</b>.
+    </p>
+    <p class="content__desc mb-10">
+        <mark>2. Unchecked Exceptions:</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Đây là những exception không cần phải xử lý, và có thể xảy ra trong quá trình thực thi.
+        Chúng thường là kết quả của <b>lỗi lập trình</b>, chẳng hạn như <b>lỗi logic</b> hoặc <b>lỗi truy cập mảng</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Ví dụ: <b class="color-red">NullPointerException</b>, <b class="color-red">ArrayIndexOutOfBoundsException</b>, 
+        <b class="color-red">ArithmeticException</b>, <b class="color-red">ClassCastException</b>.
+    </p>
+
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Ngoài ra, cả hai loại exception đều kế thừa từ lớp Throwable, với Error cũng nằm trong hệ thống này 
+            nhưng thường không được xử lý trong mã ứng dụng (chẳng hạn như <b>OutOfMemoryError</b>, <b>StackOverflowError</b>).
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Local Exception - can not re-use</h3>
+
+    <figure class="content-img mb-10">
+        <img src="./assets/img/handleException.png" alt="handle exception" class="content-img__img">
+        <figcaption>
+            <em>Hình 9.1</em>
+        </figcaption>
+    </figure>
+
+    <p class="content__desc mb-10">
+        service > error > IdInvalidException.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.service.error;
+
+public class IdInValidException extends Exception {
+    //constructor that accepts a message
+    public IdInvalidException(String message) {
+        super(message);
+    }
+}</code></pre>
+
+    <p class="content__desc mb-10">
+        controller > UserController.java
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.controller;
+
+@RestController
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    /*
+     *  Để lắng nghe exception nào xảy ra => truyền tên (value = ?.class)
+     *  Khi xảy ra Exception thì nó sẽ chạy vào exception đấy
+     *  Để trả ra phản hồi của người dùng, bắt buộc dùng ResponseEntity
+     */
+    @ExceptionHandler(value = IdInvalidException.class)
+    public ResponseEntity&lt;String&gt; handleIdException(IdInvalidException idException) {
+        return ResponseEntity.badRequest().body(idException.getMessage());
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity&lt;String&gt; deleteUser(@PathVariable("id") long id) throws IdInvalidException {
+        if (id >= 1500) {
+            throw new IdInvalidException("Id khong lon hon 1500");
+        }
+
+        this.userService.handleDeleteUser(id);
+        return ResponseEntity.ok("user");
+    }
+}</code></pre>
+
+    <div class="separate"></div>
+    <h4 class="content__heading-4 mb-10">AOP - Aspect Oriented Programming with Spring. (Kiến thức này là cả 1 khóa học nếu muốn hiểu sâu - lộ trình leo lên senior)</h4>
+    <p class="content__desc mb-10">
+        <mark>Aspect-Oriented Programming (AOP)</mark> trong Spring giúp tách biệt 
+        các chức năng phụ trợ <mark>(cross-cutting concerns)</mark> khỏi logic chính của ứng dụng.
+    </p>
+    <p class="content__desc mb-10">
+        Các chức năng này bao gồm <mark>logging</mark>, <mark>transaction management</mark>, 
+        hay <mark>security</mark>, những thứ thường lặp lại ở nhiều nơi trong mã nguồn.
+    </p>
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Global Exception</h3>
+    <p class="content__desc mb-10">
+        <mark>@ControllerAdvice</mark> được giới thiệu từ <b>version 3.2</b> của Spring Framework
+    </p>
+    <p class="content__desc mb-10">
+        <mark>@RestControllerAdvice</mark> được giới thiệu từ <b>version 4.3</b> của Spring Framework
+    </p>
+    <p class="content__desc mb-10">
+        Phân biệt @ControllerAdvice và @RestControllerAdvice <b>khác gì nhau</b>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Điểm khác là một cú pháp ngắn gọn hơn thôi: <mark>@RestControllerAdvice = @ControllerAdvice + @ResponseBody</mark>
+    </p>
+    
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc mb-10">
+            <mark>@RestControllerAdvice</mark> là một Annotation gắn trên Class. 
+            Có tác dụng xen vào quá trình xử lý của các <mark>@RestController</mark>. Tương tự với <mark>@ControllerAdvice</mark>
+        </p>
+        <p class="content__desc">
+            <mark>@RestControllerAdvice</mark> thường được kết hợp với <mark>@ExceptionHandler</mark>
+            <b class="color-red">để cắt ngang quá trình xử lý của Controller</b>, và 
+            <b class="color-red">xử lý các ngoại lệ xảy ra</b>.
+        </p>
+    </blockquote>
+
+    <p class="content__desc mb-10">
+        service > error > GlobalException.java
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.service.error;
+
+@RestControllerAdvice
+public class GlobalException {
+    @ExceptionHandler(value = IdInvalidException.class)
+    public ResponseEntity&lt;String&gt; handleIdException(IdInvalidException idException) {
+        return ResponseEntity.badRequest().body(idException.getMessage());
+    }
+}</code></pre>
+</div>
