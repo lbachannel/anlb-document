@@ -140,4 +140,80 @@ public class GlobalException {
         return ResponseEntity.badRequest().body(idException.getMessage());
     }
 }</code></pre>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Format response before sending</h3>
+    <p class="content__desc mb-10">
+        domain > RestResponse.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.domain;
+
+public class RestResponse&lt;T&gt; {
+    private int statusCode;
+    private String error;
+    private Object message; // message có thể là string hoặc arrayList
+    private T data;
+
+    // getter & setter
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        util > FormatRestResponse.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.util;
+
+@ControllerAdvice
+public class FormatRestResponse implements ResponseBodyAdvice&lt;Object&gt; {
+    
+    /*
+     *  Bất cứ phản hồi nào tôi củng muốn ghi đè hết
+     *  Cho nên return true.
+     *  Không thì set if else, false thì ko format, true thì format (chạy vào hàm beforeBodyWrite)
+     */
+    @Override
+    public boolean supports(MethodParameter returnType, Class converterType) {
+        return true;
+    }
+
+    @Override
+    public Object beforeBodyWrite(
+                                    Object body, 
+                                    MethodParameter returnType, 
+                                    MediaType selectedContentType, 
+                                    Class selectedConverterType, 
+                                    ServerHttpRequest request, ServerHttpResponse response) {
+        HttpServletResponse servletResponse = ((ServletServerHttpResponse) response).getServletResponse();
+        int status = servletResponse.getStatus();
+        RestResponse&lt;Object&gt; restResponse = new RestResponse&lt;Object&gt;();
+        restResponse.setStatusCode(status);
+
+        if (status >= 400) {
+            return body;
+        } else {
+            restResponse.setMessage("Call API success");
+            restResponse.setData(body);
+        }
+
+        return restResponse;
+    }
+}</code></pre>
+
+    <p class="content__desc mb-10">
+        service > error > GlobalException.java
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.service.error;
+
+@RestControllerAdvice
+public class GlobalException {
+    @ExceptionHandler(value = IdInvalidException.class)
+    public ResponseEntity&lt;RestResponse&lt;Object&gt;&gt; handleIdException(IdInvalidException idException) {
+        RestResponse&lt;Object&gt; restResponse = new RestResponse&lt;Object&gt;();
+        restResponse.setStatusCode(HttpStatus.BAD_REQUEST.value());
+        restResponse.setError(idException.getMessage());
+        restResponse.setMessage("IdInvalidException");
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(restResponse);
+    }
+}</code></pre>
 </div>
