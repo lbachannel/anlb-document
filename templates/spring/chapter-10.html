@@ -63,4 +63,71 @@
             Việc bạn cần làm, là lựa chọn công nghệ sao cho nó "phục vụ tốt với mục đích của bạn"
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Cơ chế xác thực của stateless</h2>
+    <p class="content__desc mb-10 color-red">
+        Trong mô hình Stateless, không tồn tại khái niệm "Session", thay vào đấy là "Token"
+    </p>
+    <p class="content__desc mb-10">
+        <mark>1. Cơ chế xác thực dựa vào Session (Stateful)</mark>
+    </p>
+    <p class="content__desc mb-10">
+        <b>Bước 1</b>: Login with username/password
+    </p>
+    <p class="content__desc mb-10">
+        Nếu login thành công, server sẽ tạo lưu thông tin tại:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Client thông qua cookies (lưu SESSION_ID)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Server trong memory (RAM) hoặc database 
+        (lưu full thông tin của user login)
+    </p>
+    <p class="content__desc mb-10">
+        <b>Bước 2</b>: Mỗi lần người dùng F5 (refresh) website
+        gửi 1 request từ client lên server, các bước làm tại 
+        Server:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Client sẽ gửi kèm SESSION_ID (thông qua cookies)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Server sẽ kiểm tra SESSION_ID <b>có đang tồn tại không ?</b>
+        Nếu có, tiếp tục việc truy cập như thông thường (else, logout)
+    </p>
+    <p class="content__desc">
+        Mô hình Stateful với Session chỉ áp dụng hiệu quả, 
+        khi và chỉ khi bạn kiểm soát cả frontend và backend 
+    </p>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>2. Cơ chế xác thực dựa vào Token (Stateless)</mark>
+    </p>
+    <p class="content__desc mb-20">
+        Server với Server, mobile app, desktop app...(những cái không có cookies)
+    </p>
+    <p class="content__desc mb-20">
+        Token: là 1 chuỗi kí tự đã được mã hóa (chỉ server mới có thể hiểu)
+    </p>
+    <p class="content__desc mb-10">
+        <b>Bước 1</b>: Login with username/password
+    </p>
+    <p class="content__desc mb-10">
+        Nếu login thành công, server sẽ tạo <b>token</b>,
+        lưu tại đâu, client tự quyết định.
+    </p>
+    <p class="content__desc mb-20">
+        <b>Server không lưu bất cứ thông tin gì về việc user login</b>
+    </p>
+    <p class="content__desc mb-10">
+        <b>Bước 2</b>: Mỗi lần người dùng f5 (refresh) website
+        gửi 1 request từ client lên server, sẽ cần 
+        <b>gửi kèm token</b> đã có tại bước 1.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Server sẽ giải mã token để biết được user có hợp lệ
+        hay không ?
+    </p>
 </div>

@@ -1,0 +1,141 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">JWT - JSON Web Token</h2>
+    <p class="content__desc mb-10">
+        <mark>1. JWT là gì ?</mark>
+    </p>
+    <p class="content__desc mb-10">
+        Là một chuỗi ký tự được "mã hóa" (thông qua thuật toán)
+        và có tính bảo mật cao.
+    </p>
+    <p class="content__desc">
+        Được sử dụng để trao đổi thông tin
+        giữa các hệ thống với nhau (server - server, client - server)
+    </p>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>2. Cấu trúc của JWT</mark>
+    </p>
+    <p class="content__desc mb-10" style="padding-left: 29px; text-indent: 0px;">
+        Gồm 3 phần được phân tách bằng dấu (.)
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Header
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Payload (đây là cái chúng ta quan tâm nhất)
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Signature
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Do đó, JWT thường có dạng như sau
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        xxxxxx.yyyyyy.mmmmmm
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <span style="color: #ef3d7a;">eyJhbGciOiJIUzI1NiIsInR5cCI6kpXVCJ9</span>.
+        <span style="color: #d254ff">eyJzdƯIiOiIxMjM0NTY30DkwIiwibmFtZSI6IkpvaG4
+            gRG911IiwiaXNTb2NpYWwiOnRydWV9
+        </span>.
+        <span style="color: #54bff7">4pcPyMD09olPSyXnrXCjTwXyr4BsezdI1AVTmud2fU4</span>
+    </p>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Configuration & Bean</h2>
+    <p class="content__desc mb-10">
+        <b>@Configuration</b> là một Annotation đánh dấu trên một Class 
+        cho phép Spring Boot biết được đây là nơi định nghĩa ra các Bean.
+    </p>
+    <p class="content__desc mb-10">
+        <b>@Bean</b> là một Annotation được đánh dấu trên các method cho phép Spring Boot 
+        biết được đây là Bean và sẽ thực hiện đưa Bean này vào <b>Context</b>.
+    </p>
+    <p class="content__desc">
+        <b>@Bean</b> sẽ nằm trong các class có đánh dấu <b>@Configuration</b>.
+    </p>
+
+    <div class="separate"></div>
+
+    <p class="content__desc mb-10">
+        <b>In Background</b>
+    </p>
+    <p class="content__desc mb-10">
+        Đằng sau chương trình, Spring Boot lần đầu khởi chạy, 
+        ngoài việc đi tìm các <b>@Component</b> thì nó còn làm một nhiệm vụ nữa là tìm các class <b>@Configuration</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        1. Đi tìm class có đánh dấu @Configuration
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        2. Tạo ra đối tượng từ class có đánh dấu @Configuration
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        3. tìm các method có đánh dấu @Bean trong đối tượng vừa tạo
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        4. Thực hiện gọi các method có đánh dấu @Bean để lấy ra các Bean và đưa vào `Context.
+    </p>
+    <blockquote class="blockquote blockquote--normal mb-10">
+        <p class="content__desc mb-10">
+            Ngoài ra, về bản chất, <b>@Configuration</b> cũng là <b>@Component</b>. 
+            Nó chỉ khác ở ý nghĩa sử dụng. (Giống với việc class được đánh dấu @Service chỉ nên phục vụ logic vậy).
+        </p>
+    </blockquote>
+    <p class="content__desc mb-10">
+        config > SecurityConfiguration.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.config;
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+
+@Configuration
+@EnableMethodSecurity(securedEnabled = true)
+public class SecurityConfiguration {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /*
+     *  .requestMatchers("/").permitAll() : cho phép vào các url này
+     */
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(
+                authz -> authz
+                .requestMatchers("/").permitAll() 
+                .anyRequest().authenticated()
+            )
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+        return http.build();
+    }
+}
+</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        controller > UserController.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.controller;
+
+@RestController
+public class UserController {
+    private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserController(UserService userService, PasswordEncoder passwordEncoder) {
+        this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
+    }
+
+    @PostMapping("/users")
+    public ResponseEntity&lt;User&gt; createNewUser(@RequestBody User reqUser) {
+        String hashPassword = this.passwordEncoder.encode(reqUser.getPassword());
+        reqUser.setPassword(hashPassword);
+        User newUser = this.userService.handleCreateUser(reqUser);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newUser);
+    }
+}</code></pre>
+</div>
