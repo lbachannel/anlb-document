@@ -76,19 +76,25 @@
     <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
         4. Thực hiện gọi các method có đánh dấu @Bean để lấy ra các Bean và đưa vào `Context.
     </p>
-    <blockquote class="blockquote blockquote--normal mb-10">
+    <blockquote class="blockquote blockquote--normal">
         <p class="content__desc mb-10">
             Ngoài ra, về bản chất, <b>@Configuration</b> cũng là <b>@Component</b>. 
             Nó chỉ khác ở ý nghĩa sử dụng. (Giống với việc class được đánh dấu @Service chỉ nên phục vụ logic vậy).
         </p>
     </blockquote>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Cấu hình dự án</h2>
     <p class="content__desc mb-10">
         config > SecurityConfiguration.java
     </p>
     <pre class="language-javascript"><code class="language-javascript">package com.anlb.jobspring.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableMethodSecurity(securedEnabled = true)
@@ -114,6 +120,16 @@ public class SecurityConfiguration {
     }
 }
 </code></pre>
+
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Thuật toán mã hóa người dùng: <b>BCrypt</b>
+        </p>
+        <p class="content__desc">
+            Chúng ta nói với Java Spring biết rằng đối với người dùng
+            chúng ta mã hóa mật khẩu bằng thuật toán BCrypt
+        </p>
+    </blockquote>
 
     <p class="content__desc mt-20 mb-10">
         controller > UserController.java
