@@ -1,0 +1,33 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Filter Query with JPA Specifications</h2>
+    <p class="content__desc mb-10">
+        <mark>Step 1: add dependency</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate.orm&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-jpamodelgen&lt;/artifactId&gt;
+    &lt;version&gt;6.4.1.Final&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 2: In Service Create Specification (Định nghĩa Specification)</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class ProductService() {
+    private Specification&lt;Product&gt; nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
+    }
+
+    public Page&lt;Product&gt; handleFindProducts(Pageable page, String name) {
+        return this.productRepository.findAll(this.nameLike(name), page);
+    }
+}</code></pre>
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 3: Repo extends JpaSpecificationExecutor</mark>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">@Repository
+public interface ProductRepository extends JpaRepository&lt;Product, Long&gt;, JpaSpecificationExecutor&lt;Product&gt; {
+    Page&lt;Product&gt; findAll(Specification&lt;Product&gt; spec, Pageable page);
+}</code></pre>
+</div>
