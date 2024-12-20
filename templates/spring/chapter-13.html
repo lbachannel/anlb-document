@@ -13,14 +13,20 @@
     <p class="content__desc mt-20 mb-10">
         <mark>Step 2: In Service Create Specification (Định nghĩa Specification)</mark>
     </p>
-    <pre class="language-javascript"><code class="language-javascript">public class ProductService() {
-    private Specification&lt;Product&gt; nameLike(String name) {
+    <p class="content__desc mb-10">
+        service -> specifications -> ProductSpecs.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class ProductSpecs {
+    public static Specification&lt;Product&gt; nameLike(String name) {
         return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
     }
+}</code></pre>
+    <pre class="language-javascript"><code class="language-javascript">public class ProductService {
 
     public Page&lt;Product&gt; handleFindProducts(Pageable page, String name) {
-        return this.productRepository.findAll(this.nameLike(name), page);
+        return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
     }
+
 }</code></pre>
     <p class="content__desc mt-20 mb-10">
         <mark>Step 3: Repo extends JpaSpecificationExecutor</mark>
@@ -29,5 +35,21 @@
     <pre class="language-javascript"><code class="language-javascript">@Repository
 public interface ProductRepository extends JpaRepository&lt;Product, Long&gt;, JpaSpecificationExecutor&lt;Product&gt; {
     Page&lt;Product&gt; findAll(Specification&lt;Product&gt; spec, Pageable page);
+}</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 4: Using</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Controller
+public class ProductController {
+    @GetMapping(/products)
+    public String openProductPage(Model model,
+                                @RequestParam("name") Optional&lt;String&gt; nameOptional) {
+        String name = nameOptional.get();
+        Page&lt;Product&gt; products = this.productService.handleFindProducts(pageable, name);
+        List&lt;Product&gt; productList = products.getContent();
+        model.addAttribute("productList", productList);
+        return "path";
+    }
 }</code></pre>
 </div>
