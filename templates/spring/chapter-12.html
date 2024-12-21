@@ -1,0 +1,58 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">OAuth</h2>
+    <p class="content__desc mb-10">
+        OAuth (Open Authorization) là một chuẩn (standard) dùng để xác thực thông tin
+        người dùng thông qua token. (từ 2012)
+    </p>
+    <p class="content__desc mb-10">
+        Được ứng dụng rộng rãi trong mô hình stateless (microservice)
+        khi một ứng dụng liên quan tới nhiều dịch vụ (service)
+    </p>
+    <p class="content__desc mb-10">
+        <mark>Các vai trò khi sử dụng OAuth</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>Resource Owner</b>: người sở hữu nguồn tài nguyên, thông thường chính là User
+        người sở hữu tài khoản của họ. Ví dụ bạn là chủ sở hữu của tài khoản Facebook
+        do bạn tạo ra
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>Resource Server</b>: nơi hosting dữ liệu của người dùng. Ví dụ, tài khoản Facebook
+        của bạn sẽ được lưu trữ tại server nào đó do Facebook quản lý
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>Client</b>: ứng dụng muốn truy cập/sử dụng thông tin của người dùng
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>Authorization Server</b>: nơi chịu trách nhiệm tạo ra access-token để cho
+        <b>Client</b> sử dụng <b>Resource Server</b> (sau khi đã được <b>Resource Owner</b> cho phép)
+    </p>
+    <p class="content__desc mb-10">
+        <mark>Ví dụ cụ thể:</mark>
+    </p>
+    <p class="content__desc mb-10">
+        Giả sử bạn đang sử dụng một ứng dụng quản lý công việc (<b>Client</b>),
+        và ứng dụng này yêu cầu quyền truy cập vào danh bạ của bạn trên Google để có thể
+        gửi lời mời hoặc kết nối với các liên hệ của bạn
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Bạn (<b>Resource Owner</b>) là bên thứ nhất.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Google (<b>Resource Server</b> và <b>Authorization Server</b>) là bên thứ hai.
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Ứng dụng quản lý công việc (<b>Client</b>) là bên thứ ba.
+    </p>
+    <p class="content__desc mb-10">
+        Trong ví dụ này, bạn (bên thứ nhất) quyết định cho phép 
+        ứng dụng quản lý công việc (bên thứ ba) truy cập tài nguyên của mình trên Google (bên thứ hai).
+    </p>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Spring và OAuth</h2>
+    <h3 class="content__heading-3 mb-10">Lịch sử ra đời và sử dụng với Spring</h3>
+    <p class="content__desc mb-10">
+        Trước 2022: Spring Security OAuth
+    </p>
+</div>
