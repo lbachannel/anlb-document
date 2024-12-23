@@ -21,12 +21,14 @@
         return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
     }
 }</code></pre>
-    <pre class="language-javascript"><code class="language-javascript">public class ProductService {
-
+    <p class="content__desc mt-10 mb-10">
+        service -> ProductService.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Service
+public class ProductService {
     public Page&lt;Product&gt; handleFindProducts(Pageable page, String name) {
         return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
     }
-
 }</code></pre>
     <p class="content__desc mt-20 mb-10">
         <mark>Step 3: Repo extends JpaSpecificationExecutor</mark>

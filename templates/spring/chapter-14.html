@@ -1,0 +1,55 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Data transfer object</h2>
+    <p class="content__desc mb-10">
+        Mục đích sử dụng: tăng thêm hoặc giảm bớt đi các thuộc tính của class
+    </p>
+    <p class="content__desc mb-10">
+        <mark>Step 1: domain -> User.java</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class User {
+    private String fullName;
+    private String email;
+    private String password;
+    
+    // GETTER & SETTER
+}</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Step 2: domain -> dto -> RegisterDTO.java</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class RegisterDTO {
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String confirmPassword;
+    
+    // GETTER & SETTER
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>Step 3: service -> UserService.java</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// mapper DTO -> User
+public User registerDTOtoUser(RegisterDTO registerDTO) {
+    User user = new User();
+    user.setFullname(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+    user.setEmail(registerDTO.getEmail());
+    user.setPassword(registerDTO.getPassword());
+    return user;
+}</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>Step 4: using</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">// POST: create a account
+@PostMapping("/register")
+public String handleRegister(@ModelAttribute("registerAccount") @Valid RegisterDTO registerDTO,
+                            BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+        return "client/auth/register";
+    }
+    User user = this.userService.registerDTOtoUser(registerDTO);
+    this.userService.handleRegisterAccount(user);
+    return "redirect:/login";
+}</code></pre>
+</div>
