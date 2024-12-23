@@ -1,0 +1,302 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Spring Security</h2>
+    <p class="content__desc mb-10">
+        <mark>Mặc định, app được bảo vệ với DefaultSecurityFilterChain, bao gồm:</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript"><pre class="language-javascript"><code class="language-javascript">[
+    security.web.session.DisableEncodeUrlFilter@629984eb,
+    security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b1e5e55,
+    security.web.context.SecurityContextHolderFilter@69aa7d76,
+    org.springframework.security.web.header.HeaderWriterFilter@5b5b59,
+    org.springframework.web.filter.CorsFilter@4c1d59cd,
+    org.springframework.security.web.csrf.CsrfFilter@318c68d5,
+    org.springframework.security.web.authentication.logout.LogoutFilter@4733f6f5,
+    security.web.authentication.UsernamePasswordAuthenticationFilter@56cc9f29,
+    security.web.authentication.ui.DefaultLoginPageGeneratingFilter@41ccb3b9,
+    security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@76cf841,
+    security.web.authentication.www.BasicAuthenticationFilter@661fe025,
+    security.web.savedrequest.RequestCacheAwareFilter@f1266c6,
+    security.web.servletapi.SecurityContextHolderAwareRequestFilter@3913f206,
+    security.web.authentication.AnonymousAuthenticationFilter@297c9a9b,
+    org.springframework.security.web.access.ExceptionTranslationFilter@6baf25d7,
+    org.springframework.security.web.access.intercept.AuthorizationFilter@415ef4d8
+]</code></pre></code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>Spring MVC hoạt động như thế nào</mark>
+    </p>
+    <p class="content__desc mb-10">
+        Request => Dispatcher Servlet => Controllers... => Response
+    </p>
+    <p class="content__desc mb-10">
+        Dispatcher Servlet : là 1 lớp "đứng giữa", 
+        phụ trách nhiệm vụ trỏ tới đúng
+        controller/method để xử lý request
+    </p>
+
+    <p class="content__desc mt-10 mb-10">
+        <mark>Spring MVC + Spring Security</mark>
+    </p>
+    <p class="content__desc mb-10">
+        Request => Spring Security => Dispatcher Servlet => Controllers... => Response
+    </p>
+    <p class="content__desc mb-10">
+        Tất cả request cần đi qua Spring Security đầu tiên
+    </p>
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">Luồng hoạt động của Spring Security</h2>
+    <P class="content__desc mb-10">
+        Default login với user lưu tại memory. Memory tức là lưu tại RAM của máy tính.
+    </P>
+
+    <P class="content__desc mb-10">
+        Mỗi lần restart server (hoặc máy tính), sẽ cần login lại
+    </P>
+    <h3 class="content__heading-3 mb-10">Luồng login gồm các bước sau:</h3>
+    <p class="content__desc mb-10">
+        <mark>Step 1: Truy cập page Login, và nhấn nút submit</mark>
+    </p>
+
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Các thông tin gửi lên server bao gồm các fields sau:
+    </p>
+
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        username : đây là tên đăng nhập (có thể là email, số điện thoại, cccd…). Tuy nhiên path = username
+    </p>
+
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        password : mật khẩu của user (plain password)
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        => user cung cấp credentials (thông tin xác thực) cho server
+    </p>
+
+
+    <p class="content__desc mb-10">
+        <mark>Step 2: Spring Security chạy Filter để lọc request</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Chọn provider, mặc định khi sử dụng username/password, Spring sử dụng
+        <b>DaoAuthticationProvider</b>
+    </p>
+    <figure class="content-img mb-10">
+        <img src="./assets/img/spring-security.png" alt="component" class="content-img__img mb-10">
+        <figcaption>
+            <em>
+                <a href="https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html">
+                    https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/user-details-service.html
+                </a>
+            </em>
+        </figcaption>
+    </figure>
+    <p class="content__desc mb-10 ti-30">
+        Sử dụng UserDetailsService để lấy thông tin user:
+    </p>
+    <figure class="content-img mb-10">
+        <img src="./assets/img/spring-security-1.png" alt="component" class="content-img__img mb-10">
+    </figure>
+    <p class="content__desc mb-10">
+        <mark>Step 3: Nạp user vào Context</mark>
+    </p>
+    <figure class="content-img mb-10">
+        <img src="./assets/img/spring-security-2.png" alt="component" class="content-img__img mb-10">
+    </figure>
+
+    <div class="separate"></div>
+
+    <h3 class="content__heading-3 mb-10">Chi tiết hơn về luồng hoạt động của Spring Security</h3>
+    <p class="content__desc mb-10">
+        <mark>1. Request Được Gửi Tới Ứng Dụng</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Người dùng gửi một HTTP request (VD: POST /login) chứa thông tin xác thực, 
+        thường là username và password trong body hoặc header (như Authorization header với Basic Auth hoặc Bearer Token).
+    </p>
+    <p class="content__desc mb-10">
+        <mark>2. Spring Security Filter Chain (Chuỗi Bộ Lọc)</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Mỗi request đi qua chuỗi bộ lọc bảo mật (<b>FilterChain</b>) do Spring Security cung cấp.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Các bộ lọc được sắp xếp theo thứ tự cụ thể để xử lý yêu cầu tuần tự. Các bộ lọc chính bao gồm:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>SecurityContextPersistenceFilter</b>: Lấy <b>SecurityContext</b> từ session (hoặc lưu nó khi hoàn thành xử lý).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>UsernamePasswordAuthenticationFilter</b>: Xử lý form-based login (username và password).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>BearerTokenAuthenticationFilter</b> (nếu cấu hình): Xử lý token (OAuth2, JWT).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>BasicAuthenticationFilter</b>: Xử lý HTTP Basic Authentication.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>AuthorizationFilter</b>: Xử lý phân quyền.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Và nhiều bộ lọc khác (VD: <b>CsrfFilter</b>, <b>ExceptionTranslationFilter</b>).
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>3. UsernamePasswordAuthenticationFilter</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Bộ lọc này kiểm tra xem request có phải một request login hợp lệ hay không.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Xử lý:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Lấy thông tin <b>username</b> và <b>password</b> từ request.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Tạo một đối tượng <b>UsernamePasswordAuthenticationToken</b> chưa được xác thực (<b>authenticated = false</b>).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Chuyển đối tượng này tới <b>AuthenticationManager</b>.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>4. AuthenticationManager</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Đây là trung tâm xử lý xác thực trong Spring Security.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Xử lý:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>AuthenticationManager</b> chuyển token chưa xác thực đến một hoặc nhiều <b>AuthenticationProvider</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        AuthenticationProvider thực hiện xác thực thông qua các nguồn khác nhau:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 120px; text-indent: 0px;">
+        <b>DaoAuthenticationProvider</b>: Sử dụng user details từ <b>UserDetailsService</b> và mã hóa password (<b>PasswordEncoder</b>).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 120px; text-indent: 0px;">
+        <b>JwtAuthenticationProvider</b>: Xác thực token JWT.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 120px; text-indent: 0px;">
+        <b>LdapAuthenticationProvider</b>: Xác thực thông qua LDAP.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Nếu một <b>AuthenticationProvider</b> xác thực thành công, nó trả về một đối tượng <b>Authentication</b> đã được xác thực.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>5. Lưu trữ Authentication vào SecurityContext</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Sau khi xác thực thành công
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Đối tượng <b>Authentication</b> 
+        được lưu vào <b>SecurityContext</b> thông qua <b>SecurityContextHolder</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        <b>SecurityContextPersistenceFilter</b> đảm bảo 
+        <b>SecurityContext</b> được lưu trữ trong session (nếu sử dụng session).
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>6. Phân Quyền (Authorization)</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Sau khi xác thực, request tiếp tục qua các bộ lọc phân quyền.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>AccessDecisionManager</b> và <b>AccessDecisionVoter</b> 
+        sẽ kiểm tra xem người dùng có quyền truy cập tài nguyên không:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        So sánh các quyền (<b>GrantedAuthority</b>) của người dùng với quyền được cấu hình 
+        trong ứng dụng (VD: qua annotation <b>@PreAuthorize</b>, <b>@Secured</b>).
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Nếu người dùng không có quyền, một <b>AccessDeniedException</b> được ném ra.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>7. Controller hoặc Resource Handler</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Nếu request vượt qua tất cả các bộ lọc, nó sẽ được chuyển đến <b>Controller</b> 
+        hoặc resource tương ứng để xử lý và trả về phản hồi.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>8. Phản Hồi (Response)</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Kết quả xử lý được gửi ngược lại cho người dùng.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Trong trường hợp có lỗi (authentication hoặc authorization), các bộ lọc lỗi như <b>ExceptionTranslationFilter</b> 
+        sẽ xử lý và trả về lỗi thích hợp:
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        HTTP 401 (Unauthorized) nếu xác thực thất bại.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        HTTP 403 (Forbidden) nếu phân quyền thất bại.
+    </p>
+
+    <p class="content__desc mb-10">
+        <mark>9. Các Thành Phần Chính trong Spring Security</mark>
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        A. Authentication
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Xác định người dùng là ai.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Đối tượng chính: <b>Authentication</b>, <b>AuthenticationManager</b>, <b>AuthenticationProvider</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        B. Authorization
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Kiểm tra xem người dùng được phép làm gì.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Đối tượng chính: <b>AccessDecisionManager</b>, <b>GrantedAuthority</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        C. SecurityContext
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 70px; text-indent: 0px;">
+        Lưu trữ thông tin xác thực và phân quyền trong suốt phiên làm việc.
+    </p>
+
+    <h3 class="content__heading-3 mb-10">Luồng tóm tắt với ExceptionTranslationFilter</h3>
+    <p class="content__desc mb-10">
+        1. Người dùng gửi request.
+    </p>
+    <p class="content__desc mb-10">
+        2. Request đi qua <b>FilterChain</b>.
+    </p>
+    <p class="content__desc mb-10">
+        3. Nếu lỗi xác thực
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>AuthenticationException</b> được bắt bởi <b>ExceptionTranslationFilter</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Chuyển hướng đến login page hoặc trả về HTTP 401.
+    </p>
+    <p class="content__desc mb-10">
+        4. Nếu lỗi phân quyền
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        <b>AccessDeniedException</b> được bắt bởi <b>ExceptionTranslationFilter</b>.
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Trả về HTTP 403 nếu đã xác thực, hoặc gọi lại <b>AuthenticationEntryPoint</b> nếu chưa xác thực.
+    </p>
+</div>
