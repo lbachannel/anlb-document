@@ -1,0 +1,255 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Kiểu dữ liệu & biến</h2>
+    <h3 class="content__heading-3 mb-10">Biến là gì?</h3>
+    <p class="content__desc mb-10">
+        Biến là 1 vùng ram được đặt tên, chiếm 1 số byte nhất định tùy loại.
+    </p>
+    <p class="content__desc mb-10">
+        Dữ liệu, thông tin mà nó sẽ chứa bên trong
+    </p>
+    <p class="content__desc">
+        <b>Vùng ram</b> dùng để lưu trữ dữ liệu thông tin và xử lý.
+    </p>
+
+    <h3 class="content__heading-3 mb-10 mt-10">Primitive Data Type</h3>
+    <p class="content__desc mb-10">
+        Có 8 loại dữ liệu nguyên thủy
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th>Data type</th>
+                <th>Số byte</th>
+                <th>Số bit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="--text:center;">
+                    byte
+                </td>
+                <td style="--text:center;">
+                    1 byte
+                </td>
+                <td style="--text:center;">8</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    short
+                </td>
+                <td style="--text:center;">
+                    2 byte
+                </td>
+                <td style="--text:center;">16</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    int
+                </td>
+                <td style="--text:center;">
+                    4 byte
+                </td>
+                <td style="--text:center;">32</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    long
+                </td>
+                <td style="--text:center;">
+                    8 byte
+                </td>
+                <td style="--text:center;">64</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    float
+                </td>
+                <td style="--text:center;">
+                    4 byte
+                </td>
+                <td style="--text:center;">32</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    double
+                </td>
+                <td style="--text:center;">
+                    8 byte
+                </td>
+                <td style="--text:center;">64</td>
+            </tr>
+            <tr></tr>
+                <td style="--text:center;">
+                    boolean
+                </td>
+                <td style="--text:center;">
+                    không chỉ định rõ kích thước, hoặc 1 bit
+                </td>
+                <td style="--text:center;">false/true</td>
+            </tr>
+            <tr>
+                <td style="--text:center;">
+                    char
+                </td>
+                <td style="--text:center;">
+                    2 byte
+                </td>
+                <td style="--text:center;">16</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Integer</h3>
+    <pre class="language-javascript"><code class="language-javascript">int age = 20;
+long m = 3000000000; // error
+long m = 3000000000L; // correct</code></pre>
+    <blockquote class="blockquote blockquote--normal mt-10">
+        <p class="content__desc mb-10">
+            Mọi con số, kí tự xuất hiện trong code được gọi là literal value
+        </p>
+        <p class="content__desc">
+            Số nguyên xuất hiện trong code mặc định là int.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Double</h3>
+    <p class="content__desc">Java ưu tiên <b>double</b> hơn <b>float</b></p>
+    <pre class="language-javascript"><code class="language-javascript">float vat = 0.1; // error
+float vat = 0.1F; // correct</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Characters</h3>
+    <p>char 2 byte, lưu bảng mã Unicode</p>
+    <pre class="language-javascript"><code class="language-javascript">char m = '$';</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Boolean</h3>
+    <pre class="language-javascript"><code class="language-javascript">boolean marriedStatus = false;
+if (marriedStatus == true) {
+    System.out.println("Đánh đồn có địch mới vui");
+} else {
+    System.out.println("Vườn hồng có lối nhưng chưa ai vào");
+}</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-20">Biến var</h2>
+    <h3 class="content__heading-3 mb-10">JDK10 - LOCAL VARIABLE TYPE INFERENCE</h3>
+    <p class="content__desc mb-10">
+        Từ JDK10, Java hỗ trợ khả năng khai báo biến cục bộ
+        trong hàm mà không cần chỉ rõ data type một cách
+        tường minh - type inference (suy luận kiểu) bằng cách
+        sử dụng từ khoá var. 
+    </p>
+    <p class="content__desc mb-10">
+        Java Compiler sẽ dựa trên cách
+        khai báo biến và gán giá trị để suy luận ra kiểu dữ liệu
+        của biến.
+    </p>
+    <p class="content__desc mb-10">
+        <b>Một số lưu ý khi dùng var</b>
+    </p>
+    <p class="content__desc mb-10">
+        Bắt buộc phải gán giá trị cho biến khi khai báo có dùng var
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x; // bị báo lỗi
+var y = "Do IT Now"; // hợp lệ</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Không thể gán giá trị null cho biến lúc khai báo
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x = null; //bị báo lỗi</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Không đổi kiểu dữ liệu ban đầu của biến sang kiểu khác
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">var x = 10;
+x = "Hello"; // //bị báo lỗi tương thích kiểu dữ liệu do x đã được xác định là int</code></pre>
+
+    <div class="separate"></div>
+    <h2 class="content__heading-2 mb-10">JVM - JRE - JDK</h2>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            Khi <b>chạy chương trình Java</b> sẽ thông qua <b>2 bước</b>: 
+        </p>
+        <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Các <b>file code</b> sẽ <b>được compiler</b> (biên dịch) thành các mã <b>byte code</b> dưới dạng <b>file .class</b>
+        </p>
+        <p class="content__desc ti-30" style="padding-left: 29px; text-indent: 0px;">
+            Tiếp theo thì các mã byte code sẽ được <b>thông dịch Interpreter</b> thành <b>mã máy machine code</b>
+            để máy có thể hiểu và thực thi chương trình.
+        </p>
+    </blockquote>
+
+    <div class="compiler mt-20 mb-20">
+        <div class="compiler__wrap">
+            <span class="compiler__wrap-text">Source code</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Compiler (biên dịch)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Byte Code (.class)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Interpreter (thông dịch)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Machine Code (mã máy)</span>
+            <img class="compiler__wrap-icon" src="./assets/img/icons/arrow-right.svg" alt="">
+            <span class="compiler__wrap-text">Output</span>
+        </div>
+    </div>
+
+    <h3 class="content__heading-3 mb-10">JVM</h3>
+    <p class="content__desc mb-10">
+        JVM: Java Virtual Machine (máy ảo Java)
+    </p>
+    <p class="content__desc mb-10">
+        JVM chịu trách nhiệm chuyển đổi các mã byte code thành mã máy
+        tại thời điểm thực thi chương trình
+    </p>
+    <p class="content__desc mb-10">
+        Nhưng chỉ với JVM thôi thì chưa đủ. Thường chương trình Java chúng ta sẽ
+        có thêm một số thư viện Libraries để chạy chương trình
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: <b>Java Standard Library</b>: 
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.lang
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.util
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        +java.io ....
+    </p>
+
+    <h3 class="content__heading-3 mb-10">JRE</h3>
+    <p class="content__desc mb-10">
+        JRE: Java Runtime Enviroment (Môi trường thực thi Java)
+    </p>
+    <p class="content__desc mb-10">
+        JRE = JVM + Libraries
+    </p>
+    <p class="content__desc mb-10">
+        Về cơ bản nếu chỉ muốn chạy chương trình Java thôi.
+        Thì chỉ cần cài JRE là đủ.
+    </p>
+    <h3 class="content__heading-3 mb-10">JDK</h3>
+    <p class="content__desc mb-10">
+        JDK: Java Development Kit
+    </p>
+    <p class="content__desc mb-10">
+        JDK = Development tools + JRE (JVM + Libraries)
+    </p>
+    <p class="content__desc mb-10">
+        Bên cạnh đó nó còn có công cụ phát triển (Development tools) như là:
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Trình biên dịch (compiler)
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Công cụ quản lý gói
+    </p>
+    <p class="content__desc mb-10 ti-30">
+        Công cụ Debugger
+    </p>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc">
+            Mọi người cần phát triển ứng dụng Java. thì cần phải cài đặt JDK
+        </p>
+    </blockquote>
+</div>
