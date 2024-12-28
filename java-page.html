@@ -24,6 +24,9 @@
                 <li class="sidebar-tab__item sidebar-tab__item--active">
                     1. Lambda Expression
                 </li>
+                <li class="sidebar-tab__item">
+                    2. Stream API
+                </li>
             </ul>
             <div class="separate-sidebar"></div>
             <button id="toggle-btn" class="toggle-btn">
@@ -41,6 +44,14 @@
                         <script>
                             document.addEventListener("DOMContentLoaded", function() {
                                 load("#chapter-1", "./templates/java/chapter-1.html");
+                            });
+                        </script>
+
+                        <!-- content 2 -->
+                        <div id="chapter-2" class="content"></div>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                load("#chapter-2", "./templates/java/chapter-2.html");
                             });
                         </script>
                     </div>

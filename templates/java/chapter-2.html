@@ -1,0 +1,348 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Stream API</h2>
+    <p class="content__desc mb-10">
+        Các phép toán này trả về Stream mới 
+        và có thể kết hợp với các operations khác.
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th style="line-height: 1.5; width: 700px;">Intermediate Operations</th>
+                <th style="line-height: 1.5;">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">map()</td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;String&gt; names = Arrays.asList("alice", "bob", "charlie", "diana");
+List&lt;String&gt; uppercaseNames = names.stream()
+    .map(name -> name.toUpperCase()) // Chuyển đổi thành chữ hoa
+    .collect(Collectors.toList());
+
+// [ALICE, BOB, CHARLIE, DIANA]</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    filter() &rarr; Lọc các phần tử trong stream theo một điều kiện.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List&lt;Integer&gt; evenNumbers = numbers.stream()
+    .filter(num -> num % 2 == 0) // Lọc các số chẵn
+    .collect(Collectors.toList());
+
+// [2, 4, 6, 8, 10]</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    sorted() &rarr; Sắp xếp các phần tử theo thứ tự tự nhiên hoặc theo một comparator tùy chỉnh.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(5, 2, 9, 1, 7);
+List&lt;Integer&gt; sortedNumbers = numbers.stream()
+    .sorted()
+    .toList(); => java version 16 (.collect(Collectors.toList()); => version 8)
+
+// [1, 2, 5, 7, 9]
+
+List&lt;Integer&gt; sortedNumbersDescending = numbers.stream()
+    .sorted((a, b) -> b - a) // So sánh đảo ngược
+    .toList();
+
+// [9, 7, 5, 2, 1]</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    peek() &rarr; Thực thi một hành động 
+                    cho mỗi phần tử trong stream mà 
+                    không thay đổi dữ liệu. 
+                    Thường dùng cho mục đích debug.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5);
+List&lt;Integer&gt; modifiedNumbers = numbers.stream()
+    .peek(num -> System.out.println("Before modification: " + num))
+    .map(num -> num * 2)
+    .peek(num -> System.out.println("After modification: " + num))
+    .collect(Collectors.toList());
+</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    mapToDouble() 
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Employee&gt; employees = Arrays.asList(
+    new Employee("John", 3000.5),
+    new Employee("Alice", 4000.0),
+    new Employee("Bob", 2500.75)
+);
+
+double totalSalary = employees.stream()
+            .mapToDouble(Employee::getSalary)
+            .sum();
+
+// Total Salary: 9501.25</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    mapToInt()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    mapToLong()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    limit() &rarr; Giới hạn số lượng phần tử trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">list.stream()
+    .limit(5)</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    distinct() &rarr; Loại bỏ các phần tử trùng lặp
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;String&gt; names = Arrays.asList("Alice", "Bob", "Alice", "Charlie", "Bob");
+List&lt;String&gt; distinctNames = names.stream()
+    .distinct() // Loại bỏ tên trùng lặp
+    .collect(Collectors.toList());
+
+// [Alice, Bob, Charlie]</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    flatMap() &rarr; Biến mỗi phần tử thành một stream con và kết hợp các stream con lại với nhau.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;String&gt; classA = Arrays.asList("Alice", "Bob", "Charlie");
+List&lt;String&gt; classB = Arrays.asList("David", "Eva");
+List&lt;String&gt; classC = Arrays.asList("Frank", "Grace");
+
+List&lt;List&lt;String&gt;&gt; school = Arrays.asList(classA, classB, classC);
+List&lt;String&gt; allStudents = school.stream()
+    .flatMap(classList -> classList.stream())
+    .collect(Collectors.toList());
+
+// result: [Alice, Bob, Charlie, David, Eva, Frank, Grace]</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    skip() &rarr; Bỏ qua một số phần tử đầu tiên trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+List&lt;Integer&gt; result = numbers.stream()
+        .skip(3)
+        .collect(Collectors.toList());
+// result: [4, 5, 6, 7, 8, 9, 10]</code></pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p class="content__desc mt-20 mb-10">
+        Các phép toán này kết thúc chuỗi stream và
+        trả về một kết quả cụ thể (không phải stream).
+    </p>
+    <table>
+        <thead>
+            <tr>
+                <th style="line-height: 1.5; width: 700px;">Terminal Operations</th>
+                <th style="line-height: 1.5;">Example</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">forEach() &rarr; Thực thi một hành động cho mỗi phần tử trong stream.</td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(1, 2, 3, 4, 5);
+/*
+    Vì trong biểu thức lambda không thể thay đổi trực tiếp giá trị của các biến bên ngoài,
+    nên chúng ta sử dụng một mảng (hoặc đối tượng) để chứa tổng và thay đổi giá trị của nó trong forEach().
+*/
+int[] sum = {0};
+numbers.stream()
+    .forEach(num -> sum[0] += num);
+
+// 15</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    collect() &rarr; Thu thập các phần tử 
+                    trong stream thành một cấu trúc dữ liệu khác 
+                    (ví dụ: List, Set, Map).
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">list.stream()
+    .collect(Collectors.toList())</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    reduce() &rarr; Giảm stream xuống một giá trị duy nhất bằng cách kết hợp các phần tử trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">list.stream()
+    .reduce(0.0, (sum, salary) -> sum + salary)</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    sum()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Employee&gt; employees = Arrays.asList(
+    new Employee("John", 3000.5),
+    new Employee("Alice", 4000.0),
+    new Employee("Bob", 2500.75)
+);
+
+double totalSalary = employees.stream()
+            .mapToDouble(Employee::getSalary)
+            .sum();
+            
+// Total Salary: 9501.25</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    count() &rarr; Trả về số lượng phần tử trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;"><pre class="language-javascript"><code class="language-javascript">List&lt;String&gt; names = Arrays.asList("Alice", "Bob", "Charlie", "Diana");
+long count = names.stream().count();
+
+// 4</code></pre>
+            
+            </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    min()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = List.of(10, 5, 30, 15, 20);
+Optional<Integer> minNumber = numbers.stream()
+    .min(Integer::compareTo);
+
+// 5</code></pre>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    max()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Employee&gt; employees = List.of(
+    new Employee("Alice", 3000),
+    new Employee("Bob", 1500),
+    new Employee("Charlie", 2000)
+);
+
+Optional&lt;Employee&gt; maxSalaryEmployee = employees.stream()
+    .max((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
+
+// 3000.0</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    average()
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = List.of(10, 20, 30, 40, 50);
+OptionalDouble average = numbers.stream()
+    .mapToInt(Integer::intValue)
+    .average();
+
+// 30.0 <=> (10+20+30+40+50) / 5</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    allMatch() &rarr; tất cả các phần tử 
+                    trong stream có thỏa mãn điều kiện
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; ages = Arrays.asList(20, 25, 18, 30, 22);
+boolean allAdults = ages.stream()
+            .allMatch(age -> age >= 18);
+System.out.println("Tất cả đều đủ 18 tuổi: " + allAdults);
+
+// Tất cả đều đủ 18 tuổi: true</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    anyMatch() &rarr; có ít nhất một phần tử trong stream thỏa mãn điều kiện
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">list.stream()
+    .anyMatch(staff -> staff.getSalary() > 100)</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    noneMatch() &rarr; không có phần tử 
+                    nào trong stream thỏa mãn điều kiện.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">llist.stream()
+    .noneMatch(staff -> staff.getSalary() < 20)</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    findFirst() &rarr; Trả về phần tử đầu tiên trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;String&gt; names = Arrays.asList("Alice", "Bob", "Charlie", "Diana");
+Optional&lt;String&gt; firstName = names.stream()
+    .findFirst();
+firstName.ifPresent(name -> System.out.println(name));
+
+// Alice</code></pre>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: left; line-height: 1.5;">
+                    findAny() &rarr; Trả về một phần tử bất kỳ trong stream.
+                </td>
+                <td style="text-align: left; line-height: 1.5;">
+                    <pre class="language-javascript"><code class="language-javascript">List&lt;Integer&gt; numbers = Arrays.asList(10, 20, 30, 40, 50);
+
+Optional&lt;Integer&gt; anyNumber = numbers.stream()
+    .findAny();
+// 10
+
+Optional&lt;Integer&gt; anyNumber = numbers.parallelStream().findAny();
+
+anyNumber.ifPresent(num -> System.out.println("Phần tử bất kỳ: " + num));
+
+// Phần tử bất kỳ: 30</code></pre>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
