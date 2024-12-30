@@ -1,0 +1,38 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Các cách lấy kích thước của Element</h2>
+    <p class="content__desc mb-10">HTML</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+    &lt;style&gt;
+        .box {
+            width: 100px;
+            height: 100px;
+            background: red;   
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="box"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    <p class="content__desc mt-10 mb-10">JavaScript</p>
+
+    <pre class="languge-javascript"><code class="language-javascript">const box = document.querySelector(".box");
+
+// Client: content + padding - scrollbar => integer
+console.log("clientWith: ", box.clientWith);
+console.log("clientHeight: ", box.clientHeight);
+
+// Offset: content + padding + border + scrollbar => integer
+console.log("offsetWidth: ", box.offsetWidth);
+console.log("offsetHeight: ", box.offsetHeight);
+
+// Rect: content + padding + border + scrollbar (display) => float
+const rect = box.getBoundingClientRect();
+console.log("rect.width: ", rect.width);
+console.log("rect.height: ", rect.height);</code></pre>
+</div>

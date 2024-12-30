@@ -1,0 +1,158 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">DOM - Document Object model</h2>
+    <p class="content__desc mb-10">
+        <mark>innerHTML</mark>
+    </p>
+    <ul style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            Get value &rarr; lấy cả cú pháp html nếu có
+            <pre class="language-javascript"><code class="language-javascript">&lt;h1 id="heading"&gt;Hello&lt;/h1&gt;
+const element = document.getElementById("heading");
+console.log(element.innerHTML);  // Hello
+
+&lt;h1 id="heading"&gt;
+    &lt;span&gt;Hello&lt;/span&gt;
+&lt;/h1&gt;
+const element = document.getElementById("heading");
+console.log(element.innerHTML);  // &lt;span&gt;Hello&lt;/span&gt;</code></pre>
+        </li>
+    </ul>
+    <p class="content__desc mb-10">
+        <mark>outerHTML</mark>
+    </p>
+    <ul style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            Get value &rarr; lấy chính cái html đã chọn
+        </li>
+        <li class="content__desc mb-10">
+            Sửa &rarr; thay thế luôn cả chính cái html đã chọn
+        </li>
+    </ul>
+    <p class="content__desc mb-10">
+        <mark>innerText</mark>
+    </p>
+    <ul style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            Get value &rarr; chỉ lấy text (loại bỏ hoàn toàn cú pháp html) và trim khoảng trắng đầu và cuối, bị tác động css
+        </li>
+        <li class="content__desc mb-10">
+            Sửa &rarr; chỉ coi cú pháp html là text và hiển thị luôn cả cú pháp ra trình duyệt
+            <pre class="language-javascript"><code class="language-javascript">element.innerText = '&lt;h1&gt;Hello&lt;/h1&gt;'; // &lt;h1&gt;Hello&lt;/h1&gt;</code></pre>
+        </li>
+    </ul>
+    <p class="content__desc mb-10">
+        <mark>textContent</mark>
+    </p>
+    <ul style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            Get value &rarr; chỉ lấy text, lấy nguyên gốc
+        </li>
+    </ul>
+    <blockquote class="blockquote blockquote--normal">
+        <p class="content__desc mb-10">
+            innerText & textContent: trong tất cả tình huống, dùng cái nào củng được
+        </p>
+        <p class="content__desc">
+            Tình huống đặc thù: giữ nguyên khoảng trắng, dấu xuống hàng thì dùng textContent.
+            textContent hiệu năng cao hơn, không quan tâm nhiều, lấy nguyên gốc
+        </p>
+    </blockquote>
+
+    <div class="separate"></div>
+    <h3 class="content__heading-3">Element node</h3>
+    <pre class="language-javascript"><code class="language-javascript">const parent = document.getElementById("parent");
+const h1 = document.createElement("h1");
+h1.textContent = "Hello";
+
+parent.appendChild(h1);
+    </code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Text node</h3>
+    <pre class="language-javascript"><code class="language-javascript">const text = createTextNode("Text node");</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Comment node</h3>
+    <pre class="language-javascript"><code class="language-javascript">const comment = createComment("Something");</code></pre>
+
+    <h3 class="content__heading-3 mt-20 mb-10">Attribute node</h3>
+    <pre class="language-javascript"><code class="language-javascript">const alt = createAttribute("alt");
+alt.value="image";
+
+parent.setAttributeNode(alt);
+    </code></pre>
+
+    <div class="separate"></div>
+
+    <h2 class="content__heading-2 mb-10">Truy cập cấu trúc DOM xung quanh node</h2>
+    <p class="content__desc mb-10">HTML</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;div id="box"&gt;
+    &lt;h1 id="heading"&gt;Hello&lt;/h1&gt;            
+&lt;/div&gt;</code></pre>
+    <p class="content__desc mb-10">JavaScript</p>
+    <pre class="language-javascript"><code class="language-javascript">// Fragment
+const box = document.querySelector("#box");
+const heading = document.querySelector("#heading");
+
+// Nodes 
+const text = document.createTextNode("Text...");
+const comment = document.createComment("Something");
+const p = document.createElement("p");
+p.textContent = "Something text...";
+
+// Create fragment
+const container = document.createDocumentFragment();
+
+// text, comment, p -> fragment
+container.append(p, text, comment);
+
+// frament -> box (before heading)
+box.insertBefore(container, heading);</code></pre>
+    <p class="content__desc mt-10 mb-10">Result</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;div id="box"&gt;
+        &lt;p&gt;"Something text..."&lt;/p&gt;
+        "Text..."
+        &lt;--Something--&gt; 
+        &lt;h1 id="heading"&gt;Hello&lt;/h1&gt;            
+    &lt;/div&gt;</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Lấy ra nodes con</mark>
+    </p>
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">box.childNodes &rarr; lấy ra các nodes <b>con trực tiếp</b> or null nếu không có</li>
+        <li class="content__desc mb-10">box.children &rarr; lấy ra nodes element con trực tiếp (p, h1) or null nếu không có</li>
+        <li class="content__desc mb-10">box.firstChild &rarr; lấy ra node con trực tiếp đầu tiên or null nếu không có</li>
+        <li class="content__desc mb-10">box.lastChild &rarr; lấy ra node con trực tiếp cuối cùng or null nếu không có</li>
+        <li class="content__desc mb-10">box.firstElementChild &rarr; lấy ra node element con trực tiếp đầu tiên or null nếu không có</li>
+        <li class="content__desc mb-10">box.lastElementChild &rarr; lấy ra node element con trực tiếp cuối cùng or null nếu không có</li>
+    </ul>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Lấy ra node đứng trước hoặc sau nó</mark>
+    </p>
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            text.previousSibling &rarr; text node lấy ra p (Sibling ae ngang cấp) or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.nextSibling &rarr; text node lấy ra comment (Sibling ae ngang cấp) or null nếu không có
+        </li>
+
+        <li class="content__desc mb-10">
+            text.previousElementSibling &rarr; text node lấy ra p (Sibling ae ngang cấp) or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.nextElementSibling &rarr; text node lấy ra h1 (Sibling ae ngang cấp) or null nếu không có
+        </li>
+    </ul>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Parent node</mark>
+    </p>
+
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            text.parentNode &rarr; thẻ cha div#box or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.parentElement &rarr; thẻ cha div#box or null nếu không có
+        </li>
+    </ul>
+</div>

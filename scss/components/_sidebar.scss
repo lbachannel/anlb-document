@@ -51,6 +51,7 @@
             overflow: hidden;
             text-overflow: ellipsis;
             transition: 0.2s;
+            font-size: 1.2rem;
 
             @include abstracts.screen(md) {
                 min-width: 295px;

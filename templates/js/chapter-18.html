@@ -1,0 +1,75 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Truy cập cấu trúc DOM xung quanh node</h2>
+    <p class="content__desc mb-10">HTML</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;div id="box"&gt;
+    &lt;h1 id="heading"&gt;Hello&lt;/h1&gt;            
+&lt;/div&gt;</code></pre>
+    <p class="content__desc mb-10">JavaScript</p>
+    <pre class="language-javascript"><code class="language-javascript">// Fragment
+const box = document.querySelector("#box");
+const heading = document.querySelector("#heading");
+
+// Nodes 
+const text = document.createTextNode("Text...");
+const comment = document.createComment("Something");
+const p = document.createElement("p");
+p.textContent = "Something text...";
+
+// Create fragment
+const container = document.createDocumentFragment();
+
+// text, comment, p -> fragment
+container.append(p, text, comment);
+
+// frament -> box (before heading)
+box.insertBefore(container, heading);</code></pre>
+    <p class="content__desc mt-10 mb-10">Result</p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;div id="box"&gt;
+        &lt;p&gt;"Something text..."&lt;/p&gt;
+        "Text..."
+        &lt;--Something--&gt; 
+        &lt;h1 id="heading"&gt;Hello&lt;/h1&gt;            
+    &lt;/div&gt;</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Lấy ra nodes con</mark>
+    </p>
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">box.childNodes &rarr; lấy ra các nodes <b>con trực tiếp</b> or null nếu không có</li>
+        <li class="content__desc mb-10">box.children &rarr; lấy ra nodes element con trực tiếp (p, h1) or null nếu không có</li>
+        <li class="content__desc mb-10">box.firstChild &rarr; lấy ra node con trực tiếp đầu tiên or null nếu không có</li>
+        <li class="content__desc mb-10">box.lastChild &rarr; lấy ra node con trực tiếp cuối cùng or null nếu không có</li>
+        <li class="content__desc mb-10">box.firstElementChild &rarr; lấy ra node element con trực tiếp đầu tiên or null nếu không có</li>
+        <li class="content__desc mb-10">box.lastElementChild &rarr; lấy ra node element con trực tiếp cuối cùng or null nếu không có</li>
+    </ul>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Lấy ra node đứng trước hoặc sau nó</mark>
+    </p>
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            text.previousSibling &rarr; text node lấy ra p (Sibling ae ngang cấp) or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.nextSibling &rarr; text node lấy ra comment (Sibling ae ngang cấp) or null nếu không có
+        </li>
+
+        <li class="content__desc mb-10">
+            text.previousElementSibling &rarr; text node lấy ra p (Sibling ae ngang cấp) or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.nextElementSibling &rarr; text node lấy ra h1 (Sibling ae ngang cấp) or null nếu không có
+        </li>
+    </ul>
+    <p class="content__desc mt-10 mb-10">
+        <mark>Parent node</mark>
+    </p>
+
+    <ul class="mt-20" style="list-style: disc inside;">
+        <li class="content__desc mb-10">
+            text.parentNode &rarr; thẻ cha div#box or null nếu không có
+        </li>
+        <li class="content__desc mb-10">
+            text.parentElement &rarr; thẻ cha div#box or null nếu không có
+        </li>
+    </ul>
+</div>
