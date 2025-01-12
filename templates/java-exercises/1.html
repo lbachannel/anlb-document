@@ -1,0 +1,27 @@
+<div class="content-wrap">
+    <p class="content__desc mt-10 mb-10">
+        <mark>Exercise 1: </mark> Viết hàm kiểm tra chuỗi đối xứng.
+    </p>
+    <p class="content__desc mt-10 mb-10 ti-30">
+        Là chuỗi đối xứng => return true
+    </p>
+    <p class="content__desc mt-10 mb-10 ti-30">
+        Không phải chuỗi đối xứng => return false
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class Main {
+    public static void main(String[] args) {
+        boolean isReverse = checkReverse("level");
+        String tmp = isReverse ? "Is Symmetrical Chain" : "Not a Symmetrical Chain";
+        System.out.println(tmp);
+    }
+
+    public static boolean checkReverse(String value) {
+        StringBuilder sb = new StringBuilder(value);
+        String reverse = sb.reverse().toString();
+        if (value.equalsIgnoreCase(reverse)) {
+            return true;
+        }
+        return false;
+    }
+}</code></pre>
+</div>
