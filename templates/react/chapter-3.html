@@ -1,0 +1,59 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-20">Import Export Component</h2>
+    <p class="content__desc mb-10">
+        export 1 component
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const MyComponent = () => {
+    return (
+        &lt;div&gt;Hello world&lt;/div&gt;
+    );
+}</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        Using component in file App.jsx
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">import MyComponent from "./components/learn/MyComponent";
+const App = () => {
+    const [count, setCount] = useState(0);
+
+    return (
+        &lt;MyComponent/&gt;
+    );
+}
+
+export default App;</code></pre>
+
+    <p class="content__desc mb-10">
+        export multiple component
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">const MyComponent = () => {
+    return (
+        &lt;div&gt;Third component&lt;/div&gt;
+    );
+}
+
+const SecondComponent = () => {
+    return (
+        &lt;div&gt;Second component&lt;/div&gt;
+    );
+}
+
+export { SecondComponent, ThirdComponent };</code></pre>
+
+    <p class="content__desc mt-10 mb-10">
+        Using component in file App.jsx
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">import { MyComponent, SecondComponent } from "./components/learn/SecondComponent";
+    const App = () => {
+    const [count, setCount] = useState(0);
+
+    return (
+        &lt;&gt;
+            &lt;MyComponent/&gt;
+
+            &lt;SecondComponent/&gt;
+        &lt;/&gt;
+    );
+    }
+
+    export default App;</code></pre>
+</div>

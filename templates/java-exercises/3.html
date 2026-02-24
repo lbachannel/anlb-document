@@ -1,0 +1,58 @@
+<div class="content-wrap">
+    <p class="content__desc mt-10 mb-10">
+        <mark>Exercise 3: </mark> Nhập 2 số nguyên a và b (a <= b)
+    </p>
+    <p class="content__desc mt-10 mb-10">
+        output 11 22 33 44...444
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">public class Main {
+    public static void main(String[] args) {
+        int a = inputAnInteger("Input a: ", "invalid input", 10, 500);
+        int b = inputAnInteger("Input b: ", "invalid input", 10, 500);
+        if (a &gt; b) {
+            int tmp = a;
+            a = b;
+            b = tmp;
+        }
+        for (int i = a; i &lt;= b; ++i) {
+            int num = i;
+            boolean isRepeated = true;
+            int lastDigit = num % 10;
+            while (num &gt; 0) {
+                int currentDigit = num % 10;
+                if (currentDigit != lastDigit) {
+                    isRepeated = false;
+                    break;
+                }
+                num /= 10;
+            }
+
+            if (isRepeated) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static int inputAnInteger(String msg, String err, int min, int max) {
+        if (min &gt; max) {
+            int tmp = min;
+            min = max;
+            max = tmp;
+        }
+
+        Scanner sc = new Scanner(System.in);
+        do {
+            try {
+                System.out.print(msg);
+                int n = Integer.parseInt(sc.nextLine());
+                if (n &lt; min || n &gt; max) {
+                    throw new Exception();
+                }
+                return n;
+            } catch (Exception e) {
+                System.out.println(err);
+            }
+        } while (true);
+    }
+}</code></pre>
+</div>

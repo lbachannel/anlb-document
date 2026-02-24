@@ -1,55 +1,57 @@
 <div class="content-wrap">
-    <h2 class="content__heading-2 mb-10">Data transfer object</h2>
+    <h2 class="content__heading-2 mb-10">Filter Query with JPA Specifications</h2>
     <p class="content__desc mb-10">
-        Mục đích sử dụng: tăng thêm hoặc giảm bớt đi các thuộc tính của class
+        <mark>Step 1: add dependency</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate.orm&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-jpamodelgen&lt;/artifactId&gt;
+    &lt;version&gt;6.4.1.Final&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 2: In Service Create Specification (Định nghĩa Specification)</mark>
     </p>
     <p class="content__desc mb-10">
-        <mark>Step 1: domain -> User.java</mark>
+        service -> specifications -> ProductSpecs.java
     </p>
-    <pre class="language-javascript"><code class="language-javascript">public class User {
-    private String fullName;
-    private String email;
-    private String password;
-    
-    // GETTER & SETTER
-}</code></pre>
-    <p class="content__desc mt-10 mb-10">
-        <mark>Step 2: domain -> dto -> RegisterDTO.java</mark>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">public class RegisterDTO {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String confirmPassword;
-    
-    // GETTER & SETTER
-}</code></pre>
-
-    <p class="content__desc mt-10 mb-10">
-        <mark>Step 3: service -> UserService.java</mark>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">// mapper DTO -> User
-public User registerDTOtoUser(RegisterDTO registerDTO) {
-    User user = new User();
-    user.setFullname(registerDTO.getFirstName() + " " + registerDTO.getLastName());
-    user.setEmail(registerDTO.getEmail());
-    user.setPassword(registerDTO.getPassword());
-    return user;
-}</code></pre>
-
-    <p class="content__desc mt-10 mb-10">
-        <mark>Step 4: using</mark>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">// POST: create a account
-@PostMapping("/register")
-public String handleRegister(@ModelAttribute("registerAccount") @Valid RegisterDTO registerDTO,
-                            BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-        return "client/auth/register";
+    <pre class="language-javascript"><code class="language-javascript">public class ProductSpecs {
+    public static Specification&lt;Product&gt; nameLike(String name) {
+        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
     }
-    User user = this.userService.registerDTOtoUser(registerDTO);
-    this.userService.handleRegisterAccount(user);
-    return "redirect:/login";
+}</code></pre>
+    <p class="content__desc mt-10 mb-10">
+        service -> ProductService.java
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Service
+public class ProductService {
+    public Page&lt;Product&gt; handleFindProducts(Pageable page, String name) {
+        return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
+    }
+}</code></pre>
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 3: Repo extends JpaSpecificationExecutor</mark>
+    </p>
+
+    <pre class="language-javascript"><code class="language-javascript">@Repository
+public interface ProductRepository extends JpaRepository&lt;Product, Long&gt;, JpaSpecificationExecutor&lt;Product&gt; {
+    Page&lt;Product&gt; findAll(Specification&lt;Product&gt; spec, Pageable page);
+}</code></pre>
+
+    <p class="content__desc mt-20 mb-10">
+        <mark>Step 4: Using</mark>
+    </p>
+    <pre class="language-javascript"><code class="language-javascript">@Controller
+public class ProductController {
+    @GetMapping(/products)
+    public String openProductPage(Model model,
+                                @RequestParam("name") Optional&lt;String&gt; nameOptional) {
+        String name = nameOptional.get();
+        Page&lt;Product&gt; products = this.productService.handleFindProducts(pageable, name);
+        List&lt;Product&gt; productList = products.getContent();
+        model.addAttribute("productList", productList);
+        return "path";
+    }
 }</code></pre>
 </div>

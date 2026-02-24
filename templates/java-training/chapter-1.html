@@ -1,0 +1,70 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">Liquibase</h2>
+    <p class="content__desc mb-10">
+        <mark>
+            Đặt vấn đề: 
+        </mark>
+        quá trình phát triển phần mềm. Ứng với mỗi giai đoạn, chúng ta sẽ code ra
+        nhiều tính năng trong ứng dụng
+    </p>
+    <p class="content__desc mb-10">
+        Ví dụ: quản lý, tạo table account. Mỗi lần sửa lại phải vào database. 
+        Nếu không lưu lại lịch sử, thì không thể rollback về lại version trước đó
+    </p>
+    <p class="content__desc mb-10">
+        Điều này cực kì rủi ro
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Liquibase ra đời để quản lý version của database. Rollback được tất cả version của database
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Viết các script để migration database
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Khi làm việc với liquibase, cần nắm 3 khái niệm cơ bản, changelog, changeset và changetype
+    </p>
+    <p class="content__desc mb-10 ti-30" style="padding-left: 29px; text-indent: 0px;">
+        Một changelog có thể sẽ chứa nhiều changeset và một changeset có thể chứa nhiều changetype
+    </p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Release</th>
+                <th>Period</th>
+                <th>feature</th>
+                <th>database</th>
+                <th>version</th>
+                <th>backup</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>release 1</td>
+                <td>1/1/2021 - 1/4/2021</td>
+                <td>Manage UserPage</td>
+                <td>table user</td>
+                <td>1</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>release 2</td>
+                <td>2/4/2021 - 1/7/2021</td>
+                <td>Manage ProductPage</td>
+                <td>table product, table product details, product image</td>
+                <td>2</td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>release 3</td>
+                <td>2/7/2021 - 2/8/2021</td>
+                <td>Manage ProductPage</td>
+                <td>table user add column email</td>
+                <td>3</td>
+                <td>dumb database_prod_5/8/2021</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

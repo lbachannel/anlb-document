@@ -1,57 +1,44 @@
 <div class="content-wrap">
-    <h2 class="content__heading-2 mb-10">Filter Query with JPA Specifications</h2>
+    <h2 class="content__heading-2 mb-10">Spring và OAuth</h2>
     <p class="content__desc mb-10">
-        <mark>Step 1: add dependency</mark>
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">&lt;dependency&gt;
-    &lt;groupId&gt;org.hibernate.orm&lt;/groupId&gt;
-    &lt;artifactId&gt;hibernate-jpamodelgen&lt;/artifactId&gt;
-    &lt;version&gt;6.4.1.Final&lt;/version&gt;
-    &lt;scope&gt;provided&lt;/scope&gt;
-&lt;/dependency&gt;</code></pre>
-
-    <p class="content__desc mt-20 mb-10">
-        <mark>Step 2: In Service Create Specification (Định nghĩa Specification)</mark>
+        <mark>Lịch sử ra đời và sử dụng với Spring</mark>
     </p>
     <p class="content__desc mb-10">
-        service -> specifications -> ProductSpecs.java
+        Trước 2022: Spring Security OAuth
     </p>
-    <pre class="language-javascript"><code class="language-javascript">public class ProductSpecs {
-    public static Specification&lt;Product&gt; nameLike(String name) {
-        return (root, query, criteriaBuilder) -> criteriaBuilder.like(root.get(Product_.NAME), "%" + name + "%");
-    }
-}</code></pre>
-    <p class="content__desc mt-10 mb-10">
-        service -> ProductService.java
-    </p>
-    <pre class="language-javascript"><code class="language-javascript">@Service
-public class ProductService {
-    public Page&lt;Product&gt; handleFindProducts(Pageable page, String name) {
-        return this.productRepository.findAll(ProductSpecs.nameLike(name), page);
-    }
-}</code></pre>
+    <a 
+        href="https://spring.io/blog/2022/06/01/spring-security-oauth-reaches-end-of-life" 
+        target="_blank" 
+        rel="noopener" 
+        style="color: blue; text-decoration: underline;">
+        https://spring.io/blog/2022/06/01/spring-security-oauth-reaches-end-of-life
+    </a>
     <p class="content__desc mt-20 mb-10">
-        <mark>Step 3: Repo extends JpaSpecificationExecutor</mark>
+        Sau 2022: có 2 dự án (projects) nổi bật hỗ trợ OAuth là
     </p>
-
-    <pre class="language-javascript"><code class="language-javascript">@Repository
-public interface ProductRepository extends JpaRepository&lt;Product, Long&gt;, JpaSpecificationExecutor&lt;Product&gt; {
-    Page&lt;Product&gt; findAll(Specification&lt;Product&gt; spec, Pageable page);
-}</code></pre>
-
+    <p class="content__desc mb-10">
+        <mark>
+            <b>Spring Security (hỗ trợ OAuth 2.0)</b>
+        </mark>
+    </p>
+    <a 
+        href="https://docs.spring.io/spring-security/reference/6.1/servlet/oauth2/index.html"
+        target="_blank"
+        rel="noopener" 
+        style="color: blue; text-decoration: underline;">
+        https://docs.spring.io/spring-security/reference/6.1/servlet/oauth2/index.html
+    </a>
+    
     <p class="content__desc mt-20 mb-10">
-        <mark>Step 4: Using</mark>
+        <mark>
+            <b>Spring Authorization Server (hỗ trợ OAuth 2.1)</b>
+        </mark>
     </p>
-    <pre class="language-javascript"><code class="language-javascript">@Controller
-public class ProductController {
-    @GetMapping(/products)
-    public String openProductPage(Model model,
-                                @RequestParam("name") Optional&lt;String&gt; nameOptional) {
-        String name = nameOptional.get();
-        Page&lt;Product&gt; products = this.productService.handleFindProducts(pageable, name);
-        List&lt;Product&gt; productList = products.getContent();
-        model.addAttribute("productList", productList);
-        return "path";
-    }
-}</code></pre>
+    <a 
+        href="https://spring.io/projects/spring-authorization-server"
+        target="_blank"
+        rel="noopener" 
+        style="color: blue; text-decoration: underline;">
+        https://spring.io/projects/spring-authorization-server
+    </a>
 </div>

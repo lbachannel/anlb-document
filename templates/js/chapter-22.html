@@ -1,0 +1,63 @@
+<div class="content-wrap">
+    <h2 class="content__heading-2 mb-10">XHR - XMLHttpRequest</h2>
+    <pre class="language-javascript"><code class="language-javascript">function sendRequest(method, url, callback) {
+    const xhr = new XMLHttpRequest();
+    /** open() có tham số thứ 3 là kiểu boolean, 
+    sẽ quyết định việc chạy đồng bộ hay bất đồng bộ (false đồng bộ | true bất đồng bộ) */
+    xhr.open(method, url, true);
+    xhr.send();
+    xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 400) {
+            if (typeof callback === 'function') {
+                callback(xhr.responseText);
+            }
+        }
+    };
+}
+
+const header = document.querySelector('.header');
+const footer = document.querySelector('.footer');
+
+// https://api01.f8team.dev/api/products
+const productList = document.querySelector('.product-list');
+
+sendRequest('GET', './partials/header.html', (responseText) => {
+    header.innerHTML = responseText;
+});
+
+sendRequest('GET', './partials/footer.html', (responseText) => {
+    footer.innerHTML = responseText;
+});
+
+sendRequest('GET', 'https://api01.f8team.dev/api/products', responseText => {
+    const response = JSON.parse(responseText);
+    const products = response.data.items;
+    products.forEach(product => {
+        const item = document.createElement('li');
+        item.textContent = product.title;
+        productList.appendChild(item);
+    })
+});
+</code></pre>
+
+    <h2 class="content__heading-2 mb-10">Callback hell</h2>
+    <pre class="language-javascript"><code class="language-javascript">// https://api01.f8team.dev/api/address/provinces
+// https://api01.f8team.dev/api/address/districts
+// https://api01.f8team.dev/api/address/wards
+sendRequest('GET', 'https://api01.f8team.dev/api/address/provinces', responseText => {
+    const provinces = JSON.parse(responseText).data;
+    const firstProvince = provinces[0];
+
+    sendRequest('GET', `https://api01.f8team.dev/api/address/districts?province_id=${firstProvince}`, responseText => {
+        const districts = JSON.parse(responseText).data;
+        const firstDistrict = districts[0];
+
+        sendRequest('GET', `https://api01.f8team.dev/api/address/wards?district_id=${firstDistrict}`, responseText => {
+            const wards = JSON.parse(responseText).data;
+            const firstWard = wards[0];
+            console.log(firstWard);
+        })
+    })
+});
+    </code></pre>
+</div>
