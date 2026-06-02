@@ -1433,7 +1433,6 @@ b, strong {
 .sidebar__icon {
   width: 17px;
   height: 17px;
-  filter: brightness(0) saturate(100%) invert(44%) sepia(96%) saturate(1847%) hue-rotate(324deg) brightness(89%) contrast(109%);
 }
 .sidebar-tab {
   display: flex;
