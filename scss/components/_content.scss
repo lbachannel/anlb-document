@@ -17,11 +17,11 @@
             font-size: 2.5rem;
             font-weight: 700;
             color: #ff0000;
-            counter-increment: heading;
+            // counter-increment: heading;
 
-            &::before {
-                content: counter(heading) ") ";
-            }
+            // &::before {
+            //     content: counter(heading) ") ";
+            // }
         }
 
         &-3 {
@@ -32,12 +32,12 @@
             color: #b62f2f;
             gap: 5px;
 
-            &::before {
-                content: url("../../assets/img/icons/heading.svg");
-                width: 24px;
-                height: 24px;
-                filter: brightness(0) saturate(100%) invert(18%) sepia(43%) saturate(5873%) hue-rotate(351deg) brightness(92%) contrast(76%);
-            }
+            // &::before {
+            //     content: url("../../assets/img/icons/heading.svg");
+            //     width: 24px;
+            //     height: 24px;
+            //     filter: brightness(0) saturate(100%) invert(18%) sepia(43%) saturate(5873%) hue-rotate(351deg) brightness(92%) contrast(76%);
+            // }
         }
 
         &-4 {
