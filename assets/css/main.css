@@ -1615,14 +1615,14 @@ code {
 .content__heading-2 {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ff0000;
+  color: #0a72e3;
 }
 .content__heading-3 {
   display: flex;
   align-items: center;
   font-size: 2rem;
   font-weight: 600;
-  color: #b62f2f;
+  color: #0a72e3;
   gap: 5px;
 }
 .content__heading-4 {
@@ -1632,12 +1632,6 @@ code {
   font-weight: 500;
   color: #a43434;
   gap: 5px;
-}
-.content__heading-4::before {
-  content: url("../../assets/img/icons/heading-4.svg");
-  width: 15px;
-  height: 15px;
-  filter: brightness(0) saturate(100%) invert(23%) sepia(24%) saturate(5022%) hue-rotate(341deg) brightness(97%) contrast(78%);
 }
 .content--active {
   display: flex;
