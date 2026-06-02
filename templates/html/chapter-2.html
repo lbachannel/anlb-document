@@ -1,41 +1,30 @@
 <div class="content-wrap">
     <h2 class="content__heading-2 mb-10">HTML, CSS và JavaScript</h2>
-    <p class="content__desc mb-10">HTML (HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản)</p>
-    <p class="content__desc mb-10">CSS (Cascading Style Sheets - Các tập tin định kiểu theo tầng)</p>
-    <p class="content__desc">và JavaScript là 3 ngôn ngữ để phát triển web mà trình duyệt có thể hiểu.</p>
+    <ul class="list">
+        <li>HTML (HyperText Markup Language - Ngôn ngữ đánh dấu siêu văn bản)</li>
+        <li>CSS (Cascading Style Sheets - Các tập tin định kiểu theo tầng)</li>
+    </ul>
 
-    <h3 class="content__heading-3 mt-20 mb-10">HTML</h3>
-    <p class="content__desc mb-10">HTML dùng để thêm ý nghĩa cho nội dung bằng cách đánh dấu nó</p>
     <blockquote class="blockquote blockquote--normal mt-10">
         <p class="content__desc">
             HTML là ngôn ngữ đánh dấu, HTML không phải là một ngôn ngữ lập trình.
         </p>
     </blockquote>
-    
-    <h3 class="content__heading-3 mt-20 mb-10">CSS</h3>
-    <p class="content__desc">CSS dùng để định dạng cho nội dung đã được đánh dấu bởi HTML</p>
-
-    <h3 class="content__heading-3 mt-20 mb-10">JavaScript</h3>
-    <p class="content__desc">JavaScript là một ngôn ngữ lập trình, giúp thêm tính tương tác cho trang web</p>
-
-    <blockquote class="blockquote blockquote--normal mt-10">
-        <p class="content__desc">
-            Ví HTML như phần khung của một ngôi nhà, thì CSS đóng vai trò trang trí cho ngôi nhà trở nên đẹp mắt, và JavaScript giúp ngôi nhà có nhiều tiện nghi hiện đại hơn.
-        </p>
-    </blockquote>
 
     <h3 class="content__heading-3 mt-20 mb-10">Siêu văn bản</h3>
-    <p class="content__desc mb-10">
-        <b>Siêu văn bản (hypertext)</b> là loại văn bản chứa nhiều <b>loại dữ liệu</b> khác nhau như: 
-        <b>văn bản, âm thanh, hình ảnh, video,</b> … và các siêu liên kết đến các siêu văn bản khác.
-    </p>
-    <p class="content__desc">
-        Trong khi đó, <b>văn bản thông thường</b> (không phải siêu văn bản) <b>chỉ</b> bao gồm nội dung <b>văn bản</b> và <b>hình ảnh</b>. 
-        Ví dụ: một tờ <b>báo</b>, các trang trong một cuốn <b>sách</b>, … <b>không phải là siêu văn bản</b>.
-    </p>
+    <ul class="list">
+        <li>
+            <b>Siêu văn bản (hypertext)</b> là loại văn bản chứa nhiều <b>loại dữ liệu</b> khác nhau như:
+            <b>văn bản, âm thanh, hình ảnh, video,</b> … và các siêu liên kết đến các siêu văn bản khác.
+        </li>
+        <li>
+            Trong khi đó, <b>văn bản thông thường</b> (không phải siêu văn bản) <b>chỉ</b> bao gồm nội dung <b>văn bản</b> và <b>hình ảnh</b>. 
+            Ví dụ: một tờ <b>báo</b>, các trang trong một cuốn <b>sách</b>, … <b>không phải là siêu văn bản</b>.
+        </li>
+    </ul>
 
-    <h2 class="content__heading-2 mt-20 mb-10">Cấu trúc tiêu chuẩn của file HTML</h2>
-    <pre class="language-javascript"><code class="language-javascript">&lt;!DOCTYPE html&gt;
+    <h3 class="content__heading-3 mt-20 mb-10">Cấu trúc tiêu chuẩn của file HTML</h3>
+    <pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
         &lt;!-- Các thẻ meta ở đây --&gt;
@@ -45,14 +34,9 @@
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-    <blockquote class="blockquote blockquote--normal mt-10">
-        <p class="content__desc">
-            Đảm bảo rằng bạn đặt DOCTYPE ngay đầu tài liệu HTML của mình mà không có bất cứ nội dung gì trước đó để đảm bảo khai báo này hoạt động đúng đắn trên mọi trình duyệt.
-        </p>
-    </blockquote>
     <blockquote class="blockquote blockquote--normal">
         <p class="content__desc">
-            Thuộc tính <b>lang</b> sử dụng để chỉ định ngôn ngữ của trang web. Các <b>công cụ dịch ngôn ngữ</b> và <b>trình đọc màn hình</b> sẽ <b>sử dụng thuộc tính này</b>.
+            Các <b>công cụ dịch ngôn ngữ</b> và <b>trình đọc màn hình</b> sẽ sử dụng thuộc tính <b>lang="en"</b>.
         </p>
     </blockquote>
 

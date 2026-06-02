@@ -69,7 +69,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Poppins", sans-serif;
-  background: #f7f9fa;
+  background: #fff;
   counter-reset: heading;
 }
 
@@ -1538,7 +1538,7 @@ b, strong {
   background: rgba(232, 230, 230, 0.9);
 }
 .blockquote--normal {
-  border-left: 2px solid #ffb700;
+  border-left: 2px solid #0a72e3;
 }
 .blockquote--warning {
   border-left: 2px solid #ff0000;
@@ -1644,7 +1644,7 @@ code {
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background: #f7f9fa;
+  background: #fff;
 }
 @media (max-width: 767.98px) {
   .wrapper {
@@ -1659,6 +1659,10 @@ code {
   flex-direction: column;
 }
 
+.content-wrap code[class*=language-],
+.content-wrap pre[class*=language-] {
+  background: #f5f5f5;
+}
 @media (max-width: 1399.98px) {
   .content-wrap code[class*=language-],
   .content-wrap pre[class*=language-] {
@@ -1682,6 +1686,14 @@ code {
 
 .color-red {
   color: red;
+}
+
+.list {
+  list-style: disc inside;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  text-indent: -23px;
+  padding-left: 25px;
 }
 
 .footer {
