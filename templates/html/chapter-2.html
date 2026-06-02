@@ -25,6 +25,7 @@
 
     <h3 class="content__heading-3 mt-20 mb-10">Cấu trúc tiêu chuẩn của file HTML</h3>
     <pre class="language-html"><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;!-- thuộc tính lang="en" được công cụ dịch ngôn ngữ & trình đọc màn hình sử dụng. --&gt;
 &lt;html lang=&quot;en&quot;&gt;
     &lt;head&gt;
         &lt;!-- Các thẻ meta ở đây --&gt;
@@ -34,19 +35,24 @@
     &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-    <blockquote class="blockquote blockquote--normal">
-        <p class="content__desc">
-            Các <b>công cụ dịch ngôn ngữ</b> và <b>trình đọc màn hình</b> sẽ sử dụng thuộc tính <b>lang="en"</b>.
-        </p>
-    </blockquote>
-
     <h3 class="content__heading-3 mt-20 mb-10">Tìm hiểu các thẻ meta</h3>
-    <p class="content__desc mb-10">Thẻ meta được sử dụng để cung cấp thêm thông tin và dữ liệu cho trang web.</p>
-    <p class="content__desc mb-10">Thẻ meta là một trong số thẻ tự đóng (self-closing tag), nhờ vậy không cần thêm thẻ đóng khi sử dụng thẻ meta.</p>
-    <p class="content__desc mb-10">Thẻ meta charset nhằm chỉ định bảng mã ký tự cho trang web (ví dụ: <meta charset="UTF-8" />). UTF-8 hỗ trợ hiển thị các ký tự ngoài khoảng A - Z. Luôn nhớ đặt thẻ meta charset tại vị trí đầu tiên trong thẻ &lt;head&gt;</p>
-    <p class="content__desc mb-10">Thẻ meta &lt;title&gt; cung cấp tiêu đề trang web hiển thị trên tab trình duyệt, hiển thị trong kết quả tìm kiếm (ví dụ: Google Search).</p>
-    <p class="content__desc mb-10">Thẻ meta viewport để hỗ trợ trang web hiển thị trên các thiết bị có kích cỡ màn hình khác nhau (PC, tablet, mobile). Nếu thiếu thẻ meta viewport, khi truy cập trên thiết bị di động, nội dung có thể bị thu nhỏ và cần phải phóng to để dễ dàng đọc được.</p>
-    <p class="content__desc">Thẻ meta Open Graph cung cấp thông tin cho trình thu thập dữ liệu của Facebook, hỗ trợ hiển thị thông tin trang web khi được chia sẻ trên mạng xã hội này.</p>
+    <ul class="list">
+        <li>Cung cấp thêm thông tin và dữ liệu cho trang web</li>
+        <li>Là thẻ tự đóng (self-closing tag)</li>
+        <li>
+            Meta charset chỉ định bảng mã ký tự. (ví dụ: &lt;meta charset="UTF-8" /&gt;)
+            UTF-8 hỗ trợ hiển thị các ký tự ngoài khoảng A - Z.
+        </li>
+        <li>
+            &lt;title&gt;HTML-CSS&lt;/title&gt; cung cấp tiêu đề trang web hiển thị trên tab trình duyệt, hiển thị trong kết quả tìm kiếm (ví dụ: Google Search).
+        </li>
+        <li>
+            Thẻ meta viewport để hỗ trợ trang web hiển thị trên các thiết bị có kích cỡ màn hình khác nhau (PC, tablet, mobile). Nếu thiếu thẻ meta viewport, khi truy cập trên thiết bị di động, nội dung có thể bị thu nhỏ và cần phải phóng to để dễ dàng đọc được.
+        </li>
+        <li>
+            Thẻ meta Open Graph cung cấp thông tin cho trình thu thập dữ liệu của Facebook, hỗ trợ hiển thị thông tin trang web khi được chia sẻ trên mạng xã hội này.
+        </li>
+    </ul>
 
     <h3 class="content__heading-3 mt-20 mb-10">Boilerplate là gì và cách sử dụng</h3>
     <p class="content__desc mb-10">
