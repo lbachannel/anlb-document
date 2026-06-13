@@ -115,6 +115,16 @@
     <pre class="language-html"><code class="language-html">&lt;a href=&quot;mailto:example@gmail.com?cc=ccexample@gmail.com&amp;bcc=bccexample@gmail.com&amp;subject=Request Support&amp;body=Body of Request Support&quot;&gt;Liên hệ với chúng tôi&lt;/a&gt;</code></pre>
 
     <div class="separate"></div>
+    <h3 class="content__heading-3 mb-10">Kết hợp với menu, mục lục</h3>
+    <ul class="list">
+        <li>
+            Khi làm menu, mục lục, v.v cần sử dụng thêm thẻ &lt;a&gt; để có thể nhấn vào các mục.
+        </li>
+        <li>
+            Khi chưa có URL để thêm vào menu, có thể tạm thời sử dụng href="#!" để giữ chỗ (tránh nhấn vào trang bị tải lại với href="" hoặc bị nhảy lên đầu trang với href="#").
+        </li>
+    </ul>
+    <div class="separate"></div>
     <h3 class="content__heading-3 mb-10">Thuộc tính href với hash và id</h3>
     <h4 class="content__heading-4 mb-10">Khi nào trình duyệt hiển thị thanh cuộn?</h4>
     <p class="content__desc">
@@ -146,40 +156,44 @@
     <div class="separate"></div>
     <h3 class="content__heading-3 mb-10">Cách sử dụng thẻ h với danh sách</h3>
     <h4 class="content__heading-4 mb-10">Trường hợp không nên dùng thẻ h trong danh sách</h4>
-    <p class="content__desc mb-10">
-        Danh sách tóm tắt, mục lục, dàn ý... Việc sử dụng thêm thẻ h là không cần thiết vì:
-    </p>
-    <p class="content__desc mb-10">
-        Về ngữ nghĩa, phần tóm tắt này đơn thuần là một danh sách, không có tiêu đề ở bên trong 
-        (các mục trong danh sách chỉ tham chiếu tới các tiêu đề trong nội dung)
-    </p>
-    <p class="content__desc mb-10">
-        Sử dụng thẻ h ở đây là dư thừa, cũng không mang ý nghĩa tối ưu hơn cho SEO
-    </p>
-    <p class="content__desc mb-10">
-        vì công cụ thu thập dữ liệu đã hiểu được nội dung dựa theo cấu trúc thẻ h ở phía dưới.
-    </p>
+    <ul class="list">
+        <li>
+            Danh sách tóm tắt, mục lục, dàn ý... Việc sử dụng thêm thẻ h là không cần thiết vì:
+        </li>
+        <li>
+            Về ngữ nghĩa, phần tóm tắt này đơn thuần là một danh sách, không có tiêu đề ở bên trong 
+            (các mục trong danh sách chỉ tham chiếu tới các tiêu đề trong nội dung)
+        </li>
+        <li>
+            Sử dụng thẻ h ở đây là dư thừa, cũng không mang ý nghĩa tối ưu hơn cho SEO
+        </li>
+        <li>
+            vì công cụ thu thập dữ liệu đã hiểu được nội dung dựa theo cấu trúc thẻ h ở phía dưới.
+        </li>
+    </ul>
 
     <h4 class="content__heading-4 mb-10">Trường hợp có thể dùng thẻ h trong danh sách</h4>
-    <p class="content__desc mb-10">
-        Nếu chỉ xét ở góc độ kiến thức HTML thông thường (HTML semantic) 
-        thì việc sử dụng các thẻ h trong một danh sách là điều không cần thiết.
-    </p>
-    <p class="content__desc mb-10">
-        Đứng ở góc độ SEO, các công cụ tìm kiếm sẽ ưu tiên các nội dung trong các thẻ h. Ví dụ:
-    </p>
-    <p class="content__desc mb-10">
-        Nội dung trong &lt;h1&gt; được cho là quan trọng nhất trong trang
-    </p>
-    <p class="content__desc mb-10">
-        Tiếp theo đó là các tiêu đề &lt;h2&gt;, &lt;h3&gt;, v.v
-    </p>
-    <p class="content__desc mb-10">
-        Tiếp nữa là các nội dung khác: văn bản, hình ảnh (alt của ảnh, sẽ được học ở bài 158), v.v
-    </p>
+    <ul class="list">
+        <li>
+            Nếu chỉ xét ở góc độ kiến thức HTML thông thường (HTML semantic) 
+            thì việc sử dụng các thẻ h trong một danh sách là điều không cần thiết.
+        </li>
+        <li>
+            Đứng ở góc độ SEO, các công cụ tìm kiếm sẽ ưu tiên các nội dung trong các thẻ h. Ví dụ:
+        </li>
+        <li>
+            Nội dung trong &lt;h1&gt; được cho là quan trọng nhất trong trang
+        </li>
+        <li>
+            Tiếp theo đó là các tiêu đề &lt;h2&gt;, &lt;h3&gt;, v.v
+        </li>
+        <li>
+            Tiếp nữa là các nội dung khác: văn bản, hình ảnh (alt của ảnh, sẽ được học ở bài 158), v.v
+        </li>
+    </ul>
 
     <div class="separate"></div>
-    <h2 class="content__heading-2 mb-10">Thẻ a có thể liên kết tới nhiều loại tài nguyên</h2>
+    <h3 class="content__heading-3 mb-10">Thẻ a có thể liên kết tới nhiều loại tài nguyên</h3>
     <p class="content__desc">
         Liên kết tới tài nguyên như hình ảnh, video, pdf, v.v
     </p>
@@ -189,5 +203,8 @@
         có thể thêm thuộc tính download để liên kết trở thành một liên kết tải xuống.
     </p>
     <pre class="language-html"><code class="language-html">&lt;a href=&quot;https://htmlcss.fullstack.edu.vn/assets/f8_icon.png&quot; download&gt;Logo F8&lt;/a&gt;</code></pre>
+
+    <h3 class="content__heading-3 mb-10">Viết nội dung liên kết tối ưu hơn cho web accessibility</h3>
+    <pre class="language-html"><code class="language-html">Bạn có thể &lt;a href="https://fullstack.edu.vn/landing/htmlcss"&gt;đăng ký khóa học HTML CSS Pro&lt;/a&gt;</code></pre>
 
 </div>
