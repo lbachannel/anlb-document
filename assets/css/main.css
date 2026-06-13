@@ -1695,6 +1695,9 @@ code {
   text-indent: -23px;
   padding-left: 25px;
 }
+.list-sublist {
+  list-style: circle inside;
+}
 
 .footer {
   margin-top: 50px;

@@ -4,4 +4,8 @@
     line-height: 1.6;
     text-indent: -23px;
     padding-left: 25px;
+
+    &-sublist {
+        list-style: circle inside;
+    }
 }
