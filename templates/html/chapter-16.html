@@ -1,0 +1,255 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">CSS Selector cơ bản</h3>
+    <ul class="list">
+        <li>
+            <code>p.intro</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; có class intro
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div, p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;div&gt; và tất cả thẻ &lt;p&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>.name1.name2</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả các thẻ có cả class name1 và name2
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Combinator selectors</h3>
+    <ul class="list">
+        <li>
+            <code>div p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; nằm trong thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div > p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; là con trực tiếp của thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div + p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn một thẻ &lt;p&gt; đầu tiên đứng ngay sau thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div ~ p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; đứng sau thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Pseudo-classes selectors</h3>
+    
+    <ul class="list">
+        <li>
+            <code>p:hover</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; khi di chuột qua
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>a:active</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;a&gt; khi nhấn chuột xuống
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>a:link</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;a&gt; có liên kết chưa truy cập
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>a:visited</code>
+            <ul class="list list-sublist">
+                <li>
+                   Chọn các thẻ &lt;a&gt; có liên kết đã truy cập
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div:empty</code>
+            <ul class="list list-sublist">
+                <li>
+                   Chọn các thẻ &lt;div&gt; không có nội dung
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>#home:target</code>
+            <ul class="list list-sublist">
+                <li>
+                   Chọn thẻ có id="home" khi trên URL có hash tương ứng. VD: https://domain.com/#home
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Child Selectors</h3>
+    <ul class="list">
+        <li>
+            <code>div p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; nằm trong thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div > p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; là con trực tiếp của thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div + p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn một thẻ &lt;p&gt; đầu tiên đứng ngay sau thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>div ~ p</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn tất cả thẻ &lt;p&gt; đứng sau thẻ &lt;div&gt;
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Pseudo-classes selectors</h3>
+    
+    <ul class="list">
+        <li>
+            <code>p:first-child</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; là thẻ con đầu tiên
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:last-child</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; là thẻ con cuối cùng
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:nth-child(2)</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; là thẻ con thứ hai
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:nth-last-child(2)</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; là thẻ con thứ hai, tính từ cuối lên
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:only-child</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; là thẻ con duy nhất
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Type selectors</h3>
+    <ul class="list">
+        <li>
+            <code>p:first-of-type</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; đầu tiên trong thẻ cha
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:last-of-type</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; cuối cùng trong thẻ cha
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:nth-of-type(2)</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; thứ hai trong thẻ cha
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:nth-last-of-type(2)</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; thứ hai trong thẻ cha, tính từ cuối lên
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code>p:only-of-type</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ &lt;p&gt; duy nhất trong thẻ cha
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Not selector</h3>
+        <ul class="list">
+        <li>
+            <code>.highlight:not(p)</code>
+            <ul class="list list-sublist">
+                <li>
+                    Chọn các thẻ có class="highlight" và không phải là thẻ &lt;p&gt;
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
