@@ -1,0 +1,149 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Thêm favicon</h3>
+    <ul class="list">
+        <li>
+            Favicon viết tắt của Favorite Icon, là biểu tượng xuất hiện trên thanh tab của trình duyệt, giúp người dùng dễ dàng nhận diện website.
+        </li>
+    </ul>
+
+    <pre>
+<code class="language-html">&lt;link rel=&quot;icon&quot; href=&quot;favicon.ico&quot; type=&quot;image/x-icon&quot;&gt;</code>
+    </pre>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tối ưu favicon cho nhiều thiết bị</h3>
+    <ul class="list">
+        <li>
+            Kích thước trung bình của favicon là 16x16px. Vì vậy, không được sử dụng hình ảnh quá lớn.
+        </li>
+        <li>
+            Favicon không chỉ hiển thị ở thanh tab của trình duyệt.
+        </li>
+        <li>
+            Giả sử, bạn truy cập vào một trang web ở trên điện thoại, bạn hoàn toàn có thể liên kết lưu thành một biểu tượng ở màn hình chính điện thoại.
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: center; gap: 10px;" class="mt-10 mb-10">
+        <img width="30%" src="	https://files.fullstack.edu.vn/f8-prod/public-images/663b3f597919a.png" alt="">
+    </div>
+
+    <ul class="list">
+        <li>Nếu sử dụng kích thước bé quá sẽ làm ảnh vỡ, xấu.</li>
+        <li>
+            Sử dụng Favicon.ico & App Icon Generator, bạn có thể tạo icon phù hợp với nhiều thiết bị.
+        </li>
+    </ul>
+    
+    <h3 class="content__heading-3 mt-10 mb-10">Sử dụng thẻ link với preconnect</h3>
+    <ul class="list">
+        <li>
+            hẻ &lt;link&gt; được sử dụng để tạo kết nối trước cho trang web.
+        </li>
+        <li>
+            <code class="language-html">&lt;link rel="preconnect" href="https://example.com"&gt;</code>
+        </li>
+        <li>
+            Thẻ &lt;link rel="preconnect"&gt; sẽ giúp “kết nối trước” tới địa chỉ nguồn tài nguyên, bao gồm:
+            <ul class="list list-sublist">
+                <li>
+                    Phân giải DNS, nhận IP
+                </li>
+                <li>
+                    Khởi tạo kết nối TCP tới IP
+                </li>
+                <li>
+                    “Bắt tay” với giao thức HTTPS
+                </li>
+            </ul>
+        </li>
+        <li>
+            Sau các bước này, trình duyệt sẽ ghi nhớ và khi gặp nguồn tài nguyên cần tải xuống sẽ thực hiện nhanh hơn.
+        </li>
+    </ul>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Lưu ý, thẻ &lt;link&gt; chỉ được đặt trong thẻ &lt;body&gt; khi nó chứa thuộc tính nằm trong danh sách cho phép đặt trong thẻ &lt;body&gt;. Để kiểm tra xem một thuộc tính cụ thể của thẻ &lt;link&gt; có được phép đặt trong không, bạn có thể tham khảo tại HTML Standard - Link.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Thuộc tính background-color</h3>
+    <ul class="list">
+        <li>
+            giá trị mặc định là transparent
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Thuộc tính background-image</h3>
+    <ul class="list">
+        <li>
+            Giá trị của thuộc tính background-image thường là một hàm, sử dụng nhiều nhất là hàm url().
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tìm hiểu về Box Model</h3>
+    <ul class="list">
+        <li>
+            Có 5 thuộc tính CSS liên quan đến Box Model:
+            <ul class="list list-sublist">
+                <li>
+                    width: chiều rộng của phần tử.
+                </li>
+                <li>
+                    height: chiều cao của phần tử.
+                </li>
+                <li>
+                    padding: làm dày phần tử
+                </li>
+                <li>
+                    border: đường viền của phần tử, có thể tùy chỉnh kiểu dáng, màu sắc, v.v.
+                </li>
+                <li>
+                    margin: khoảng cách giữa phần tử hiện tại và các phần tử xung quanh.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3 class="content__heading-3 mt-10 mb-10">CSS Prefix là gì</h3>
+
+    <ul class="list">
+        <li>
+            CSS Prefix là những tiền tố ngắn được thêm vào trước các thuộc tính CSS để đảm bảo tính tương thích với các trình duyệt khác nhau.
+        </li>
+        <li>
+            Bạn không cần phải nhớ thuộc tính nào cần có tiền tố và thuộc tính nào không.
+        </li>
+        <li>
+            Để kiểm tra xem thuộc tính nào cần sử dụng tiền tố, chỉ cần thêm đoạn code CSS của bạn vào trang CSS Auto Prefixer, các tiền tố cần thiết sẽ tự động được sinh ra ở bên phải:
+        </li>
+
+    </ul>
+
+    <div style="display: flex; justify-content: center; gap: 10px;" class="mt-10 mb-10">
+        <img width="100%" src="https://files.fullstack.edu.vn/f8-prod/public-images/66344db8dbc9b.png" alt="">
+    </div>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tìm hiểu về CSS Vendor Prefix</h3>
+    
+    <ul class="list">
+        <li>
+            <code>-webkit-</code> cho Chrome, Safari, hệ điều hành iOS, Android
+        </li>
+        <li>
+            <code>-moz-</code> cho Firefox
+        </li>
+        <li>
+            <code>-o-</code> cho Opera
+        </li>
+        <li>
+            <code>-ms-</code> cho Internet Explorer và các phiên bản cũ của Edge
+        </li>
+    </ul>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Khi viết một thuộc tính CSS (có thể là mới) mà nó không chạy, khả năng là thuộc tính đó cần có tiền tố.
+        </p>
+    </blockquote>
+</div>
