@@ -1,0 +1,174 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Đặc tính của thẻ block</h3>
+    <ul class="list">
+        <li>
+            <code>&lt;div&gt;, &lt;p&gt;, &lt;h1&gt; tới &lt;h6&gt;, &lt;ul&gt;, &lt;li&gt;, v.v.</code>
+        </li>
+        <li>
+            Luôn bắt đầu trên một hàng mới.
+        </li>
+        <li>
+            thừa hưởng 100% từ thẻ cha chứa nó.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Đặc tính của thẻ Inline</h3>
+    <ul class="list">
+        <li>
+            <code>&lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt;, v.v.</code>
+        </li>
+        <li>
+            Chiều ngang các thẻ Inline bằng nội dung của nó.
+        </li>
+        <li>
+            Không thể thiết lập width và height cho thẻ Inline.
+        </li>
+        <li>
+            Các thẻ có display: inline không hoạt động trên một số thuộc tính CSS như:
+            <ul class="list list-sublist">
+                <li>
+                    padding-top, padding-bottom
+                </li>
+                <li>
+                    margin-top, margin-bottom
+                </li>
+                <li>
+                    width, min-width
+                </li>
+                <li>
+                    height, min-height
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Giới thiệu về thẻ Inline-block</h3>
+    <ul class="list">
+        <li>
+            display: inline-block sẽ bao gồm các đặc điểm kết hợp giữa giá trị inline và block
+        </li>
+        <li>
+            Hoạt động tốt với
+            <ul class="list list-sublist">
+                <li>
+                    padding-top, padding-bottom
+                </li>
+                <li>
+                    margin-top, margin-bottom
+                </li>
+                <li>
+                    width, min-width
+                </li>
+                <li>
+                    height, min-height
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Giá trị display: none</h3>
+    <ul class="list">
+        <li>
+            Với giá trị display: none, phần tử sẽ được ẩn đi và không chiếm không gian ở trên trang web nữa.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tổng quan về thuộc tính opacity</h3>
+    <ul class="list">
+        <li>
+            Thuộc tính opacity có thể sử dụng 2 loại giá trị:
+            <ul class="list list-sublist">
+                <li>
+                    Giá trị số: 0.0 - 1.0
+                </li>
+                <li>
+                    Giá trị %: 0 - 100%
+                </li>
+            </ul>
+        </li>
+        <li>
+            Phần tử vẫn chiếm không gian trên trang web nhưng không thể nhìn thấy vì đã bị mờ hoàn toàn.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Khái quát thuộc tính visibility</h3>
+    <ul class="list">
+        <li>
+            Trong CSS, thuộc tính visibility quyết định một phần tử được ẩn hay hiện trên trang web.
+        </li>
+        <li>
+            có 2 giá trị: visible và hidden
+        </li>
+        <li>
+            visibility: visible
+            <ul class="list list-sublist">
+                <li>
+                    mặc định là visible
+                </li>
+                <li>
+                    Mặc định, các phần tử đã được hiển thị, nên khi set visibility: visible cũng sẽ không có sự thay đổi nào
+                </li>
+            </ul>
+        </li>
+        <li>
+            visibility: hidden
+            <ul class="list list-sublist">
+                <li>
+                    Sử dụng visibility: hidden, phần tử sẽ bị ẩn đi khỏi trang web nhưng vẫn chiếm không gian
+                </li>
+                <li>
+                    người dùng không thể nhìn thấy và không thể tương tác (click, bôi đen, v.v) 
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Trường hợp sử dụng</h3>
+    <ul class="list">
+        <li>
+            display: none
+            <ul class="list list-sublist">
+                <li>
+                    Ẩn và loại bỏ không gian/diện tích của phần tử khỏi bố cục trang web
+                </li>
+                <li>
+                    Không cần hiệu ứng chuyển tiếp (transition)
+                </li>
+            </ul>
+        </li>
+        <li>
+            opacity: 0
+            <ul class="list list-sublist">
+                <li>
+                    Tăng/giảm độ mờ của phần tử HTML trên giao diện trang web
+                </li>
+                <li>
+                    Kết hợp với transition để tạo hiệu ứng chuyển tiếp như:
+                </li>
+                <li>
+                    Fade in: từ từ hiện lên
+                </li>
+                <li>
+                    Fade out: từ từ ẩn đi
+                </li>
+            </ul>
+        </li>
+        <li>
+            visibility: hidden
+            <ul class="list list-sublist">
+                <li>
+                    Ẩn phần tử mà không làm thay đổi bố cục trang web (không gian của phần tử không bị loại bỏ)
+                </li>
+                <li>
+                    Kết hợp với transition và opacity để tạo hiệu ứng chuyển tiếp như
+                </li>
+                <li>
+                    Fade in: từ từ hiện lên
+                </li>
+                <li>
+                    Fade out: từ từ ẩn đi
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
