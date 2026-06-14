@@ -1,0 +1,223 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Các thành phần của Box Model</h3>
+    <ul class="list">
+        <li>
+            Box Model bao gồm 4 thành phần chính:
+            <ul class="list list-sublist">
+                <li>
+                    Content: chứa nội dung thực sự của phần tử như văn bản, hình ảnh hoặc video, v.v.
+                </li>
+                <li>
+                    Padding: là phần không gian được đệm vào xung quanh nội dung, nằm giữa nội dung và đường viền (border).
+                </li>
+                <li>
+                    Border: là phần đường viền của phần tử, nằm giữa padding và margin.
+                </li>
+                <li>
+                    Margin: là khoảng cách giữa phần tử hiện tại và các phần tử xung quanh, giúp tạo khoảng cách giữa các phần tử trên trang web.
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            Kích thước thật của một phần tử được tính như sau:
+            <ul class="list list-sublist">
+                <li>
+                    Chiều rộng = width + (padding trái + padding phải) + (border trái + border phải)
+                </li>
+                <li>
+                    Chiều cao = height + (padding trên + padding dưới) + (border trên + border dưới)
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <div style="display: flex; justify-content: center;" class="mt-10 mb-10">
+        <img width="50%" src="https://files.fullstack.edu.vn/f8-prod/public-images/64deedb67ee36.png" alt="">
+    </div>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Khi đặt kích thước bằng thuộc tính width và height thì đó chưa phải là kích thước thật của một phần tử.
+        </p>
+        <p class="content__desc">
+            Trong Box Model, margin là thành phần không tham gia làm tăng kích thước phần tử. Vì vậy, khi tính kích thước thật của phần tử sẽ không bao gồm margin.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Padding</h3>
+    <ul class="list">
+        <li>
+            sử dụng để điều chỉnh khoảng cách giữa nội dung của phần tử và viền xung quanh giúp cải thiện khả năng đọc và thẩm mỹ của giao diện web
+        </li>
+        <li>
+            Nếu hình vuông có kích thước là 200x200. Khi thêm padding 20px, kích thước thực của hình vuông lúc này là 240x240
+        </li>
+        <li>
+            Sở dĩ kích thước thực của phần tử thay đổi là vì padding tham gia làm tăng kích thước phần tử.
+        </li>
+        <li>
+            Nếu muốn kích thước thực của phần tử KHÔNG bị thay đổi sau khi thêm thuộc tính padding
+            <ul class="list list-sublist">
+                <li>
+                    <code>* { box-sizing: border-box };</code>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Khi đó, nếu bạn thêm padding vào trình duyệt sẽ tự tính toán để đảm bảo kích thước thực vẫn giữ được đúng bằng kích thước gốc như ban đầu
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Border</h3>
+    <ul class="list">
+        <li>
+            <code>border: 2px solid pink;</code> là cú pháp viết tắt của:
+            <ul class="list list-sublist">
+                <li>
+                    border-width: độ dày đường viền
+                </li>
+                <li>
+                    border-style: kiểu dáng đường viền
+                </li>
+                <li>
+                    border-color: màu sắc đường viền
+                </li>
+            </ul>
+        </li>
+        <li>
+            Thuộc tính border-width lại là cú pháp viết tắt của:
+            <ul class="list list-sublist">
+                <li>
+                    border-top-width: Độ dày viền trên
+                </li>
+                <li>
+                    border-bottom-width: Độ dày viền dưới
+                </li>
+                <li>
+                    border-left-width: Độ dày viền trái
+                </li>
+                <li>
+                    border-right-width: Độ dày viền phải
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Outline</h3>
+    <ul class="list">
+        <li>
+            outline tương tự border. Tuy nhiên có 2 sự khác biệt là
+            <ul class="list list-sublist">
+                <li>
+                    Bị va chạm vào các thẻ khác khi kích thước nó tăng. Không cùng mặt phẳng, do nó cao hơn.
+                </li>
+                <li>
+                    4 hướng đều giống nhau. Không tùy chỉnh được
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Border radius</h3>
+    <ul class="list">
+        <li>
+            dùng để bo góc các phần tử, tránh các góc nhọn và cứng, tạo ra hiệu ứng mềm mại.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Margin</h3>
+    <ul class="list">
+        <li>
+            Khi set margin: auto cho thẻ div, phần tử sẽ được căn giữa so với chiều rộng của thẻ cha chứa nó
+        </li>
+        <li>
+            Lưu ý:
+            <ul class="list list-sublist">
+                <li>
+                    Giá trị auto chỉ áp dụng cho những thẻ có thuộc tính display: block.
+                </li>
+                <li>
+                    Chỉ dùng auto để căn giữa được cho chiều ngang, không căn được cho chiều dọc.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ngoài giá trị dương, thuộc tính margin cũng sẽ hoạt động với các giá trị âm.
+        </li>
+    </ul>
+    	
+    <div style="display: flex; justify-content: center;" class="mt-10 mb-10">
+        <img width="100%" src="https://files.fullstack.edu.vn/f8-prod/public-images/64e348154b193.png" alt="">
+    </div>
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Margin trái/phải = (chiều rộng trình duyệt - chiều rộng phần tử) / 2.
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Margin Collapse</h3>
+    <ul class="list">
+        <li>
+            Có 2 tình huống xảy ra:
+            <ul class="list list-sublist">
+                <li>
+                    Thẻ trên margin bottom. Thẻ dưới margin top => Margin Collapse sẽ xảy ra
+                </li>
+                <li>
+                    thẻ con bên trong thẻ cha nếu margin top nó sẽ mang cả thẻ cha cùng tuột theo
+                </li>
+            </ul>
+        </li>
+        <li>
+            Margin Collapse sẽ lấy giá trị pixel lớn nhất
+        </li>
+        <li>
+            Cách khắc phục
+            <ul class="list list-sublist">
+                <li>
+                    float: left/right
+                </li>
+                <li>position: absolute</li>
+                <li>
+                    display: inline-block / flex;
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Thuộc tính box-sizing</h3>
+    <ul class="list">
+        <li>
+            Thuộc tính box-sizing được dùng để xác định cách tính toán kích thước của một phần tử HTML
+        </li>
+        <li>
+            Bao gồm 2 giá trị: border-box và content-box.
+        </li>
+        <li>
+            content-box
+            <ul class="list list-sublist">
+                <li>
+                    Tổng kích thước chiều rộng = width + padding + border
+                </li>
+                <li>
+                    Tổng kích thước chiều cao = height + padding + border
+                </li>
+            </ul>
+        </li>
+        <li>
+            border-box
+            <ul class="list list-sublist">
+                <li>
+                    kích thước thật của phần tử bằng đúng kích thước gốc đã khai báo
+                </li>
+                <li>
+                    Với border-box, content sẽ co lại nếu thêm padding hoặc border
+                </li>
+                <li>
+                    Giá trị border-box thường được sử dụng phổ biến hơn vì dễ kiểm soát kích thước và không phải tính toán nhiều
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
