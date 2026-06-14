@@ -1,0 +1,82 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Thẻ pre</h3>
+    <ul class="list">
+        <li>
+            Thẻ &lt;pre&gt; (preformatted - định dạng sẵn) 
+        </li>
+        <li>
+            dấu xuống hàng đầu tiên và cuối cùng trong thẻ &lt;pre&gt; sẽ không được hiển thị ra trình duyệt
+        </li>
+        <li>
+            thường được sử dụng để thể hiện những khối code trong nội dung các bài viết, tài liệu, v.v.
+        </li>
+        <li>
+            Thẻ &lt;pre&gt; thường được kết hợp với thẻ &lt;code&gt; để hiển thị khối code trên nội dung trang web.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mb-10 mt-10">HTML Entities là gì</h3>
+    <ul class="list">
+        <li>
+            Các ký tự có ý nghĩa đặc biệt hoặc trùng với các ký tự trong HTML
+        </li>
+        <li>
+            Các ký tự không dễ dàng hoặc không nhập được từ bàn phím. Ví dụ: ©, ™, v.v
+        </li>
+        <li>
+            <code>&amp;lt;</code> tương ứng <code><</code> khi hiển thị
+        </li>
+        <li>
+            <code>&amp;gt;</code> tương ứng <code>></code> khi hiển thị
+        </li>
+    </ul>
+
+    <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+        <p class="content__desc">
+            Nếu trang web sử dụng bảng mã ký tự UTF-8 thì hầu hết các ký tự đặc biệt 
+            (bao gồm cả các biểu tượng cảm xúc) có thể hiển thị ngay mà không cần sử dụng HTML Entities.
+            Ví dụ: ©, ™
+        </p>
+    </blockquote>
+
+    <h3 class="content__heading-3 mb-10">Non-breaking space Entity</h3>
+    <ul class="list">
+        <li>
+            Non-breaking space Entity (&amp;nbsp;) hiển thị giống như một khoảng trống, 
+            nhưng khoảng trống này sẽ không bị “bẻ gãy” (breaking) như khoảng trống thông thường 
+            (được viết bởi dấu cách trên bàn phím).
+        </li>
+        <li>
+            Trường hợp sử dụng &amp;nbsp; đó là khi chúng ta muốn 2 từ luôn được đi kèm với nhau. 
+            Ví dụ: Đường vào tim Crush xa như 1000&amp;nbsp;km.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Highlight code với PrismJS</h3>
+    <pre>
+<code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;UTF-8&quot;&gt;
+        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+        &lt;title&gt;Highlight Code with PrismJS&lt;/title&gt;
+        &lt;!-- Bước 1: Nhúng code CSS của PrismJS --&gt;
+        &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css&quot;&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- Bước 3: Thêm class=&quot;language-html&quot; cho thẻ &lt;code&gt; --&gt;
+        &lt;pre&gt;
+        &lt;code class=&quot;language-html&quot;&gt;&amp;lt;img
+            src=&amp;quot;https://htmlcss.fullstack.edu.vn/assets/f8_icon.png&amp;quot;
+            width=&amp;quot;100&amp;quot;
+            height=&amp;quot;100&amp;quot;
+            alt=&amp;quot;F8&amp;quot;
+        /&amp;gt;&lt;/code&gt;
+        &lt;/pre&gt;
+        &lt;!-- Bước 2: Nhúng code JavaScript của PrismJS --&gt;
+        &lt;script src=&quot;https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js&quot;&gt;&lt;/script&gt;
+        &lt;script src=&quot;https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js&quot;&gt;&lt;/script&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code>
+    </pre>
+</div>
