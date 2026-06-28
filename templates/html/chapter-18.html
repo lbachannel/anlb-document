@@ -1,0 +1,82 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">CSS Units (đơn vị trong css)</h3>
+    <ul class="list">
+        <li>
+            Absolute units (tuyệt đối)
+            <ul class="list list-sublist">
+                <li>
+                    px (pixel)
+                </li>
+            </ul>
+        </li>
+
+        <li>
+            Relative units (tương đối)
+            <ul class="list list-sublist">
+                <li>
+                    %
+                </li>
+                <li>
+                    vw, vh
+                </li>
+                <li>
+                    em
+                </li>
+                <li>
+                    rem
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">đơn vị %</h3>
+    <pre>
+<code class="language-html">&lt;!-- 
+    LƯU Ý: trường hợp đặc biệt
+    khi box con padding-top. 
+    KQ: padding-top: 50% là 1/2 width của cha
+--&gt;
+&lt;div class="box-parent"&gt;
+    &lt;div class="box-child" style="padding-top: 50%"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code>
+    </pre>
+
+    <h3 class="content__heading-3 mt-10 mb-10">đơn vị rem</h3>
+    <ul class="list">
+        <li>
+            rem
+            <ul class="list list-sublist">
+                <li>
+                    dựa trên font-size của thẻ html (thường là 16px mặc định)
+                </li>
+                <li>
+                    100% = 16px => 10px = (10 * 100) / 16 => 62.5% làm mặc định font-size cho thẻ html
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">đơn vị vw, vh</h3>
+    <ul class="list">
+        <li>
+            vw
+            <ul class="list list-sublist">
+                <li>
+                    (viewport width): 1vw = 1% chiều rộng màn hình.
+                </li>
+            </ul>
+        </li>
+        <li>
+            vh
+            <ul class="list list-sublist">
+                <li>
+                    (viewport height): 1vh = 1% chiều cao màn hình.
+                </li>
+            </ul>
+        </li>
+
+    </ul>
+</div>
