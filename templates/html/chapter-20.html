@@ -1,0 +1,269 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Background-color</h3>
+    <ul class="list">
+        <li>
+            Giá trị mặc định là transparent
+        </li>
+        <li>
+            Sử dụng mọi giá trị màu sắc
+        </li>
+        <li>
+            Bao gồm: border, padding, content
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Background-image</h3>
+    <ul class="list">
+        <li>
+            Giá trị mặc định là none
+        </li>
+        <li>
+            Ứng dụng của repeat
+            <ul class="list list-sublist">
+                <li>
+                    background-repeat: no-repeat; // không lặp lại
+                </li>
+                <li>
+                    background-repeat: repeat-x; // lặp trục x
+                </li>
+            </ul>
+        </li>
+        <li>
+            Sử dụng nhiều ảnh nền
+            <ul class="list list-sublist">
+                <li>
+                    background-image: url(...), url(...);
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ảnh nền từ dữ liệu Base64
+        </li>
+        <li>
+            Màu chuyển (linear-gradient): 
+            <a href="https://cssgradient.io/gradient-backgrounds" style="color: blue; font-style: italic;">Website lựa chọn mẫu linear</a>
+            <ul class="list list-sublist">
+                <li>
+                    background-image: linear(...);
+                </li>
+                <li>
+                    direction: default to bottom (optional)
+                </li>
+                <li>
+                    color1: (required) stop1
+                </li>
+                <li>
+                    color2: (required)
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Background-size</h3>
+    <ul class="list">
+        <li>
+            cover
+            <ul class="list list-sublist">
+                <li>
+                    Hiển thị ảnh nền lấp đầy kích thước của phần tử
+                </li>
+                <li>
+                    Khung hình khác tỉ lệ ảnh, thì một phần của ảnh có thể bị mất đi hoặc ảnh quá lớn sẽ co lại để lấp đầy
+                    kích thước của phần tử
+                </li>
+            </ul>
+        </li>
+        <li>
+            contain
+            <ul class="list list-sublist">
+                <li>
+                    Ảnh nằm vừa vặn trong phần tử có thể để lại một khoảng trống bên trong khung hình
+                </li>
+            </ul>
+        </li>
+        <li>
+            one value
+            <ul class="list list-sublist">
+                <li>
+                    background-size: 100%; sẽ là 100% kích thước chiều ngang của thẻ cha chứa nó
+                </li>
+            </ul>
+        </li>
+        <li>
+            two values
+            <ul class="list list-sublist">
+                <li>
+                    background-size: 100% 100%; sẽ là 100% kích thước chiều ngang + dọc của thẻ cha chứa nó
+                </li>
+                <li>
+                    Có thể sẽ bị méo ảnh nếu sai tỉ lệ ảnh
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Background-position</h3>
+    <ul class="list">
+        <li>
+            keyword
+            <ul class="list list-sublist">
+                <li>
+                    background-position: top left;
+                </li>
+                <li>
+                    background-position: center center;
+                </li>
+            </ul>
+        </li>
+        <li>
+            x% y%
+            <ul class="list list-sublist">
+                <li>
+                    background-position: 0% 0%;
+                </li>
+                <li>
+                    background-position: 50% 50%;
+                </li>
+            </ul>
+        </li>
+        <li>
+            xpos, ypos
+            <ul class="list list-sublist">
+                <li>
+                    kỹ thuật Sprite icons (Được fb sử dụng để hiển thị các icons)
+                </li>
+                <li>
+                    background-position: 0px -230px;
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Background-attachment</h3>
+    <ul class="list">
+        <li>
+            scroll (default)
+            <ul class="list list-sublist">
+                <li>
+                    ảnh cuộn theo trang web (mặc định)
+                </li>
+            </ul>
+        </li>
+        <li>
+            fixed
+            <ul class="list list-sublist">
+                <li>
+                    chi tiết ảnh hiển thị cố định, ko lên xuống theo thanh cuộn
+                </li>
+            </ul>
+        </li>
+        <li>
+            local
+            <ul class="list list-sublist">
+                <li>
+                    Dùng trong thanh cuộn con, ảnh cuộn theo nội dung bên trong
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Background-clip</h3>
+    <ul class="list">
+        <li>
+            quyết định màu nền/ảnh nền trong một phần tử được đổ từ thành phần nào
+        </li>
+        <li>
+            Gồm 3 giá trị:
+            <ul class="list list-sublist">
+                <li>
+                    border-box (default). Ảnh nền/màu nền sẽ được đổ từ border vào
+                </li>
+                <li>
+                    padding-box sẽ đổ ảnh nền/màu nền từ padding vào
+                </li>
+                <li>
+                    content-box sẽ chỉ được đổ ở content
+                </li>
+            </ul>
+        </li>
+        <li>
+            text
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Cách làm chữ chuyển màu</h3>
+    <div>
+        <a
+            style="
+                display: block;
+                width: fit-content;
+                margin: 0 auto;
+                font-size: 20px;
+                font-weight: 500; 
+                color: transparent;
+                background-color: #4158D0;
+                background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+                background-clip: text; 
+                -webkit-background-clip: text;
+            ">HTML CSS PRO</a>
+    </div>
+
+    <pre>
+<code class="language-css">&lt;!-- Chữ xanh hiển thị, khi trình duyệt không hỗ trợ --&gt;
+.highlight {
+    color: #4158D0;
+}
+    
+&lt;!-- Chỉ dùng màu chuyển khi trình duyệt hỗ trợ --&gt;
+@supports (background-clip: text) or (-webkit-background-clip: text) {
+    .highlight {
+        color: transparent;
+        background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+        background-clip: text; 
+        -webkit-background-clip: text;
+    }
+}</code>
+</pre>
+
+    <ul class="list">
+        @supports
+        <ul class="list list-sublist">
+            <li>
+                Cú pháp trong css
+            </li>
+            <li>
+                Kiểm tra thuộc tính giá trị có được trình duyệt hỗ trợ không
+            </li>
+            <li>
+                Có hỗ trợ thì nội dung khối code được thực thi
+            </li>
+        </ul>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Backgroung-origin</h3>
+    <ul class="list">
+        <li>
+            Giống background-clip. Khác biệt là chỉ tác dụng với background-image
+        </li>
+        <li>
+            padding-box (default)
+        </li>
+        <li>
+            border-box
+        </li>
+        <li>
+            content-box
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Hiệu ứng mờ nền với backdrop-filter</h3>
+    <ul class="list">
+        <li>
+            Dùng để tạo hiệu ứng mờ hoặc làm mờ nền phía sau một phần tử
+        </li>
+        <li>
+            Ví dụ: backdrop-filter: blur(10px); thường dùng trong modal, overlay hiện đại.
+        </li>
+    </ul>
+</div>
