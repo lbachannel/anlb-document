@@ -1,0 +1,370 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">font Serif</h3>
+    <ul class="list">
+        <li>
+            Là các font chữ có chân
+            <ul class="list list-sublist">
+                <li>
+                    hạn chế mỏi mắt khi đọc nhiều
+                </li>
+                <li>
+                    Thường được dùng nhiều trong sách, báo, các bài blog, v.v.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Times New Roman, Georgia, Garamond.
+        </li>
+    </ul>
+    
+    <h3 class="content__heading-3 mt-10 mb-10">font San-Serif</h3>
+    <ul class="list">
+        <li>
+            Là font chữ không có chân
+            <ul class="list list-sublist">
+                <li>
+                    Được dùng trên hầu hết các trang web
+                </li>
+            </ul>
+        </li>
+        <li>
+            Arial, Verdana, Garamond, v.v
+        </li>
+        <li>
+            <code class="language-css">font-family: Arial, Helvetica, sans-serif;</code>
+        </li>
+    </ul>
+        
+    <h3 class="content__heading-3 mt-10 mb-10">font Monospace</h3>
+    <ul class="list">
+        <li>
+            Là font có độ rộng các ký tự bằng nhau
+            <ul class="list list-sublist">
+                <li>
+                    Được dùng rất nhiều trong các trình viết code
+                </li>
+            </ul>
+        </li>
+        <li>
+            Monaco
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tìm hiểu về System fonts</h3>
+    <ul class="list">
+        <li>
+            fonts chữ hệ thống. 
+        </li>
+        <li>
+            Có sẵn trên các hệ điều hành, thiết bị
+        </li>
+        <li>
+            Tham khảo tại
+            <ul class="list list-sublist">
+                <li>
+                    <a href="https://css-tricks.com/snippets/css/system-font-stack/" style="color: blue">System Font Stack - css-tricks.com</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Thêm font-family như sau vào selector body:
+            <pre>
+<code class="language-css">/* System Fonts with system-ui */
+body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}</code>
+</pre>
+        </li>
+
+        <li>
+            Ưu điểm khi sử dụng: nhanh, an toàn và mang lại trải nghiệm quen thuộc.
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Typography</h3>
+    <ul class="list">
+        <li>
+            font-family
+        </li>
+        <li>
+            font-size
+        </li>
+        <li>
+            line-height
+            <ul class="list list-sublist">
+                <li>
+                    Đối với En thì nên để line-height tối thiểu là 1.4
+                </li>
+                <li>Tiếng Việt thì nên để 1.5 or 1.6</li>
+            </ul>
+        </li>
+        <li>
+            font-style: chữ nghiêng
+        </li>
+        <li>
+            font-variant: viết hoa chữ
+        </li>
+        <li>
+            font-weight
+            <ul class="list list-sublist">
+                <li>Mặc định là 400</li>
+            </ul>
+        </li>
+        <li>
+            letter-spacing
+            <ul class="list list-sublist">
+                <li>
+                    sử dụng để điều chỉnh khoảng cách giữa các ký tự
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-align
+            <ul class="list list-sublist">
+                <li>
+                    left căn trái
+                </li>
+                <li>
+                    right căn phải
+                </li>
+                <li>
+                    center căn giữa
+                </li>
+                <li>
+                    justify dàn đều hai bên
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-decoration
+            <ul class="list list-sublist">
+                <li>
+                    line-through gạch ngang nội dung
+                </li>
+                <li>
+                    overline gạch bên trên nội dung
+                </li>
+                <li>
+                    underline gạch dưới nội dung
+                </li>
+                <li>
+                    none để bỏ gạch chân chữ
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-indent
+            <ul class="list list-sublist">
+                <li>
+                    Sử dụng để thụt lề dòng đầu tiên trong một đoạn văn bản.
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-transform
+            <ul class="list list-sublist">
+                <li>
+                    none là giá trị mặc định.
+                </li>
+                <li>
+                    uppercase biến đổi tất cả các chữ thành chữ in hoa.
+                </li>
+                <li>
+                    lowercase biến đổi tất cả các chữ thành chữ thường.
+                </li>
+                <li>
+                    capitalize biến đổi chữ cái đầu của mỗi từ thành chữ in hoa, các chữ cái còn lại ở dạng chữ thường.
+                </li>
+            </ul>
+        </li>
+        <li>
+            white-space
+            <ul class="list list-sublist">
+                <li>
+                    normal (luôn đúng với 3 tính chất)
+                    <ul class="list list-sublist">
+                        <li>
+                            Nhiều khoảng trắng cũng chỉ hiển thị một khoảng trắng.
+                        </li>
+                        <li>
+                            nhiều dấu xuống hàng, trình duyệt chỉ hiển thị thành 1 khoảng trắng.
+                        </li>
+                        <li>
+                            Khi nội dung dài và chạm giới hạn, trình duyệt sẽ tự động cho xuống hàng.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    nowrap (luôn đúng với tính chất 1 và 2)
+                    <ul class="list list-sublist">
+                        <li>
+                            Nhiều khoảng trắng cũng chỉ hiển thị một khoảng trắng.
+                        </li>
+                        <li>
+                            nhiều dấu xuống hàng, trình duyệt chỉ hiển thị thành 1 khoảng trắng.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    pre (Preformatted) 
+                    <ul class="list list-sublist">
+                        <li>
+                            Hoạt động tương tự thẻ &lt;pre&gt;
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    pre-line (luôn đúng với tính chất 1 và 3)
+                    <ul class="list list-sublist">
+                        <li>
+                            Nhiều khoảng trắng cũng chỉ hiển thị một khoảng trắng.
+                        </li>
+                        <li>
+                            Khi nội dung dài và chạm giới hạn, trình duyệt sẽ tự động cho xuống hàng.
+                        </li>
+                        <li>
+                            pre ghi nhận dấu xuống hàng. Vì vậy, có bao nhiêu dấu xuống hàng sẽ hiển thị bấy nhiêu.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    pre-wrap (luôn đúng với tính chất 3)
+                    <ul class="list list-sublist">
+                        <li>
+                            Nội dung dài và chạm giới hạn tự động xuống hàng.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            word-break: break-all
+            <ul class="list list-sublist">
+                <li>
+                    khi nội dung chạm giới hạn sẽ được tự động xuống hàng.
+                </li>
+            </ul>
+        </li>
+        <li>
+            word-spacing: ?px
+            <ul class="list list-sublist">
+                <li>
+                    sử dụng để tăng/giảm khoảng cách giữa các từ.
+                </li>
+                <li>
+                    Giá trị càng lớn, khoảng cách giữa các từ càng xa nhau.
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-shadow
+            <ul class="list list-sublist">
+                <li>
+                    được sử dụng để tạo ra bóng đổ cho các nội dung chữ
+                </li>
+                <li>
+                    text-shadow: 4px 4px 2px rgba(0,0,0,0.6);
+                </li>
+                <li>
+                    Gồm 4 giá trị
+                    <ul class="list list-sublist">
+                        <li>
+                            Giá trị đầu tiên sẽ quyết định. Nếu âm sẽ đổ sang trái, giá trị dương đổ sang phải.
+                        </li>
+                        <li>
+                            Giá trị thứ 2. Giá trị âm đổ lên trên, giá trị dương đổ xuống dưới.
+                        </li>
+                        <li>
+                            Giá trị thứ 3 quyết định độ nhòe (blur) của bóng đổ.
+                        </li>
+                        <li>
+                            Giá trị cuối cùng là màu của bóng đổ.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Để tránh mất công căn từng chút một, bạn có thể tham khảo tool 
+                    <a href="https://cssgenerator.org/text-shadow-css-generator.html" style="color: blue" target="_blank" rel="noopener">Text Shadow CSS Generator</a>.
+                </li>
+            </ul>
+        </li>
+        <li>
+            text-overflow
+            <ul class="list list-sublist">
+                <li>
+                    Giúp quyết định một nội dung văn bản hiển thị như nào khi nó vượt quá thẻ cha chứa nó.
+                </li>
+                <li>
+                    Có thể sử dụng 2 giá trị:
+                    <ul class="list list-sublist">
+                        <li>
+                            clip để cắt bỏ nội dung bị tràn ra ngoài
+                        </li>
+                        <li>
+                            ellipsis để hiển thị dấu ... ở cuối văn bản khi bị tràn
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <blockquote class="blockquote blockquote--normal mt-10 mb-10">
+                <p class="content__desc" style="text-indent: 0px;">
+                    Lưu ý: khi dùng <strong>text-overflow</strong>, 
+                    bắt buộc dùng thêm 2 thuộc tính: <code class="language-css">white-space: nowrap</code> và <code class="language-css">overflow: hidden</code>.
+                </p>
+            </blockquote>
+            <ul class="list list-sublist">
+                <li>
+                    Hiển thị dấu 3 chấm khi nội dung dài
+                </li>
+                <li>
+                    Cách hiển thị ... ở hàng tùy ý:
+                    <ul class="list list-sublist">
+                        <li>
+                            <code class="language-css">display: -webkit-box;</code>
+                        </li>
+                        <li>
+                            <code class="language-css">-webkit-line-clamp: 3;</code>
+                        </li>
+                        <li>
+                            <code class="language-css">-webkit-box-orient: vertical;</code>
+                        </li>
+                        <li>
+                            <code class="language-css">overflow: hidden;</code>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Tối ưu việc sử dụng font (Optimize text rendering)</h3>
+    <ul class="list">
+        <li>
+            text-rendering
+            <ul class="list list-sublist">
+                <li>
+                    Đây là thuộc tính trong file ảnh SVG. Không phải thuộc tính tiêu chuẩn css
+                </li>
+                <li>
+                    Tuy nhiên trình duyệt hỗ trợ. Nên ta có thể sử dụng
+                </li>
+                <li>
+                    Gồm 2 giá trị
+                    <ul class="list list-sublist">
+                        <li>
+                            optimizeSpeed: Tối ưu tốc độ để hiển thị (nội dung chính là Hình ảnh, video). Thì dùng optimizeSpeed
+                        </li>
+                        <li>
+                            optimizeLegibility: Ưu tiên chất lượng hiển thị chữ. Thích hợp cho
+                            <ul class="list list-sublist">
+                                <li>
+                                    Tài liệu, báo, blog. Nội dung cần đọc nhiều Thì dùng optimizeLegibility
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
