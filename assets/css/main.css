@@ -1699,6 +1699,16 @@ code {
   list-style: circle inside;
 }
 
+.badge {
+  position: absolute;
+  color: #fff;
+  background: red;
+  padding: 5px 3px;
+  border-radius: 5px;
+  top: -5px;
+  left: 25px;
+}
+
 .footer {
   margin-top: 50px;
   flex-shrink: 0;

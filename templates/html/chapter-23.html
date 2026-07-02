@@ -1,0 +1,93 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Positon</h3>
+    <ul class="list">
+        <li>
+            <code class="language-css">position: static;</code> (default)
+        </li>
+        <li>
+            <code class="language-css">position: relative;</code>
+            <ul class="list">
+                <li>
+                    Được định vị theo vị trí ban đầu của nó
+                </li>
+                <li>
+                    Sau khi dịch chuyển phần tử khỏi vị trí, 
+                    không gian ban đầu vẫn được giữ nguyên và không bị phần tử khác thay thế
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code class="language-css">position: absolute;</code>
+            <ul class="list list-sublist">
+                <li>
+                    Trường hợp: Không có thẻ cha được định vị
+                    <ul class="list list-sublist">
+                        <li>
+                            Định vị theo vị trí của thẻ body
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    Trường hợp: Thẻ cha được định vị
+                    <ul class="list list-sublist">
+                        <li>
+                            Định vị theo vị trí của thẻ cha gần nhất
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code class="language-css">position: fixed;</code>
+            <ul class="list list-sublist">
+                <li>
+                    Định vị theo viewport
+                </li>
+                <li>
+                    <code class="language-css">top: 0;</code> 
+                    <code class="language-css">right: 0;</code> 
+                    <code class="language-css">bottom: 0;</code> 
+                    <code class="language-css">left: 0;</code>
+                </li>
+                <li>
+                    Có thể dùng <code class="language-css">inset: 0</code>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code class="language-css">position: sticky;</code>
+            <ul class="list list-sublist">
+                <li>
+                    Định vị theo thẻ cha gần nhất có thanh cuộn (Scrollbar)
+                </li>
+                <li>
+                    Ứng dụng: các chương bài học của f8. Neo lại chương để biết bài học của chương nào
+                </li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h3 class="content__heading-3 mt-10 mb-10">Làm Notification Badge</h3>
+
+    <pre>
+<code class="language-css">.notification {
+    position: relative;
+}
+
+.badge {
+    position: absolute;
+    top: -5px;
+    left: 25px;
+    ...
+}</code>
+    </pre>
+    <div style="background: #f5f5f5; padding: 10px 0;">
+        <div style="position: relative; width: 50px; margin: 0 auto;">
+            <svg width="50px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <path d="M320 64C302.3 64 288 78.3 288 96L288 99.2C215 114 160 178.6 160 256L160 277.7C160 325.8 143.6 372.5 113.6 410.1L103.8 422.3C98.7 428.6 96 436.4 96 444.5C96 464.1 111.9 480 131.5 480L508.4 480C528 480 543.9 464.1 543.9 444.5C543.9 436.4 541.2 428.6 536.1 422.3L526.3 410.1C496.4 372.5 480 325.8 480 277.7L480 256C480 178.6 425 114 352 99.2L352 96C352 78.3 337.7 64 320 64zM258 528C265.1 555.6 290.2 576 320 576C349.8 576 374.9 555.6 382 528L258 528z"/>
+            </svg>
+    
+            <span class="badge" >69</span>
+        </div>
+    </div>
+</div>
