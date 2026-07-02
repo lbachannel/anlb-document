@@ -1,0 +1,120 @@
+<div class="content-wrap">
+    <h3 class="content__heading-3 mb-10">Hình ảnh</h3>
+    <p class="content__desc mb-10">
+        Đặt vấn đề: 
+    </p>
+    <ul class="list">
+        <li>
+            Khi lần đầu truy cập trang, nội dung đều là chữ và chưa có hình ảnh.
+        </li>
+        <li>
+            Cuộn mãi xuống dưới mới xuất hiện hình. 
+        </li>
+        <li>
+            Theo mặc định, khi vào trang browser đã tải toàn bộ ảnh rồi. Điều này <strong>không cần thiết</strong>
+        </li>
+    </ul>
+    <p class="content__desc mt-10 mb-10">
+        Giải pháp
+    </p>
+    <ul class="list">
+        <li>
+            Hình ảnh chỉ được tải khi chúng gần hoặc đã nằm trong vùng hiển thị màn hình
+        </li>
+        <li>
+            <code class="language-css">&lt;img loading="lazy" /&gt;</code>
+        </li>
+        <li>
+            Lợi ích
+            <ul class="list list-sublist">
+                <li>
+                    Tiết kiệm băng thông
+                </li>
+                <li>
+                    Tăng tốc độ truy cập trang
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Giữ đúng tỉ lệ hình ảnh</h3>
+    <p class="content__desc mb-10">
+        Áp dụng cho ảnh (&lt;img&gt;) hoặc video (&lt;video&gt;) khi đã có width và height.
+    </p>
+    <ul class="list">
+        <li>
+            <code class="language-css">object-fit: cover</code>
+            <ul class="list list-sublist">
+                <li>
+                    Lấp đầy khung chứa.
+                </li>
+                <li>
+                    Giữ tỷ lệ ảnh
+                </li>
+                <li>
+                    Chấp nhận mất chi tiết
+                </li>
+            </ul>
+        </li>
+        <li>
+            <code class="language-css">object-fit: contain</code>
+            <ul class="list list-sublist">
+                <li>
+                    Hiển thị toàn bộ ảnh
+                </li>
+                <li>
+                    Giữ tỷ lệ ảnh
+                </li>
+                <li>
+                    Có thể thừa khoảng trống (viền trắng/đen).
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3 class="content__heading-3 mt-10 mb-10">Bọc văn bản xung quanh ảnh</h3>
+
+    <pre>
+<code class="language-css">.img {
+    float: left;
+}</code>
+    </pre>
+
+    <div style="background: #f5f5f5; padding: 10px;">
+        <img 
+            src="https://files.fullstack.edu.vn/f8-prod/public-images/64deedb67ee36.png" 
+            alt=""
+            style="width: 20%; padding: 10px 20px; float: left;">
+        <h3 class="mb-10">Lorem ipsum dolor sit amet.</h3>
+        <p class="content__desc">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Nisi ratione voluptates voluptate culpa mollitia temporibus aut, 
+            expedita qui explicabo iste quaerat tempore repellat odio sed! 
+            Ipsum tenetur fugiat ratione autem consequuntur, 
+            ex aliquid quaerat eveniet illum vitae nihil quam explicabo expedita itaque quis magnam minima consequatur qui nemo tempore. 
+            Iure voluptatem perferendis expedita sapiente ad minus. Dolorum explicabo ea magnam deserunt enim molestias dolor, 
+            expedita ullam delectus itaque ab quas minima consequatur voluptatem rerum illo? Sequi harum, aperiam quidem, dolorum odit nisi ex nemo quam fugiat totam sint ratione aliquam debitis. Molestiae qui commodi repudiandae laboriosam corrupti quia facilis consequatur?
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Labore quis maxime totam est asperiores harum vero beatae quam, culpa quaerat eveniet debitis perspiciatis praesentium et optio obcaecati. Facere numquam explicabo delectus pariatur? Nulla soluta autem rerum voluptatum necessitatibus obcaecati eos ut doloribus impedit incidunt voluptates, tenetur, perspiciatis ipsum molestias iusto.
+        </p>
+    </div>
+
+
+    <h3 class="content__heading-3 mt-10 mb-10">Hỗ trợ in backgrounds</h3>
+    <ul class="list">
+        <li>
+            Mặc định, các trang web <b>không hiển thị màu nền</b> hoặc <b>ảnh nền</b> khi in.
+        </li>
+        <li>
+            Chỉ áp dụng đoạn code khi ở chế độ in. Giúp tinh chỉnh bản in mà không ảnh hưởng đến hiển thị web
+        </li>
+    </ul>
+
+    <pre>
+<code class="language-css">@media print {
+    body {
+        print-color-adjust: exact !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+}</code>
+    </pre>
+</div>
